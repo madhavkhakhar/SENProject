@@ -1,11 +1,9 @@
 package com.codebenders.gujaratimitra;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -34,6 +32,10 @@ public class LevelsActivity extends ActionBarActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Toast.makeText(LevelsActivity.this,"position"+position,Toast.LENGTH_SHORT).show();
+                if (position == 3) {
+                    Intent i = new Intent(LevelsActivity.this, Level4_1.class);
+                    startActivity(i);
+                }
             }
         });
     }
