@@ -1,0 +1,76 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:background="@android:color/white"
+    android:orientation="vertical"
+    tools:context="com.codebenders.gujaratimitra.Level4_2">
+
+    <ImageView
+        android:layout_width="250dp"
+        android:layout_height="30dp"
+        android:id="@+id/imageView_l4_2_Instruction"
+        android:src="@drawable/level4_2_img_q"
+        android:layout_gravity="center"
+        />
+
+    <Button
+        android:id="@+id/btnSlide"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Start Sliding"
+        />
+
+    <ViewFlipper
+        android:id="@+id/flipper1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:flipInterval="2000"
+        android:inAnimation="@anim/slide_in_right"
+        android:outAnimation="@anim/slide_out_left"
+        android:layout_centerInParent="true"
+        >
+
+        <ImageView
+            android:src="@drawable/level4_2_img_e1_1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            />
+
+        <ImageView
+            android:src="@drawable/level4_2_img_e1_2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:layout_gravity="center_horizontal"
+            />
+
+        <ImageView
+            android:src="@drawable/level4_2_img_e1_3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:layout_gravity="center_horizontal"
+            />
+
+        <ImageView
+            android:src="@drawable/level4_2_img_e1_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_gravity="center_horizontal"
+            />
+
+        <ImageView
+            android:src="@drawable/level4_2_img_e1_5"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            />
+    </ViewFlipper>
+
+
+</LinearLayout>
