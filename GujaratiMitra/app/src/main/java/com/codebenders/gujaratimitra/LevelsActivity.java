@@ -9,6 +9,21 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import android.content.Intent;
+import android.media.MediaPlayer;
+import android.support.v7.app.ActionBarActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+
+import com.codebenders.gujaratimitra.Util;
+
+
 public class LevelsActivity extends ActionBarActivity {
 
     private static int NUM_PAGES = 3;
@@ -16,6 +31,7 @@ public class LevelsActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Util.mediaPlayer = new MediaPlayer();
         setContentView(R.layout.activity_levels);
         viewPager= (ViewPager)findViewById(R.id.pager);
         CustomPagerAdapter adapter = new CustomPagerAdapter();
@@ -71,7 +87,7 @@ public class LevelsActivity extends ActionBarActivity {
                 level7.setTag(""+position);
                 layout.setBackgroundResource(R.drawable.home_bg_s1);
             }
-            else if(position==1){
+            else if(position==1) {
                 level1.setImageResource(R.drawable.home_s2_l1);
                 level2.setImageResource(R.drawable.home_s2_l2);
                 level3.setImageResource(R.drawable.home_s2_l3);
@@ -81,6 +97,7 @@ public class LevelsActivity extends ActionBarActivity {
                 level7.setImageResource(R.drawable.home_s2_l7);
                 layout.setBackgroundResource(R.drawable.home_bg_s2);
             }
+
             else if(position==2){
                 level1.setImageResource(R.drawable.home_s3_l1);
                 level2.setImageResource(R.drawable.home_s3_l2);
@@ -95,8 +112,11 @@ public class LevelsActivity extends ActionBarActivity {
                 @Override
                 public void onClick(View v) {
                     //example for opening a level
-                    //if(v.getTag().equals("0"))
-                    //  Intent intent = new Intent(LevelsActivity.this,Lev)
+                    if(v.getTag().equals("0")){
+                        Intent i = new Intent(LevelsActivity.this,Level3_1.class);
+                        startActivity(i);
+                    }
+
                 }
             });
 
@@ -145,6 +165,7 @@ public class LevelsActivity extends ActionBarActivity {
             container.addView(view);
             return view;
         }
+
         @Override
         public void destroyItem(ViewGroup container, int position, Object object) {
             container.removeView((View) object);
