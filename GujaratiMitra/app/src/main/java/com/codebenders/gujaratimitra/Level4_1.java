@@ -2,8 +2,8 @@ package com.codebenders.gujaratimitra;
 
 import android.app.PendingIntent;
 import android.media.AudioManager;
-import android.media.MediaPlayer;
 import android.net.Uri;
+import android.os.Environment;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
@@ -13,6 +13,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import com.codebenders.gujaratimitra.Util;
+
+import java.io.IOException;
 
 
 public class Level4_1 extends ActionBarActivity {
@@ -91,40 +94,31 @@ public class Level4_1 extends ActionBarActivity {
             ImageView v2 = (ImageView) view.findViewById(R.id.imageView2);
             ImageView v3 = (ImageView) view.findViewById(R.id.imageView3);
             ImageView v4 = (ImageView) view.findViewById(R.id.imageView4);
-            if (position == 0) {
-                v1.setImageResource(R.drawable.level_4_1_img_0);
-                v3.setImageResource(R.drawable.level_4_1_img_1);
-                v2.setImageResource(R.drawable.level_4_1_img_0_n);
-                v4.setImageResource(R.drawable.level_4_1_img_1_n);
-            } else if (position == 1) {
-                v1.setImageResource(R.drawable.level_4_1_img_2);
-                v3.setImageResource(R.drawable.level_4_1_img_3);
-                v2.setImageResource(R.drawable.level_4_1_img_2_n);
-                v4.setImageResource(R.drawable.level_4_1_img_3_n);
-            } else if (position == 2) {
-                v1.setImageResource(R.drawable.level_4_1_img_4);
-                v3.setImageResource(R.drawable.level_4_1_img_5);
-                v2.setImageResource(R.drawable.level_4_1_img_4_n);
-                v4.setImageResource(R.drawable.level_4_1_img_5_n);
-            } else if (position == 3) {
-                v1.setImageResource(R.drawable.level_4_1_img_6);
-                v3.setImageResource(R.drawable.level_4_1_img_7);
-                v2.setImageResource(R.drawable.level_4_1_img_6_n);
-                v4.setImageResource(R.drawable.level_4_1_img_7_n);
-            } else if (position == 4) {
-                v1.setImageResource(R.drawable.level_4_1_img_8);
-                v2.setImageResource(R.drawable.level_4_1_img_8_n);
+            if (position != 4) {
+                Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/1/img_" + Integer.toString(2 * position) + ".png");
+                Util.setImageFromPath(v3, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/1/img_" + Integer.toString((2 * position) + 1) + ".png");
+                Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/1/img_" + Integer.toString(2 * position) + "_n.png");
+                Util.setImageFromPath(v4, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/1/img_" + Integer.toString((2 * position) + 1) + "_n.png");
+                //v1.setTag(Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/1/aud_" + Integer.toString(2 * position) + ".mp3");
+                //v3.setTag(Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/1/aud_" + Integer.toString((2 * position) + 1) + ".mp3");
+                v1.setTag(Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/1/aud_0.mp3");
+                v3.setTag(Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/1/aud_1.mp3");
+            } else {
+                Util.setImageFromPath(v1, Environment.getExternalStorageDirectory()+"/GujaratiMitra/l4/1/img_8.png");
+                Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/1/img_8_n.png");
+                v1.setTag(Environment.getExternalStorageDirectory()+"/GujaratiMitra/l4/1/aud_0.mp3");
             }
+
             v1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    Util.playMediaFromPath(v.getTag().toString());
                 }
             });
             v3.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    Util.playMediaFromPath(v.getTag().toString());
                 }
             });
             container.addView(view);
