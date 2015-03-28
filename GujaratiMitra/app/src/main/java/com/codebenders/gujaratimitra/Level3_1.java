@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Environment;
+import android.os.Handler;
 import android.os.Vibrator;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -124,17 +125,31 @@ public class Level3_1 extends ActionBarActivity {
                             if(image_no==correctans) {
                                 image[image_no].setColorFilter(Color.argb(255, 0, 255, 0));
                                 score++;
-                                Toast.makeText(getApplicationContext(),
-                                        "correct",
-                                        Toast.LENGTH_LONG).show();
+                                final Toast toast = Toast.makeText(getApplicationContext(), "CORRECT", Toast.LENGTH_SHORT);
+                                toast.show();
+
+                                Handler handler = new Handler();
+                                handler.postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        toast.cancel();
+                                    }
+                                }, 500);
                                 score_text.setText(String.valueOf(score) + "/10");
                             }
                             else{
                                 image[image_no].setColorFilter(Color.argb(255, 255, 0, 0));
                                 image[correctans].setColorFilter(Color.argb(255, 0, 255, 0));
-                                Toast.makeText(getApplicationContext(),
-                                        "wrong",
-                                        Toast.LENGTH_LONG).show();
+                                final Toast toast = Toast.makeText(getApplicationContext(), "WRONG", Toast.LENGTH_SHORT);
+                                toast.show();
+
+                                Handler handler = new Handler();
+                                handler.postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        toast.cancel();
+                                    }
+                                }, 500);
                                 v.vibrate(500);
 
                             }
