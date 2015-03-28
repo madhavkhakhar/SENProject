@@ -9,24 +9,18 @@
     tools:context="com.codebenders.gujaratimitra.Level4_2">
 
     <ImageView
-        android:layout_width="250dp"
-        android:layout_height="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/imageView_l4_2_Instruction"
         android:src="@drawable/level4_2_img_q"
         android:layout_gravity="center"
         />
 
-    <Button
-        android:id="@+id/btnSlide"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Start Sliding"
-        />
-
     <ViewFlipper
         android:id="@+id/flipper1"
+        android:layout_marginTop="50dp"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="250dp"
         android:flipInterval="2000"
         android:inAnimation="@anim/slide_in_right"
         android:outAnimation="@anim/slide_out_left"

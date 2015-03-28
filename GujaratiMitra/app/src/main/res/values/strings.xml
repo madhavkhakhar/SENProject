@@ -4,11 +4,9 @@
     <string name="app_name">GujaratiMitra</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-<<<<<<< Updated upstream
     <string name="title_activity_level4">level4</string>
     <string name="title_activity_level4_1">level4_1</string>
-=======
     <string name="title_activity_level4_2">Level4_2</string>
->>>>>>> Stashed changes
+    <string name="title_activity_level3_1">Level3_1</string>
 
 </resources>
