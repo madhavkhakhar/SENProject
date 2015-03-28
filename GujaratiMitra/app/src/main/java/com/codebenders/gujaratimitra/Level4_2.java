@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -18,7 +19,8 @@ import android.widget.ViewFlipper;
 public class Level4_2 extends ActionBarActivity {
     //ListView lv;
     int mFlipping = 0;
-    Button mButton;
+    int countexample=5;
+    ViewFlipper flipper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,8 +40,26 @@ public class Level4_2 extends ActionBarActivity {
         ItemsAdapter adapter = new ItemsAdapter(this, R.layout.listitem_l4_2, items);
         lv.setAdapter(adapter);*/
 
+        flipper = (ViewFlipper) findViewById(R.id.flipper1);
 
-        mButton = (Button) findViewById(R.id.btnSlide);
+        flipper.getInAnimation().setAnimationListener(new Animation.AnimationListener() {
+
+            public void onAnimationStart(Animation animation) {}
+            public void onAnimationRepeat(Animation animation) {}
+            public void onAnimationEnd(Animation animation) {
+
+                int displayedChild = flipper.getDisplayedChild();
+                int childCount = flipper.getChildCount();
+
+                if (displayedChild == childCount - 1) {
+                    flipper.stopFlipping();
+                }
+            }
+        });
+
+
+
+        /*mButton = (Button) findViewById(R.id.btnSlide);
         View.OnClickListener listener = new View.OnClickListener() {
 
             @Override
@@ -47,20 +67,21 @@ public class Level4_2 extends ActionBarActivity {
                 ViewFlipper flipper = (ViewFlipper) findViewById(R.id.flipper1);
 
                 if(mFlipping==0){
-                    /** Start Flipping */
+                    *//** Start Flipping *//*
                     flipper.startFlipping();
+
                     mFlipping=1;
                     mButton.setText("Stop Sliding");
                 }
                 else{
-                    /** Stop Flipping */
+                    *//** Stop Flipping *//*
                     flipper.stopFlipping();
                     mFlipping=0;
                     mButton.setText("Start Sliding");
                 }
             }
         };
-        mButton.setOnClickListener(listener);
+        mButton.setOnClickListener(listener);*/
 
     }
 
