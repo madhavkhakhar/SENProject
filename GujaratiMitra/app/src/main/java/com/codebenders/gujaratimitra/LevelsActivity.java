@@ -116,7 +116,6 @@ public class LevelsActivity extends ActionBarActivity {
                         Intent i = new Intent(LevelsActivity.this,Level3_1.class);
                         startActivity(i);
                     }
-
                 }
             });
 
@@ -137,14 +136,20 @@ public class LevelsActivity extends ActionBarActivity {
             level4.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //Intent intent = new Intent(LevelsActivity.this,Lev)
+                    if (v.getTag().equals("0")) {
+                        Intent intent = new Intent(LevelsActivity.this, Level4_1.class);
+                        startActivity(intent);
+                    }
                 }
             });
 
             level5.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //Intent intent = new Intent(LevelsActivity.this,Lev)
+                    if (v.getTag().equals("0")) {
+                        Intent intent = new Intent(LevelsActivity.this, Level5_2.class);
+                        startActivity(intent);
+                    }
                 }
             });
             level6.setOnClickListener(new View.OnClickListener() {
