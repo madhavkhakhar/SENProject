@@ -1,5 +1,6 @@
 package com.codebenders.gujaratimitra;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -29,15 +30,36 @@ public class SubLevelsActivity extends ActionBarActivity {
         lvSublevels.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if(position==0){
-                    //Set your intent here
+                Intent i;
+                int levelNo = getIntent().getExtras().getInt("Level");
+                switch(levelNo){
+                    case 3:
+                        if(position==0){
+                            //Set your intent here
+                            i = new Intent(SubLevelsActivity.this,Level3_1.class);
+                        }
+                    case 4:
+                        if(position==0){
+                            //Set your intent here
+                            i = new Intent(SubLevelsActivity.this,Level4_1.class);
+                        }
+                        else if(position==1){
+                            i = new Intent(SubLevelsActivity.this,Level4_2.class);
+                        }
+                        else if(position==2){
+                        }
+                    case 5:
+                        if(position==0){
+                            //Set your intent here
+                            i = new Intent(SubLevelsActivity.this,Level5_1.class);
+                        }
+                        else if(position==1){
+                            //i = new Intent(SubLevelsActivity.this,Level5_2.class);
+                        }
+                        else if(position==2){
+                        }
                 }
-                else if(position==1){
 
-                }
-                else if(position==2){
-
-                }
             }
         });
     }

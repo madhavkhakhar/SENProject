@@ -28,6 +28,7 @@ public class LevelsActivity extends ActionBarActivity {
 
     private static int NUM_PAGES = 3;
     ViewPager viewPager;
+    private int levelNo=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -116,7 +117,9 @@ public class LevelsActivity extends ActionBarActivity {
                         Intent i = new Intent(LevelsActivity.this,Level3_1.class);
                         startActivity(i);
                     }*/
+                    levelNo=1;
                     Intent i = new Intent(LevelsActivity.this,SubLevelsActivity.class);
+                    i.putExtra("Level",levelNo);
                     startActivity(i);
                 }
             });
@@ -126,6 +129,8 @@ public class LevelsActivity extends ActionBarActivity {
                 public void onClick(View v) {
                     //Intent intent = new Intent(LevelsActivity.this,Lev)
                     Intent i = new Intent(LevelsActivity.this,SubLevelsActivity.class);
+                    levelNo=2;
+                    i.putExtra("Level",levelNo);
                     startActivity(i);
                 }
             });
@@ -134,7 +139,8 @@ public class LevelsActivity extends ActionBarActivity {
                 @Override
                 public void onClick(View v) {
                     //Intent intent = new Intent(LevelsActivity.this,Lev)
-                    Intent i = new Intent(LevelsActivity.this,SubLevelsActivity.class);
+                    Intent i = new Intent(LevelsActivity.this,SubLevelsActivity.class);levelNo=3;
+                    i.putExtra("Level",levelNo);
                     startActivity(i);
                 }
             });
@@ -144,6 +150,8 @@ public class LevelsActivity extends ActionBarActivity {
                 public void onClick(View v) {
                     //Intent intent = new Intent(LevelsActivity.this,Lev)
                     Intent i = new Intent(LevelsActivity.this,SubLevelsActivity.class);
+                    levelNo=4;
+                    i.putExtra("Level",levelNo);
                     startActivity(i);
                 }
             });
@@ -153,6 +161,8 @@ public class LevelsActivity extends ActionBarActivity {
                 public void onClick(View v) {
                     //Intent intent = new Intent(LevelsActivity.this,Lev)
                     Intent i = new Intent(LevelsActivity.this,SubLevelsActivity.class);
+                    levelNo=5;
+                    i.putExtra("Level",levelNo);
                     startActivity(i);
                 }
             });
@@ -161,6 +171,8 @@ public class LevelsActivity extends ActionBarActivity {
                 public void onClick(View v) {
                     //Intent intent = new Intent(LevelsActivity.this,Lev)
                     Intent i = new Intent(LevelsActivity.this,SubLevelsActivity.class);
+                    levelNo=6;
+                    i.putExtra("Level",levelNo);
                     startActivity(i);
                 }
             });
@@ -170,6 +182,8 @@ public class LevelsActivity extends ActionBarActivity {
                 public void onClick(View v) {
                     //Intent intent = new Intent(LevelsActivity.this,Lev)
                     Intent i = new Intent(LevelsActivity.this,SubLevelsActivity.class);
+                    levelNo=7;
+                    i.putExtra("Level",levelNo);
                     startActivity(i);
                 }
             });
