@@ -1,6 +1,7 @@
 package com.codebenders.gujaratimitra;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -21,6 +22,7 @@ public class Level4_2 extends ActionBarActivity {
     int mFlipping = 0;
     int countexample=5;
     ViewFlipper flipper;
+    Intent intent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,8 +42,10 @@ public class Level4_2 extends ActionBarActivity {
         ItemsAdapter adapter = new ItemsAdapter(this, R.layout.listitem_l4_2, items);
         lv.setAdapter(adapter);*/
 
-        flipper = (ViewFlipper) findViewById(R.id.flipper1);
+        intent = getIntent();
+        final int question=intent.getExtras().getInt("Question");
 
+        flipper = (ViewFlipper) findViewById(R.id.flipper1);
         flipper.getInAnimation().setAnimationListener(new Animation.AnimationListener() {
 
             public void onAnimationStart(Animation animation) {}
@@ -50,9 +54,11 @@ public class Level4_2 extends ActionBarActivity {
 
                 int displayedChild = flipper.getDisplayedChild();
                 int childCount = flipper.getChildCount();
-
                 if (displayedChild == childCount - 1) {
                     flipper.stopFlipping();
+                    Intent i = new Intent(getApplicationContext(),Level4_2_question.class);
+                    i.putExtra("Question",1);
+                    startActivity(i);
                 }
             }
         });
