@@ -54,7 +54,7 @@ public class SubLevelsActivity extends ActionBarActivity {
                             i = new Intent(SubLevelsActivity.this,Level5_1.class);
                         }
                         else if(position==1){
-                            //i = new Intent(SubLevelsActivity.this,Level5_2.class);
+                            i = new Intent(SubLevelsActivity.this,Level5_2.class);
                         }
                         else if(position==2){
                         }
