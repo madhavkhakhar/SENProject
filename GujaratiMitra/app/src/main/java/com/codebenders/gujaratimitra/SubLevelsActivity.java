@@ -34,6 +34,11 @@ public class SubLevelsActivity extends ActionBarActivity {
                 int levelNo = getIntent().getExtras().getInt("Level");
                 System.out.println("Leve no==>"+levelNo);
                 switch(levelNo){
+                    case 1:
+                        if (position==0) {
+                            i = new Intent(SubLevelsActivity.this, Level1_1.class);
+                            startActivity(i);
+                        }
                     case 3:
                         if(position==0){
                             //Set your intent here
