@@ -121,7 +121,8 @@ public class LevelsActivity extends ActionBarActivity {
                     Intent i = new Intent(LevelsActivity.this,SubLevelsActivity.class);
                     i.putExtra("Level",levelNo);
                     startActivity(i);
-                }
+                    }
+
             });
 
             level2.setOnClickListener(new View.OnClickListener() {

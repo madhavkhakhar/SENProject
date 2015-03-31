@@ -1,8 +1,5 @@
 package com.codebenders.gujaratimitra;
 
-import android.app.PendingIntent;
-import android.media.AudioManager;
-import android.net.Uri;
 import android.os.Environment;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -13,28 +10,24 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import com.codebenders.gujaratimitra.Util;
-
-import java.io.IOException;
 
 
-public class Level4_1 extends ActionBarActivity {
+public class Level5_2 extends ActionBarActivity {
 
     private static final int NUM_PAGES = 5;
     private ViewPager mPager;
-    private PagerAdapter mPagerAdapter;
+    private PagerAdapter mAdapter;
     private ImageView leftArrow;
     private ImageView rightArrow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_level4_1);
+        setContentView(R.layout.activity_level5_2);
         mPager = (ViewPager) findViewById(R.id.pager);
-        mPagerAdapter = new SimplePagerAdapter();
-        mPager.setAdapter(mPagerAdapter);
-        mPager.setOffscreenPageLimit(5);
-
+        mAdapter = new SimplePagerAdapter();
+        mPager.setAdapter(mAdapter);
+        mPager.setOffscreenPageLimit(NUM_PAGES);
         leftArrow = (ImageView) findViewById(R.id.imageView);
         rightArrow = (ImageView) findViewById(R.id.imageView1);
         leftArrow.setOnClickListener(new View.OnClickListener() {
@@ -58,6 +51,9 @@ public class Level4_1 extends ActionBarActivity {
 
             @Override
             public void onPageSelected(int i) {
+                mPager.getChildAt(i).findViewById(R.id.imageView2).setVisibility(View.INVISIBLE);
+                mPager.getChildAt(i).findViewById(R.id.imageView4).setVisibility(View.INVISIBLE);
+                mPager.getChildAt(i).invalidate();
                 if (i == 0)
                     leftArrow.setVisibility(View.INVISIBLE);
                 else if (i == 4)
@@ -90,35 +86,35 @@ public class Level4_1 extends ActionBarActivity {
         @Override
         public Object instantiateItem(ViewGroup container, int position) {
             View view = getLayoutInflater().inflate(R.layout.unit_layout, container, false);
-            ImageView v1 = (ImageView) view.findViewById(R.id.imageView1);
-            ImageView v2 = (ImageView) view.findViewById(R.id.imageView2);
-            ImageView v3 = (ImageView) view.findViewById(R.id.imageView3);
-            ImageView v4 = (ImageView) view.findViewById(R.id.imageView4);
 
-            if (position != 4) {
-                Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/1/img_" + Integer.toString(2 * position) + ".png");
-                Util.setImageFromPath(v3, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/1/img_" + Integer.toString((2 * position) + 1) + ".png");
-                Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/1/img_" + Integer.toString(2 * position) + "_n.png");
-                Util.setImageFromPath(v4, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/1/img_" + Integer.toString((2 * position) + 1) + "_n.png");
-                //v1.setTag(Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/1/aud_" + Integer.toString(2 * position) + ".mp3");
-                //v3.setTag(Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/1/aud_" + Integer.toString((2 * position) + 1) + ".mp3");
-                v1.setTag(Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/1/aud_0.mp3");
-                v3.setTag(Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/1/aud_1.mp3");
-            } else {
-                Util.setImageFromPath(v1, Environment.getExternalStorageDirectory()+"/GujaratiMitra/l4/1/img_8.png");
-                Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/1/img_8_n.png");
-                v1.setTag(Environment.getExternalStorageDirectory()+"/GujaratiMitra/l4/1/aud_0.mp3");
-            }
+            final ImageView v1 = (ImageView) view.findViewById(R.id.imageView1);
+            final ImageView v2 = (ImageView) view.findViewById(R.id.imageView2);
+            final ImageView v3 = (ImageView) view.findViewById(R.id.imageView3);
+            final ImageView v4 = (ImageView) view.findViewById(R.id.imageView4);
+
+            v2.setVisibility(View.INVISIBLE);
+            v4.setVisibility(View.INVISIBLE);
+
+            Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l5/2/img_" + Integer.toString(2 * position) + ".png");
+            Util.setImageFromPath(v3, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l5/2/img_" + Integer.toString((2 * position) + 1) + ".png");
+            Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l5/2/img_" + Integer.toString(2 * position) + "_n.png");
+            Util.setImageFromPath(v4, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l5/2/img_" + Integer.toString((2 * position) + 1) + "_n.png");
+            //v1.setTag(Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/1/aud_" + Integer.toString(2 * position) + ".mp3");
+            //v3.setTag(Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/1/aud_" + Integer.toString((2 * position) + 1) + ".mp3");
+            v1.setTag(Environment.getExternalStorageDirectory() + "/GujaratiMitra/l5/2/aud_0.mp3");
+            v3.setTag(Environment.getExternalStorageDirectory() + "/GujaratiMitra/l5/2/aud_1.mp3");
 
             v1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    v2.setVisibility(View.VISIBLE);
                     Util.playMediaFromPath(v.getTag().toString());
                 }
             });
             v3.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    v4.setVisibility(View.VISIBLE);
                     Util.playMediaFromPath(v.getTag().toString());
                 }
             });
@@ -130,6 +126,5 @@ public class Level4_1 extends ActionBarActivity {
         public void destroyItem(ViewGroup container, int position, Object object) {
             container.removeView((View) object);
         }
-
     }
 }
