@@ -5,6 +5,8 @@ import android.graphics.BitmapFactory;
 import android.media.MediaPlayer;
 import android.widget.ImageView;
 
+import com.codebenders.gujaratimitra.database.AppDB;
+
 import java.io.IOException;
 
 /**
@@ -13,6 +15,7 @@ import java.io.IOException;
 public class Util {
 
     public static MediaPlayer mediaPlayer;
+    public static AppDB appDB;
 
     public static void playMediaFromPath(String path) {
         mediaPlayer.reset();

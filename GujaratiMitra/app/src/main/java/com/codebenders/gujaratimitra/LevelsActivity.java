@@ -32,7 +32,6 @@ public class LevelsActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Util.mediaPlayer = new MediaPlayer();
         setContentView(R.layout.activity_levels);
         viewPager= (ViewPager)findViewById(R.id.pager);
         CustomPagerAdapter adapter = new CustomPagerAdapter();
