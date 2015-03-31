@@ -11,6 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import java.util.Random;
+
 
 public class Level1_1 extends ActionBarActivity {
 
@@ -20,6 +22,7 @@ public class Level1_1 extends ActionBarActivity {
     private ImageView leftArrow;
     private ImageView rightArrow;
     private ImageView queImage;
+    private Random rn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,9 +31,12 @@ public class Level1_1 extends ActionBarActivity {
         mPager = (ViewPager) findViewById(R.id.pager);
         mAdapter = new SimplePagerAdapter();
         mPager.setAdapter(mAdapter);
-        mPager.setOffscreenPageLimit(NUM_PAGES);
+        mPager.setOffscreenPageLimit(0);
         queImage = (ImageView) findViewById(R.id.que_image);
-        Util.setImageFromPath(queImage, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l5/2/img_0.png");
+        rn = new Random();
+        int pos = 1+rn.nextInt(16);
+        Util.setImageFromPath(queImage, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l1/1/img_" + pos + ".png");
+        queImage.setTag(pos);
         leftArrow = (ImageView) findViewById(R.id.imageView);
         rightArrow = (ImageView) findViewById(R.id.imageView1);
         leftArrow.setOnClickListener(new View.OnClickListener() {
@@ -84,7 +90,7 @@ public class Level1_1 extends ActionBarActivity {
         }
 
         @Override
-        public Object instantiateItem(ViewGroup container, int position) {
+        public Object instantiateItem(ViewGroup container, final int position) {
             View view = getLayoutInflater().inflate(R.layout.unit_layout_level1_1, container, false);
 
             final ImageView v1 = (ImageView) view.findViewById(R.id.img1);
@@ -92,27 +98,60 @@ public class Level1_1 extends ActionBarActivity {
             final ImageView v3 = (ImageView) view.findViewById(R.id.img3);
             final ImageView v4 = (ImageView) view.findViewById(R.id.img4);
 
-            Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l5/2/img_0.png");
-            Util.setImageFromPath(v3, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l5/2/img_2.png");
-            Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l5/2/img_1.png");
-            Util.setImageFromPath(v4, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l5/2/img_3.png");
+            Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l1/1/img_"+((4*position)+1)+".png");
+            Util.setImageFromPath(v3, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l1/1/img_"+((4*position)+2)+".png");
+            Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l1/1/img_"+((4*position)+3)+".png");
+            Util.setImageFromPath(v4, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l1/1/img_"+((4*position)+4)+".png");
             //v1.setTag(Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/1/aud_" + Integer.toString(2 * position) + ".mp3");
             //v3.setTag(Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/1/aud_" + Integer.toString((2 * position) + 1) + ".mp3");
-            v1.setTag(Environment.getExternalStorageDirectory() + "/GujaratiMitra/l5/2/aud_0.mp3");
-            v3.setTag(Environment.getExternalStorageDirectory() + "/GujaratiMitra/l5/2/aud_1.mp3");
+
+            v1.setTag(((4*position)+1));
+            v2.setTag(((4*position)+2));
+            v3.setTag(((4*position)+3));
+            v4.setTag(((4*position)+4));
 
             v1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    v2.setVisibility(View.VISIBLE);
-                    Util.playMediaFromPath(v.getTag().toString());
+                    if (queImage.getTag().equals(v1.getTag())) {
+                        int pos = 1+rn.nextInt(16);
+                        System.out.println(">>>>>>>pos"+pos);
+                        Util.setImageFromPath(queImage, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l1/1/img_"+pos+".png");
+                        queImage.setTag(pos);
+                    }
+                }
+            });
+            v2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (queImage.getTag().equals(v2.getTag())) {
+                        int pos = 1+rn.nextInt(16);
+                        System.out.println(">>>>>>>pos"+pos);
+                        Util.setImageFromPath(queImage, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l1/1/img_"+pos+".png");
+                        queImage.setTag(pos);
+                    }
                 }
             });
             v3.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    v4.setVisibility(View.VISIBLE);
-                    Util.playMediaFromPath(v.getTag().toString());
+                    if (queImage.getTag().equals(v3.getTag())) {
+                        int pos = 1+rn.nextInt(16);
+                        System.out.println(">>>>>>>pos"+pos);
+                        Util.setImageFromPath(queImage, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l1/1/img_"+pos+".png");
+                        queImage.setTag(pos);
+                    }
+                }
+            });
+            v4.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (queImage.getTag().equals(v4.getTag())) {
+                        int pos = 1+rn.nextInt(16);
+                        System.out.println(">>>>>>>pos"+pos);
+                        Util.setImageFromPath(queImage, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l1/1/img_"+pos+".png");
+                        queImage.setTag(pos);
+                    }
                 }
             });
             container.addView(view);
