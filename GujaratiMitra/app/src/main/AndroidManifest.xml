@@ -9,6 +9,7 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
+
         <activity
             android:name=".LevelsActivity"
             android:label="@string/app_name"
@@ -43,6 +44,14 @@
             android:name=".Level5_2"
             android:label="level5_2"
             android:screenOrientation="landscape" >
+        </activity>
+        <activity
+            android:name=".Level4_2_question"
+            android:label="@string/title_activity_level4_2_question" >
+        </activity>
+        <activity
+            android:name=".SubLevelsActivity"
+            android:label="@string/title_activity_sub_levels" >
         </activity>
     </application>
 
