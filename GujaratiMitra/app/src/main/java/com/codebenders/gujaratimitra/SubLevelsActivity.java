@@ -32,32 +32,41 @@ public class SubLevelsActivity extends ActionBarActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent i;
                 int levelNo = getIntent().getExtras().getInt("Level");
+                System.out.println("Leve no==>"+levelNo);
                 switch(levelNo){
                     case 3:
                         if(position==0){
                             //Set your intent here
                             i = new Intent(SubLevelsActivity.this,Level3_1.class);
+                            startActivity(i);
                         }
+                        break;
                     case 4:
                         if(position==0){
                             //Set your intent here
                             i = new Intent(SubLevelsActivity.this,Level4_1.class);
+                            startActivity(i);
                         }
                         else if(position==1){
                             i = new Intent(SubLevelsActivity.this,Level4_2.class);
+                            startActivity(i);
                         }
                         else if(position==2){
                         }
+                        break;
                     case 5:
                         if(position==0){
                             //Set your intent here
                             i = new Intent(SubLevelsActivity.this,Level5_1.class);
+                            startActivity(i);
                         }
                         else if(position==1){
                             i = new Intent(SubLevelsActivity.this,Level5_2.class);
+                            startActivity(i);
                         }
                         else if(position==2){
                         }
+                        break;
                 }
 
             }
