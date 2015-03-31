@@ -42,8 +42,8 @@ public class Level4_2 extends ActionBarActivity {
         ItemsAdapter adapter = new ItemsAdapter(this, R.layout.listitem_l4_2, items);
         lv.setAdapter(adapter);*/
 
-        intent = getIntent();
-        final int question=intent.getExtras().getInt("Question");
+        //intent = getIntent();
+        //final int question=intent.getExtras().getInt("Question");
 
         flipper = (ViewFlipper) findViewById(R.id.flipper1);
         flipper.getInAnimation().setAnimationListener(new Animation.AnimationListener() {

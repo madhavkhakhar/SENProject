@@ -47,11 +47,13 @@
         </activity>
         <activity
             android:name=".Level4_2_question"
-            android:label="@string/title_activity_level4_2_question" >
+            android:label="@string/title_activity_level4_2_question"
+            android:screenOrientation="landscape" >
         </activity>
         <activity
             android:name=".SubLevelsActivity"
-            android:label="@string/title_activity_sub_levels" >
+            android:label="@string/title_activity_sub_levels"
+            android:screenOrientation="landscape">
         </activity>
         <activity
             android:name=".Level1_1"
