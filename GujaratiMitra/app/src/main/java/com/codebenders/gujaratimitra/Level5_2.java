@@ -86,7 +86,7 @@ public class Level5_2 extends ActionBarActivity {
         @Override
         public Object instantiateItem(ViewGroup container, int position) {
             View view = getLayoutInflater().inflate(R.layout.unit_layout, container, false);
-            System.out.println("Instantiating " + position);
+
             final ImageView v1 = (ImageView) view.findViewById(R.id.imageView1);
             final ImageView v2 = (ImageView) view.findViewById(R.id.imageView2);
             final ImageView v3 = (ImageView) view.findViewById(R.id.imageView3);
