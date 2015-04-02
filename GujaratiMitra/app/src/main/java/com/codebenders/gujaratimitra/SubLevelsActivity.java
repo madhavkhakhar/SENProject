@@ -35,8 +35,11 @@ public class SubLevelsActivity extends ActionBarActivity {
                 System.out.println("Leve no==>"+levelNo);
                 switch(levelNo){
                     case 1:
+
+                        break;
+                    case 2:
                         if (position==0) {
-                            i = new Intent(SubLevelsActivity.this, Level1_1.class);
+                            i = new Intent(SubLevelsActivity.this, Level2_1.class);
                             startActivity(i);
                         }
                         break;
@@ -64,10 +67,42 @@ public class SubLevelsActivity extends ActionBarActivity {
                         if(position==0){
                             //Set your intent here
                             i = new Intent(SubLevelsActivity.this,Level5_1.class);
+                            i.putExtra("LevelNo",5);
                             startActivity(i);
                         }
                         else if(position==1){
                             i = new Intent(SubLevelsActivity.this,Level5_2.class);
+                            i.putExtra("LevelNo",5);
+                            startActivity(i);
+                        }
+                        else if(position==2){
+                        }
+                        break;
+                    case 6:
+                        if(position==0){
+                            //Set your intent here
+                            i = new Intent(SubLevelsActivity.this,Level5_1.class);
+                            i.putExtra("LevelNo",6);
+                            startActivity(i);
+                        }
+                        else if(position==1){
+                            i = new Intent(SubLevelsActivity.this,Level5_2.class);
+                            i.putExtra("LevelNo",6);
+                            startActivity(i);
+                        }
+                        else if(position==2){
+                        }
+                        break;
+                    case 7:
+                        if(position==0){
+                            //Set your intent here
+                            i = new Intent(SubLevelsActivity.this,Level5_1.class);
+                            i.putExtra("LevelNo",7);
+                            startActivity(i);
+                        }
+                        else if(position==1){
+                            i = new Intent(SubLevelsActivity.this,Level5_2.class);
+                            i.putExtra("LevelNo",7);
                             startActivity(i);
                         }
                         else if(position==2){
