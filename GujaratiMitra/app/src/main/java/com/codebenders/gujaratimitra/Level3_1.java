@@ -101,7 +101,6 @@ public class Level3_1 extends ActionBarActivity {
 
         speaker.setOnClickListener(new View.OnClickListener(){
            public void onClick(View v){
-
                try{
                    mp.setDataSource(Environment.getExternalStorageDirectory()+"/sample.mp3");//Write your location here
                    mp.prepare();
