@@ -35,6 +35,7 @@ public class Level5_1 extends ActionBarActivity {
     final List<Integer> rand_array=new ArrayList<Integer>(6);
     RelativeLayout al;
     ImageView speaker;
+    public int disable=0;
     final ArrayList<Integer> disabled=new ArrayList<Integer>();
 
     @Override
@@ -86,7 +87,9 @@ public class Level5_1 extends ActionBarActivity {
             image[i].setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    nextQues(finalI);
+                   if(disable==0) {
+                       nextQues(finalI);
+                   }
                 }
             });
         }
@@ -177,7 +180,7 @@ public class Level5_1 extends ActionBarActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-
+                            disable=1;
                             Vibrator v = (Vibrator)getSystemService(Context.VIBRATOR_SERVICE);
                             if(image_no==rand_array_sound.get(correctans)) {
                                 image[rand_array_sound.get(correctans)].setColorFilter(Color.argb(255, 0, 255, 0));
@@ -197,6 +200,7 @@ public class Level5_1 extends ActionBarActivity {
                                 //score_text.setText(String.valueOf(score) + "/10");
                             }
                             else{
+
                                 image[image_no].setColorFilter(Color.argb(255, 255, 0, 0));
                                 image[rand_array_sound.get(correctans)].setColorFilter(Color.argb(255, 0, 255, 0));
 
@@ -219,6 +223,7 @@ public class Level5_1 extends ActionBarActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
+                            disable=0;
                             if(correctans<(number-1)){
                                 image[rand_array_sound.get(correctans)].setColorFilter(Color.argb(255, 255, 255, 0));
                                 disabled.add(rand_array_sound.get(correctans));

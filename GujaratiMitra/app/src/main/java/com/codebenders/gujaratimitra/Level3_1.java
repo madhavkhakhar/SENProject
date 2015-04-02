@@ -136,10 +136,10 @@ public class Level3_1 extends ActionBarActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-
+                            disable=1;
                             Vibrator v = (Vibrator)getSystemService(Context.VIBRATOR_SERVICE);
                             if(image_no==correctans) {
-                                disable=1;
+
                                 image[image_no].setColorFilter(Color.argb(255, 0, 255, 0));
                                 score++;
 
@@ -156,7 +156,7 @@ public class Level3_1 extends ActionBarActivity {
                                 score_text.setText(String.valueOf(score) + "/10");
                             }
                         else{
-                                disable=0;
+
                                 image[image_no].setColorFilter(Color.argb(255, 255, 0, 0));
                                 image[correctans].setColorFilter(Color.argb(255, 0, 255, 0));
                                 toast.setView(red_cross);
