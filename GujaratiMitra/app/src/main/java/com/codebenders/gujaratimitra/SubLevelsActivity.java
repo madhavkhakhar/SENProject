@@ -35,8 +35,11 @@ public class SubLevelsActivity extends ActionBarActivity {
                 System.out.println("Leve no==>"+levelNo);
                 switch(levelNo){
                     case 1:
+
+                        break;
+                    case 2:
                         if (position==0) {
-                            i = new Intent(SubLevelsActivity.this, Level1_1.class);
+                            i = new Intent(SubLevelsActivity.this, Level2_1.class);
                             startActivity(i);
                         }
                         break;

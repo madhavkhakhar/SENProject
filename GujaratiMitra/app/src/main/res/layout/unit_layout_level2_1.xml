@@ -8,15 +8,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/img1"
-        android:layout_weight="0.25"
-        android:orientation="vertical"/>
+        android:orientation="vertical"
+        android:layout_weight="0.25"/>
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/img2"
-        android:layout_weight="0.25"
-        android:orientation="vertical"/>
+        android:orientation="vertical"
+        android:layout_weight="0.25"/>
 
     <ImageView
         android:layout_width="match_parent"

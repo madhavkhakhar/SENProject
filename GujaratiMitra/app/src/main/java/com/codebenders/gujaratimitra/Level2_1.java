@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 
-public class Level1_1 extends ActionBarActivity {
+public class Level2_1 extends ActionBarActivity {
 
     private static final int NUM_PAGES = 4;
     private ViewPager mPager;
@@ -33,7 +33,7 @@ public class Level1_1 extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_level1_1);
+        setContentView(R.layout.activity_level2_1);
 
         sleeping = false;
         queImageIndex = new ArrayList<Integer>();
@@ -48,10 +48,10 @@ public class Level1_1 extends ActionBarActivity {
         mPager.setOffscreenPageLimit(0);
 
         queStatement = (ImageView) findViewById(R.id.que_statement);
-        Util.setImageFromPath(queStatement, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l1/1/img_que.png");
+        Util.setImageFromPath(queStatement, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l2/1/img_que.png");
 
         queImage = (ImageView) findViewById(R.id.que_image);
-        Util.setImageFromPath(queImage, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l1/1/img_" + queImageIndex.get(currentQueIndex) + ".png");
+        Util.setImageFromPath(queImage, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l2/1/img_" + queImageIndex.get(currentQueIndex) + ".png");
         queImage.setTag(queImageIndex.get(currentQueIndex));
         currentQueIndex = (currentQueIndex+1)%16;
 
@@ -109,17 +109,17 @@ public class Level1_1 extends ActionBarActivity {
 
         @Override
         public Object instantiateItem(ViewGroup container, final int position) {
-            View view = getLayoutInflater().inflate(R.layout.unit_layout_level1_1, container, false);
+            View view = getLayoutInflater().inflate(R.layout.unit_layout_level2_1, container, false);
 
             final ImageView v1 = (ImageView) view.findViewById(R.id.img1);
             final ImageView v2 = (ImageView) view.findViewById(R.id.img2);
             final ImageView v3 = (ImageView) view.findViewById(R.id.img3);
             final ImageView v4 = (ImageView) view.findViewById(R.id.img4);
 
-            Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l1/1/img_"+((4*position)+1)+".png");
-            Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l1/1/img_"+((4*position)+2)+".png");
-            Util.setImageFromPath(v3, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l1/1/img_"+((4*position)+3)+".png");
-            Util.setImageFromPath(v4, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l1/1/img_"+((4*position)+4)+".png");
+            Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l2/1/img_"+((4*position)+1)+".png");
+            Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l2/1/img_"+((4*position)+2)+".png");
+            Util.setImageFromPath(v3, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l2/1/img_"+((4*position)+3)+".png");
+            Util.setImageFromPath(v4, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l2/1/img_"+((4*position)+4)+".png");
 
             v1.setTag(((4*position)+1));
             v2.setTag(((4*position)+2));
@@ -172,9 +172,9 @@ public class Level1_1 extends ActionBarActivity {
         }
 
         public void loadNextImage (final String pos) {
-            final ImageView green_tick=new ImageView(Level1_1.this);
-            final ImageView red_cross=new ImageView(Level1_1.this);
-            final Toast toast = new Toast(Level1_1.this);
+            final ImageView green_tick=new ImageView(Level2_1.this);
+            final ImageView red_cross=new ImageView(Level2_1.this);
+            final Toast toast = new Toast(Level2_1.this);
 
             green_tick.setImageResource(R.drawable.greentick);
             red_cross.setImageResource(R.drawable.redcross);
@@ -207,7 +207,6 @@ public class Level1_1 extends ActionBarActivity {
                                         toast.cancel();
                                     }
                                 }, 500);
-
                                 v.vibrate(500);
                             }
                         }
@@ -222,7 +221,7 @@ public class Level1_1 extends ActionBarActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            Util.setImageFromPath(queImage, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l1/1/img_" + queImageIndex.get(currentQueIndex) + ".png");
+                            Util.setImageFromPath(queImage, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l2/1/img_" + queImageIndex.get(currentQueIndex) + ".png");
                             queImage.setTag(queImageIndex.get(currentQueIndex));
                             currentQueIndex = (currentQueIndex+1)%16;
                         }
