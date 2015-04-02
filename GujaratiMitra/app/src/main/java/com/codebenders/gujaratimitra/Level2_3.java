@@ -217,7 +217,7 @@ public class Level2_3 extends ActionBarActivity {
                                     v4.setBackgroundResource(R.drawable.image_border_green);
                                     break;
                                 case 3:
-                                    if (selected1 && selected2) {
+                                    if (selected1 && selected3) {
                                         toast.setView(green_tick);
                                         toast.show();
 
@@ -242,8 +242,8 @@ public class Level2_3 extends ActionBarActivity {
                                         v.vibrate(500);
                                     }
                                     v1.setBackgroundResource(R.drawable.image_border_green);
-                                    v2.setBackgroundResource(R.drawable.image_border_green);
-                                    v3.setBackgroundColor(Color.WHITE);
+                                    v3.setBackgroundResource(R.drawable.image_border_green);
+                                    v2.setBackgroundColor(Color.WHITE);
                                     v4.setBackgroundColor(Color.WHITE);
                                     break;
                                 case 4:
