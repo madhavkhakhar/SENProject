@@ -52,6 +52,8 @@ public class Level3_1 extends ActionBarActivity {
         image[3] = (ImageView) findViewById(R.id.imageView4);
 
         final ImageView speaker=(ImageView) findViewById(R.id.imageView6);
+        ImageView question = (ImageView)findViewById(R.id.imageView5);
+        question.setImageResource(R.drawable.level3title);
         score_text=(TextView) findViewById(R.id.score);
         Random r=new Random();
         int random1=r.nextInt(4);
