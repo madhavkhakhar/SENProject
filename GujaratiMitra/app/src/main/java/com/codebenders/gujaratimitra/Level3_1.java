@@ -30,6 +30,7 @@ public class Level3_1 extends ActionBarActivity {
     public static int score=0;
     public MediaPlayer mp;
     public TextView score_text;
+    public int disable=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -71,32 +72,40 @@ public class Level3_1 extends ActionBarActivity {
         image[0].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                count++;
-                nextQues(image,0);
+                if(disable==0) {
+                    count++;
+                    nextQues(image, 0);
+                }
             }
         });
 
         image[1].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                count++;
-                nextQues(image, 1);
+                if(disable==0) {
+                    count++;
+                    nextQues(image, 1);
+                }
             }
         });
 
         image[2].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                count++;
-                nextQues(image, 2);
+                if(disable==0) {
+                    count++;
+                    nextQues(image, 2);
+                }
             }
         });
 
         image[3].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                count++;
-                nextQues(image, 3);
+                if(disable==0) {
+                    count++;
+                    nextQues(image, 3);
+                }
 
             }
         });
@@ -128,9 +137,10 @@ public class Level3_1 extends ActionBarActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-
+                            disable=1;
                             Vibrator v = (Vibrator)getSystemService(Context.VIBRATOR_SERVICE);
                             if(image_no==correctans) {
+
                                 image[image_no].setColorFilter(Color.argb(255, 0, 255, 0));
                                 score++;
 
@@ -146,7 +156,8 @@ public class Level3_1 extends ActionBarActivity {
                                 }, 500);
                                 score_text.setText(String.valueOf(score) + "/10");
                             }
-                            else{
+                        else{
+
                                 image[image_no].setColorFilter(Color.argb(255, 255, 0, 0));
                                 image[correctans].setColorFilter(Color.argb(255, 0, 255, 0));
                                 toast.setView(red_cross);
@@ -168,6 +179,7 @@ public class Level3_1 extends ActionBarActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
+                            disable=0;
                             int resource_s = getResources().getIdentifier("s"+String.valueOf(count), "drawable", getPackageName());
                             int resource_d = getResources().getIdentifier("d"+String.valueOf(count), "drawable", getPackageName());
 
