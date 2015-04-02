@@ -172,6 +172,12 @@ public class Level1_1 extends ActionBarActivity {
         }
 
         public void loadNextImage (final String pos) {
+            final ImageView green_tick=new ImageView(Level1_1.this);
+            final ImageView red_cross=new ImageView(Level1_1.this);
+            final Toast toast = new Toast(Level1_1.this);
+
+            green_tick.setImageResource(R.drawable.greentick);
+            red_cross.setImageResource(R.drawable.redcross);
             new Thread() {
                 @Override
                 public void run() {
@@ -180,7 +186,7 @@ public class Level1_1 extends ActionBarActivity {
                         public void run() {
                             Vibrator v = (Vibrator)getSystemService(Context.VIBRATOR_SERVICE);
                             if(queImage.getTag().toString().equals(pos)) {
-                                final Toast toast = Toast.makeText(getApplicationContext(), "CORRECT", Toast.LENGTH_SHORT);
+                                toast.setView(green_tick);
                                 toast.show();
 
                                 Handler handler = new Handler();
@@ -191,7 +197,7 @@ public class Level1_1 extends ActionBarActivity {
                                     }
                                 }, 500);
                             } else {
-                                final Toast toast = Toast.makeText(getApplicationContext(), "WRONG", Toast.LENGTH_SHORT);
+                                toast.setView(red_cross);
                                 toast.show();
 
                                 Handler handler = new Handler();
