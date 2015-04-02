@@ -39,6 +39,7 @@ public class SubLevelsActivity extends ActionBarActivity {
                             i = new Intent(SubLevelsActivity.this, Level1_1.class);
                             startActivity(i);
                         }
+                        break;
                     case 3:
                         if(position==0){
                             //Set your intent here
