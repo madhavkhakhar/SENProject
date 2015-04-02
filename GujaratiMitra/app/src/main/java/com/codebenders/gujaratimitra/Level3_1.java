@@ -113,6 +113,13 @@ public class Level3_1 extends ActionBarActivity {
     }
 
     public void nextQues(final ImageView []image, final int image_no){
+        final ImageView green_tick=new ImageView(this);
+        final ImageView red_cross=new ImageView(this);
+        final Toast toast = new Toast(this);
+
+        green_tick.setImageResource(R.drawable.greentick);
+        red_cross.setImageResource(R.drawable.redcross);
+
         new Thread(){
             public void run(){
                 try{
@@ -124,7 +131,8 @@ public class Level3_1 extends ActionBarActivity {
                             if(image_no==correctans) {
                                 image[image_no].setColorFilter(Color.argb(255, 0, 255, 0));
                                 score++;
-                                final Toast toast = Toast.makeText(getApplicationContext(), "CORRECT", Toast.LENGTH_SHORT);
+
+                                toast.setView(green_tick);
                                 toast.show();
 
                                 Handler handler = new Handler();
@@ -139,7 +147,7 @@ public class Level3_1 extends ActionBarActivity {
                             else{
                                 image[image_no].setColorFilter(Color.argb(255, 255, 0, 0));
                                 image[correctans].setColorFilter(Color.argb(255, 0, 255, 0));
-                                final Toast toast = Toast.makeText(getApplicationContext(), "WRONG", Toast.LENGTH_SHORT);
+                                toast.setView(red_cross);
                                 toast.show();
 
                                 Handler handler = new Handler();

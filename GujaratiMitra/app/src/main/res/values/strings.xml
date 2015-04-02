@@ -13,6 +13,8 @@
     <string name="title_activity_sub_levels">SubLevelsActivity</string>
     <string name="title_activity_level5_2">Level5_2</string>
     <string name="title_activity_level1_1">Level1_1</string>
+    <string name="title_activity_home_page">HomePage</string>
+    <string name="title_activity_profile">ProfileActivity</string>
 
 
 </resources>
