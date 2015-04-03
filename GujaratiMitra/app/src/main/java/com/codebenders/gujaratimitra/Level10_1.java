@@ -1,39 +1,54 @@
 package com.codebenders.gujaratimitra;
 
+import android.media.MediaPlayer;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 
 public class Level10_1 extends ActionBarActivity {
+    protected static int count=0;
+    protected static int correctans=2;
+    public static int score=0;
+    public MediaPlayer mp;
+    public TextView score_text;
+    public int disable=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_level10_1);
-    }
 
+        final ImageView[]image = new ImageView[5];
+        mp=new MediaPlayer();
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_level10_1, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        final List<Integer> rand_array=new ArrayList<Integer>(50);
+        for(int i=0;i<50;i++){
+            rand_array.add(i+1);
         }
+        Collections.shuffle(rand_array);
 
-        return super.onOptionsItemSelected(item);
+        final int resource_s = getResources().getIdentifier("s"+String.valueOf(rand_array.get(count)), "drawable", getPackageName());
+        final int resource_d = getResources().getIdentifier("d"+String.valueOf(rand_array.get(count)), "drawable", getPackageName());
+
+        image[0] = (ImageView) findViewById(R.id.imageView);
+        image[1] = (ImageView) findViewById(R.id.imageView2);
+        image[2] = (ImageView) findViewById(R.id.imageView3);
+        image[3] = (ImageView) findViewById(R.id.imageView4);
+        image[4]=  (ImageView) findViewById(R.id.imageView5);
+
+        final ImageView speaker=(ImageView) findViewById(R.id.imageView6);
+
     }
+
+
+
+
 }
