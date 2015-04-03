@@ -78,6 +78,11 @@
             android:name=".Level11_2"
             android:label="@string/title_activity_level11_2" >
         </activity>
+        <activity
+            android:name=".Level14_3"
+            android:label="@string/title_activity_level14_2"
+            android:screenOrientation="landscape">
+        </activity>
     </application>
 
 </manifest>

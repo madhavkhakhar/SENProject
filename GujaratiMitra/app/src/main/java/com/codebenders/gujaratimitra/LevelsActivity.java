@@ -62,14 +62,6 @@ public class LevelsActivity extends ActionBarActivity {
             level5 = (ImageView)view.findViewById(R.id.level5);
             level6 = (ImageView)view.findViewById(R.id.level6);
             level7 = (ImageView)view.findViewById(R.id.level7);
-            level1.setTag(""+position);
-            level2.setTag(""+position);
-            level3.setTag(""+position);
-            level4.setTag(""+position);
-            level5.setTag(""+position);
-            level6.setTag(""+position);
-            level7.setTag(""+position);
-           // level1.setTag("");
             if(position==0){
                 level1.setImageResource(R.drawable.home_s1_l1);
                 level2.setImageResource(R.drawable.home_s1_l2);
@@ -78,13 +70,6 @@ public class LevelsActivity extends ActionBarActivity {
                 level5.setImageResource(R.drawable.home_s1_l5);
                 level6.setImageResource(R.drawable.home_s1_l6);
                 level7.setImageResource(R.drawable.home_s1_l7);
-                level1.setTag(""+position);
-                level2.setTag(""+position);
-                level3.setTag(""+position);
-                level4.setTag(""+position);
-                level5.setTag(""+position);
-                level6.setTag(""+position);
-                level7.setTag(""+position);
                 layout.setBackgroundResource(R.drawable.home_bg_s1);
             }
             else if(position==1) {
@@ -116,7 +101,7 @@ public class LevelsActivity extends ActionBarActivity {
                         Intent i = new Intent(LevelsActivity.this,Level3_1.class);
                         startActivity(i);
                     }*/
-                    levelNo=1;
+                    levelNo = (viewPager.getCurrentItem()*7) + 1;
                     Intent i = new Intent(LevelsActivity.this,SubLevelsActivity.class);
                     i.putExtra("Level",levelNo);
                     startActivity(i);
@@ -128,8 +113,8 @@ public class LevelsActivity extends ActionBarActivity {
                 @Override
                 public void onClick(View v) {
                     //Intent intent = new Intent(LevelsActivity.this,Lev)
+                    levelNo = (viewPager.getCurrentItem()*7) + 2;
                     Intent i = new Intent(LevelsActivity.this,SubLevelsActivity.class);
-                    levelNo=2;
                     i.putExtra("Level",levelNo);
                     startActivity(i);
                 }
@@ -139,6 +124,7 @@ public class LevelsActivity extends ActionBarActivity {
                 @Override
                 public void onClick(View v) {
                     //Intent intent = new Intent(LevelsActivity.this,Lev)
+                    levelNo = (viewPager.getCurrentItem()*7) + 3;
                     Intent i = new Intent(LevelsActivity.this,SubLevelsActivity.class);levelNo=3;
                     i.putExtra("Level",levelNo);
                     startActivity(i);
@@ -149,8 +135,8 @@ public class LevelsActivity extends ActionBarActivity {
                 @Override
                 public void onClick(View v) {
                     //Intent intent = new Intent(LevelsActivity.this,Lev)
+                    levelNo = (viewPager.getCurrentItem()*7) + 4;
                     Intent i = new Intent(LevelsActivity.this,SubLevelsActivity.class);
-                    levelNo=4;
                     i.putExtra("Level",levelNo);
                     startActivity(i);
                 }
@@ -160,8 +146,8 @@ public class LevelsActivity extends ActionBarActivity {
                 @Override
                 public void onClick(View v) {
                     //Intent intent = new Intent(LevelsActivity.this,Lev)
+                    levelNo = (viewPager.getCurrentItem()*7) + 5;
                     Intent i = new Intent(LevelsActivity.this,SubLevelsActivity.class);
-                    levelNo=5;
                     i.putExtra("Level",levelNo);
                     startActivity(i);
                 }
@@ -170,8 +156,8 @@ public class LevelsActivity extends ActionBarActivity {
                 @Override
                 public void onClick(View v) {
                     //Intent intent = new Intent(LevelsActivity.this,Lev)
+                    levelNo = (viewPager.getCurrentItem()*7) + 6;
                     Intent i = new Intent(LevelsActivity.this,SubLevelsActivity.class);
-                    levelNo=6;
                     i.putExtra("Level",levelNo);
                     startActivity(i);
                 }
@@ -181,8 +167,8 @@ public class LevelsActivity extends ActionBarActivity {
                 @Override
                 public void onClick(View v) {
                     //Intent intent = new Intent(LevelsActivity.this,Lev)
+                    levelNo = (viewPager.getCurrentItem()*7) + 7;
                     Intent i = new Intent(LevelsActivity.this,SubLevelsActivity.class);
-                    levelNo=7;
                     i.putExtra("Level",levelNo);
                     startActivity(i);
                 }
