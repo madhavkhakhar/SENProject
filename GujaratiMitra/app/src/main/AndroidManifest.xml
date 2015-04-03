@@ -77,12 +77,17 @@
         </activity>
         <activity
             android:name=".Level11_2"
-            android:screenOrientation="landscape"
-            android:label="@string/title_activity_level11_2" >
+            android:label="@string/title_activity_level11_2"
+            android:screenOrientation="landscape" >
         </activity>
         <activity
             android:name=".Level1_1"
             android:label="level1_1"
+            android:screenOrientation="landscape" >
+        </activity>
+        <activity
+            android:name=".Level11_3"
+            android:label="@string/title_activity_level11_3"
             android:screenOrientation="landscape">
         </activity>
     </application>
