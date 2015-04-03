@@ -1,7 +1,5 @@
 package com.codebenders.gujaratimitra;
 
-import java.util.ArrayList;
-
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -12,13 +10,15 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
+import java.util.ArrayList;
+
 public class MyView extends View {
 
+    private final int RADIUS = 80;
     Paint paint;
-    float cx, cy;
+    float cx, cy, prevx, prevy;
     boolean first = true, disable = false, upDisable = false;
     ArrayList<PointF> listPoints = new ArrayList<PointF>();
-    private final int RADIUS = 80;
 
     public MyView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -29,7 +29,7 @@ public class MyView extends View {
         paint.setStrokeJoin(Paint.Join.ROUND);
         paint.setStrokeCap(Paint.Cap.ROUND);
         DashPathEffect dashPathEffect = new DashPathEffect(
-                new float[] { 40, 40 }, (float) 1.0);
+                new float[]{40, 40}, (float) 1.0);
         paint.setPathEffect(dashPathEffect);
         paint.setStrokeWidth(12);
     }
@@ -50,11 +50,11 @@ public class MyView extends View {
         first = false;
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                cx = event.getX();
-                cy = event.getY();
+                prevx = cx = event.getX();
+                prevy = cy = event.getY();
+
                 int i;
                 if ((i = findCircle(new PointF(cx, cy), listPoints)) != -1) {
-                    System.out.println(i);
                     // disable = true;
                     // upDisable = true;
                     listPoints.remove(i);
@@ -64,17 +64,18 @@ public class MyView extends View {
             case MotionEvent.ACTION_MOVE:
                 cx = event.getX();
                 cy = event.getY();
+                // System.out.println(Math.abs(prevx - cx) < 80);
                 if ((i = findCircle(new PointF(cx, cy), listPoints)) != -1) {
                     listPoints.get(i).x = cx;
                     listPoints.get(i).y = cy;
-                }else
-                    listPoints.add(new PointF(cx, cy));
-
+                } else {
+                    if (Math.abs(prevx - cx) > 1 && Math.abs(prevy - cy) > 1)
+                        listPoints.add(new PointF(cx, cy));
+                }
                 break;
             case MotionEvent.ACTION_UP:
                 cx = event.getX();
                 cy = event.getY();
-                System.out.println(disable);
                 // if (!disable && !upDisable)
                 // upDisable = false;
                 // disable = false;
