@@ -84,27 +84,20 @@ public class Level11_2 extends ActionBarActivity {
         @Override
         public Object instantiateItem(ViewGroup container, int position) {
             View view = getLayoutInflater().inflate(R.layout.unit_layout_level_11_2, container, false);
-            ImageView v1 = (ImageView) view.findViewById(R.id.imageView1);
-            ImageView v2 = (ImageView) view.findViewById(R.id.imageView2);
+            ImageView v1 = (ImageView) view.findViewById(R.id.imageView1l11_2);
+            final ImageView v2 = (ImageView) view.findViewById(R.id.imageView2l11_2);
 
-            if (position != 4) {
-                Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/1/img_" + Integer.toString(2 * position) + ".png");
-                //Util.setImageFromPath(v3, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/1/img_" + Integer.toString((2 * position) + 1) + ".png");
-                Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/1/img_" + Integer.toString(2 * position) + "_n.png");
-                //Util.setImageFromPath(v4, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/1/img_" + Integer.toString((2 * position) + 1) + "_n.png");
-                //v1.setTag(Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/1/aud_" + Integer.toString(2 * position) + ".mp3");
-                //v3.setTag(Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/1/aud_" + Integer.toString((2 * position) + 1) + ".mp3");
-                v1.setTag(Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/1/aud_0.mp3");
-                //v3.setTag(Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/1/aud_1.mp3");
-            } else {
-                Util.setImageFromPath(v1, Environment.getExternalStorageDirectory()+"/GujaratiMitra/l4/1/img_8.png");
-                Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/1/img_8_n.png");
-                v1.setTag(Environment.getExternalStorageDirectory()+"/GujaratiMitra/l4/1/aud_0.mp3");
-            }
+            v2.setVisibility(View.INVISIBLE);
+
+
+            Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l11/2/" + Integer.toString(2 * position) + "_1.png");
+            Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l11/2/" + Integer.toString(2 * position) + "_2.png");
+            v1.setTag(Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/1/aud_0.mp3");
 
             v1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    v2.setVisibility(View.VISIBLE);
                     Util.playMediaFromPath(v.getTag().toString());
                 }
             });
