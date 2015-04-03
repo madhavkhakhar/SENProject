@@ -16,6 +16,7 @@
     <string name="title_activity_home_page">HomePage</string>
     <string name="title_activity_profile">ProfileActivity</string>
     <string name="title_activity_level1_2">Level1_2</string>
+    <string name="title_activity_level10_1">Level10_1</string>
 
 
 </resources>
