@@ -7,6 +7,7 @@
     tools:context="com.codebenders.gujaratimitra.Level1_2"
     android:weightSum="1"
     android:orientation="horizontal"
+    android:background="#ffffff"
     >
 
     <ImageView
