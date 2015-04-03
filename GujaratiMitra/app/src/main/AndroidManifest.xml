@@ -29,7 +29,6 @@
             android:name=".Level3_1"
             android:label="@string/title_activity_level3_1"
             android:screenOrientation="landscape" >
-
         </activity>
         <activity
             android:name=".Level5_1"
@@ -55,7 +54,11 @@
             android:name=".HomePage"
             android:label="@string/app_name"
             android:screenOrientation="landscape" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".profile.ProfileActivity"
@@ -65,11 +68,15 @@
         <activity
             android:name=".Level2_3"
             android:label="@string/title_activity_level2_3"
-            android:screenOrientation="landscape"/>
+            android:screenOrientation="landscape" />
         <activity
             android:name=".Level1_2"
             android:label="@string/title_activity_level1_2"
             android:screenOrientation="landscape" >
+        </activity>
+        <activity
+            android:name=".Level11_2"
+            android:label="@string/title_activity_level11_2" >
         </activity>
     </application>
 
