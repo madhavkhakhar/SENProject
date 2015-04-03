@@ -5,14 +5,15 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
 
-public class Level4_1 extends ActionBarActivity {
-
-    private static final int NUM_PAGES = 5;
+public class Level11_2 extends ActionBarActivity {
+    private static final int NUM_PAGES = 22;
     private ViewPager mPager;
     private PagerAdapter mPagerAdapter;
     private ImageView leftArrow;
@@ -21,11 +22,10 @@ public class Level4_1 extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_level4_1);
+        setContentView(R.layout.activity_level11_2);
         mPager = (ViewPager) findViewById(R.id.pager);
-        mPagerAdapter = new SimplePagerAdapter();
+        //mPagerAdapter = new SimplePagerAdapter();
         mPager.setAdapter(mPagerAdapter);
-        mPager.setOffscreenPageLimit(5);
 
         leftArrow = (ImageView) findViewById(R.id.imageView);
         rightArrow = (ImageView) findViewById(R.id.imageView1);
@@ -52,7 +52,7 @@ public class Level4_1 extends ActionBarActivity {
             public void onPageSelected(int i) {
                 if (i == 0)
                     leftArrow.setVisibility(View.INVISIBLE);
-                else if (i == 4)
+                else if (i == NUM_PAGES)
                     rightArrow.setVisibility(View.INVISIBLE);
                 else {
                     leftArrow.setVisibility(View.VISIBLE);
@@ -65,7 +65,9 @@ public class Level4_1 extends ActionBarActivity {
 
             }
         });
+
     }
+
 
     class SimplePagerAdapter extends PagerAdapter {
 
@@ -81,21 +83,19 @@ public class Level4_1 extends ActionBarActivity {
 
         @Override
         public Object instantiateItem(ViewGroup container, int position) {
-            View view = getLayoutInflater().inflate(R.layout.unit_layout_level_4_1_5_2_6_2_7_2, container, false);
+            View view = getLayoutInflater().inflate(R.layout.unit_layout_level_11_2, container, false);
             ImageView v1 = (ImageView) view.findViewById(R.id.imageView1);
             ImageView v2 = (ImageView) view.findViewById(R.id.imageView2);
-            ImageView v3 = (ImageView) view.findViewById(R.id.imageView3);
-            ImageView v4 = (ImageView) view.findViewById(R.id.imageView4);
 
             if (position != 4) {
                 Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/1/img_" + Integer.toString(2 * position) + ".png");
-                Util.setImageFromPath(v3, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/1/img_" + Integer.toString((2 * position) + 1) + ".png");
+                //Util.setImageFromPath(v3, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/1/img_" + Integer.toString((2 * position) + 1) + ".png");
                 Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/1/img_" + Integer.toString(2 * position) + "_n.png");
-                Util.setImageFromPath(v4, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/1/img_" + Integer.toString((2 * position) + 1) + "_n.png");
+                //Util.setImageFromPath(v4, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/1/img_" + Integer.toString((2 * position) + 1) + "_n.png");
                 //v1.setTag(Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/1/aud_" + Integer.toString(2 * position) + ".mp3");
                 //v3.setTag(Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/1/aud_" + Integer.toString((2 * position) + 1) + ".mp3");
                 v1.setTag(Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/1/aud_0.mp3");
-                v3.setTag(Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/1/aud_1.mp3");
+                //v3.setTag(Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/1/aud_1.mp3");
             } else {
                 Util.setImageFromPath(v1, Environment.getExternalStorageDirectory()+"/GujaratiMitra/l4/1/img_8.png");
                 Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/1/img_8_n.png");
@@ -103,12 +103,6 @@ public class Level4_1 extends ActionBarActivity {
             }
 
             v1.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Util.playMediaFromPath(v.getTag().toString());
-                }
-            });
-            v3.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Util.playMediaFromPath(v.getTag().toString());
@@ -123,5 +117,28 @@ public class Level4_1 extends ActionBarActivity {
             container.removeView((View) object);
         }
 
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_level11_2, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }
