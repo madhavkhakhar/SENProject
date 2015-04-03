@@ -24,7 +24,7 @@ public class Level11_2 extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_level11_2);
         mPager = (ViewPager) findViewById(R.id.pager);
-        //mPagerAdapter = new SimplePagerAdapter();
+        mPagerAdapter = new SimplePagerAdapter();
         mPager.setAdapter(mPagerAdapter);
 
         leftArrow = (ImageView) findViewById(R.id.imageView);
@@ -89,9 +89,8 @@ public class Level11_2 extends ActionBarActivity {
 
             v2.setVisibility(View.INVISIBLE);
 
-
-            Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l11/2/" + Integer.toString(2 * position) + "_1.png");
-            Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l11/2/" + Integer.toString(2 * position) + "_2.png");
+            Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l11/2/img" + Integer.toString(position+1) + "_1.png");
+            Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l11/2/img" + Integer.toString(position+1) + "_2.png");
             v1.setTag(Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/1/aud_0.mp3");
 
             v1.setOnClickListener(new View.OnClickListener() {
