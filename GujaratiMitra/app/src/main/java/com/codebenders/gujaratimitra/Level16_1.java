@@ -2,7 +2,6 @@ package com.codebenders.gujaratimitra;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.media.Image;
 import android.media.MediaPlayer;
 import android.os.Environment;
 import android.os.Handler;
@@ -16,10 +15,11 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import java.util.Random;
 
 
-public class Level11_3 extends ActionBarActivity {
+public class Level16_1 extends ActionBarActivity {
     ImageView q;
     ImageView[] a;
     Vibrator vib;
@@ -31,7 +31,8 @@ public class Level11_3 extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_level11_3);
+        setContentView(R.layout.activity_level16_1);
+
         a=new ImageView[4];
 
         vib = (Vibrator)getSystemService(Context.VIBRATOR_SERVICE);
@@ -40,26 +41,31 @@ public class Level11_3 extends ActionBarActivity {
         for(int i=0;i<4;i++){
             a[i]=(ImageView)findViewById(aId[i]);
         }
+
         q=(ImageView)findViewById(R.id.imgViewq1);
 
         score = (TextView)findViewById(R.id.score);
 
-        Util.setImageFromPath(q, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l11/2/img" + Integer.toString(qIndex) + "_1.png");
+        Util.setImageFromPath(q, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l16/1/level16_1_img_e1_" + Integer.toString(qIndex) + ".png");
 
-        Random r=new Random();
+       for(int i=0;i<4;i++){
+           a[i].setVisibility(View.INVISIBLE);
+       }
+       /* Random r=new Random();
         int random1=r.nextInt(4);
-        correct=random1;
+        correct=random1;*/
 
-        for(int j=0;j<4;j++){
+
+        /*for(int j=0;j<4;j++){
             if(j==correct){
-                Util.setImageFromPath(a[j], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l11/2/img"+ String.valueOf(qIndex) + "_2"+".png");
+                Util.setImageFromPath(a[j], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l16/1/level16_1_img_e1_"+ String.valueOf(qIndex)+".png");
                 //a[j].setImageResource(getResources().getIdentifier("level4_2_img_e" + String.valueOf(queIndex) + "_correct", "drawable", getPackageName()));
             }
             else{
-                Util.setImageFromPath(a[j], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l11/2/img" + String.valueOf((qIndex+r.nextInt(4)+1)%22 +1) + "_2.png");
+                Util.setImageFromPath(a[j], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l16/1/level16_1_img_e1_" + String.valueOf((qIndex+r.nextInt(4)+1)%11 +1) + ".png");
                 //a[j].setImageResource(getResources().getIdentifier("level4_2_img_e" + String.valueOf(queIndex) + "_wrong" + String.valueOf(wrongIndex++), "drawable", getPackageName()));
             }
-        }
+        }*/
 
 
         a[0].setOnClickListener(new View.OnClickListener() {
@@ -94,6 +100,8 @@ public class Level11_3 extends ActionBarActivity {
             }
         });
 
+        firstQues();
+
     }
 
     public void nextQues(final int ansClicked) {
@@ -127,7 +135,7 @@ public class Level11_3 extends ActionBarActivity {
                             }, 500);
                         } else {
                             //a[ansClicked].setColorFilter(Color.argb(255, 255, 0, 0));
-                           // a[correct].setColorFilter(Color.argb(255, 0, 255, 0));
+                            // a[correct].setColorFilter(Color.argb(255, 0, 255, 0));
 
                             toast.setView(red_cross);
                             toast.show();
@@ -144,25 +152,39 @@ public class Level11_3 extends ActionBarActivity {
                     }
                 });
                 SystemClock.sleep(1000);
+
+
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
+                        q.setVisibility(View.VISIBLE);
+                        Util.setImageFromPath(q, Environment.getExternalStorageDirectory() +  "/GujaratiMitra/l16/1/level16_1_img_e1_" + Integer.toString(qIndex) + ".png");
+                        for(int i=0;i<4;i++){
+                            a[i].setVisibility(View.INVISIBLE);
+                        }
+                    }
+                });
 
-                        Util.setImageFromPath(q, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l11/2/img" + Integer.toString(qIndex) + "_1.png");
+                SystemClock.sleep(3000);
 
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        q.setVisibility(View.INVISIBLE);
                         Random r=new Random();
                         int random1=r.nextInt(4);
                         correct=random1;
 
                         for(int j=0;j<4;j++){
                             if(j==correct){
-                                Util.setImageFromPath(a[j], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l11/2/img" + String.valueOf(qIndex) + "_2"+".png");
+                                Util.setImageFromPath(a[j], Environment.getExternalStorageDirectory() +"/GujaratiMitra/l16/1/level16_1_img_e1_" + Integer.toString(qIndex) + ".png");
                                 //a[j].setImageResource(getResources().getIdentifier("level4_2_img_e" + String.valueOf(queIndex) + "_correct", "drawable", getPackageName()));
                             }
                             else{
-                                Util.setImageFromPath(a[j], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l11/2/img"+ String.valueOf((qIndex+r.nextInt(4)+1)%22 +1) + "_2.png");
+                                Util.setImageFromPath(a[j], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l16/1/level16_1_img_e1_" + String.valueOf((qIndex+r.nextInt(4)+1)%11 +1) + ".png");
                                 //a[j].setImageResource(getResources().getIdentifier("level4_2_img_e" + String.valueOf(queIndex) + "_wrong" + String.valueOf(wrongIndex++), "drawable", getPackageName()));
                             }
+                            a[j].setVisibility(View.VISIBLE);
                             //a[j].setColorFilter(Color.argb(255, 0, 0, 0));
                         }
                     }
@@ -171,10 +193,50 @@ public class Level11_3 extends ActionBarActivity {
         }.start();
 
     }
+
+
+    public void firstQues() {
+
+        new Thread() {
+            public void run() {
+
+
+                SystemClock.sleep(3000);
+
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        //Util.setImageFromPath(q, Environment.getExternalStorageDirectory() +  "/GujaratiMitra/l16/1/level16_1_img_e1_" + Integer.toString(qIndex) + ".png");
+                        q.setVisibility(View.INVISIBLE);
+                        Random r=new Random();
+                        int random1=r.nextInt(4);
+                        correct=random1;
+
+                        for(int j=0;j<4;j++){
+                            if(j==correct){
+                                Util.setImageFromPath(a[j], Environment.getExternalStorageDirectory() +"/GujaratiMitra/l16/1/level16_1_img_e1_" + Integer.toString(qIndex) + ".png");
+                                //a[j].setImageResource(getResources().getIdentifier("level4_2_img_e" + String.valueOf(queIndex) + "_correct", "drawable", getPackageName()));
+                            }
+                            else{
+                                Util.setImageFromPath(a[j], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l16/1/level16_1_img_e1_" + String.valueOf((qIndex+r.nextInt(4)+1)%11 +1) + ".png");
+                                //a[j].setImageResource(getResources().getIdentifier("level4_2_img_e" + String.valueOf(queIndex) + "_wrong" + String.valueOf(wrongIndex++), "drawable", getPackageName()));
+                            }
+                            a[j].setVisibility(View.VISIBLE);
+                            //a[j].setColorFilter(Color.argb(255, 0, 0, 0));
+                        }
+                    }
+                });
+            }
+        }.start();
+
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_level11_3, menu);
+        getMenuInflater().inflate(R.menu.menu_level16_1, menu);
         return true;
     }
 

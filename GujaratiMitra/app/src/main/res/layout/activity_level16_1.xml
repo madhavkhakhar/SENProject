@@ -1,0 +1,70 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.codebenders.gujaratimitra.Level3_1"
+    android:background="@android:color/white"
+    android:orientation="vertical" >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SCORE 0/10"
+        android:id="@+id/score"
+        android:textSize="30dp"
+        android:textColor="#FF9933CC"
+        android:layout_gravity="top|right" />
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.3"
+        android:layout_gravity="center_vertical"
+        android:id="@+id/imgViewq1"
+
+        android:src="@drawable/level16_1_img_e1_1"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        android:layout_weight="0.6"
+        >
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            android:layout_gravity="center"
+            android:id="@+id/imgViewa1"
+            android:src="@drawable/level16_1_img_e1_1"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="0.2"
+            android:id="@+id/imgViewa2"
+            android:src="@drawable/level16_1_img_e1_2" />
+
+        <ImageView
+            android:src="@drawable/level16_1_img_e1_3"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:id="@+id/imgViewa3"
+            android:layout_weight="0.2"
+
+            />
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            android:layout_gravity="center"
+            android:id="@+id/imgViewa4"
+            android:src="@drawable/level16_1_img_e1_4" />
+    </LinearLayout>
+</LinearLayout>
