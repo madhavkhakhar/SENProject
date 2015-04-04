@@ -230,7 +230,7 @@ public class Level14_3 extends ActionBarActivity {
                             loadCorrectAnsOfQuestion();
                         }
                     });
-                    Thread.sleep(1200);
+                    Thread.sleep(1500);
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
