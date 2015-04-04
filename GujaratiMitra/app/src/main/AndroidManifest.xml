@@ -3,8 +3,7 @@
     package="com.codebenders.gujaratimitra" >
 
     <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -88,6 +87,10 @@
         <activity
             android:name=".Level11_3"
             android:label="@string/title_activity_level11_3"
+            android:screenOrientation="landscape"/>
+        <activity
+            android:name=".Level10_1"
+            android:label="@string/title_activity_level10_1"
             android:screenOrientation="landscape">
         </activity>
     </application>
