@@ -75,6 +75,11 @@
             android:screenOrientation="landscape" >
         </activity>
         <activity
+            android:name=".Level8_1"
+            android:label="Level8_1"
+            android:screenOrientation="landscape" >
+        </activity>
+        <activity
             android:name=".Level11_2"
             android:label="@string/title_activity_level11_2"
             android:screenOrientation="landscape" >
