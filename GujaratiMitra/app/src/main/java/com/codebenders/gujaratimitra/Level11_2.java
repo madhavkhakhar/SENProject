@@ -97,7 +97,7 @@ public class Level11_2 extends ActionBarActivity {
                 @Override
                 public void onClick(View v) {
                     v2.setVisibility(View.VISIBLE);
-                    Util.playMediaFromPath(v.getTag().toString());
+                    //Util.playMediaFromPath(v.getTag().toString());
                 }
             });
             container.addView(view);

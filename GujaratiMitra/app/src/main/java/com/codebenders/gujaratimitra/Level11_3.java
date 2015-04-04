@@ -44,7 +44,7 @@ public class Level11_3 extends ActionBarActivity {
 
         score = (TextView)findViewById(R.id.score);
 
-        Util.setImageFromPath(q, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l11/2/" + Integer.toString(qIndex) + "_1.png");
+        Util.setImageFromPath(q, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l11/2/img" + Integer.toString(qIndex) + "_1.png");
 
         Random r=new Random();
         int random1=r.nextInt(4);
@@ -52,11 +52,11 @@ public class Level11_3 extends ActionBarActivity {
 
         for(int j=0;j<4;j++){
             if(j==correct){
-                Util.setImageFromPath(a[j], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l11/2/"+ String.valueOf(qIndex) + "_2"+".png");
+                Util.setImageFromPath(a[j], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l11/2/img"+ String.valueOf(qIndex) + "_2"+".png");
                 //a[j].setImageResource(getResources().getIdentifier("level4_2_img_e" + String.valueOf(queIndex) + "_correct", "drawable", getPackageName()));
             }
             else{
-                Util.setImageFromPath(a[j], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l11/2/" + String.valueOf((qIndex+r.nextInt(4)+1)%22 +1) + "_2.png");
+                Util.setImageFromPath(a[j], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l11/2/img" + String.valueOf((qIndex+r.nextInt(4)+1)%22 +1) + "_2.png");
                 //a[j].setImageResource(getResources().getIdentifier("level4_2_img_e" + String.valueOf(queIndex) + "_wrong" + String.valueOf(wrongIndex++), "drawable", getPackageName()));
             }
         }
@@ -113,7 +113,7 @@ public class Level11_3 extends ActionBarActivity {
                         if (correct == ansClicked) {
                             //a[0].setColorFilter(Color.argb(255, 0, 255, 0));
                             mscore++;
-                            a[correct].setColorFilter(Color.argb(255, 0, 255, 0));
+                            //a[correct].setColorFilter(Color.argb(255, 0, 255, 0));
                             score.setText(String.valueOf(mscore) + "/10");
                             toast.setView(green_tick);
                             toast.show();
@@ -126,8 +126,8 @@ public class Level11_3 extends ActionBarActivity {
                                 }
                             }, 500);
                         } else {
-                            a[ansClicked].setColorFilter(Color.argb(255, 255, 0, 0));
-                            a[correct].setColorFilter(Color.argb(255, 0, 255, 0));
+                            //a[ansClicked].setColorFilter(Color.argb(255, 255, 0, 0));
+                           // a[correct].setColorFilter(Color.argb(255, 0, 255, 0));
 
                             toast.setView(red_cross);
                             toast.show();
@@ -148,7 +148,7 @@ public class Level11_3 extends ActionBarActivity {
                     @Override
                     public void run() {
 
-                        Util.setImageFromPath(q, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l11/2/" + Integer.toString(qIndex) + "_1.png");
+                        Util.setImageFromPath(q, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l11/2/img" + Integer.toString(qIndex) + "_1.png");
 
                         Random r=new Random();
                         int random1=r.nextInt(4);
@@ -156,11 +156,11 @@ public class Level11_3 extends ActionBarActivity {
 
                         for(int j=0;j<4;j++){
                             if(j==correct){
-                                Util.setImageFromPath(a[j], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l11/2/" + String.valueOf(qIndex) + "_2"+".png");
+                                Util.setImageFromPath(a[j], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l11/2/img" + String.valueOf(qIndex) + "_2"+".png");
                                 //a[j].setImageResource(getResources().getIdentifier("level4_2_img_e" + String.valueOf(queIndex) + "_correct", "drawable", getPackageName()));
                             }
                             else{
-                                Util.setImageFromPath(a[j], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l11/2/"+ String.valueOf((qIndex+r.nextInt(4)+1)%22 +1) + "_2.png");
+                                Util.setImageFromPath(a[j], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l11/2/img"+ String.valueOf((qIndex+r.nextInt(4)+1)%22 +1) + "_2.png");
                                 //a[j].setImageResource(getResources().getIdentifier("level4_2_img_e" + String.valueOf(queIndex) + "_wrong" + String.valueOf(wrongIndex++), "drawable", getPackageName()));
                             }
                             a[j].setColorFilter(Color.argb(255, 0, 0, 0));
