@@ -1,6 +1,7 @@
 package com.codebenders.gujaratimitra;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Environment;
@@ -16,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 
@@ -26,7 +28,10 @@ public class Level16_1 extends ActionBarActivity {
     public MediaPlayer mp;
     private int qIndex=1,correct=0;
     TextView score;
-    private  int mscore=0;
+    private  int mscore=0,sublevel;
+    int modArray[];
+    ArrayList<Integer> wrongImg;
+    Intent i;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +39,11 @@ public class Level16_1 extends ActionBarActivity {
         setContentView(R.layout.activity_level16_1);
 
         a=new ImageView[4];
+        i=getIntent();
+        sublevel=i.getExtras().getInt("Sublevel");
+
+        modArray=new int[] {11,16,28};
+        wrongImg=new ArrayList<>();
 
         vib = (Vibrator)getSystemService(Context.VIBRATOR_SERVICE);
 
@@ -46,28 +56,11 @@ public class Level16_1 extends ActionBarActivity {
 
         score = (TextView)findViewById(R.id.score);
 
-        Util.setImageFromPath(q, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l16/1/level16_1_img_e1_" + Integer.toString(qIndex) + ".png");
+        Util.setImageFromPath(q, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l16/"+String.valueOf(sublevel)+"/level16_"+String.valueOf(sublevel)+"_img_e1_" + Integer.toString(qIndex) + ".png");
 
        for(int i=0;i<4;i++){
            a[i].setVisibility(View.INVISIBLE);
        }
-       /* Random r=new Random();
-        int random1=r.nextInt(4);
-        correct=random1;*/
-
-
-        /*for(int j=0;j<4;j++){
-            if(j==correct){
-                Util.setImageFromPath(a[j], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l16/1/level16_1_img_e1_"+ String.valueOf(qIndex)+".png");
-                //a[j].setImageResource(getResources().getIdentifier("level4_2_img_e" + String.valueOf(queIndex) + "_correct", "drawable", getPackageName()));
-            }
-            else{
-                Util.setImageFromPath(a[j], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l16/1/level16_1_img_e1_" + String.valueOf((qIndex+r.nextInt(4)+1)%11 +1) + ".png");
-                //a[j].setImageResource(getResources().getIdentifier("level4_2_img_e" + String.valueOf(queIndex) + "_wrong" + String.valueOf(wrongIndex++), "drawable", getPackageName()));
-            }
-        }*/
-
-
         a[0].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -157,8 +150,8 @@ public class Level16_1 extends ActionBarActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
+                        Util.setImageFromPath(q, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l16/"+String.valueOf(sublevel)+"/level16_"+String.valueOf(sublevel)+"_img_e1_" + Integer.toString(qIndex) + ".png");
                         q.setVisibility(View.VISIBLE);
-                        Util.setImageFromPath(q, Environment.getExternalStorageDirectory() +  "/GujaratiMitra/l16/1/level16_1_img_e1_" + Integer.toString(qIndex) + ".png");
                         for(int i=0;i<4;i++){
                             a[i].setVisibility(View.INVISIBLE);
                         }
@@ -175,13 +168,23 @@ public class Level16_1 extends ActionBarActivity {
                         int random1=r.nextInt(4);
                         correct=random1;
 
+                        wrongImg=new ArrayList<>();
+                        int temp = (qIndex+r.nextInt(modArray[sublevel-1])+1)%modArray[sublevel-1] +1;
+                        while(true){
+                            if(!wrongImg.contains(temp) && temp!=qIndex )
+                                wrongImg.add(temp);
+                            temp=(qIndex+r.nextInt(modArray[sublevel-1])+1)%modArray[sublevel-1] +1;
+                            if(wrongImg.size()==3)
+                                break;
+                        }
+                        int wrongIndex=0;
                         for(int j=0;j<4;j++){
                             if(j==correct){
-                                Util.setImageFromPath(a[j], Environment.getExternalStorageDirectory() +"/GujaratiMitra/l16/1/level16_1_img_e1_" + Integer.toString(qIndex) + ".png");
+                                Util.setImageFromPath(a[j], Environment.getExternalStorageDirectory() +"/GujaratiMitra/l16/"+String.valueOf(sublevel)+"/level16_"+String.valueOf(sublevel)+"_img_e1_" + Integer.toString(qIndex) + ".png");
                                 //a[j].setImageResource(getResources().getIdentifier("level4_2_img_e" + String.valueOf(queIndex) + "_correct", "drawable", getPackageName()));
                             }
                             else{
-                                Util.setImageFromPath(a[j], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l16/1/level16_1_img_e1_" + String.valueOf((qIndex+r.nextInt(4)+1)%11 +1) + ".png");
+                                Util.setImageFromPath(a[j], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l16/"+String.valueOf(sublevel)+"/level16_"+String.valueOf(sublevel)+"_img_e1_" + String.valueOf(wrongImg.get(wrongIndex++)) + ".png");
                                 //a[j].setImageResource(getResources().getIdentifier("level4_2_img_e" + String.valueOf(queIndex) + "_wrong" + String.valueOf(wrongIndex++), "drawable", getPackageName()));
                             }
                             a[j].setVisibility(View.VISIBLE);
@@ -213,14 +216,23 @@ public class Level16_1 extends ActionBarActivity {
                         Random r=new Random();
                         int random1=r.nextInt(4);
                         correct=random1;
-
+                        wrongImg=new ArrayList<>();
+                        int temp=(qIndex+r.nextInt(modArray[sublevel-1])+1)%modArray[sublevel-1] +1;
+                        while(true){
+                            if(!wrongImg.contains(temp) && temp!=qIndex)
+                                wrongImg.add(temp);
+                            temp=(qIndex+r.nextInt(modArray[sublevel-1])+1)%modArray[sublevel-1] +1;
+                            if(wrongImg.size()==3)
+                                break;
+                        }
+                        int wrongIndex=0;
                         for(int j=0;j<4;j++){
                             if(j==correct){
-                                Util.setImageFromPath(a[j], Environment.getExternalStorageDirectory() +"/GujaratiMitra/l16/1/level16_1_img_e1_" + Integer.toString(qIndex) + ".png");
+                                Util.setImageFromPath(a[j], Environment.getExternalStorageDirectory() +"/GujaratiMitra/l16/"+String.valueOf(sublevel)+"/level16_"+String.valueOf(sublevel)+"_img_e1_" + Integer.toString(qIndex) + ".png");
                                 //a[j].setImageResource(getResources().getIdentifier("level4_2_img_e" + String.valueOf(queIndex) + "_correct", "drawable", getPackageName()));
                             }
                             else{
-                                Util.setImageFromPath(a[j], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l16/1/level16_1_img_e1_" + String.valueOf((qIndex+r.nextInt(4)+1)%11 +1) + ".png");
+                                Util.setImageFromPath(a[j], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l16/"+String.valueOf(sublevel)+"/level16_"+String.valueOf(sublevel)+"_img_e1_" +String.valueOf(wrongImg.get(wrongIndex++)) + ".png");
                                 //a[j].setImageResource(getResources().getIdentifier("level4_2_img_e" + String.valueOf(queIndex) + "_wrong" + String.valueOf(wrongIndex++), "drawable", getPackageName()));
                             }
                             a[j].setVisibility(View.VISIBLE);
