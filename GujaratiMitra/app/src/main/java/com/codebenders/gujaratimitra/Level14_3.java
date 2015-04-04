@@ -1,15 +1,12 @@
 package com.codebenders.gujaratimitra;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Vibrator;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Gravity;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -17,42 +14,37 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-
 import static android.R.color.transparent;
 
 
 public class Level14_3 extends ActionBarActivity {
     private ImageView queImg;
-    private ImageView v1;
-    private ImageView v2;
-    private ImageView v3;
-    private ImageView v4;
     private LinearLayout l1;
-    private LinearLayout l2;
-    private LinearLayout l3;
-    private LinearLayout l4;
     private Button submitButton;
     private int currentQueIndex;
     private int correctAns[][];
     private int pos[];
     private int numberOfLetters[];
     private String imagePrefix[][];
+    private CustomImageView cv1;
+    private CustomImageView cv2;
+    private CustomImageView cv3;
+    private CustomImageView cv4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_level14_2);
+        setContentView(R.layout.activity_level14_3);
 
         queImg = (ImageView) findViewById(R.id.img_que);
-        v1 = (ImageView) findViewById(R.id.img1);
-        v2 = (ImageView) findViewById(R.id.img2);
-        v3 = (ImageView) findViewById(R.id.img3);
-        v4 = (ImageView) findViewById(R.id.img4);
+//        v1 = (ImageView) findViewById(R.id.img1);
+//        v2 = (ImageView) findViewById(R.id.img2);
+//        v3 = (ImageView) findViewById(R.id.img3);
+//        v4 = (ImageView) findViewById(R.id.img4);
         l1 = (LinearLayout) findViewById(R.id.linearLayout1);
-        l2 = (LinearLayout) findViewById(R.id.linearLayout2);
-        l3 = (LinearLayout) findViewById(R.id.linearLayout3);
-        l4 = (LinearLayout) findViewById(R.id.linearLayout4);
+//        l2 = (LinearLayout) findViewById(R.id.linearLayout2);
+//        l3 = (LinearLayout) findViewById(R.id.linearLayout3);
+//        l4 = (LinearLayout) findViewById(R.id.linearLayout4);
         submitButton = (Button) findViewById(R.id.button_submit);
 
         //Util.setImageFromPath(queImg, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/2/img_que.png");
@@ -145,34 +137,7 @@ public class Level14_3 extends ActionBarActivity {
         correctAns[9][3] = 0;
 
         loadInitialImagesOfQuestion();
-        v1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                pos[0] = (pos[0]+1)%4;
-                Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/3/" + imagePrefix[currentQueIndex][0] + Integer.toString(pos[0]+1) + ".png");
-            }
-        });
-        v2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                pos[1] = (pos[1]+1)%4;
-                Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/3/" + imagePrefix[currentQueIndex][1] + Integer.toString(pos[1]+1) + ".png");
-            }
-        });
-        v3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                pos[2] = (pos[2]+1)%4;
-                Util.setImageFromPath(v3, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/3/" + imagePrefix[currentQueIndex][2] + Integer.toString(pos[2]+1) + ".png");
-            }
-        });
-        v4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                pos[3] = (pos[3]+1)%4;
-                Util.setImageFromPath(v4, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/3/" + imagePrefix[currentQueIndex][3] + Integer.toString(pos[3]+1) + ".png");
-            }
-        });
+        setClickListenersForImageViews();
 
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -236,10 +201,10 @@ public class Level14_3 extends ActionBarActivity {
                         public void run() {
                             currentQueIndex = (currentQueIndex+1)%10;
 
-                            v1.setBackgroundColor(transparent);
-                            v2.setBackgroundColor(transparent);
-                            v3.setBackgroundColor(transparent);
-                            v4.setBackgroundColor(transparent);
+//                            v1.setBackgroundColor(transparent);
+//                            v2.setBackgroundColor(transparent);
+//                            v3.setBackgroundColor(transparent);
+//                            v4.setBackgroundColor(transparent);
 
                             pos = new int[4];
                             for (int i = 0; i < 4; i++) {
@@ -259,59 +224,106 @@ public class Level14_3 extends ActionBarActivity {
     public void loadInitialImagesOfQuestion () {
         switch (numberOfLetters[currentQueIndex]) {
             case 2:
-                Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/3/" + imagePrefix[currentQueIndex][0] + Integer.toString(pos[0] + 1) + ".png");
-                Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/3/" + imagePrefix[currentQueIndex][1] + Integer.toString(pos[1] + 1) + ".png");
-                l3.setVisibility(View.INVISIBLE);
-                l4.setVisibility(View.INVISIBLE);
+                l1.removeAllViews();
+                cv1 = new CustomImageView(this, l1);
+                cv2 = new CustomImageView(this, l1);
+                Util.setImageFromPath(cv1.getImageView(), Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/3/" + imagePrefix[currentQueIndex][0] + Integer.toString(pos[0] + 1) + ".png");
+                Util.setImageFromPath(cv2.getImageView(), Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/3/" + imagePrefix[currentQueIndex][1] + Integer.toString(pos[1] + 1) + ".png");
+                l1.setGravity(Gravity.CENTER);
                 break;
             case 3:
-                Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/3/" + imagePrefix[currentQueIndex][0] + Integer.toString(pos[0]+1) + ".png");
-                Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/3/" + imagePrefix[currentQueIndex][1] + Integer.toString(pos[1]+1) + ".png");
-                Util.setImageFromPath(v3, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/3/" + imagePrefix[currentQueIndex][2] + Integer.toString(pos[2]+1) + ".png");
-                l3.setVisibility(View.VISIBLE);
-                l4.setVisibility(View.INVISIBLE);
+                l1.removeAllViews();
+                cv1 = new CustomImageView(this, l1);
+                cv2 = new CustomImageView(this, l1);
+                cv3 = new CustomImageView(this, l1);
+                Util.setImageFromPath(cv1.getImageView(), Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/3/" + imagePrefix[currentQueIndex][0] + Integer.toString(pos[0]+1) + ".png");
+                Util.setImageFromPath(cv2.getImageView(), Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/3/" + imagePrefix[currentQueIndex][1] + Integer.toString(pos[1]+1) + ".png");
+                Util.setImageFromPath(cv3.getImageView(), Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/3/" + imagePrefix[currentQueIndex][2] + Integer.toString(pos[2] + 1) + ".png");
+                l1.setGravity(Gravity.CENTER);
                 break;
             case 4:
-                Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/3/" + imagePrefix[currentQueIndex][0] + Integer.toString(pos[0]+1) + ".png");
-                Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/3/" + imagePrefix[currentQueIndex][1] + Integer.toString(pos[1]+1) + ".png");
-                Util.setImageFromPath(v3, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/3/" + imagePrefix[currentQueIndex][2] + Integer.toString(pos[2]+1) + ".png");
-                Util.setImageFromPath(v4, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/3/" + imagePrefix[currentQueIndex][3] + Integer.toString(pos[3]+1) + ".png");
-                l3.setVisibility(View.VISIBLE);
-                l4.setVisibility(View.VISIBLE);
+                l1.removeAllViews();
+                cv1 = new CustomImageView(this, l1);
+                cv2 = new CustomImageView(this, l1);
+                cv3 = new CustomImageView(this, l1);
+                cv4 = new CustomImageView(this, l1);
+                Util.setImageFromPath(cv1.getImageView(), Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/3/" + imagePrefix[currentQueIndex][0] + Integer.toString(pos[0]+1) + ".png");
+                Util.setImageFromPath(cv2.getImageView(), Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/3/" + imagePrefix[currentQueIndex][1] + Integer.toString(pos[1]+1) + ".png");
+                Util.setImageFromPath(cv3.getImageView(), Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/3/" + imagePrefix[currentQueIndex][2] + Integer.toString(pos[2]+1) + ".png");
+                Util.setImageFromPath(cv4.getImageView(), Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/3/" + imagePrefix[currentQueIndex][3] + Integer.toString(pos[3]+1) + ".png");
+                l1.setGravity(Gravity.CENTER);
+                break;
+            default:
+                break;
+        }
+        setClickListenersForImageViews();
+    }
+
+    public void loadCorrectAnsOfQuestion () {
+        switch (numberOfLetters[currentQueIndex]) {
+            case 2:
+                Util.setImageFromPath(cv1.getImageView(), Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/3/" + imagePrefix[currentQueIndex][0] + Integer.toString(correctAns[currentQueIndex][0] + 1) + ".png");
+                Util.setImageFromPath(cv2.getImageView(), Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/3/" + imagePrefix[currentQueIndex][1] + Integer.toString(correctAns[currentQueIndex][1] + 1) + ".png");
+                cv1.getImageView().setBackgroundResource(R.drawable.image_border_green);
+                cv2.getImageView().setBackgroundResource(R.drawable.image_border_green);
+                break;
+            case 3:
+                Util.setImageFromPath(cv1.getImageView(), Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/3/" + imagePrefix[currentQueIndex][0] + Integer.toString(correctAns[currentQueIndex][0]+1) + ".png");
+                Util.setImageFromPath(cv2.getImageView(), Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/3/" + imagePrefix[currentQueIndex][1] + Integer.toString(correctAns[currentQueIndex][1]+1) + ".png");
+                Util.setImageFromPath(cv3.getImageView(), Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/3/" + imagePrefix[currentQueIndex][2] + Integer.toString(correctAns[currentQueIndex][2] + 1) + ".png");
+                cv1.getImageView().setBackgroundResource(R.drawable.image_border_green);
+                cv2.getImageView().setBackgroundResource(R.drawable.image_border_green);
+                cv3.getImageView().setBackgroundResource(R.drawable.image_border_green);
+                break;
+            case 4:
+                Util.setImageFromPath(cv1.getImageView(), Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/3/" + imagePrefix[currentQueIndex][0] + Integer.toString(correctAns[currentQueIndex][0]+1) + ".png");
+                Util.setImageFromPath(cv2.getImageView(), Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/3/" + imagePrefix[currentQueIndex][1] + Integer.toString(correctAns[currentQueIndex][1]+1) + ".png");
+                Util.setImageFromPath(cv3.getImageView(), Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/3/" + imagePrefix[currentQueIndex][2] + Integer.toString(correctAns[currentQueIndex][2]+1) + ".png");
+                Util.setImageFromPath(cv4.getImageView(), Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/3/" + imagePrefix[currentQueIndex][3] + Integer.toString(correctAns[currentQueIndex][3]+1) + ".png");
+                cv1.getImageView().setBackgroundResource(R.drawable.image_border_green);
+                cv2.getImageView().setBackgroundResource(R.drawable.image_border_green);
+                cv3.getImageView().setBackgroundResource(R.drawable.image_border_green);
+                cv4.getImageView().setBackgroundResource(R.drawable.image_border_green);
                 break;
             default:
                 break;
         }
     }
 
-    public void loadCorrectAnsOfQuestion () {
-        switch (numberOfLetters[currentQueIndex]) {
-            case 2:
-                Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/3/" + imagePrefix[currentQueIndex][0] + Integer.toString(correctAns[currentQueIndex][0] + 1) + ".png");
-                Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/3/" + imagePrefix[currentQueIndex][1] + Integer.toString(correctAns[currentQueIndex][1] + 1) + ".png");
-                v1.setBackgroundResource(R.drawable.image_border_green);
-                v2.setBackgroundResource(R.drawable.image_border_green);
-                break;
-            case 3:
-                Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/3/" + imagePrefix[currentQueIndex][0] + Integer.toString(correctAns[currentQueIndex][0]+1) + ".png");
-                Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/3/" + imagePrefix[currentQueIndex][1] + Integer.toString(correctAns[currentQueIndex][1]+1) + ".png");
-                Util.setImageFromPath(v3, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/3/" + imagePrefix[currentQueIndex][2] + Integer.toString(correctAns[currentQueIndex][2] + 1) + ".png");
-                v1.setBackgroundResource(R.drawable.image_border_green);
-                v2.setBackgroundResource(R.drawable.image_border_green);
-                v3.setBackgroundResource(R.drawable.image_border_green);
-                break;
-            case 4:
-                Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/3/" + imagePrefix[currentQueIndex][0] + Integer.toString(correctAns[currentQueIndex][0]+1) + ".png");
-                Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/3/" + imagePrefix[currentQueIndex][1] + Integer.toString(correctAns[currentQueIndex][1]+1) + ".png");
-                Util.setImageFromPath(v3, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/3/" + imagePrefix[currentQueIndex][2] + Integer.toString(correctAns[currentQueIndex][2]+1) + ".png");
-                Util.setImageFromPath(v4, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/3/" + imagePrefix[currentQueIndex][3] + Integer.toString(correctAns[currentQueIndex][3]+1) + ".png");
-                v1.setBackgroundResource(R.drawable.image_border_green);
-                v2.setBackgroundResource(R.drawable.image_border_green);
-                v3.setBackgroundResource(R.drawable.image_border_green);
-                v4.setBackgroundResource(R.drawable.image_border_green);
-                break;
-            default:
-                break;
+    public void setClickListenersForImageViews () {
+        if (numberOfLetters[currentQueIndex] >= 2) {
+            cv1.getImageView().setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    pos[0] = (pos[0] + 1) % 4;
+                    Util.setImageFromPath(cv1.getImageView(), Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/3/" + imagePrefix[currentQueIndex][0] + Integer.toString(pos[0] + 1) + ".png");
+                }
+            });
+            cv2.getImageView().setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    pos[1] = (pos[1] + 1) % 4;
+                    Util.setImageFromPath(cv2.getImageView(), Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/3/" + imagePrefix[currentQueIndex][1] + Integer.toString(pos[1] + 1) + ".png");
+                }
+            });
+        }
+        if (numberOfLetters[currentQueIndex] >= 3) {
+            cv3.getImageView().setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    pos[2] = (pos[2] + 1) % 4;
+                    Util.setImageFromPath(cv3.getImageView(), Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/3/" + imagePrefix[currentQueIndex][2] + Integer.toString(pos[2] + 1) + ".png");
+                }
+            });
+        }
+        if (numberOfLetters[currentQueIndex] >= 4) {
+            cv4.getImageView().setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    pos[3] = (pos[3] + 1) % 4;
+                    Util.setImageFromPath(cv4.getImageView(), Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/3/" + imagePrefix[currentQueIndex][3] + Integer.toString(pos[3] + 1) + ".png");
+                }
+            });
         }
     }
 
