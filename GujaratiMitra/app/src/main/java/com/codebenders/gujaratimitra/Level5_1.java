@@ -118,7 +118,7 @@ public class Level5_1 extends ActionBarActivity {
 
         int height=metrics.heightPixels;
         int width= metrics.widthPixels;
-        double cy = ((double)height/2)*(0.7);
+        double cy = ((double)height/2)*(0.8);
         double cx = ((double)width/2)*(0.7);
 
 
@@ -225,7 +225,7 @@ public class Level5_1 extends ActionBarActivity {
                         public void run() {
                             disable=0;
                             if(correctans<(number-1)){
-                                image[rand_array_sound.get(correctans)].setColorFilter(Color.argb(255, 255, 255, 0));
+                                image[rand_array_sound.get(correctans)].setColorFilter(Color.argb(255,32, 178,170));
                                 disabled.add(rand_array_sound.get(correctans));
 
                                 image[rand_array_sound.get(correctans)].setEnabled(false);

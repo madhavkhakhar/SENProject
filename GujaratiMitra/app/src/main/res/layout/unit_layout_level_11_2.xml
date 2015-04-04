@@ -10,12 +10,12 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:id="@+id/imageView1" />
+            android:id="@+id/imageView1l11_2" />
 
         <ImageView
             android:layout_weight="0.6"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:id="@+id/imageView2" />
+            android:id="@+id/imageView2l11_2" />
 </LinearLayout>
