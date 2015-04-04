@@ -1,7 +1,10 @@
 package com.codebenders.gujaratimitra;
 
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.widget.ImageView;
 
@@ -32,4 +35,6 @@ public class Util {
         Bitmap b = BitmapFactory.decodeFile(path);
         imView.setImageBitmap(b);
     }
+
+
 }
