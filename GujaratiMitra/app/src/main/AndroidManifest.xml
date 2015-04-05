@@ -126,6 +126,11 @@
             android:label="@string/title_activity_level20_1"
             android:screenOrientation="landscape" >
         </activity>
+        <activity
+            android:name=".Level19_1"
+            android:label="@string/title_activity_level20_1"
+            android:screenOrientation="landscape" >
+        </activity>
     </application>
 
 </manifest>
