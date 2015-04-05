@@ -218,7 +218,7 @@ public class Level5_1 extends ActionBarActivity {
                         @Override
                         public void run() {
                             if(correctans<(numbers[rand_array.get(count)-1]-1)){
-                                image[rand_array_sound.get(correctans)].setColorFilter(Color.argb(255, 255, 255, 0));
+                                image[rand_array_sound.get(correctans)].setColorFilter(Color.argb(255,32, 178,170));
                                 disabled.add(rand_array_sound.get(correctans));
 
                                 image[rand_array_sound.get(correctans)].setEnabled(false);
