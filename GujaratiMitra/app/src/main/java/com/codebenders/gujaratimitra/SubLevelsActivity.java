@@ -117,6 +117,30 @@ public class SubLevelsActivity extends ActionBarActivity {
                         else if(position==2){
                         }
                         break;
+                    case 8:
+                        if(position==0){
+                            //Set your intent here
+                            i = new Intent(SubLevelsActivity.this,Level8_1.class);
+                            i.putExtra("LevelNo",8);
+                            startActivity(i);
+                        }
+                        else if(position==1){
+                            
+                        }
+                        else if(position==2){
+                        }
+                        break;
+                    case 10:
+                        if(position==0){
+                            i = new Intent(SubLevelsActivity.this,Level10_1.class);
+                            i.putExtra("LevelNo",10);
+                            startActivity(i);
+                        }
+                        else if(position==2) {
+                            //i = new Intent(SubLevelsActivity.this, Level11_3.class);
+                            //i.putExtra("LevelNo", 10);
+                        }
+                        break;
                     case 11:
                         if(position == 0){
                             i = new Intent(SubLevelsActivity.this,Level11_1.class);
@@ -126,6 +150,42 @@ public class SubLevelsActivity extends ActionBarActivity {
                         else if(position==1){
                             i = new Intent(SubLevelsActivity.this,Level11_2.class);
                             i.putExtra("LevelNo",11);
+                            startActivity(i);
+                        }
+                        else if(position==2) {
+                            i = new Intent(SubLevelsActivity.this, Level11_3.class);
+                            i.putExtra("LevelNo", 11);
+                            startActivity(i);
+                        }
+                            break;
+                    case 14:
+                        if(position==0){
+//                            i = new Intent(SubLevelsActivity.this,Level14_1.class);
+//                            startActivity(i);
+                        }
+                        else if(position==1){
+//                            i = new Intent(SubLevelsActivity.this,Level14_3.class);
+//                            startActivity(i);
+                        }
+                        else if(position==2){
+                            i = new Intent(SubLevelsActivity.this,Level14_3.class);
+                            startActivity(i);
+                        }
+                        break;
+                    case 16:
+                        if(position==0) {
+                            i = new Intent(SubLevelsActivity.this, Level16_1.class);
+                            i.putExtra("Sublevel",1);
+                            startActivity(i);
+                        }
+                        else if(position==1){
+                            i = new Intent(SubLevelsActivity.this, Level16_1.class);
+                            i.putExtra("Sublevel",2);
+                            startActivity(i);
+                        }
+                        else if(position==2){
+                            i = new Intent(SubLevelsActivity.this, Level16_1.class);
+                            i.putExtra("Sublevel",3);
                             startActivity(i);
                         }
                         break;
