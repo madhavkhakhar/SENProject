@@ -29,7 +29,7 @@ public class Level5_1 extends ActionBarActivity {
     public static int score=0;
     public MediaPlayer mp;
     public TextView score_text;
-    public int number=0;
+    public int []numbers={4,5,5,5,4,4};
     ImageView[]image;
     final List<Integer> rand_array_sound=new ArrayList<Integer>();
     final List<Integer> rand_array=new ArrayList<Integer>(6);
@@ -57,29 +57,23 @@ public class Level5_1 extends ActionBarActivity {
         }
         Collections.shuffle(rand_array);
         final int[] resources = new int[5];
-        for (int i = 0; i < 5; i++) {
-            resources[i] = getResources().getIdentifier("q" + String.valueOf(rand_array.get(count)) + "_" + String.valueOf(i + 1), "drawable", getPackageName());
-            System.out.println("HERE" + resources[i]);
+        for (int i = 0; i < numbers[rand_array.get(count)-1]; i++) {
+            //resources[i] = getResources().getIdentifier("q" + String.valueOf(rand_array.get(count)) + "_" + String.valueOf(i + 1), "drawable", getPackageName());
+            image[i]=new ImageView(this);
+            Util.setImageFromPath(image[i],Environment.getExternalStorageDirectory() + "/GujaratiMitra/l5/1/q" + String.valueOf(rand_array.get(count)) + "_" + String.valueOf(i + 1) + ".png");
+            //System.out.println("HERE" + resources[i]);
         }
 
-        while (resources[number] != 0) {
 
-            image[number] = new ImageView(this);
-            image[number].setImageResource(resources[number]);
-            number++;
-            if (number >= 5) {
-                break;
-            }
-        }
-        if(number==4){
-            image[number]=new ImageView(this);
+        if(numbers[rand_array.get(count)-1]==4){
+            image[4]=new ImageView(this);
         }
 
         //final List<Integer> rand_array_sound=new ArrayList<Integer>();
-        for (int i = 0; i < number; i++) {
+        for (int i = 0; i < numbers[rand_array.get(count)-1]; i++) {
             rand_array_sound.add(i);
         }
-        //Collections.shuffle(rand_array_sound);
+        Collections.shuffle(rand_array_sound);
 
         for (int i = 0; i < 5; i++) {
             final int finalI = i;
@@ -120,7 +114,7 @@ public class Level5_1 extends ActionBarActivity {
 
 
         int index=0;
-        for(double angle = 0; angle < 360; angle += (360/(number))) {
+        for(double angle = 0; angle < 360; angle += (360/(numbers[rand_array.get(count)-1]))) {
             double radAngle = Math.toRadians(angle);
             double x = ((Math.cos(radAngle)) * cx) + cx;
             double y = (( Math.sin(radAngle)) * cy) + cy;
@@ -136,7 +130,7 @@ public class Level5_1 extends ActionBarActivity {
             if(count==0) {
                 al.addView(image[index], lp);
                 index++;
-                if(number==4 && index==3){
+                if(numbers[rand_array.get(count)-1]==4 && index==3){
                     al.addView(image[4],lp);
                     image[4].setVisibility(View.GONE);
                 }
@@ -145,7 +139,7 @@ public class Level5_1 extends ActionBarActivity {
                /* image[index].setLayoutParams(lp);
                 index++;*/
                 al.updateViewLayout(image[index],lp);
-                if(index<number-1)
+                if(index<numbers[rand_array.get(count)-1]-1)
                     index++;
             }
         }
@@ -219,13 +213,13 @@ public class Level5_1 extends ActionBarActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            if(correctans<(number-1)){
+                            if(correctans<(numbers[rand_array.get(count)-1]-1)){
                                 image[rand_array_sound.get(correctans)].setColorFilter(Color.argb(255, 255, 255, 0));
                                 disabled.add(rand_array_sound.get(correctans));
 
                                 image[rand_array_sound.get(correctans)].setEnabled(false);
 
-                                for(int i=0;i<number;i++){
+                                for(int i=0;i<numbers[rand_array.get(count)-1];i++){
                                     if(disabled.contains(rand_array_sound.get(i))==false){
                                         image[rand_array_sound.get(i)].setColorFilter(Color.argb(255, 0, 0, 0));
                                     }
@@ -234,35 +228,28 @@ public class Level5_1 extends ActionBarActivity {
 
 
                             }
-                            else if(correctans==number-1){
+                            else if(correctans==numbers[rand_array.get(count)-1]-1){
                                 count++;
                                 disabled.clear();
-                                final int[] resources=new int[5];
-                                for(int i=0;i<5;i++){
-                                    resources[i]= getResources().getIdentifier("q"+String.valueOf(rand_array.get(count))+"_"+String.valueOf(i+1), "drawable", getPackageName());
-                                    System.out.println("HERE"+resources[i]);
+                                //final int[] resources=new int[5];
+                                for(int i=0;i<numbers[rand_array.get(count)-1];i++){
+                                   Util.setImageFromPath(image[i],Environment.getExternalStorageDirectory() + "/GujaratiMitra/l5/1/q" + String.valueOf(rand_array.get(count))+"_"+String.valueOf(i+1) + ".png");
+                                   // resources[i]= getResources().getIdentifier("q"+String.valueOf(rand_array.get(count))+"_"+String.valueOf(i+1), "drawable", getPackageName());
+                                   // System.out.println("HERE"+resources[i]);
                                 }
-                                number=0;
-                                while(resources[number]!=0){
 
-                                    image[number].setImageResource(resources[number]);
-                                    number++;
-                                    if(number>=5){
-                                        break;
-                                    }
-                                }
-                                for(int i=0;i<number;i++){
+                                for(int i=0;i<numbers[rand_array.get(count)-1];i++){
                                     image[i].setColorFilter(Color.argb(255,0,0,0));
                                     image[i].setEnabled(true);
                                 }
-                                if(number==4){
+                                if(numbers[rand_array.get(count)-1]==4){
                                     image[4].setVisibility(View.GONE);
                                 }
                                 else{
                                     image[4].setVisibility(View.VISIBLE);
                                 }
                                 rand_array_sound.clear();
-                                for(int i=0;i<number;i++){
+                                for(int i=0;i<numbers[rand_array.get(count)-1];i++){
                                     rand_array_sound.add(i);
 
                                 }
