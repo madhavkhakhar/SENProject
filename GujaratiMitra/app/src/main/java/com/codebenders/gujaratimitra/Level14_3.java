@@ -240,6 +240,7 @@ public class Level14_3 extends ActionBarActivity {
                 cv2.setLayoutParams(params);
                 l1.addView(cv1.getInflatedView());
                 l1.addView(cv2.getInflatedView());
+                l1.invalidate();
                 break;
             case 3:
                 l1.removeAllViews();
@@ -256,6 +257,7 @@ public class Level14_3 extends ActionBarActivity {
                 l1.addView(cv1.getInflatedView());
                 l1.addView(cv2.getInflatedView());
                 l1.addView(cv3.getInflatedView());
+                l1.invalidate();
                 break;
             case 4:
                 l1.removeAllViews();
@@ -272,6 +274,11 @@ public class Level14_3 extends ActionBarActivity {
                 cv2.setLayoutParams(params);
                 cv3.setLayoutParams(params);
                 cv4.setLayoutParams(params);
+                l1.addView(cv1.getInflatedView());
+                l1.addView(cv2.getInflatedView());
+                l1.addView(cv3.getInflatedView());
+                l1.addView(cv4.getInflatedView());
+                l1.invalidate();
                 break;
             default:
                 break;
