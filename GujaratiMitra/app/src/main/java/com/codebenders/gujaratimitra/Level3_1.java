@@ -31,6 +31,8 @@ public class Level3_1 extends ActionBarActivity {
     public MediaPlayer mp;
     public TextView score_text;
     public int disable=0;
+    List<Integer> rand_array=new ArrayList<Integer>(50);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -39,13 +41,12 @@ public class Level3_1 extends ActionBarActivity {
         final ImageView []image = new ImageView[4];
         mp=new MediaPlayer();
 
-        final List<Integer> rand_array=new ArrayList<Integer>(50);
         for(int i=0;i<50;i++){
             rand_array.add(i+1);
         }
         Collections.shuffle(rand_array);
-        final int resource_s = getResources().getIdentifier("s"+String.valueOf(rand_array.get(count)), "drawable", getPackageName());
-        final int resource_d = getResources().getIdentifier("d"+String.valueOf(rand_array.get(count)), "drawable", getPackageName());
+        //final int resource_s = getResources().getIdentifier("s"+String.valueOf(rand_array.get(count)), "drawable", getPackageName());
+        //final int resource_d = getResources().getIdentifier("d"+String.valueOf(rand_array.get(count)), "drawable", getPackageName());
 
         image[0] = (ImageView) findViewById(R.id.imageView);
         image[1] = (ImageView) findViewById(R.id.imageView2);
@@ -61,10 +62,15 @@ public class Level3_1 extends ActionBarActivity {
         correctans=random1;
         for(int i=0;i<4;i++){
             if(i==correctans){
-                image[i].setImageResource(resource_d);
+                Util.setImageFromPath(image[i], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l3/1/d" + Integer.toString(rand_array.get(count)) + ".png");
+                //Util.setImageFromPath(v3, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/1/img_1" + Integer.toString((2 * position) + 1) + ".png");
+                //Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/1/img_" + Integer.toString(2 * position) + "_n.png");
+                //Util.setImageFromPath(v4, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/1/img_" + Integer.toString((2 * position) + 1) + "_n.png");
             }
             else{
-                image[i].setImageResource(resource_s);
+               // image[i].setImageResource(resource_s);
+                Util.setImageFromPath(image[i], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l3/1/s" + Integer.toString(rand_array.get(count)) + ".png");
+
             }
         }
 
@@ -180,18 +186,17 @@ public class Level3_1 extends ActionBarActivity {
                         @Override
                         public void run() {
                             disable=0;
-                            int resource_s = getResources().getIdentifier("s"+String.valueOf(count), "drawable", getPackageName());
-                            int resource_d = getResources().getIdentifier("d"+String.valueOf(count), "drawable", getPackageName());
 
                             Random r=new Random();
                             int random=r.nextInt(4);
                             correctans=random;
                             for(int i=0;i<4;i++){
                                 if(i==correctans){
-                                    image[i].setImageResource(resource_d);
+                                   // image[i].setImageResource(resource_d);
+                                    Util.setImageFromPath(image[i], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l3/1/d" + String.valueOf(rand_array.get(count)) + ".png");
                                 }
                                 else{
-                                    image[i].setImageResource(resource_s);
+                                    Util.setImageFromPath(image[i], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l3/1/s" + String.valueOf(rand_array.get(count)) + ".png");
                                 }
                             }
 
