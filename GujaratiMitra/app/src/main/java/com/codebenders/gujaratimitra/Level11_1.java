@@ -189,7 +189,7 @@ public class Level11_1 extends ActionBarActivity {
                             Collections.shuffle(rand_array);
 
                             for (int i = 0; i < 4; i++) {
-                                Util.setImageFromPath(image[i], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l11/1/img_" + Integer.toString(rand_array.get(i)) + ".png");
+                                Util.setImageFromPath(image[i], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l11/1/" + Integer.toString(rand_array.get(i)) + ".png");
 
                             }
 

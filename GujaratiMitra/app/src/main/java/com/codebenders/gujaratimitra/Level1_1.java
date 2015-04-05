@@ -12,11 +12,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 
 public class Level1_1 extends ActionBarActivity {
 
-    private static final int NUM_PAGES = 5;
+    private static  int NUM_PAGES = 5;
     private ViewPager mPager;
     private PagerAdapter mPagerAdapter;
     private ImageView leftArrow;
@@ -24,19 +25,28 @@ public class Level1_1 extends ActionBarActivity {
     private Button question;
     private int levelNo;
     private Intent i;
+    private String imagePath;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_level1_1);
 
+        i=getIntent();
+        levelNo=i.getExtras().getInt("level_no");
+        if(levelNo == 1){
+            imagePath = Environment.getExternalStorageDirectory()+"/GujaratiMitra/l1/1/";
+            NUM_PAGES = 5;
+        }else if(levelNo == 17){
+            imagePath = Environment.getExternalStorageDirectory()+"/GujaratiMitra/l17/1/";
+            NUM_PAGES = 19;
+        }
         mPager = (ViewPager) findViewById(R.id.pager_1);
         mPagerAdapter = new SimplePagerAdapter();
         mPager.setAdapter(mPagerAdapter);
-        mPager.setOffscreenPageLimit(5);
+        mPager.setOffscreenPageLimit(NUM_PAGES);
         question=(Button)findViewById(R.id.question);
         question.setText("Question");
-        i=getIntent();
-        levelNo=i.getExtras().getInt("Sublevel");
+
         leftArrow = (ImageView) findViewById(R.id.imageView);
         rightArrow = (ImageView) findViewById(R.id.imageView1);
         leftArrow.setOnClickListener(new View.OnClickListener() {
@@ -62,12 +72,21 @@ public class Level1_1 extends ActionBarActivity {
             public void onPageSelected(int i) {
                 if (i == 0)
                     leftArrow.setVisibility(View.INVISIBLE);
-                else if (i == 4)
+                else if (i == NUM_PAGES-1)
                     rightArrow.setVisibility(View.INVISIBLE);
                 else {
                     leftArrow.setVisibility(View.VISIBLE);
                     rightArrow.setVisibility(View.VISIBLE);
                 }
+                //if (question.getText().equals("Image")) {
+                    question.setText("Question");
+
+               // }else{
+                    ImageView imageView = (ImageView)mPager.getChildAt(i).findViewById(R.id.imageView7);
+                    Util.setImageFromPath(imageView, imagePath + "img_" + Integer.toString(i + 1) + ".png");
+                    mPager.getChildAt(i).invalidate();
+               //}
+
             }
 
             @Override
@@ -99,114 +118,23 @@ public class Level1_1 extends ActionBarActivity {
         @Override
         public Object instantiateItem(ViewGroup container, final int position) {
             final View view = getLayoutInflater().inflate(R.layout.unit_layout_level4_1, container, false);
-<<<<<<< Updated upstream
             final ImageView v1 = (ImageView) view.findViewById(R.id.imageView7);
+            Util.setImageFromPath(v1, imagePath+"img_"+Integer.toString(position+1)+".png");
 
-            switch(position) {
-=======
-           final ImageView v1 = (ImageView) view.findViewById(R.id.imageView7);
-            Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l1/1/"+"img1_"+Integer.toString(position+1)+".jpg");
-           /* switch(position) {
->>>>>>> Stashed changes
-                case 0:
-                    v1.setImageResource(R.drawable.img1_1);
-                    question.setText("Question");
-                    break;
-                case 1:
-                    question.setText("Question");
-                    v1.setImageResource(R.drawable.img1_2);
-                    break;
-                case 2:
-                    question.setText("Question");
-                    v1.setImageResource(R.drawable.img1_3);
-                    break;
-                case 3:
-                    question.setText("Question");
-                    v1.setImageResource(R.drawable.img1_4);
-                    break;
-                case 4:
-                    question.setText("Question");
-                    v1.setImageResource(R.drawable.img1_5);
-                    break;
-            }*/
-
-
-
-            question.setOnClickListener(new View.OnClickListener(){
+            question.setOnClickListener(new View.OnClickListener() {
 
                 public void onClick(View v) {
-                    if (mPager.getCurrentItem() == 0) {
 
-                        View view = mPager.getChildAt(mPager.getCurrentItem());
-                        final ImageView v1 = (ImageView) view.findViewById(R.id.imageView7);
-                        if (question.getText().equals("Image")) {
-                            //v1.setImageResource(R.drawable.img1_1);
-                            Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l1/1/"+"img1_"+Integer.toString(mPager.getCurrentItem()+1)+".jpg");
-                            question.setText("Question");
-                        } else if (question.getText().equals("Question")) {
-                            //v1.setImageResource(R.drawable.img1_1_n);
-                            Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l1/1/"+"img1_"+Integer.toString(mPager.getCurrentItem()+1)+"_n.png");
-                            question.setText("Image");
-                        }
-                    } else if (mPager.getCurrentItem()  == 1) {
-
-                        View view = mPager.getChildAt(mPager.getCurrentItem());
-                        final ImageView v1 = (ImageView) view.findViewById(R.id.imageView7);
-                        if (question.getText().equals("Image")) {
-                            //v1.setImageResource(R.drawable.img1_2);
-                            Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l1/1/"+"img1_"+Integer.toString(mPager.getCurrentItem()+1)+".jpg");
-
-
-                            question.setText("Question");
-                        } else if (question.getText().equals("Question")) {
-                            //v1.setImageResource(R.drawable.img1_2_n);
-                            Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l1/1/"+"img1_"+Integer.toString(mPager.getCurrentItem()+1)+"_n.png");
-                            question.setText("Image");
-                        }
-                    }
-                    else if (mPager.getCurrentItem()  == 2) {
-
-                        View view = mPager.getChildAt(mPager.getCurrentItem());
-                        final ImageView v1 = (ImageView) view.findViewById(R.id.imageView7);
-                        if (question.getText().equals("Image")) {
-                            //v1.setImageResource(R.drawable.img1_3);
-                            Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l1/1/"+"img1_"+Integer.toString(mPager.getCurrentItem()+1)+".jpg");
-                            question.setText("Question");
-                        } else if (question.getText().equals("Question")) {
-                            //v1.setImageResource(R.drawable.img1_3_n);
-                            Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l1/1/"+"img1_"+Integer.toString(mPager.getCurrentItem()+1)+"_n.png");
-                            question.setText("Image");
-                        }
-                    }
-                    else if (mPager.getCurrentItem()  == 3) {
-
-                        View view = mPager.getChildAt(mPager.getCurrentItem());
-                        final ImageView v1 = (ImageView) view.findViewById(R.id.imageView7);
-                        if (question.getText().equals("Image")) {
-                            //v1.setImageResource(R.drawable.img1_4);
-                            Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l1/1/"+"img1_"+Integer.toString(mPager.getCurrentItem()+1)+".jpg");
-
-                            question.setText("Question");
-                        } else if (question.getText().equals("Question")) {
-                            //v1.setImageResource(R.drawable.img1_4_n);
-                            Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l1/1/"+"img1_"+Integer.toString(mPager.getCurrentItem()+1)+"_n.png");
-                            question.setText("Image");
-                        }
-                    }
-                    else if (mPager.getCurrentItem()  == 4) {
-
-                        View view = mPager.getChildAt(mPager.getCurrentItem());
-                        final ImageView v1 = (ImageView) view.findViewById(R.id.imageView7);
-                        if (question.getText().equals("Image")) {
-                            //v1.setImageResource(R.drawable.img1_5);
-                            Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l1/1/"+"img1_"+Integer.toString(mPager.getCurrentItem()+1)+".jpg");
-
-                            question.setText("Question");
-                        } else if (question.getText().equals("Question")) {
-                            //v1.setImageResource(R.drawable.img1_3_n);
-                            Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l1/1/"+"img1_"+Integer.toString(mPager.getCurrentItem()+1)+"_n.png");
-                            question.setText("Image");
-                        }
+                    View view = mPager.getChildAt(mPager.getCurrentItem());
+                    final ImageView v1 = (ImageView) view.findViewById(R.id.imageView7);
+                    if (question.getText().equals("Image")) {
+                        //v1.setImageResource(R.drawable.img1_1);
+                        Util.setImageFromPath(v1, imagePath + "img_" + Integer.toString(mPager.getCurrentItem() + 1) + ".png");
+                        question.setText("Question");
+                    } else if (question.getText().equals("Question")) {
+                        //v1.setImageResource(R.drawable.img1_1_n);
+                        Util.setImageFromPath(v1, imagePath + "que_" + Integer.toString(mPager.getCurrentItem() + 1) + ".png");
+                        question.setText("Image");
                     }
                 }
             });
