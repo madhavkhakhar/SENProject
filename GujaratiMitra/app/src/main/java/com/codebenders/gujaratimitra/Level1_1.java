@@ -94,7 +94,7 @@ public class Level1_1 extends ActionBarActivity {
         @Override
         public Object instantiateItem(ViewGroup container, final int position) {
             final View view = getLayoutInflater().inflate(R.layout.unit_layout_level4_1, container, false);
-           final ImageView v1 = (ImageView) view.findViewById(R.id.imageView7);
+            final ImageView v1 = (ImageView) view.findViewById(R.id.imageView7);
 
             switch(position) {
                 case 0:
