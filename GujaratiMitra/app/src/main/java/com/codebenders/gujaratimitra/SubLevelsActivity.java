@@ -201,18 +201,38 @@ public class SubLevelsActivity extends ActionBarActivity {
                     case 16:
                         if(position==0) {
                             i = new Intent(SubLevelsActivity.this, Level16_1.class);
+                            i.putExtra("Level",16);
                             i.putExtra("Sublevel",1);
                             startActivity(i);
                         }
                         else if(position==1){
                             i = new Intent(SubLevelsActivity.this, Level16_1.class);
+                            i.putExtra("Level",16);
                             i.putExtra("Sublevel",2);
                             startActivity(i);
                         }
                         else if(position==2){
                             i = new Intent(SubLevelsActivity.this, Level16_1.class);
+                            i.putExtra("Level",16);
                             i.putExtra("Sublevel",3);
                             startActivity(i);
+                        }
+                        break;
+                    case 18:
+                        if(position==0) {
+                            i = new Intent(SubLevelsActivity.this, Level16_1.class);
+                            i.putExtra("Level",18);
+                            i.putExtra("Sublevel",1);
+                            startActivity(i);
+                        }
+                        else if(position==1){
+                            i = new Intent(SubLevelsActivity.this, Level16_1.class);
+                            i.putExtra("Level",18);
+                            i.putExtra("Sublevel",2);
+                            startActivity(i);
+                        }
+                        else if(position==2){
+
                         }
                         break;
                     case 20:
