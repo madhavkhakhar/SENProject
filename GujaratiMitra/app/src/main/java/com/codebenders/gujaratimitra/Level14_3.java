@@ -6,12 +6,14 @@ import android.os.Handler;
 import android.os.Vibrator;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.text.Layout;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TableRow;
 import android.widget.Toast;
 
 import static android.R.color.transparent;
@@ -222,6 +224,8 @@ public class Level14_3 extends ActionBarActivity {
     }
 
     public void loadInitialImagesOfQuestion () {
+        l1.setGravity(Gravity.LEFT);
+        ViewGroup.LayoutParams params;
         switch (numberOfLetters[currentQueIndex]) {
             case 2:
                 l1.removeAllViews();
@@ -230,6 +234,12 @@ public class Level14_3 extends ActionBarActivity {
                 Util.setImageFromPath(cv1.getImageView(), Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/3/" + imagePrefix[currentQueIndex][0] + Integer.toString(pos[0] + 1) + ".png");
                 Util.setImageFromPath(cv2.getImageView(), Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/3/" + imagePrefix[currentQueIndex][1] + Integer.toString(pos[1] + 1) + ".png");
                 l1.setGravity(Gravity.CENTER);
+//                l1.setWeightSum(1.0f);
+                params = new ViewGroup.LayoutParams(0, 0);
+                cv1.setLayoutParams(params);
+                cv2.setLayoutParams(params);
+                l1.addView(cv1.getInflatedView());
+                l1.addView(cv2.getInflatedView());
                 break;
             case 3:
                 l1.removeAllViews();
@@ -239,7 +249,13 @@ public class Level14_3 extends ActionBarActivity {
                 Util.setImageFromPath(cv1.getImageView(), Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/3/" + imagePrefix[currentQueIndex][0] + Integer.toString(pos[0]+1) + ".png");
                 Util.setImageFromPath(cv2.getImageView(), Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/3/" + imagePrefix[currentQueIndex][1] + Integer.toString(pos[1]+1) + ".png");
                 Util.setImageFromPath(cv3.getImageView(), Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/3/" + imagePrefix[currentQueIndex][2] + Integer.toString(pos[2] + 1) + ".png");
-                l1.setGravity(Gravity.CENTER);
+                params = new ViewGroup.LayoutParams(0, 0);
+                cv1.setLayoutParams(params);
+                cv2.setLayoutParams(params);
+                cv3.setLayoutParams(params);
+                l1.addView(cv1.getInflatedView());
+                l1.addView(cv2.getInflatedView());
+                l1.addView(cv3.getInflatedView());
                 break;
             case 4:
                 l1.removeAllViews();
@@ -251,7 +267,11 @@ public class Level14_3 extends ActionBarActivity {
                 Util.setImageFromPath(cv2.getImageView(), Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/3/" + imagePrefix[currentQueIndex][1] + Integer.toString(pos[1]+1) + ".png");
                 Util.setImageFromPath(cv3.getImageView(), Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/3/" + imagePrefix[currentQueIndex][2] + Integer.toString(pos[2]+1) + ".png");
                 Util.setImageFromPath(cv4.getImageView(), Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/3/" + imagePrefix[currentQueIndex][3] + Integer.toString(pos[3]+1) + ".png");
-                l1.setGravity(Gravity.CENTER);
+                params = new ViewGroup.LayoutParams(0, 0);
+                cv1.setLayoutParams(params);
+                cv2.setLayoutParams(params);
+                cv3.setLayoutParams(params);
+                cv4.setLayoutParams(params);
                 break;
             default:
                 break;

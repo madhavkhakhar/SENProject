@@ -15,18 +15,21 @@ import android.widget.TableLayout;
  */
 public class CustomImageView extends View {
     ImageView imageView;
+    View v;
     public CustomImageView(Context context, ViewGroup container) {
         super(context);
         LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         if(inflater != null){
-            View v = inflater.inflate(R.layout.custom_image_view, container, false);
+            v = inflater.inflate(R.layout.custom_image_view, container, false);
             imageView = (ImageView)v.findViewById(R.id.img1);
-            container.addView(v);
+            //container.addView(v);
         }
     }
 
     public ImageView getImageView(){
         return imageView;
     }
+
+    public View getInflatedView () { return v; }
 
 }
