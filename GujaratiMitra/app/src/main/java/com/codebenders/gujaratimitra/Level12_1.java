@@ -1,5 +1,6 @@
 package com.codebenders.gujaratimitra;
 
+import android.os.Environment;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
@@ -28,7 +29,8 @@ public class Level12_1 extends ActionBarActivity {
         mPager.setAdapter(mPagerAdapter);
         mPager.setOffscreenPageLimit(5);
         final ImageView v1 = (ImageView) findViewById(R.id.imageView_12_1);
-        v1.setImageResource(R.drawable.img_12_1);
+        Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l12/1/"+"img_12_1.jpg");
+        //v1.setImageResource(R.drawable.img_12_1);
 
 
         leftArrow = (ImageView) findViewById(R.id.imageView);
@@ -88,7 +90,7 @@ public class Level12_1 extends ActionBarActivity {
         @Override
         public Object instantiateItem(ViewGroup container, final int position) {
             final View view = getLayoutInflater().inflate(R.layout.unit_layout_level_12_1, container, false);
-           // final ImageView v1 = (ImageView) view.findViewById(R.id.imageView_12_1);
+
             final ImageView v2 = (ImageView) view.findViewById(R.id.imageView_12_2);
 
 
@@ -96,24 +98,24 @@ public class Level12_1 extends ActionBarActivity {
 
             switch(position) {
                 case 0:
-
-                    v2.setImageResource(R.drawable.img_12_2);
+                    Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l12/1/"+"img_12_"+Integer.toString(position+2)+".png");
+                    //v2.setImageResource(R.drawable.img_12_2);
                     break;
                 case 1:
-
-                    v2.setImageResource(R.drawable.img_12_3);
+                    Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l12/1/"+"img_12_"+Integer.toString(position+2)+".png");
+                    //v2.setImageResource(R.drawable.img_12_3);
                     break;
                 case 2:
-
-                    v2.setImageResource(R.drawable.img_12_4);
+                    Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l12/1/"+"img_12_"+Integer.toString(position+2)+".png");
+                    //v2.setImageResource(R.drawable.img_12_4);
                     break;
                 case 3:
-
-                    v2.setImageResource(R.drawable.img_12_5);
+                    Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l12/1/"+"img_12_"+Integer.toString(position+2)+".png");
+                    //v2.setImageResource(R.drawable.img_12_5);
                     break;
                 case 4:
-
-                    v2.setImageResource(R.drawable.img_12_6);
+                    Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l12/1/"+"img_12_"+Integer.toString(position+2)+".png");
+                    //v2.setImageResource(R.drawable.img_12_6);
                     break;
 
             }

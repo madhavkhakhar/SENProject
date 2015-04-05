@@ -1,5 +1,7 @@
 package com.codebenders.gujaratimitra;
 
+import android.content.Intent;
+import android.os.Environment;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
@@ -17,6 +19,8 @@ public class Level15_3 extends ActionBarActivity {
     private PagerAdapter mPagerAdapter;
     private ImageView leftArrow;
     private ImageView rightArrow;
+    private int levelNo,sublevel;
+    private Intent i;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +30,9 @@ public class Level15_3 extends ActionBarActivity {
         mPagerAdapter = new SimplePagerAdapter();
         mPager.setAdapter(mPagerAdapter);
         mPager.setOffscreenPageLimit(10);
+        i=getIntent();
+        levelNo=i.getExtras().getInt("levelno");
+        sublevel=i.getExtras().getInt("Sublevel");
 
         leftArrow = (ImageView) findViewById(R.id.imageView);
         rightArrow = (ImageView) findViewById(R.id.imageView1);
@@ -84,7 +91,13 @@ public class Level15_3 extends ActionBarActivity {
             final ImageView v1 = (ImageView) view.findViewById(R.id.imageView_15_3_1);
           //  final ImageView v2 = (ImageView) view.findViewById(R.id.imageView_15_3_2);
 
-            switch(position) {
+
+
+            Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l15/3/"+"img_15_3_"+Integer.toString(position+1)+".png");
+
+
+
+         /* switch(position) {
 
                 case 0:
                     v1.setImageResource(R.drawable.img_15_3_1);
@@ -116,10 +129,7 @@ public class Level15_3 extends ActionBarActivity {
                 case 9:
                     v1.setImageResource(R.drawable.img_15_3_10);
                     break;
-
-
-
-            }
+            }*/
 
 
 
