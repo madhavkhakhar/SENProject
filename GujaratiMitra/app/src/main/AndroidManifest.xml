@@ -91,6 +91,10 @@
             android:screenOrientation="landscape" >
         </activity>
         <activity
+            android:name=".Level11_1"
+            android:label="@string/title_activity_level11_1"
+            android:screenOrientation="landscape" />
+        <activity
             android:name=".Level11_3"
             android:label="@string/title_activity_level11_3"
             android:screenOrientation="landscape" />
@@ -107,6 +111,15 @@
         <activity
             android:name=".Level14_2"
             android:label="@string/title_activity_level14_2"
+            android:screenOrientation="landscape"/>
+        <activity
+            android:name=".Level16_1"
+            android:label="@string/title_activity_level16_1"
+            android:screenOrientation="landscape"
+            />
+        <activity
+            android:name=".Level15_2"
+            android:label="@string/title_activity_level15_2"
             android:screenOrientation="landscape">
         </activity>
     </application>

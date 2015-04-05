@@ -163,7 +163,7 @@ public class Level11_3 extends ActionBarActivity {
                                 Util.setImageFromPath(a[j], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l11/2/img"+ String.valueOf((qIndex+r.nextInt(4)+1)%22 +1) + "_2.png");
                                 //a[j].setImageResource(getResources().getIdentifier("level4_2_img_e" + String.valueOf(queIndex) + "_wrong" + String.valueOf(wrongIndex++), "drawable", getPackageName()));
                             }
-                            a[j].setColorFilter(Color.argb(255, 0, 0, 0));
+                            //a[j].setColorFilter(Color.argb(255, 0, 0, 0));
                         }
                     }
                 });
