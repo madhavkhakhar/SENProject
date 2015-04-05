@@ -29,16 +29,11 @@
             android:name=".Level3_1"
             android:label="@string/title_activity_level3_1"
             android:screenOrientation="landscape">
-
         </activity>
         <activity
             android:screenOrientation="landscape"
             android:name=".Level5_1"
             android:label="@string/title_activity_level5_1" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 

@@ -29,6 +29,7 @@ public class Level5_1 extends ActionBarActivity {
     public static int score=0;
     public MediaPlayer mp;
     public TextView score_text;
+    public int disable=0;
     public int []numbers={4,5,5,5,4,4};
     ImageView[]image;
     final List<Integer> rand_array_sound=new ArrayList<Integer>();
@@ -77,10 +78,13 @@ public class Level5_1 extends ActionBarActivity {
 
         for (int i = 0; i < 5; i++) {
             final int finalI = i;
+
             image[i].setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    nextQues(finalI);
+                    if(disable==0){
+                     nextQues(finalI);
+                    }
                 }
             });
         }
@@ -171,7 +175,7 @@ public class Level5_1 extends ActionBarActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-
+                            disable=1;
                             Vibrator v = (Vibrator)getSystemService(Context.VIBRATOR_SERVICE);
                             if(image_no==rand_array_sound.get(correctans)) {
                                 image[rand_array_sound.get(correctans)].setColorFilter(Color.argb(255, 0, 255, 0));
@@ -258,7 +262,7 @@ public class Level5_1 extends ActionBarActivity {
 
                                 display();
                             }
-
+                            disable=0;
                         }
                     });
                 }
