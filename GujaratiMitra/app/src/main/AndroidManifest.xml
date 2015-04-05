@@ -104,6 +104,12 @@
             android:screenOrientation="landscape" >
         </activity>
         <activity
+            android:name=".Level12_1"
+            android:label="level12_1"
+            android:screenOrientation="landscape" >
+        </activity>
+
+        <activity
             android:name=".Level14_3"
             android:label="@string/title_activity_level14_2"
             android:screenOrientation="landscape" >
@@ -124,8 +130,19 @@
         <activity
             android:name=".Level20_1"
             android:label="@string/title_activity_level20_1"
-            android:screenOrientation="landscape" >
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Level20_2"
+            android:label="@string/title_activity_level20_2"
+            android:screenOrientation="landscape">
         </activity>
+        <activity
+            android:name=".Level15_3"
+            android:label="level15_3"
+            android:screenOrientation="landscape">
+        </activity>
+
+
     </application>
 
 </manifest>

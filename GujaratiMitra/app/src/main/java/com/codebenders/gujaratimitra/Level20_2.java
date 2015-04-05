@@ -1,6 +1,5 @@
 package com.codebenders.gujaratimitra;
 
-import android.os.Environment;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
@@ -12,27 +11,22 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 
-public class Level12_1 extends ActionBarActivity {
-
+public class Level20_2 extends ActionBarActivity {
     private static final int NUM_PAGES = 5;
-    private ViewPager mPager, mPager_1;
+    private ViewPager mPager;
     private PagerAdapter mPagerAdapter;
     private ImageView leftArrow;
     private ImageView rightArrow;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_level12_1);
+        setContentView(R.layout.activity_level20_2);
 
         mPager = (ViewPager) findViewById(R.id.pager_1);
         mPagerAdapter = new SimplePagerAdapter();
         mPager.setAdapter(mPagerAdapter);
         mPager.setOffscreenPageLimit(5);
-        final ImageView v1 = (ImageView) findViewById(R.id.imageView_12_1);
-        Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l12/1/"+"img_12_1.jpg");
-        //v1.setImageResource(R.drawable.img_12_1);
-
-
         leftArrow = (ImageView) findViewById(R.id.imageView);
         rightArrow = (ImageView) findViewById(R.id.imageView1);
         leftArrow.setOnClickListener(new View.OnClickListener() {
@@ -65,74 +59,49 @@ public class Level12_1 extends ActionBarActivity {
                     rightArrow.setVisibility(View.VISIBLE);
                 }
             }
+
             @Override
             public void onPageScrollStateChanged(int i) {
 
             }
         });
-
-
     }
 
-
-
     class SimplePagerAdapter extends PagerAdapter{
-        @Override
-        public int getCount() {
-            return NUM_PAGES;
-        }
+    public int getCount() {
+        return NUM_PAGES;
+    }
 
-        @Override
-        public boolean isViewFromObject(View view, Object o) {
-            return o == view;
-        }
+    @Override
+    public boolean isViewFromObject(View view, Object o) {
+        return o == view;
+    }
 
-        @Override
-        public Object instantiateItem(ViewGroup container, final int position) {
-            final View view = getLayoutInflater().inflate(R.layout.unit_layout_level_12_1, container, false);
+    public Object instantiateItem(ViewGroup container, final int position){
 
-            final ImageView v2 = (ImageView) view.findViewById(R.id.imageView_12_2);
+        final View view =getLayoutInflater().inflate(R.layout.unit_layout_level_20_2, container,false);
+        final ImageView v1 = (ImageView) view.findViewById(R.id.imageView_20_2_2);
 
 
 
-
-            switch(position) {
-                case 0:
-                    Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l12/1/"+"img_12_"+Integer.toString(position+2)+".png");
-                    //v2.setImageResource(R.drawable.img_12_2);
-                    break;
-                case 1:
-                    Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l12/1/"+"img_12_"+Integer.toString(position+2)+".png");
-                    //v2.setImageResource(R.drawable.img_12_3);
-                    break;
-                case 2:
-                    Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l12/1/"+"img_12_"+Integer.toString(position+2)+".png");
-                    //v2.setImageResource(R.drawable.img_12_4);
-                    break;
-                case 3:
-                    Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l12/1/"+"img_12_"+Integer.toString(position+2)+".png");
-                    //v2.setImageResource(R.drawable.img_12_5);
-                    break;
-                case 4:
-                    Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l12/1/"+"img_12_"+Integer.toString(position+2)+".png");
-                    //v2.setImageResource(R.drawable.img_12_6);
-                    break;
+        v1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
             }
+        });
 
 
+        v1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+            }
+        });
 
-
-            container.addView(view);
-            return view;
-        }
-
-        @Override
-        public void destroyItem(ViewGroup container, int position, Object object) {
-            container.removeView((View) object);
-        }
-
+        container.addView(view);
+        return view;
+    }
 
     }
 
@@ -140,7 +109,7 @@ public class Level12_1 extends ActionBarActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_level12_1, menu);
+        getMenuInflater().inflate(R.menu.menu_level20_2, menu);
         return true;
     }
 
