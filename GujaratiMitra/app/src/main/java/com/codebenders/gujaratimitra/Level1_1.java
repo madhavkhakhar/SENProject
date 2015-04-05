@@ -33,6 +33,7 @@ public class Level1_1 extends ActionBarActivity {
 
         i=getIntent();
         levelNo=i.getExtras().getInt("level_no");
+
         if(levelNo == 1){
             imagePath = Environment.getExternalStorageDirectory()+"/GujaratiMitra/l1/1/";
             NUM_PAGES = 5;
