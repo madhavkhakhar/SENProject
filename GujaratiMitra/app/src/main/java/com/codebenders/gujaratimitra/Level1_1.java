@@ -99,15 +99,15 @@ public class Level1_1 extends ActionBarActivity {
         @Override
         public Object instantiateItem(ViewGroup container, final int position) {
             final View view = getLayoutInflater().inflate(R.layout.unit_layout_level4_1, container, false);
-<<<<<<< Updated upstream
+
             final ImageView v1 = (ImageView) view.findViewById(R.id.imageView7);
 
-            switch(position) {
-=======
+ /*           switch(position) {
+
            final ImageView v1 = (ImageView) view.findViewById(R.id.imageView7);
             Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l1/1/"+"img1_"+Integer.toString(position+1)+".jpg");
            /* switch(position) {
->>>>>>> Stashed changes
+
                 case 0:
                     v1.setImageResource(R.drawable.img1_1);
                     question.setText("Question");
