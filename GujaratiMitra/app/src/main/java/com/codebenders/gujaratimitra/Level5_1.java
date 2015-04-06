@@ -1,6 +1,7 @@
 package com.codebenders.gujaratimitra;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Point;
 import android.media.MediaPlayer;
@@ -34,6 +35,8 @@ public class Level5_1 extends ActionBarActivity {
     final List<Integer> rand_array_sound=new ArrayList<Integer>();
     final List<Integer> rand_array=new ArrayList<Integer>(6);
     RelativeLayout al;
+    private Intent i;
+    private int levelNo;
     ImageView speaker;
     public int disable=0;
     final ArrayList<Integer> disabled=new ArrayList<Integer>();
@@ -46,6 +49,9 @@ public class Level5_1 extends ActionBarActivity {
 
         al = new RelativeLayout(this);
         setContentView(al);
+
+        i=getIntent();
+        levelNo=i.getExtras().getInt("LevelNo");
 
         image = new ImageView[5];
 
@@ -61,7 +67,7 @@ public class Level5_1 extends ActionBarActivity {
         for (int i = 0; i < numbers[rand_array.get(count)-1]; i++) {
             //resources[i] = getResources().getIdentifier("q" + String.valueOf(rand_array.get(count)) + "_" + String.valueOf(i + 1), "drawable", getPackageName());
             image[i]=new ImageView(this);
-            Util.setImageFromPath(image[i],Environment.getExternalStorageDirectory() + "/GujaratiMitra/l5/1/q" + String.valueOf(rand_array.get(count)) + "_" + String.valueOf(i + 1) + ".png");
+            Util.setImageFromPath(image[i],Environment.getExternalStorageDirectory() + "/GujaratiMitra/l"+String.valueOf(levelNo)+"/1/img_e" + String.valueOf(rand_array.get(count)) + "_" + String.valueOf(i + 1) + ".png");
             //System.out.println("HERE" + resources[i]);
         }
 
@@ -239,7 +245,7 @@ public class Level5_1 extends ActionBarActivity {
                                 disabled.clear();
                                 //final int[] resources=new int[5];
                                 for(int i=0;i<numbers[rand_array.get(count)-1];i++){
-                                   Util.setImageFromPath(image[i],Environment.getExternalStorageDirectory() + "/GujaratiMitra/l5/1/q" + String.valueOf(rand_array.get(count))+"_"+String.valueOf(i+1) + ".png");
+                                   Util.setImageFromPath(image[i],Environment.getExternalStorageDirectory() + "/GujaratiMitra/l"+String.valueOf(levelNo)+"/1/img_e" + String.valueOf(rand_array.get(count))+"_"+String.valueOf(i+1) + ".png");
                                    // resources[i]= getResources().getIdentifier("q"+String.valueOf(rand_array.get(count))+"_"+String.valueOf(i+1), "drawable", getPackageName());
                                    // System.out.println("HERE"+resources[i]);
                                 }
