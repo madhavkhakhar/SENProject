@@ -8,7 +8,9 @@ import android.os.Handler;
 import android.os.Vibrator;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 
@@ -125,7 +127,7 @@ public class Level2_3 extends ActionBarActivity {
                         public void run() {
 
                             Vibrator v = (Vibrator)getSystemService(Context.VIBRATOR_SERVICE);
-                            switch (currentQueIndex%5) {
+                            switch (currentQueIndex) {
                                 case 0:
                                     if (selected1 && selected2) {
                                         toast.setView(green_tick);
@@ -285,7 +287,7 @@ public class Level2_3 extends ActionBarActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            currentQueIndex = (currentQueIndex+1)%5;
+                            currentQueIndex = (currentQueIndex+1);
                             selected1 = selected2 = selected3 = selected4 = false;
                             totalSelected = 0;
 
@@ -297,6 +299,21 @@ public class Level2_3 extends ActionBarActivity {
                             v2.setBackgroundColor(Color.WHITE);
                             v3.setBackgroundColor(Color.WHITE);
                             v4.setBackgroundColor(Color.WHITE);
+                            if(currentQueIndex>=NUM_PAGES-1){
+                                LinearLayout l = new LinearLayout(getApplicationContext());
+                                setContentView(l);
+                                ImageView iv = new ImageView(getApplicationContext());
+                                LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+                                iv.setLayoutParams(lp);
+                                iv.setImageResource(R.drawable.nextlevel);
+                                iv.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        finish();
+                                    }
+                                });
+                                l.addView(iv);
+                            }
                         }
                     });
                 }

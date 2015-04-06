@@ -8,11 +8,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 
 public class Level4_1 extends ActionBarActivity {
 
-    private static final int NUM_PAGES = 5;
+    private static final int NUM_PAGES = 6;
     private ViewPager mPager;
     private PagerAdapter mPagerAdapter;
     private ImageView leftArrow;
@@ -52,11 +53,27 @@ public class Level4_1 extends ActionBarActivity {
             public void onPageSelected(int i) {
                 if (i == 0)
                     leftArrow.setVisibility(View.INVISIBLE);
-                else if (i == 4)
+                else if (i == NUM_PAGES-1)
                     rightArrow.setVisibility(View.INVISIBLE);
                 else {
                     leftArrow.setVisibility(View.VISIBLE);
                     rightArrow.setVisibility(View.VISIBLE);
+                }
+
+                if(i==NUM_PAGES-1){
+                    LinearLayout l = new LinearLayout(getApplicationContext());
+                    setContentView(l);
+                    ImageView iv = new ImageView(getApplicationContext());
+                    LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+                    iv.setLayoutParams(lp);
+                    iv.setImageResource(R.drawable.nextlevel);
+                    iv.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            finish();
+                        }
+                    });
+                    l.addView(iv);
                 }
             }
 
@@ -87,7 +104,7 @@ public class Level4_1 extends ActionBarActivity {
             ImageView v3 = (ImageView) view.findViewById(R.id.imageView3);
             ImageView v4 = (ImageView) view.findViewById(R.id.imageView4);
 
-            if (position != 4) {
+            if (position < NUM_PAGES-2) {
                 Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/1/img_" + Integer.toString(2 * position) + ".png");
                 Util.setImageFromPath(v3, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/1/img_" + Integer.toString((2 * position) + 1) + ".png");
                 Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/1/img_" + Integer.toString(2 * position) + "_n.png");
@@ -96,7 +113,7 @@ public class Level4_1 extends ActionBarActivity {
                 //v3.setTag(Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/1/aud_" + Integer.toString((2 * position) + 1) + ".mp3");
                 v1.setTag(Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/1/aud_0.mp3");
                 v3.setTag(Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/1/aud_1.mp3");
-            } else {
+            } else if(position==NUM_PAGES-2){
                 Util.setImageFromPath(v1, Environment.getExternalStorageDirectory()+"/GujaratiMitra/l4/1/img_8.png");
                 Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/1/img_8_n.png");
                 v1.setTag(Environment.getExternalStorageDirectory()+"/GujaratiMitra/l4/1/aud_0.mp3");
