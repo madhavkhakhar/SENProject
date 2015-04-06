@@ -65,6 +65,7 @@ public class Level5_2 extends ActionBarActivity {
                     leftArrow.setVisibility(View.VISIBLE);
                     rightArrow.setVisibility(View.VISIBLE);
                 }
+
             }
 
             @Override

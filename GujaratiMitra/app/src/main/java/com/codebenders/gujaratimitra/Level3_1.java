@@ -11,7 +11,9 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,6 +28,7 @@ import java.util.Random;
 
 public class Level3_1 extends ActionBarActivity {
     protected static int count=0;
+    private int NUM_QUE=50;
     protected static int correctans=2;
     public static int score=0;
     public MediaPlayer mp;
@@ -63,18 +66,29 @@ public class Level3_1 extends ActionBarActivity {
         for(int i=0;i<4;i++){
             if(i==correctans){
                 Util.setImageFromPath(image[i], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l3/1/d" + Integer.toString(rand_array.get(count)) + ".png");
-                //Util.setImageFromPath(v3, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/1/img_1" + Integer.toString((2 * position) + 1) + ".png");
-                //Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/1/img_" + Integer.toString(2 * position) + "_n.png");
-                //Util.setImageFromPath(v4, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/1/img_" + Integer.toString((2 * position) + 1) + "_n.png");
             }
             else{
-               // image[i].setImageResource(resource_s);
                 Util.setImageFromPath(image[i], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l3/1/s" + Integer.toString(rand_array.get(count)) + ".png");
 
             }
         }
 
 //set the listener
+        if(count==NUM_QUE-1){
+            LinearLayout l = new LinearLayout(getApplicationContext());
+            setContentView(l);
+            ImageView iv = new ImageView(getApplicationContext());
+            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+            iv.setLayoutParams(lp);
+            iv.setImageResource(R.drawable.nextlevel);
+            iv.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    finish();
+                }
+            });
+            l.addView(iv);
+        }
         image[0].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
