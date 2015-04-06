@@ -27,7 +27,7 @@ public class Level1_2 extends Activity {
     MyView mview;
     BitmapFactory.Options options;
 
-    private static final int NUM_PAGES = 19;
+    private static final int NUM_PAGES = 20;
     private ViewPager mPager;
     private PagerAdapter mAdapter;
     private ImageView leftArrow;
