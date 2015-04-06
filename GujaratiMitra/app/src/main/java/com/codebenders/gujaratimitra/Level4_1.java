@@ -61,19 +61,7 @@ public class Level4_1 extends ActionBarActivity {
                 }
 
                 if(i==NUM_PAGES-1){
-                    LinearLayout l = new LinearLayout(getApplicationContext());
-                    setContentView(l);
-                    ImageView iv = new ImageView(getApplicationContext());
-                    LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-                    iv.setLayoutParams(lp);
-                    iv.setImageResource(R.drawable.nextlevel);
-                    iv.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            finish();
-                        }
-                    });
-                    l.addView(iv);
+                    Util.setNextLevel(Level4_1.this);
                 }
             }
 

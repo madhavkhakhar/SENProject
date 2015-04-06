@@ -207,19 +207,7 @@ public class Level4_2 extends ActionBarActivity {
                             q[i].setVisibility(View.INVISIBLE);
                         }
                         if(queIndex>=NUM_QUE){
-                            LinearLayout l = new LinearLayout(getApplicationContext());
-                            setContentView(l);
-                            ImageView iv = new ImageView(getApplicationContext());
-                            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-                            iv.setLayoutParams(lp);
-                            iv.setImageResource(R.drawable.nextlevel);
-                            iv.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    finish();
-                                }
-                            });
-                            l.addView(iv);
+                           Util.setNextLevel(Level4_2.this);
                         }else{
                             noOfQues = questions[queIndex];
                             for(int j=0;j<noOfQues;j++){
