@@ -35,10 +35,10 @@ public class Level1_1 extends ActionBarActivity {
 
         if(levelNo == 1){
             imagePath = Environment.getExternalStorageDirectory()+"/GujaratiMitra/l1/1/";
-            NUM_PAGES = 5;
+            NUM_PAGES = 6;
         }else if(levelNo == 17){
             imagePath = Environment.getExternalStorageDirectory()+"/GujaratiMitra/l17/1/";
-            NUM_PAGES = 19;
+            NUM_PAGES = 20;
         }
         mPager = (ViewPager) findViewById(R.id.pager_1);
         mPagerAdapter = new SimplePagerAdapter();
@@ -72,20 +72,18 @@ public class Level1_1 extends ActionBarActivity {
             public void onPageSelected(int i) {
                 if (i == 0)
                     leftArrow.setVisibility(View.INVISIBLE);
-                else if (i == NUM_PAGES-1)
+                else if (i == NUM_PAGES-1){
                     rightArrow.setVisibility(View.INVISIBLE);
+                    question.setVisibility(View.INVISIBLE);
+                }
                 else {
                     leftArrow.setVisibility(View.VISIBLE);
                     rightArrow.setVisibility(View.VISIBLE);
                 }
-                //if (question.getText().equals("Image")) {
-                    question.setText("Question");
-
-               // }else{
-                    ImageView imageView = (ImageView)mPager.getChildAt(i).findViewById(R.id.imageView7);
-                    Util.setImageFromPath(imageView, imagePath + "img_" + Integer.toString(i + 1) + ".png");
-                    mPager.getChildAt(i).invalidate();
-               //}
+                question.setText("Question");
+                ImageView imageView = (ImageView)mPager.getChildAt(i).findViewById(R.id.imageView7);
+                Util.setImageFromPath(imageView, imagePath + "img_" + Integer.toString(i + 1) + ".png");
+                mPager.getChildAt(i).invalidate();
 
             }
 
@@ -121,36 +119,6 @@ public class Level1_1 extends ActionBarActivity {
             final ImageView v1 = (ImageView) view.findViewById(R.id.imageView7);
             Util.setImageFromPath(v1, imagePath+"img_"+Integer.toString(position+1)+".png");
 
- /*           switch(position) {
-
-           final ImageView v1 = (ImageView) view.findViewById(R.id.imageView7);
-            Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l1/1/"+"img1_"+Integer.toString(position+1)+".jpg");
-           /* switch(position) {
-
-                case 0:
-                    v1.setImageResource(R.drawable.img1_1);
-                    question.setText("Question");
-                    break;
-                case 1:
-                    question.setText("Question");
-                    v1.setImageResource(R.drawable.img1_2);
-                    break;
-                case 2:
-                    question.setText("Question");
-                    v1.setImageResource(R.drawable.img1_3);
-                    break;
-                case 3:
-                    question.setText("Question");
-                    v1.setImageResource(R.drawable.img1_4);
-                    break;
-                case 4:
-                    question.setText("Question");
-                    v1.setImageResource(R.drawable.img1_5);
-                    break;
-            }*/
-
-
-
             question.setOnClickListener(new View.OnClickListener(){
 
                 public void onClick(View v) {
@@ -173,15 +141,9 @@ public class Level1_1 extends ActionBarActivity {
             v1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
-                }
-            });
-
-
-            v1.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
+                    if(mPager.getCurrentItem()==NUM_PAGES-1){
+                        finish();
+                    }
                 }
             });
 
