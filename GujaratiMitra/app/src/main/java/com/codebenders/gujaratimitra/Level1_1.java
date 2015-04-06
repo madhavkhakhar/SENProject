@@ -12,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 
 public class Level1_1 extends ActionBarActivity {
@@ -118,7 +117,7 @@ public class Level1_1 extends ActionBarActivity {
 
         @Override
         public Object instantiateItem(ViewGroup container, final int position) {
-            final View view = getLayoutInflater().inflate(R.layout.unit_layout_level4_1, container, false);
+            final View view = getLayoutInflater().inflate(R.layout.unit_layout_level1_1, container, false);
             final ImageView v1 = (ImageView) view.findViewById(R.id.imageView7);
             Util.setImageFromPath(v1, imagePath+"img_"+Integer.toString(position+1)+".png");
 
