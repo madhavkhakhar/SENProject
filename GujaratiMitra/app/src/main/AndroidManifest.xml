@@ -130,10 +130,6 @@
             android:name=".Level9_2"
             android:label="@string/title_activity_level9_2"
             android:screenOrientation="landscape">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 
