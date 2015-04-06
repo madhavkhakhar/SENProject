@@ -191,6 +191,9 @@ public class Level16_1 extends ActionBarActivity {
                             a[j].setVisibility(View.VISIBLE);
                             //a[j].setColorFilter(Color.argb(255, 0, 0, 0));
                         }
+                        if(qIndex>=modArray[sublevel-1]){
+                            Util.setNextLevel(Level16_1.this);
+                        }
                     }
                 });
             }
