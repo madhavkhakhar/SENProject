@@ -79,8 +79,8 @@ public class Level18_3 extends ActionBarActivity {
         }
 
         public Object instantiateItem(ViewGroup container, final int position){
-            final View view =getLayoutInflater().inflate(R.layout.unit_layout_level4_1, container,false);
-            final ImageView v1 = (ImageView) view.findViewById(R.id.imgque18_3);
+            final View view =getLayoutInflater().inflate(R.layout.unit_layout_level1_1, container,false);
+            final ImageView v1 = (ImageView) view.findViewById(R.id.imageView7);
             Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l18/3/"+"img_e1_"+Integer.toString(position+1)+".png");
 
             v1.setOnClickListener(new View.OnClickListener() {
