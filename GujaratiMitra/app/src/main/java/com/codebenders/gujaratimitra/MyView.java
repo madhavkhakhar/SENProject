@@ -5,16 +5,20 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.DashPathEffect;
 import android.graphics.Paint;
+import android.graphics.Point;
 import android.graphics.PointF;
 import android.util.AttributeSet;
+import android.view.Display;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
 
 import java.util.ArrayList;
 
 public class MyView extends View {
 
-    private final int RADIUS = 80;
+    private float RADIUS = 80;
+    float scaleFactor=1;
     Paint paint;
     float cx, cy, prevx, prevy;
     boolean first = true, disable = false, upDisable = false;
@@ -22,6 +26,16 @@ public class MyView extends View {
 
     public MyView(Context context, AttributeSet attrs) {
         super(context, attrs);
+        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        Display display = wm.getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        float width = size.x;
+       // int height = size.y;
+        scaleFactor = width/1794.0f;
+        System.out.println("scale"+scaleFactor);
+
+        RADIUS*=scaleFactor;
         paint = new Paint(Paint.DITHER_FLAG);
         paint.setAntiAlias(true);
         paint.setColor(Color.RED);
@@ -29,9 +43,9 @@ public class MyView extends View {
         paint.setStrokeJoin(Paint.Join.ROUND);
         paint.setStrokeCap(Paint.Cap.ROUND);
         DashPathEffect dashPathEffect = new DashPathEffect(
-                new float[]{40, 40}, (float) 1.0);
+                new float[]{RADIUS/2, RADIUS/2}, (float) 1.0);
         paint.setPathEffect(dashPathEffect);
-        paint.setStrokeWidth(12);
+        paint.setStrokeWidth(12*scaleFactor);
     }
 
     @Override
