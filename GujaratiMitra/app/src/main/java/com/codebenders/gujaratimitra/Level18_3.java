@@ -12,8 +12,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 
-public class Level20_2 extends ActionBarActivity {
-    private static final int NUM_PAGES = 10;
+public class Level18_3 extends ActionBarActivity {
+    private static final int NUM_PAGES = 6;
     private ViewPager mPager;
     private PagerAdapter mPagerAdapter;
     private ImageView leftArrow;
@@ -22,9 +22,8 @@ public class Level20_2 extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_level20_2);
-
-        mPager = (ViewPager) findViewById(R.id.pager_20_2);
+        setContentView(R.layout.activity_level18_3);
+        mPager = (ViewPager) findViewById(R.id.pager_18_3);
         mPagerAdapter = new SimplePagerAdapter();
         mPager.setAdapter(mPagerAdapter);
         mPager.setOffscreenPageLimit(10);
@@ -53,7 +52,7 @@ public class Level20_2 extends ActionBarActivity {
             public void onPageSelected(int i) {
                 if (i == 0)
                     leftArrow.setVisibility(View.INVISIBLE);
-                else if (i == 9)
+                else if (i == NUM_PAGES)
                     rightArrow.setVisibility(View.INVISIBLE);
                 else {
                     leftArrow.setVisibility(View.VISIBLE);
@@ -66,51 +65,40 @@ public class Level20_2 extends ActionBarActivity {
 
             }
         });
+
     }
 
     class SimplePagerAdapter extends PagerAdapter{
-    public int getCount() {
-        return NUM_PAGES;
+        public int getCount() {
+            return NUM_PAGES;
+        }
+
+        @Override
+        public boolean isViewFromObject(View view, Object o) {
+            return o == view;
+        }
+
+        public Object instantiateItem(ViewGroup container, final int position){
+            final View view =getLayoutInflater().inflate(R.layout.unit_layout_level4_1, container,false);
+            final ImageView v1 = (ImageView) view.findViewById(R.id.imgque18_3);
+            Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l18/3/"+"img_e1_"+Integer.toString(position+1)+".png");
+
+            v1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                }
+            });
+            container.addView(view);
+            return view;
+        }
+
     }
-
-    @Override
-    public boolean isViewFromObject(View view, Object o) {
-        return o == view;
-    }
-
-    public Object instantiateItem(ViewGroup container, final int position){
-
-        final View view =getLayoutInflater().inflate(R.layout.unit_layout_level_20_2, container,false);
-        final ImageView v1 = (ImageView) view.findViewById(R.id.imageView_20_2_2);
-        final ImageView v2 = (ImageView) view.findViewById(R.id.imageView_20_2_1);
-        Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l20/2/"+"img_20_2_"+Integer.toString(position+1)+".png");
-        Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l20/2/"+"img_20_2_0.png");
-
-        v1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
-
-        v1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
-        container.addView(view);
-        return view;
-    }
-    }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_level20_2, menu);
+        getMenuInflater().inflate(R.menu.menu_level18_3, menu);
         return true;
     }
 

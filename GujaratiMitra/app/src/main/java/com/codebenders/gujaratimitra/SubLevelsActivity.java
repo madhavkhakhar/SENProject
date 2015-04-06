@@ -239,7 +239,8 @@ public class SubLevelsActivity extends ActionBarActivity {
                             startActivity(i);
                         }
                         else if(position==2){
-
+                            i = new Intent(SubLevelsActivity.this, Level18_3.class);
+                            startActivity(i);
                         }
                         break;
                     case 20:
