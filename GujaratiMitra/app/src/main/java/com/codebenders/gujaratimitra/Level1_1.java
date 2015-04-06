@@ -80,10 +80,12 @@ public class Level1_1 extends ActionBarActivity {
                     leftArrow.setVisibility(View.VISIBLE);
                     rightArrow.setVisibility(View.VISIBLE);
                 }
-                question.setText("Question");
-                ImageView imageView = (ImageView)mPager.getChildAt(i).findViewById(R.id.imageView7);
-                Util.setImageFromPath(imageView, imagePath + "img_" + Integer.toString(i + 1) + ".png");
-                mPager.getChildAt(i).invalidate();
+                if(i!=NUM_PAGES-1){
+                    question.setText("Question");
+                    ImageView imageView = (ImageView)mPager.getChildAt(i).findViewById(R.id.imageView7);
+                    Util.setImageFromPath(imageView, imagePath + "img_" + Integer.toString(i + 1) + ".png");
+                    mPager.getChildAt(i).invalidate();
+                }
 
             }
 
@@ -116,6 +118,19 @@ public class Level1_1 extends ActionBarActivity {
         @Override
         public Object instantiateItem(ViewGroup container, final int position) {
             final View view = getLayoutInflater().inflate(R.layout.unit_layout_level1_1, container, false);
+
+            if(position==NUM_PAGES-1){
+                ImageView iv = new ImageView(getApplicationContext());
+                iv.setImageResource(R.drawable.nextlevel);
+                iv.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        finish();
+                    }
+                });
+                container.addView(iv);
+                return iv;
+            }
             final ImageView v1 = (ImageView) view.findViewById(R.id.imageView7);
             Util.setImageFromPath(v1, imagePath+"img_"+Integer.toString(position+1)+".png");
 
@@ -133,16 +148,6 @@ public class Level1_1 extends ActionBarActivity {
                         //v1.setImageResource(R.drawable.img1_1_n);
                         Util.setImageFromPath(v1, imagePath + "que_" + Integer.toString(mPager.getCurrentItem() + 1) + ".png");
                         question.setText("Image");
-                    }
-                }
-            });
-
-
-            v1.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if(mPager.getCurrentItem()==NUM_PAGES-1){
-                        finish();
                     }
                 }
             });
