@@ -20,6 +20,7 @@ import java.util.Collections;
 public class Level2_1 extends ActionBarActivity {
 
     private static final int NUM_PAGES = 4;
+    private static final int NUM_QUE=16;
     private ViewPager mPager;
     private PagerAdapter mAdapter;
     private ImageView leftArrow;
@@ -53,7 +54,7 @@ public class Level2_1 extends ActionBarActivity {
         queImage = (ImageView) findViewById(R.id.que_image);
         Util.setImageFromPath(queImage, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l2/1/img_" + queImageIndex.get(currentQueIndex) + ".png");
         queImage.setTag(queImageIndex.get(currentQueIndex));
-        currentQueIndex = (currentQueIndex+1)%16;
+        currentQueIndex = (currentQueIndex+1);
 
         leftArrow = (ImageView) findViewById(R.id.imageView);
         rightArrow = (ImageView) findViewById(R.id.imageView1);
@@ -80,8 +81,9 @@ public class Level2_1 extends ActionBarActivity {
             public void onPageSelected(int i) {
                 if (i == 0)
                     leftArrow.setVisibility(View.INVISIBLE);
-                else if (i == 3)
+                else if (i == NUM_PAGES-1){
                     rightArrow.setVisibility(View.INVISIBLE);
+                }
                 else {
                     leftArrow.setVisibility(View.VISIBLE);
                     rightArrow.setVisibility(View.VISIBLE);
@@ -130,7 +132,6 @@ public class Level2_1 extends ActionBarActivity {
                 @Override
                 public void onClick(View v) {
                     if (!sleeping) {
-                        System.out.println("clicked!");
                         loadNextImage(v1.getTag().toString());
                     }
                 }
@@ -139,7 +140,6 @@ public class Level2_1 extends ActionBarActivity {
                 @Override
                 public void onClick(View v) {
                     if (!sleeping) {
-                        System.out.println("clicked!!");
                         loadNextImage(v2.getTag().toString());
                     }
                 }
@@ -148,7 +148,6 @@ public class Level2_1 extends ActionBarActivity {
                 @Override
                 public void onClick(View v) {
                     if (!sleeping) {
-                        System.out.println("clicked!!!");
                         loadNextImage(v3.getTag().toString());
                     }
                 }
@@ -157,7 +156,6 @@ public class Level2_1 extends ActionBarActivity {
                 @Override
                 public void onClick(View v) {
                     if (!sleeping) {
-                        System.out.println("clicked!!!!");
                         loadNextImage(v4.getTag().toString());
                     }
                 }
@@ -223,7 +221,20 @@ public class Level2_1 extends ActionBarActivity {
                         public void run() {
                             Util.setImageFromPath(queImage, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l2/1/img_" + queImageIndex.get(currentQueIndex) + ".png");
                             queImage.setTag(queImageIndex.get(currentQueIndex));
-                            currentQueIndex = (currentQueIndex+1)%16;
+                            currentQueIndex = (currentQueIndex+1);
+                            if(currentQueIndex>=NUM_QUE-1){
+                                queImage.setImageResource(R.drawable.nextlevel);
+                                mPager.setVisibility(View.INVISIBLE);
+                                queStatement.setVisibility(View.INVISIBLE);
+                                leftArrow.setVisibility(View.INVISIBLE);
+                                rightArrow.setVisibility(View.INVISIBLE);
+                                queImage.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        finish();
+                                    }
+                                });
+                            }
                         }
                     });
                 }
