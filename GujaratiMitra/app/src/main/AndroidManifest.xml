@@ -55,7 +55,6 @@
             android:name=".HomePage"
             android:label="@string/app_name"
             android:screenOrientation="landscape" >
-
         </activity>
         <activity
             android:name=".profile.ProfileActivity"
@@ -125,8 +124,17 @@
         <activity
             android:name=".Level19_1"
             android:label="@string/title_activity_level19"
+            android:screenOrientation="landscape" >
+        </activity>
+        <activity
+            android:name=".Level9_2"
+            android:label="@string/title_activity_level9_2"
             android:screenOrientation="landscape">
-            </activity>
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
