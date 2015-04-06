@@ -21,6 +21,7 @@ import static android.R.color.transparent;
 
 public class Level14_3 extends ActionBarActivity {
     private ImageView queImg;
+    private int NUM_QUE=10;
     private LinearLayout l1;
     private Button submitButton;
     private int currentQueIndex;
@@ -201,7 +202,10 @@ public class Level14_3 extends ActionBarActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            currentQueIndex = (currentQueIndex+1)%10;
+                            currentQueIndex = (currentQueIndex+1);
+                            if(currentQueIndex>=NUM_QUE){
+                                Util.setNextLevel(Level14_3.this);
+                            }
 
 //                            v1.setBackgroundColor(transparent);
 //                            v2.setBackgroundColor(transparent);

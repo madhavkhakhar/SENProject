@@ -13,7 +13,7 @@ import android.widget.ImageView;
 
 
 public class Level18_3 extends ActionBarActivity {
-    private static final int NUM_PAGES = 6;
+    private static final int NUM_PAGES = 7;
     private ViewPager mPager;
     private PagerAdapter mPagerAdapter;
     private ImageView leftArrow;
@@ -57,6 +57,9 @@ public class Level18_3 extends ActionBarActivity {
                 else {
                     leftArrow.setVisibility(View.VISIBLE);
                     rightArrow.setVisibility(View.VISIBLE);
+                }
+                if(i>=NUM_PAGES-1){
+                    Util.setNextLevel(Level18_3.this);
                 }
             }
 
