@@ -152,7 +152,7 @@
         </activity>
         <activity
             android:name=".Level13_2"
-            android:label="@string/title_activity_level13_1"
+            android:label="level13_2"
             android:screenOrientation="landscape">
         </activity>
     </application>

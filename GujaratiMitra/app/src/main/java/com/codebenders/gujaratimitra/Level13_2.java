@@ -30,6 +30,7 @@ public class Level13_2 extends ActionBarActivity {
     private int levelNo;
     private int queNum;
     private ImageView speaker;
+    private boolean sleeping;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +38,7 @@ public class Level13_2 extends ActionBarActivity {
         setContentView(R.layout.activity_level13_2);
         i=getIntent();
         queNum = 1;
+        sleeping  = false;
         levelNo=i.getExtras().getInt("LevelNo");
         mPager = (ViewPager) findViewById(R.id.pager);
         mAdapter = new SimplePagerAdapter();
@@ -114,10 +116,10 @@ public class Level13_2 extends ActionBarActivity {
             final ImageView v3 = (ImageView) view.findViewById(R.id.imageView3);
             final ImageView v4 = (ImageView) view.findViewById(R.id.imageView4);
 
-            Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l"+String.valueOf(levelNo)+"/2/"+"img_" + Integer.toString((4 * position) + 1) +".png");
-            Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l"+String.valueOf(levelNo)+"/2/"+"img_" + Integer.toString((4 * position) + 2) + ".png");
-            Util.setImageFromPath(v3, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l"+String.valueOf(levelNo)+"/2/"+"img_" + Integer.toString((4 * position) + 3) + ".png");
-            Util.setImageFromPath(v4, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l"+String.valueOf(levelNo)+"/2/"+"img_" + Integer.toString((4 * position) + 4) + ".png");
+            Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l13/2/"+"img_" + Integer.toString((4 * position) + 1) +".png");
+            Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l13/2/"+"img_" + Integer.toString((4 * position) + 2) + ".png");
+            Util.setImageFromPath(v3, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l13/2/"+"img_" + Integer.toString((4 * position) + 3) + ".png");
+            Util.setImageFromPath(v4, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l13/2/"+"img_" + Integer.toString((4 * position) + 4) + ".png");
 
             v1.setTag((4 * position) + 1);
             v2.setTag((4 * position) + 2);
@@ -127,25 +129,29 @@ public class Level13_2 extends ActionBarActivity {
             v1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    nextQues(v.getTag().toString());
+                    if (!sleeping)
+                       nextQues(v);
                 }
             });
-            v1.setOnClickListener(new View.OnClickListener() {
+            v2.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    nextQues(v.getTag().toString());
-                }
-            });
-            v1.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    nextQues(v.getTag().toString());
+                    if (!sleeping)
+                        nextQues(v);
                 }
             });
             v3.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    nextQues(v.getTag().toString());
+                    if (!sleeping)
+                        nextQues(v);
+                }
+            });
+            v4.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (!sleeping)
+                        nextQues(v);
                 }
             });
             container.addView(view);
@@ -158,7 +164,8 @@ public class Level13_2 extends ActionBarActivity {
         }
     }
 
-    public void nextQues(final String image_no){
+    public void nextQues(final View image){
+        System.out.println(image.getTag() + " " + Integer.toString(queNum));
         final ImageView green_tick=new ImageView(this);
         final ImageView red_cross=new ImageView(this);
 
@@ -172,10 +179,10 @@ public class Level13_2 extends ActionBarActivity {
                         @Override
                         public void run() {
                             Vibrator v = (Vibrator)getSystemService(Context.VIBRATOR_SERVICE);
-                            if(image_no.equals(Integer.toString(queNum))) {
+                            if(image.getTag().toString().equals(Integer.toString(queNum))) {
                                 toast.setView(green_tick);
                                 toast.show();
-
+                                image.setBackgroundResource(R.drawable.image_border_green);
                                 Handler handler = new Handler();
                                 handler.postDelayed(new Runnable() {
                                     @Override
@@ -187,7 +194,7 @@ public class Level13_2 extends ActionBarActivity {
                             else{
                                 toast.setView(red_cross);
                                 toast.show();
-
+                                image.setBackgroundResource(R.drawable.image_border_red);
                                 Handler handler = new Handler();
                                 handler.postDelayed(new Runnable() {
                                     @Override
@@ -199,11 +206,14 @@ public class Level13_2 extends ActionBarActivity {
                             }
                         }
                     });
+                    sleeping = true;
                     Thread.sleep(1000);
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            queNum = ((queNum + 1)%20)+1;
+                            image.setBackgroundResource(android.R.color.transparent);
+                            queNum = (queNum%20)+1;
+                            sleeping = false;
                             //play media for audio file
                         }
                     });
