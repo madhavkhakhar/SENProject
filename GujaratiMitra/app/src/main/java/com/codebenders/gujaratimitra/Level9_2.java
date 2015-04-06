@@ -274,6 +274,9 @@ public class Level9_2 extends ActionBarActivity {
             Util.setImageFromPath(queImage, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l9/2/img_c_" + queImageIndex.get(count) + ".png");
             queImage.setTag(10+queImageIndex.get(count));
         }
+        else{
+            Util.setNextLevel(Level9_2.this);
+        }
     }
 
 
