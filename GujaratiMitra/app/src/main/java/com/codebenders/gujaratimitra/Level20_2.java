@@ -1,5 +1,6 @@
 package com.codebenders.gujaratimitra;
 
+import android.os.Environment;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
@@ -12,7 +13,7 @@ import android.widget.ImageView;
 
 
 public class Level20_2 extends ActionBarActivity {
-    private static final int NUM_PAGES = 5;
+    private static final int NUM_PAGES = 10;
     private ViewPager mPager;
     private PagerAdapter mPagerAdapter;
     private ImageView leftArrow;
@@ -23,10 +24,10 @@ public class Level20_2 extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_level20_2);
 
-        mPager = (ViewPager) findViewById(R.id.pager_1);
+        mPager = (ViewPager) findViewById(R.id.pager_20_2);
         mPagerAdapter = new SimplePagerAdapter();
         mPager.setAdapter(mPagerAdapter);
-        mPager.setOffscreenPageLimit(5);
+        mPager.setOffscreenPageLimit(10);
         leftArrow = (ImageView) findViewById(R.id.imageView);
         rightArrow = (ImageView) findViewById(R.id.imageView1);
         leftArrow.setOnClickListener(new View.OnClickListener() {
@@ -52,7 +53,7 @@ public class Level20_2 extends ActionBarActivity {
             public void onPageSelected(int i) {
                 if (i == 0)
                     leftArrow.setVisibility(View.INVISIBLE);
-                else if (i == 4)
+                else if (i == 9)
                     rightArrow.setVisibility(View.INVISIBLE);
                 else {
                     leftArrow.setVisibility(View.VISIBLE);
@@ -81,8 +82,9 @@ public class Level20_2 extends ActionBarActivity {
 
         final View view =getLayoutInflater().inflate(R.layout.unit_layout_level_20_2, container,false);
         final ImageView v1 = (ImageView) view.findViewById(R.id.imageView_20_2_2);
-
-
+        final ImageView v2 = (ImageView) view.findViewById(R.id.imageView_20_2_1);
+        Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l20/2/"+"img_20_2_"+Integer.toString(position+1)+".png");
+        Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l20/2/"+"img_20_2_0.png");
 
         v1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,7 +104,6 @@ public class Level20_2 extends ActionBarActivity {
         container.addView(view);
         return view;
     }
-
     }
 
 

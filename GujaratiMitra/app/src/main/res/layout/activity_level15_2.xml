@@ -92,7 +92,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center|center_horizontal"
-            android:src="@drawable/img_1_7"
             android:id="@+id/hint"
             android:layout_weight="1"
             />
