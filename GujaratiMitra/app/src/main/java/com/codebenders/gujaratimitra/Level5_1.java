@@ -169,7 +169,7 @@ public class Level5_1 extends ActionBarActivity {
 
 
     public void nextQues(final int image_no){
-       final ImageView green_tick=new ImageView(this);
+        final ImageView green_tick=new ImageView(this);
         final ImageView red_cross=new ImageView(this);
 
         final Toast toast = new Toast(this);

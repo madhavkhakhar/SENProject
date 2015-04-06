@@ -143,13 +143,18 @@
         <activity
             android:name=".Level18_3"
             android:label="@string/title_activity_level18_3"
-            android:screenOrientation="landscape">
+            android:screenOrientation="landscape" >
         </activity>
         <activity
             android:name=".Level19_1"
             android:label="@string/title_activity_level19"
+            android:screenOrientation="landscape" >
+        </activity>
+        <activity
+            android:name=".Level13_2"
+            android:label="level13_2"
             android:screenOrientation="landscape">
-            </activity>
+        </activity>
     </application>
 
 </manifest>
