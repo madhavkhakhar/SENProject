@@ -49,7 +49,7 @@ public class Level14_3 extends ActionBarActivity {
 //        l4 = (LinearLayout) findViewById(R.id.linearLayout4);
         submitButton = (Button) findViewById(R.id.button_submit);
 
-        //Util.setImageFromPath(queImg, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/2/img_que.png");
+        Util.setImageFromPath(queImg, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/3/img_que.png");
         currentQueIndex = 0;
         pos = new int[4];
         for (int i = 0; i < 4; i++) {
@@ -225,22 +225,21 @@ public class Level14_3 extends ActionBarActivity {
 
     public void loadInitialImagesOfQuestion () {
         l1.setGravity(Gravity.LEFT);
-        ViewGroup.LayoutParams params;
+        LinearLayout.LayoutParams params;
         switch (numberOfLetters[currentQueIndex]) {
             case 2:
                 l1.removeAllViews();
                 cv1 = new CustomImageView(this, l1);
                 cv2 = new CustomImageView(this, l1);
                 Util.setImageFromPath(cv1.getImageView(), Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/3/" + imagePrefix[currentQueIndex][0] + Integer.toString(pos[0] + 1) + ".png");
-                Util.setImageFromPath(cv2.getImageView(), Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/3/" + imagePrefix[currentQueIndex][1] + Integer.toString(pos[1] + 1) + ".png");
-                l1.setGravity(Gravity.CENTER);
+                Util.setImageFromPath(cv2.getImageView(), Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/3/" + imagePrefix[currentQueIndex][1] + Integer.toString(pos[1] + 1) + ".png");                l1.setGravity(Gravity.CENTER);
 //                l1.setWeightSum(1.0f);
-                params = new ViewGroup.LayoutParams(0, 0);
-                cv1.setLayoutParams(params);
-                cv2.setLayoutParams(params);
-                l1.addView(cv1.getInflatedView());
-                l1.addView(cv2.getInflatedView());
-                l1.invalidate();
+//                params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT, 0.5f);
+//                cv1.setLayoutParams(params);
+//                cv2.setLayoutParams(params);
+//                l1.addView(cv1.getInflatedView());
+//                l1.addView(cv2.getInflatedView());
+//                l1.invalidate();
                 break;
             case 3:
                 l1.removeAllViews();
@@ -250,13 +249,17 @@ public class Level14_3 extends ActionBarActivity {
                 Util.setImageFromPath(cv1.getImageView(), Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/3/" + imagePrefix[currentQueIndex][0] + Integer.toString(pos[0]+1) + ".png");
                 Util.setImageFromPath(cv2.getImageView(), Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/3/" + imagePrefix[currentQueIndex][1] + Integer.toString(pos[1]+1) + ".png");
                 Util.setImageFromPath(cv3.getImageView(), Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/3/" + imagePrefix[currentQueIndex][2] + Integer.toString(pos[2] + 1) + ".png");
-                params = new ViewGroup.LayoutParams(0, 0);
-                cv1.setLayoutParams(params);
-                cv2.setLayoutParams(params);
-                cv3.setLayoutParams(params);
-                l1.addView(cv1.getInflatedView());
-                l1.addView(cv2.getInflatedView());
-                l1.addView(cv3.getInflatedView());
+//                params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT, 0.5f);
+//                ((LinearLayout.LayoutParams)cv1.getLayoutParams()).weight = 0.3f;
+//                ((LinearLayout.LayoutParams)cv2.getLayoutParams()).weight = 0.3f;
+//                ((LinearLayout.LayoutParams)cv3.getLayoutParams()).weight = 0.3f;
+//                cv1.setLayoutParams(params);
+//                cv2.setLayoutParams(params);
+//                cv3.setLayoutParams(params);
+//                l1.addView(cv1.getInflatedView());
+//                l1.addView(cv2.getInflatedView());
+//                l1.addView(cv3.getInflatedView());
+                l1.setGravity(Gravity.CENTER);
                 l1.invalidate();
                 break;
             case 4:
@@ -269,16 +272,17 @@ public class Level14_3 extends ActionBarActivity {
                 Util.setImageFromPath(cv2.getImageView(), Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/3/" + imagePrefix[currentQueIndex][1] + Integer.toString(pos[1]+1) + ".png");
                 Util.setImageFromPath(cv3.getImageView(), Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/3/" + imagePrefix[currentQueIndex][2] + Integer.toString(pos[2]+1) + ".png");
                 Util.setImageFromPath(cv4.getImageView(), Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/3/" + imagePrefix[currentQueIndex][3] + Integer.toString(pos[3]+1) + ".png");
-                params = new ViewGroup.LayoutParams(0, 0);
-                cv1.setLayoutParams(params);
-                cv2.setLayoutParams(params);
-                cv3.setLayoutParams(params);
-                cv4.setLayoutParams(params);
-                l1.addView(cv1.getInflatedView());
-                l1.addView(cv2.getInflatedView());
-                l1.addView(cv3.getInflatedView());
-                l1.addView(cv4.getInflatedView());
-                l1.invalidate();
+                l1.setGravity(Gravity.CENTER);
+//                params = new ViewGroup.LayoutParams(0, 0);
+//                cv1.setLayoutParams(params);
+//                cv2.setLayoutParams(params);
+//                cv3.setLayoutParams(params);
+//                cv4.setLayoutParams(params);
+//                l1.addView(cv1.getInflatedView());
+//                l1.addView(cv2.getInflatedView());
+//                l1.addView(cv3.getInflatedView());
+//                l1.addView(cv4.getInflatedView());
+//                l1.invalidate();
                 break;
             default:
                 break;
@@ -306,7 +310,7 @@ public class Level14_3 extends ActionBarActivity {
                 Util.setImageFromPath(cv1.getImageView(), Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/3/" + imagePrefix[currentQueIndex][0] + Integer.toString(correctAns[currentQueIndex][0]+1) + ".png");
                 Util.setImageFromPath(cv2.getImageView(), Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/3/" + imagePrefix[currentQueIndex][1] + Integer.toString(correctAns[currentQueIndex][1]+1) + ".png");
                 Util.setImageFromPath(cv3.getImageView(), Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/3/" + imagePrefix[currentQueIndex][2] + Integer.toString(correctAns[currentQueIndex][2]+1) + ".png");
-                Util.setImageFromPath(cv4.getImageView(), Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/3/" + imagePrefix[currentQueIndex][3] + Integer.toString(correctAns[currentQueIndex][3]+1) + ".png");
+                Util.setImageFromPath(cv4.getImageView(), Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/3/" + imagePrefix[currentQueIndex][3] + Integer.toString(correctAns[currentQueIndex][3] + 1) + ".png");
                 cv1.getImageView().setBackgroundResource(R.drawable.image_border_green);
                 cv2.getImageView().setBackgroundResource(R.drawable.image_border_green);
                 cv3.getImageView().setBackgroundResource(R.drawable.image_border_green);

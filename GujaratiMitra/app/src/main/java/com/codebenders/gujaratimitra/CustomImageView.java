@@ -22,7 +22,7 @@ public class CustomImageView extends View {
         if(inflater != null){
             v = inflater.inflate(R.layout.custom_image_view, container, false);
             imageView = (ImageView)v.findViewById(R.id.img1);
-            //container.addView(v);
+            container.addView(v);
         }
     }
 
