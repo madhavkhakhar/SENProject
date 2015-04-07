@@ -30,7 +30,7 @@ public class Level2_3 extends ActionBarActivity {
         currentQueIndex = 0;
         selected1 = selected2 = selected3 = selected4 = false;
         totalSelected = 0;
-
+        Util.setImageFromPath((ImageView)findViewById(R.id.que_image), Environment.getExternalStorageDirectory()+"/GujaratiMitra/l2/3/que_2_3.png");
         v1 = (ImageView) findViewById(R.id.imageView1);
         v2 = (ImageView) findViewById(R.id.imageView2);
         v3 = (ImageView) findViewById(R.id.imageView3);
