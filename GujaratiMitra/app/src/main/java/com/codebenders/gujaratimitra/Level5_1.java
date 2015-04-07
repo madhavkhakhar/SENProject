@@ -243,6 +243,9 @@ public class Level5_1 extends ActionBarActivity {
                             else if(correctans==numbers[rand_array.get(count)-1]-1){
                                 count++;
                                 disabled.clear();
+                                if(count==6){
+                                    Util.setNextLevel(Level5_1.this);
+                                }
                                 //final int[] resources=new int[5];
                                 for(int i=0;i<numbers[rand_array.get(count)-1];i++){
                                    Util.setImageFromPath(image[i],Environment.getExternalStorageDirectory() + "/GujaratiMitra/l"+String.valueOf(levelNo)+"/1/img_e" + String.valueOf(rand_array.get(count))+"_"+String.valueOf(i+1) + ".png");
@@ -271,6 +274,7 @@ public class Level5_1 extends ActionBarActivity {
                                 display();
                             }
                             disable=0;
+
                         }
                     });
                 }

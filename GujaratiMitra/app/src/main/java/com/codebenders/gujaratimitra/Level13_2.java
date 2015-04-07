@@ -126,6 +126,11 @@ public class Level13_2 extends ActionBarActivity {
             v3.setTag((4 * position) + 3);
             v4.setTag((4 * position) + 4);
 
+            v1.setBackgroundResource(R.drawable.image_border_black);
+            v2.setBackgroundResource(R.drawable.image_border_black);
+            v3.setBackgroundResource(R.drawable.image_border_black);
+            v4.setBackgroundResource(R.drawable.image_border_black);
+
             v1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -211,7 +216,7 @@ public class Level13_2 extends ActionBarActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            image.setBackgroundResource(android.R.color.transparent);
+                            image.setBackgroundResource(R.drawable.image_border_black);
                             queNum = (queNum%20)+1;
                             sleeping = false;
                             //play media for audio file
