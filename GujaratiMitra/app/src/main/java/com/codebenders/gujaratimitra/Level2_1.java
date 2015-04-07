@@ -21,6 +21,8 @@ public class Level2_1 extends ActionBarActivity {
 
     private static final int NUM_PAGES = 4;
     private static final int NUM_QUE=16;
+    private static final int TOTAL_SCORE=16;
+    private static int SCORE=0;
     private ViewPager mPager;
     private PagerAdapter mAdapter;
     private ImageView leftArrow;
@@ -184,6 +186,7 @@ public class Level2_1 extends ActionBarActivity {
                         public void run() {
                             Vibrator v = (Vibrator)getSystemService(Context.VIBRATOR_SERVICE);
                             if(queImage.getTag().toString().equals(pos)) {
+                                SCORE++;
                                 toast.setView(green_tick);
                                 toast.show();
 
