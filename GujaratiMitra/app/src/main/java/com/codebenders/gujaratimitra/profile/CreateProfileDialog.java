@@ -42,7 +42,7 @@ public class CreateProfileDialog extends Dialog {
                 standard = Integer.parseInt(standardEditText.getText().toString());
                 firstName = firstNameEditText.getText().toString();
                 lastName = lastNameEditText.getText().toString();
-                appDB.insertStudent(new Student(rollNo, standard, firstName, lastName));
+                appDB.insertStudent(new Student(rollNo, standard, firstName, lastName,0,0));
                 dismiss();
             }
         });
