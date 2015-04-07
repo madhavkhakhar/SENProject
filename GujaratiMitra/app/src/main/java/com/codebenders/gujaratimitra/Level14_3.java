@@ -238,7 +238,6 @@ public class Level14_3 extends ActionBarActivity {
                 Util.setImageFromPath(cv1.getImageView(), Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/3/" + imagePrefix[currentQueIndex][0] + Integer.toString(pos[0] + 1) + ".png");
                 Util.setImageFromPath(cv2.getImageView(), Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/3/" + imagePrefix[currentQueIndex][1] + Integer.toString(pos[1] + 1) + ".png");
                 l1.setGravity(Gravity.CENTER);
-//                l1.setWeightSum(1.0f);
                 params = new ViewGroup.LayoutParams(0, 0);
                 cv1.setLayoutParams(params);
                 cv2.setLayoutParams(params);

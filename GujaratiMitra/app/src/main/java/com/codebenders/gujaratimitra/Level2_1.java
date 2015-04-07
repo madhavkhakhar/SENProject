@@ -222,7 +222,7 @@ public class Level2_1 extends ActionBarActivity {
                             Util.setImageFromPath(queImage, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l2/1/img_" + queImageIndex.get(currentQueIndex) + ".png");
                             queImage.setTag(queImageIndex.get(currentQueIndex));
                             currentQueIndex = (currentQueIndex+1);
-                            if(currentQueIndex>=NUM_QUE-1){
+                            if(currentQueIndex >= NUM_QUE-1){
                                 queImage.setImageResource(R.drawable.nextlevel);
                                 mPager.setVisibility(View.INVISIBLE);
                                 queStatement.setVisibility(View.INVISIBLE);
