@@ -11,5 +11,6 @@ public interface ISql {
     String GET_LEVEL_SCORE = "SELECT count(sublevel_score) from level WHERE level_id = %d && student_id = %d";
     String GET_LAST_LEVEL_UNLOCKED = "SELECT last(level_id) from level WHERE student_id = %d";
     String GET_LAST_SUB_LEVEL_UNLOCKED = "SELECT last(sublevel_id) from level WHERE student_id = %d";
+    String GET_STUDENT_ID_FROM_NAME = "SELECT id FROM student WHERE first_name = '%s' && last_name='%s'";
     //String GET_STUDENTS = "Select * from tblStudent";
 }
