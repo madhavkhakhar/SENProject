@@ -53,11 +53,14 @@ public class Level20_2 extends ActionBarActivity {
             public void onPageSelected(int i) {
                 if (i == 0)
                     leftArrow.setVisibility(View.INVISIBLE);
-                else if (i == 9)
+                else if (i == NUM_PAGES)
                     rightArrow.setVisibility(View.INVISIBLE);
                 else {
                     leftArrow.setVisibility(View.VISIBLE);
                     rightArrow.setVisibility(View.VISIBLE);
+                }
+                if(i>=NUM_PAGES){
+                    Util.setNextLevel(Level20_2.this);
                 }
             }
 

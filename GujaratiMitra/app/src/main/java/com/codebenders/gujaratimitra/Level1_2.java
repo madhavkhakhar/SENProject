@@ -64,8 +64,9 @@ public class Level1_2 extends Activity {
 
                 if (i == 0)
                     leftArrow.setVisibility(View.INVISIBLE);
-                else if (i == 18)
+                else if (i == NUM_PAGES-1){
                     rightArrow.setVisibility(View.INVISIBLE);
+                }
                 else {
                     leftArrow.setVisibility(View.VISIBLE);
                     rightArrow.setVisibility(View.VISIBLE);
@@ -95,7 +96,18 @@ public class Level1_2 extends Activity {
         @Override
         public Object instantiateItem(ViewGroup container, int position) {
             View view = getLayoutInflater().inflate(R.layout.activity_level1_2view, container, false);
-
+            if(position==NUM_PAGES-1){
+                ImageView iv = new ImageView(getApplicationContext());
+                iv.setImageResource(R.drawable.nextlevel);
+                iv.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        finish();
+                    }
+                });
+                container.addView(iv);
+                return iv;
+            }
             mview = (MyView) view.findViewById(R.id.mview);
             Drawable drawable = Drawable.createFromPath(Environment.getExternalStorageDirectory() + "/GujaratiMitra/l1/2/dif" + (position + 1) + ".jpg");
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
