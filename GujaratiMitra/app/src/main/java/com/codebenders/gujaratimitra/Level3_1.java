@@ -200,6 +200,9 @@ public class Level3_1 extends ActionBarActivity {
                         @Override
                         public void run() {
                             disable=0;
+                            if(count==10){
+                                Util.setNextLevel(Level3_1.this);
+                            }
 
                             Random r=new Random();
                             int random=r.nextInt(4);
@@ -218,6 +221,7 @@ public class Level3_1 extends ActionBarActivity {
                             image[1].setColorFilter(Color.argb(255, 0, 0, 0));
                             image[2].setColorFilter(Color.argb(255, 0, 0, 0));
                             image[3].setColorFilter(Color.argb(255, 0, 0, 0));
+
                         }
                     });
                 }

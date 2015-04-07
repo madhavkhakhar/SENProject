@@ -159,9 +159,12 @@ public class Level20_1 extends ActionBarActivity {
                         @Override
                         public void run() {
                             count++;
-
+                            if(count==15){
+                                Util.setNextLevel(Level20_1.this);
+                            }
 
                             set();
+
 
                         }
 
