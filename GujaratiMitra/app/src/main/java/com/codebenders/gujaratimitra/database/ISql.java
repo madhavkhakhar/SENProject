@@ -9,9 +9,9 @@ public interface ISql {
     String ADD_SUB_LEVEL_SCORE = "INSERT INTO level (student_id,sublevel_id, level_id,sublevel_score) VALUES (%d,%d,%d,%d)";
     String GET_SUB_LEVEL_SCORE = "SELECT sublevel_score from level WHERE student_id = %d && sublevel_id = %d";
     String GET_LEVEL_SCORE = "SELECT count(sublevel_score) from level WHERE level_id = %d && student_id = %d";
-    String GET_LAST_SUB_LEVEL_UNLOCKED = "SELECT current_level from student WHERE student_id = %d";
+    String GET_LAST_SUB_LEVEL_UNLOCKED = "SELECT current_level from student WHERE id = %d";
     String GET_LEVEL_FROM_SUB_LEVEL = "SELECT unique(level_id) from level WHERE student_id = %d && sublevel_id";
-    String SET_CURRENT_LEVEL = "UPDATE INTO student (current_level) VALUES (%d) WHERE student_id = %d";
+    String SET_CURRENT_LEVEL = "UPDATE INTO student (current_level) VALUES (%d) WHERE id = %d";
     String GET_LAST_INSERTED_STUDENT_ID = "SELECT last_insert_rowid() FROM student LIMIT 1";
     //String GET_STUDENTS = "Select * from tblStudent";
 }
