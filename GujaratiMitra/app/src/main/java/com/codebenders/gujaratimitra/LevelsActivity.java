@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-
+import static com.codebenders.gujaratimitra.Util.appDB;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.support.v7.app.ActionBarActivity;
@@ -31,6 +31,7 @@ public class LevelsActivity extends ActionBarActivity {
     private int levelNo=0;
     ListView listView;
     ArrayList<String> listItems= new ArrayList<String>();
+    AppPreferences prefs;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +40,8 @@ public class LevelsActivity extends ActionBarActivity {
         CustomPagerAdapter adapter = new CustomPagerAdapter();
         viewPager.setAdapter(adapter);
         viewPager.setOffscreenPageLimit(NUM_PAGES);
+        prefs = new AppPreferences(LevelsActivity.this);
+        levelNo = appDB.getLastLevelUnlocked(prefs.getStudentId());
     }
     private class CustomPagerAdapter extends PagerAdapter {
 

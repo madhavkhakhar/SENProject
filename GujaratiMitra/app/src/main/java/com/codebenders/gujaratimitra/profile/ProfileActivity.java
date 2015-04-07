@@ -1,16 +1,20 @@
 package com.codebenders.gujaratimitra.profile;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import static com.codebenders.gujaratimitra.Util.appDB;
 
+import com.codebenders.gujaratimitra.AppPreferences;
+import com.codebenders.gujaratimitra.LevelsActivity;
 import com.codebenders.gujaratimitra.R;
 
 import java.util.ArrayList;
@@ -21,6 +25,7 @@ public class ProfileActivity extends ActionBarActivity {
     ListView listView;
     ArrayList<Student> students;
     ProfileListAdapter adapter;
+    AppPreferences prefs;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +35,7 @@ public class ProfileActivity extends ActionBarActivity {
         listView = (ListView)findViewById(R.id.listView);
         adapter = new ProfileListAdapter(ProfileActivity.this,R.layout.profile_list_view_item,students);
         listView.setAdapter(adapter);
+        prefs = new AppPreferences(ProfileActivity.this);
         addProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -54,6 +60,14 @@ public class ProfileActivity extends ActionBarActivity {
                     }
                 });
 
+            }
+        });
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                prefs.saveStudentId(students.get(position).getId());
+                startActivity(new Intent(ProfileActivity.this, LevelsActivity.class));
+                finish();
             }
         });
 
