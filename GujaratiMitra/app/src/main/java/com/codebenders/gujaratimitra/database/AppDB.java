@@ -103,7 +103,7 @@ public class AppDB extends DBConnect {
     }
 
     public int getLevelScore(int studentId, int levelNo) {
-        String query = String.format(ISql.GET_SUB_LEVEL_SCORE, levelNo, studentId);
+        String query = String.format(ISql.GET_LEVEL_SCORE, levelNo, studentId);
         Cursor cursor = execQuery(query);
         int score = 0;
         if (cursor != null && cursor.getCount() > 0) {
@@ -127,7 +127,7 @@ public class AppDB extends DBConnect {
         return level;
     }
     public int getLastSubLevelUnlocked(int studentId){
-        String query = String.format(ISql.GET_LAST_LEVEL_UNLOCKED, studentId);
+        String query = String.format(ISql.GET_LAST_SUB_LEVEL_UNLOCKED, studentId);
         Cursor cursor = execQuery(query);
         int subLevel = 1;
         if (cursor != null && cursor.getCount() > 0) {
@@ -137,5 +137,17 @@ public class AppDB extends DBConnect {
             }
         }
         return subLevel;
+    }
+    public int getStudentIdFromName(String firstName, String lastName){
+        String query = String.format(ISql.GET_STUDENT_ID_FROM_NAME, firstName,lastName);
+        Cursor cursor = execQuery(query);
+        int id = -1;
+        if (cursor != null && cursor.getCount() > 0) {
+
+            if (cursor.moveToNext()) {
+                id = cursor.getInt(0);
+            }
+        }
+        return id;
     }
 }
