@@ -20,12 +20,13 @@ public class SubLevelsActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sub_levels);
         lvSublevels = (ListView) findViewById(R.id.listViewSublevels);
-        ArrayList<String> list = new ArrayList<String>();
-        list.add("Pravruti 1");
-        list.add("Pravruti 2");
-        list.add("Pravruti 3");
+        ArrayList<ListItem> list = new ArrayList<ListItem>();
+        list.add(new ListItem(R.drawable.pravruti1));
+        list.add(new ListItem(R.drawable.pravruti2));
+        list.add(new ListItem(R.drawable.pravruti3));
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,list);
+        ListAdapterSublevel adapter = new ListAdapterSublevel(SubLevelsActivity.this,list);
+
         lvSublevels.setAdapter(adapter);
         lvSublevels.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

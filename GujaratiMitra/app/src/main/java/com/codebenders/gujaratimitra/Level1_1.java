@@ -86,6 +86,9 @@ public class Level1_1 extends ActionBarActivity {
                     Util.setImageFromPath(imageView, imagePath + "img_" + Integer.toString(i + 1) + ".png");
                     mPager.getChildAt(i).invalidate();
                 }
+                if(i>=NUM_PAGES-1){
+                    Util.setNextLevel(Level1_1.this);
+                }
 
             }
 
@@ -118,19 +121,6 @@ public class Level1_1 extends ActionBarActivity {
         @Override
         public Object instantiateItem(ViewGroup container, final int position) {
             final View view = getLayoutInflater().inflate(R.layout.unit_layout_level1_1, container, false);
-
-            if(position==NUM_PAGES-1){
-                ImageView iv = new ImageView(getApplicationContext());
-                iv.setImageResource(R.drawable.nextlevel);
-                iv.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        finish();
-                    }
-                });
-                container.addView(iv);
-                return iv;
-            }
             final ImageView v1 = (ImageView) view.findViewById(R.id.imageView7);
             Util.setImageFromPath(v1, imagePath+"img_"+Integer.toString(position+1)+".png");
 
