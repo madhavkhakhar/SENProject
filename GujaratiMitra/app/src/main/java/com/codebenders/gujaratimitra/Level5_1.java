@@ -31,7 +31,7 @@ public class Level5_1 extends ActionBarActivity {
     public static int score=0;
     public MediaPlayer mp;
    // public TextView score_text;
-    public int []numbers={4,5,5,5,4,4};
+    public int []numbers;
     ImageView[]image;
     final List<Integer> rand_array_sound=new ArrayList<Integer>();
     final List<Integer> rand_array=new ArrayList<Integer>(6);
@@ -54,6 +54,12 @@ public class Level5_1 extends ActionBarActivity {
 
         i=getIntent();
         levelNo=i.getExtras().getInt("LevelNo");
+        if(levelNo==5){
+            numbers=new int[]{4,5,5,5,4,4};
+        }
+        else if(levelNo==6){
+            numbers=new int[]{5,4,4,5,5,5};
+        }
 
         image = new ImageView[5];
 
@@ -74,7 +80,7 @@ public class Level5_1 extends ActionBarActivity {
         for (int i = 0; i < numbers[rand_array.get(count)-1]; i++) {
             //resources[i] = getResources().getIdentifier("q" + String.valueOf(rand_array.get(count)) + "_" + String.valueOf(i + 1), "drawable", getPackageName());
             image[i]=new ImageView(this);
-            Util.setImageFromPath(image[i],Environment.getExternalStorageDirectory() + "/GujaratiMitra/l5/1/q"+String.valueOf(rand_array.get(count)) + "_" + String.valueOf(i + 1) + ".png");
+            Util.setImageFromPath(image[i],Environment.getExternalStorageDirectory() + "/GujaratiMitra/l"+String.valueOf(levelNo)+"/1/img_e"+String.valueOf(rand_array.get(count)) + "_" + String.valueOf(i + 1) + ".png");
             //System.out.println("HERE" + resources[i]);
         }
 
@@ -266,6 +272,8 @@ public class Level5_1 extends ActionBarActivity {
                                 count++;
                                 disabled.clear();
                                 if (count == 6) {
+                                    count=0;
+                                    score=0;
                                     Util.setNextLevel(Level5_1.this);
 
                                 }
@@ -273,7 +281,7 @@ public class Level5_1 extends ActionBarActivity {
                                 //System.out.println(">>>>>>>>>>>>>" + count);
                                 else{
                                     for (int i = 0; i < numbers[rand_array.get(count) - 1]; i++) {
-                                        Util.setImageFromPath(image[i], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l5/1/q" + String.valueOf(rand_array.get(count)) + "_" + String.valueOf(i + 1) + ".png");
+                                        Util.setImageFromPath(image[i], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l"+String.valueOf(levelNo)+"/1/img_e" + String.valueOf(rand_array.get(count)) + "_" + String.valueOf(i + 1) + ".png");
                                         // resources[i]= getResources().getIdentifier("q"+String.valueOf(rand_array.get(count))+"_"+String.valueOf(i+1), "drawable", getPackageName());
                                         // System.out.println("HERE"+resources[i]);
                                     }

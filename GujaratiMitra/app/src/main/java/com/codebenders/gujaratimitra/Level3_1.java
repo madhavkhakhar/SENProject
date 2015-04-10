@@ -30,7 +30,7 @@ public class Level3_1 extends ActionBarActivity {
     protected static int count=0;
     private int NUM_QUE=50;
     protected static int correctans=2;
-    private static int TOTAL_SCORE=50;
+    private static int TOTAL_SCORE=10;
     public static int SCORE=0;
     public MediaPlayer mp;
     public TextView score_text;
@@ -175,7 +175,7 @@ public class Level3_1 extends ActionBarActivity {
                                         toast.cancel();
                                     }
                                 }, 500);
-                                score_text.setText(String.valueOf(SCORE) + "/" + String.valueOf(TOTAL_SCORE));
+                                score_text.setText("SCORE "+String.valueOf(SCORE) + "/" + String.valueOf(TOTAL_SCORE));
                             }
                         else{
 
@@ -202,6 +202,8 @@ public class Level3_1 extends ActionBarActivity {
                         public void run() {
                             disable=0;
                             if(count==10){
+                                count=0;
+                                SCORE=0;
                                 Util.setNextLevel(Level3_1.this);
                             }
 
