@@ -12,10 +12,9 @@ import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import static com.codebenders.gujaratimitra.Util.appDB;
 
 
-public class Level1_2 extends Activity {
+public class Level2_2 extends Activity {
 
     MyView mview;
     BitmapFactory.Options options;
@@ -31,9 +30,9 @@ public class Level1_2 extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_level1_2);
+        setContentView(R.layout.activity_level2_2);
         // enc=new Encoder();
-        prefs = new AppPreferences(Level1_2.this);
+        prefs = new AppPreferences(Level2_2.this);
         options = new BitmapFactory.Options();
         options.inPreferredConfig = Bitmap.Config.ARGB_8888;
 
