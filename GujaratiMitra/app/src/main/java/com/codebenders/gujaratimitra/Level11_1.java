@@ -41,8 +41,6 @@ public class Level11_1 extends ActionBarActivity {
             rand_array.add(i + 1);
         }
         Collections.shuffle(rand_array);
-        //final int resource_s = getResources().getIdentifier("s"+String.valueOf(rand_array.get(count)), "drawable", getPackageName());
-        //final int resource_d = getResources().getIdentifier("d"+String.valueOf(rand_array.get(count)), "drawable", getPackageName());
 
         image[0] = (ImageView) findViewById(R.id.imageView);
         image[1] = (ImageView) findViewById(R.id.imageView2);
@@ -51,23 +49,15 @@ public class Level11_1 extends ActionBarActivity {
 
         final ImageView speaker = (ImageView) findViewById(R.id.imageView6);
         ImageView question = (ImageView) findViewById(R.id.imageView5);
-        question.setImageResource(R.drawable.level3title);
+        Util.setImageFromPath(question, Environment.getExternalStorageDirectory() + "/GujaratiMitra/All Questions/que_11_1.png");
         score_text = (TextView) findViewById(R.id.score);
         Random r = new Random();
         int random1 = r.nextInt(4);
         correctans = random1;
         for (int i = 0; i < 4; i++) {
-           /* if(i==correctans){
-               //image[i].setImageResource(resource_d);
-                Util.setImageFromPath(image[i],"/GujaratiMitra/l11/1/img_" + Integer.toString(2 * i) + ".png");
-            }
-            else{
-                Util.setImageFromPath(image[i],"/GujaratiMitra/l11/1/img_" + Integer.toString(2 * i) + ".png");
-            }*/
-            Util.setImageFromPath(image[i], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l11/1/img_" + Integer.toString(rand_array.get(i)) + ".png");
+            Util.setImageFromPath(image[i], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l11/1/" + Integer.toString(rand_array.get(i)) + ".png");
         }
 
-//set the listener
         image[0].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -142,7 +132,7 @@ public class Level11_1 extends ActionBarActivity {
                             Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
                             if (image_no == correctans) {
 
-                                //image[image_no].setColorFilter(Color.argb(255, 0, 255, 0));
+                                image[image_no].setColorFilter(Color.argb(255, 0, 255, 0));
                                 score++;
 
                                 toast.setView(green_tick);
@@ -155,11 +145,11 @@ public class Level11_1 extends ActionBarActivity {
                                         toast.cancel();
                                     }
                                 }, 500);
-                                score_text.setText(String.valueOf(score) + "/10");
+                                score_text.setText("SCORE "+String.valueOf(score) + "/10");
                             } else {
 
-                                //image[image_no].setColorFilter(Color.argb(255, 255, 0, 0));
-                                //image[correctans].setColorFilter(Color.argb(255, 0, 255, 0));
+                                image[image_no].setColorFilter(Color.argb(255, 255, 0, 0));
+                                image[correctans].setColorFilter(Color.argb(255, 0, 255, 0));
                                 toast.setView(red_cross);
                                 toast.show();
 
@@ -180,8 +170,6 @@ public class Level11_1 extends ActionBarActivity {
                         @Override
                         public void run() {
                             disable = 0;
-                            // int resource_s = getResources().getIdentifier("s" + String.valueOf(count), "drawable", getPackageName());
-                            //int resource_d = getResources().getIdentifier("d" + String.valueOf(count), "drawable", getPackageName());
 
                             Random r = new Random();
                             int random = r.nextInt(4);
@@ -192,7 +180,10 @@ public class Level11_1 extends ActionBarActivity {
                                 Util.setImageFromPath(image[i], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l11/1/" + Integer.toString(rand_array.get(i)) + ".png");
 
                             }
-
+                            image[0].setColorFilter(Color.argb(255, 0, 0, 0));
+                            image[1].setColorFilter(Color.argb(255, 0, 0, 0));
+                            image[2].setColorFilter(Color.argb(255, 0, 0, 0));
+                            image[3].setColorFilter(Color.argb(255, 0, 0, 0));
 
                         }
                     });
