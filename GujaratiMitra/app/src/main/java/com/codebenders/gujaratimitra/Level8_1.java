@@ -5,18 +5,14 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 
-import com.codebenders.gujaratimitra.R;
-
 public class Level8_1 extends ActionBarActivity {
 
-    private static final int NUM_PAGES = 6;
+    private static final int NUM_PAGES = 5;
     private ViewPager mPager;
     private PagerAdapter mPagerAdapter;
     private ImageView leftArrow;
@@ -33,6 +29,15 @@ public class Level8_1 extends ActionBarActivity {
         mPager.setAdapter(mPagerAdapter);
         mPager.setOffscreenPageLimit(5);
         question=(Button)findViewById(R.id.question);
+
+        Util.setImageFromPath((ImageView)findViewById(R.id.que_image), Environment.getExternalStorageDirectory() + "/GujaratiMitra/l8/1/que_8_1.png");
+        ImageView speaker = (ImageView)findViewById(R.id.speaker);
+        speaker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Play question audio
+            }
+        });
 
         leftArrow = (ImageView) findViewById(R.id.imageView);
         rightArrow = (ImageView) findViewById(R.id.imageView1);
@@ -65,6 +70,15 @@ public class Level8_1 extends ActionBarActivity {
                     leftArrow.setVisibility(View.VISIBLE);
                     rightArrow.setVisibility(View.VISIBLE);
                 }
+                if (i != NUM_PAGES - 1) {
+                    question.setText("Question");
+                    ImageView v1 = (ImageView) mPager.getChildAt(i).findViewById(R.id.imageView_1);
+                    ImageView v2 = (ImageView) mPager.getChildAt(i).findViewById(R.id.imageView_2);
+                    Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l8/1/"+"img_8_1_"+Integer.toString(i+1)+"_q.png");
+                    Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l8/1/"+"img_8_1_"+Integer.toString(i+1)+".jpg");
+                    v2.setVisibility(View.VISIBLE);
+                    mPager.getChildAt(i).invalidate();
+                }
                 if(i>=NUM_PAGES-1)
                     Util.setNextLevel(Level8_1.this);
             }
@@ -89,45 +103,11 @@ public class Level8_1 extends ActionBarActivity {
         @Override
         public Object instantiateItem(ViewGroup container, final int position) {
             final View view = getLayoutInflater().inflate(R.layout.unit_layout_level_8_1, container, false);
-            final ImageView v2 = (ImageView) view.findViewById(R.id.imageView_1);
-            final ImageView v1 = (ImageView) view.findViewById(R.id.imageView_2);
+            final ImageView v1 = (ImageView) view.findViewById(R.id.imageView_1);
+            final ImageView v2 = (ImageView) view.findViewById(R.id.imageView_2);
 
-            Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l8/1/"+"img_8_1_"+Integer.toString(position+1)+"_q.png");
-            Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l8/1/"+"img_8_1_"+Integer.toString(position+1)+".jpg");
-//            switch(position) {
-//                case 0:
-//                    Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l8/1/"+"img_8_1_"+Integer.toString(position+1)+"_q.png");
-//                    Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l8/1/"+"img_8_1_"+Integer.toString(position+1)+".jpg");
-//                    // v1.setImageResource(R.drawable.img_8_1_1_q);
-//                    v2.setImageResource(R.drawable.img_8_1_1);
-//                    break;
-//                case 1:
-//                    Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l8/1/"+"img_8_1_"+Integer.toString(position+1)+"_q.png");
-//                    Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l8/1/"+"img_8_1_"+Integer.toString(position+1)+".jpg");
-//                    // v1.setImageResource(R.drawable.img_8_1_2_q);
-//                    //v2.setImageResource(R.drawable.img_8_1_2);
-//                    break;
-//                case 2:
-//                    Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l8/1/"+"img_8_1_"+Integer.toString(position+1)+"_q.png");
-//                    //v1.setImageResource(R.drawable.img_8_1_3_q);
-//                    Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l8/1/"+"img_8_1_"+Integer.toString(position+1)+".jpg");
-//                    //v2.setImageResource(R.drawable.img_8_1_3);
-//                    break;
-//                case 3:
-//                    Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l8/1/"+"img_8_1_"+Integer.toString(position+1)+"_q.png");
-//                    Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l8/1/"+"img_8_1_"+Integer.toString(position+1)+".jpg");
-//                    //v1.setImageResource(R.drawable.img_8_1_4_q);
-//                    //v2.setImageResource(R.drawable.img_8_1_4);
-//                    break;
-//                case 4:
-//                    Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l8/1/"+"img_8_1_"+Integer.toString(position+1)+"_q.png");
-//                    //v1.setImageResource(R.drawable.img_8_1_5_q);
-//                    Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l8/1/"+"img_8_1_"+Integer.toString(position+1)+".jpg");
-//                    //v2.setImageResource(R.drawable.img_8_1_5);
-//                    break;
-//            }
-
-
+            Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l8/1/"+"img_8_1_"+Integer.toString(position+1)+"_q.png");
+            Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l8/1/"+"img_8_1_"+Integer.toString(position+1)+".jpg");
 
             question.setOnClickListener(new View.OnClickListener(){
 
@@ -137,90 +117,13 @@ public class Level8_1 extends ActionBarActivity {
                     final ImageView v2 = (ImageView) view.findViewById(R.id.imageView_2);
                     if (question.getText().equals("IMAGE")) {
                         Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l8/1/"+"img_8_1_"+Integer.toString(mPager.getCurrentItem()+1)+".jpg");
-                        //v2.setImageResource(R.drawable.img_8_1_1);
                         v2.setVisibility(View.VISIBLE);
                         question.setText("Question");
                     } else if (question.getText().equals("Question")) {
                         Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l8/1/"+"img_8_1_"+Integer.toString(mPager.getCurrentItem()+1)+"_n.png");
                         v2.setVisibility(View.GONE);
-                        //v2.setImageResource(R.drawable.img_8_1_1_n);
                         question.setText("IMAGE");
                     }
-//                    if (mPager.getCurrentItem() == 0) {
-//
-//                        View view = mPager.getChildAt(mPager.getCurrentItem());
-//                        final ImageView v2 = (ImageView) view.findViewById(R.id.imageView_1);
-//                        if (question.getText().equals("IMAGE")) {
-//                            Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l8/1/"+"img_8_1_"+Integer.toString(mPager.getCurrentItem()+1)+".jpg");
-//                            //v2.setImageResource(R.drawable.img_8_1_1);
-//
-//                            question.setText("Question");
-//                        } else if (question.getText().equals("Question")) {
-//                            Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l8/1/"+"img_8_1_"+Integer.toString(mPager.getCurrentItem()+1)+"_n.png");
-//
-//                            //v2.setImageResource(R.drawable.img_8_1_1_n);
-//                            question.setText("IMAGE");
-//                        }
-//                    } else if (mPager.getCurrentItem()  == 1) {
-//
-//                        View view = mPager.getChildAt(mPager.getCurrentItem());
-//                        final ImageView v2 = (ImageView) view.findViewById(R.id.imageView_1);
-//                        if (question.getText().equals("IMAGE")) {
-//                            Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l8/1/"+"img_8_1_"+Integer.toString(mPager.getCurrentItem()+1)+".jpg");
-//                            //v2.setImageResource(R.drawable.img_8_1_2);
-//
-//                            question.setText("Question");
-//                        } else if (question.getText().equals("Question")) {
-//                            Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l8/1/"+"img_8_1_"+Integer.toString(mPager.getCurrentItem()+1)+"_n.png");
-//                            //v2.setImageResource(R.drawable.img_8_1_2_n);
-//                            question.setText("IMAGE");
-//                        }
-//                    }
-//                    else if (mPager.getCurrentItem()  == 2) {
-//
-//                        View view = mPager.getChildAt(mPager.getCurrentItem());
-//                        final ImageView v2 = (ImageView) view.findViewById(R.id.imageView_1);
-//                        if (question.getText().equals("IMAGE")) {
-//                            Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l8/1/"+"img_8_1_"+Integer.toString(mPager.getCurrentItem()+1)+".jpg");
-//                            // v2.setImageResource(R.drawable.img_8_1_3);
-//
-//                            question.setText("Question");
-//                        } else if (question.getText().equals("Question")) {
-//                            Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l8/1/"+"img_8_1_"+Integer.toString(mPager.getCurrentItem()+1)+"_n.png");
-//                            //v2.setImageResource(R.drawable.img_8_1_3_n);
-//                            question.setText("IMAGE");
-//                        }
-//                    }
-//                    else if (mPager.getCurrentItem()  == 3) {
-//
-//                        View view = mPager.getChildAt(mPager.getCurrentItem());
-//                        final ImageView v2 = (ImageView) view.findViewById(R.id.imageView_1);
-//                        if (question.getText().equals("IMAGE")) {
-//                            Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l8/1/"+"img_8_1_"+Integer.toString(mPager.getCurrentItem()+1)+".jpg");
-//                            //v2.setImageResource(R.drawable.img_8_1_4);
-//
-//                            question.setText("Question");
-//                        } else if (question.getText().equals("Question")) {
-//                            Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l8/1/"+"img_8_1_"+Integer.toString(mPager.getCurrentItem()+1)+"_n.png");
-//                            //v2.setImageResource(R.drawable.img_8_1_4_n);
-//                            question.setText("IMAGE");
-//                        }
-//                    }
-//                    else if (mPager.getCurrentItem()  == 4) {
-//
-//                        View view = mPager.getChildAt(mPager.getCurrentItem());
-//                        final ImageView v2 = (ImageView) view.findViewById(R.id.imageView_1);
-//                        if (question.getText().equals("IMAGE")) {
-//                            Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l8/1/"+"img_8_1_"+Integer.toString(mPager.getCurrentItem()+1)+".jpg");
-//                            //v2.setImageResource(R.drawable.img_8_1_5);
-//
-//                            question.setText("Question");
-//                        } else if (question.getText().equals("Question")) {
-//                            Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l8/1/"+"img_8_1_"+Integer.toString(mPager.getCurrentItem()+1)+"_n. png");
-//                            //v2.setImageResource(R.drawable.img_8_1_5_n);
-//                            question.setText("IMAGE");
-//                        }
-//                    }
                 }
             });
 
@@ -248,28 +151,5 @@ public class Level8_1 extends ActionBarActivity {
         }
 
 
-    }
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_level8_1, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 }
