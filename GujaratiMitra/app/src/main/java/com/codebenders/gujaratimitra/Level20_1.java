@@ -21,7 +21,7 @@ import java.util.List;
 
 public class Level20_1 extends ActionBarActivity {
 
-    protected static int count=0;
+    protected  int count=0;
     ImageView[]image;
     ImageView window;
     final List<Integer> rand_array=new ArrayList<Integer>();
@@ -160,11 +160,12 @@ public class Level20_1 extends ActionBarActivity {
                         public void run() {
                             count++;
                             if(count==15){
+                                //count=0;
                                 Util.setNextLevel(Level20_1.this);
                             }
-
-                            set();
-
+                            else {
+                                set();
+                            }
 
                         }
 
@@ -185,7 +186,7 @@ public class Level20_1 extends ActionBarActivity {
         for(int i=0;i<4;i++){
             Util.setImageFromPath(image[i], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l20/1/img_" + Integer.toString(rand_array.get(count))+"_"+ Integer.toString(i+2) + ".png");
             image[i].setColorFilter(Color.argb(255,0,0,0));
-            image[i].setBackgroundResource(R.drawable.image_border_green);
+            image[i].setBackgroundResource(R.drawable.image_border_black);
         }
         Util.setImageFromPath(window, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l20/1/img_" + Integer.toString(rand_array.get(count))+"_"+ Integer.toString(1) + ".png");
 

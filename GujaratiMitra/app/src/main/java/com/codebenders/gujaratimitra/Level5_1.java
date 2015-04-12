@@ -26,9 +26,9 @@ import java.util.Random;
 
 public class Level5_1 extends ActionBarActivity {
 
-    protected static int count=0;
+    protected int count=0;
     private int correctans=0;
-    public static int score=0;
+    public  int score=0;
     public MediaPlayer mp;
    // public TextView score_text;
     public int []numbers;
@@ -272,8 +272,8 @@ public class Level5_1 extends ActionBarActivity {
                                 count++;
                                 disabled.clear();
                                 if (count == 6) {
-                                    count=0;
-                                    score=0;
+                                    //count=0;
+                                    //score=0;
                                     Util.setNextLevel(Level5_1.this);
 
                                 }

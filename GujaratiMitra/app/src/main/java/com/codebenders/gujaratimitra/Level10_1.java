@@ -3,6 +3,7 @@ package com.codebenders.gujaratimitra;
 import android.content.Context;
 import android.graphics.Color;
 import android.media.MediaPlayer;
+import android.opengl.Visibility;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Vibrator;
@@ -22,9 +23,9 @@ import java.util.Random;
 
 
 public class Level10_1 extends ActionBarActivity {
-    protected static int count=0;
-    protected static int correctans=2;
-    public static int score=0;
+    protected  int count=0;
+    protected  int correctans=2;
+    public  int score=0;
     public MediaPlayer mp;
     public TextView score_text;
     public boolean[] disable={false,false,false,false,false,};
@@ -36,6 +37,7 @@ public class Level10_1 extends ActionBarActivity {
     final List<Integer> rand_array=new ArrayList<Integer>();
     String sound_files[];
     int [][]sequence=new int[5][];
+    int Total_ques=5;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +74,8 @@ public class Level10_1 extends ActionBarActivity {
         sound_files[3]="aud4_2_3_.mp3";
         sound_files[4]="aud5_2_3_.mp3";
 
+        score_text=(TextView) findViewById(R.id.score);
+        score_text.setText("SCORE "+String.valueOf(score)+"/5");
         final ImageView speaker=(ImageView) findViewById(R.id.imageView6);
         final ImageView check= (ImageView) findViewById(R.id.imageView7);
         for(int i=0;i<5;i++) {
@@ -111,6 +115,7 @@ public class Level10_1 extends ActionBarActivity {
                 }
             });
         }
+
         speaker.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 int temp=rand_array.get(count)-1;
@@ -195,7 +200,7 @@ public class Level10_1 extends ActionBarActivity {
                             //disable=1;
                             Vibrator v = (Vibrator)getSystemService(Context.VIBRATOR_SERVICE);
                             if(isCorrect()==true) {
-
+                                score++;
                                 toast.setView(green_tick);
                                 toast.show();
 
@@ -208,12 +213,12 @@ public class Level10_1 extends ActionBarActivity {
                                 }, 500);
 
 
-                                //score_text.setText(String.valueOf(score) + "/10");
+                                score_text.setText("SCORE "+String.valueOf(score) + "/5");
                             }
                             else{
 
                                 for(int i=0;i<sequence[rand_array.get(count)-1].length;i++){
-                                    Util.setImageFromPath(window[i], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l10/1/level10_1_img" + String.valueOf(rand_array.get(count)) + "_" + String.valueOf(sequence[rand_array.get(count)-1][i] + 1) + ".png");
+                                    Util.setImageFromPath(window[i], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l10/1/level10_1_img" + String.valueOf(rand_array.get(count)) + "_" + String.valueOf(sequence[rand_array.get(count)-1][i] ) + ".png");
                                     window[i].setColorFilter(Color.argb(255,0,0,0));
                                 }
 
@@ -238,8 +243,8 @@ public class Level10_1 extends ActionBarActivity {
                         public void run() {
                             count++;
                             if(count==5){
-                                count=0;
-                                score=0;
+                                //count=0;
+                                //score=0;
                                 Util.setNextLevel(Level10_1.this);
 
                             }
@@ -262,7 +267,13 @@ public class Level10_1 extends ActionBarActivity {
                             for (int i = 0; i < number_images[rand_array.get(count) - 1]; i++) {
                                 //resources[i] = getResources().getIdentifier("q" + String.valueOf(rand_array.get(count)) + "_" + String.valueOf(i + 1), "drawable", getPackageName());
                                 //System.out.println(String.valueOf(rand_array.get(count))+">>>>>>>>>>>>>>>>>>");
-                                Util.setImageFromPath(image[i], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l10/1/level10_1_img" + String.valueOf(rand_array.get(count)) + "_" + String.valueOf(i + 1) + ".png");
+                                if(number_images[rand_array.get(count)-1] == 4){
+                                    image[4].setVisibility(View.GONE);
+                                }
+                                else{
+                                    image[4].setVisibility(View.VISIBLE);
+                                }
+                                 Util.setImageFromPath(image[i], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l10/1/level10_1_img" + String.valueOf(rand_array.get(count)) + "_" + String.valueOf(i + 1) + ".png");
 
                             }
                             for (int i = 0; i < 3; i++) {
@@ -301,7 +312,9 @@ public class Level10_1 extends ActionBarActivity {
             }
         }
         else if(sequence[rand_array.get(count)-1].length==3){
-            if(empty[0]==sequence[rand_array.get(count)-1][0]-1 && empty[1]==sequence[rand_array.get(count)-1][1]-1  && empty[3]==sequence[rand_array.get(count)-1][2]-1){
+            System.out.println(">>>>>>>>>>>>>>>>>>>>>>>yes"+empty[0]+empty[1]+empty[2]);
+            if(empty[0]==sequence[rand_array.get(count)-1][0]-1  && empty[1]==sequence[rand_array.get(count)-1][1]-1 && empty[2]==sequence[rand_array.get(count)-1][2]-1){
+                System.out.println(">>>>>>>>>>>>>>>>>>>>>>>no");
                 return true;
             }
         }

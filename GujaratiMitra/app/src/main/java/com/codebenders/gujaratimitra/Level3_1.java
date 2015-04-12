@@ -27,11 +27,11 @@ import java.util.Random;
 
 
 public class Level3_1 extends ActionBarActivity {
-    protected static int count=0;
+    protected int count=0;
     private int NUM_QUE=50;
-    protected static int correctans=2;
+    protected  int correctans=2;
     private static int TOTAL_SCORE=10;
-    public static int SCORE=0;
+    public  int SCORE=0;
     public MediaPlayer mp;
     public TextView score_text;
     public int disable=0;
@@ -59,7 +59,7 @@ public class Level3_1 extends ActionBarActivity {
 
         final ImageView speaker=(ImageView) findViewById(R.id.imageView6);
         ImageView question = (ImageView)findViewById(R.id.imageView5);
-        question.setImageResource(R.drawable.level3title);
+        Util.setImageFromPath(question, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l3/1/level3title.png");
         score_text=(TextView) findViewById(R.id.score);
         Random r=new Random();
         int random1=r.nextInt(4);
@@ -202,8 +202,8 @@ public class Level3_1 extends ActionBarActivity {
                         public void run() {
                             disable=0;
                             if(count==10){
-                                count=0;
-                                SCORE=0;
+                               // count=0;
+                               // SCORE=0;
                                 Util.setNextLevel(Level3_1.this);
                             }
 
