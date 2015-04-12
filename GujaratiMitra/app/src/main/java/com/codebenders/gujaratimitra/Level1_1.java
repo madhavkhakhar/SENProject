@@ -146,11 +146,9 @@ public class Level1_1 extends ActionBarActivity {
                     View view = mPager.getChildAt(mPager.getCurrentItem());
                     final ImageView v1 = (ImageView) view.findViewById(R.id.imageView7);
                     if (question.getText().equals("Image")) {
-                        //v1.setImageResource(R.drawable.img1_1);
                         Util.setImageFromPath(v1, imagePath + "img_" + Integer.toString(mPager.getCurrentItem() + 1) + ".png");
                         question.setText("Question");
                     } else if (question.getText().equals("Question")) {
-                        //v1.setImageResource(R.drawable.img1_1_n);
                         Util.setImageFromPath(v1, imagePath + "que_" + Integer.toString(mPager.getCurrentItem() + 1) + ".png");
                         question.setText("Image");
                     }
@@ -165,8 +163,6 @@ public class Level1_1 extends ActionBarActivity {
         public void destroyItem(ViewGroup container, int position, Object object) {
             container.removeView((View) object);
         }
-
-
     }
 
 

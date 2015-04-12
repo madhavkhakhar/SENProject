@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -18,11 +19,13 @@ public class Level2_3 extends ActionBarActivity {
 
     private static final int NUM_PAGES = 5;
     private static final int TOTAL_SCORE=5;
-    private static int SCORE=0;
+    private int SCORE=0;
     private  int currentQueIndex;
     private boolean selected1, selected2, selected3, selected4;
     private ImageView v1, v2, v3, v4;
     private int totalSelected;
+    private TextView txtScore;
+    private ImageView lSpeaker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +35,17 @@ public class Level2_3 extends ActionBarActivity {
         currentQueIndex = 0;
         selected1 = selected2 = selected3 = selected4 = false;
         totalSelected = 0;
+        txtScore = (TextView)findViewById(R.id.txtScore);
+        lSpeaker = (ImageView)findViewById(R.id.lspeaker);
+
+        lSpeaker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Util.playMediaFromPath(Environment.getExternalStorageDirectory()+"/GujaratiMitra/l4/1/aud_0.mp3");
+            }
+        });
+        txtScore.setText("SCORE:"+String.valueOf(SCORE)+"/"+String.valueOf(TOTAL_SCORE));
+
         Util.setImageFromPath((ImageView)findViewById(R.id.que_image), Environment.getExternalStorageDirectory()+"/GujaratiMitra/l2/3/que_2_3.png");
         v1 = (ImageView) findViewById(R.id.imageView1);
         v2 = (ImageView) findViewById(R.id.imageView2);
@@ -133,6 +147,7 @@ public class Level2_3 extends ActionBarActivity {
                                 case 0:
                                     if (selected1 && selected2) {
                                         SCORE++;
+                                        txtScore.setText("SCORE:"+String.valueOf(SCORE)+"/"+String.valueOf(TOTAL_SCORE));
                                         toast.setView(green_tick);
                                         toast.show();
 
@@ -164,6 +179,7 @@ public class Level2_3 extends ActionBarActivity {
                                 case 1:
                                     if (selected1 && selected2) {
                                         SCORE++;
+                                        txtScore.setText("SCORE:"+String.valueOf(SCORE)+"/"+String.valueOf(TOTAL_SCORE));
                                         toast.setView(green_tick);
                                         toast.show();
 
@@ -195,6 +211,7 @@ public class Level2_3 extends ActionBarActivity {
                                 case 2:
                                     if (selected1 && selected4) {
                                         SCORE++;
+                                        txtScore.setText("SCORE:"+String.valueOf(SCORE)+"/"+String.valueOf(TOTAL_SCORE));
                                         toast.setView(green_tick);
                                         toast.show();
 
@@ -226,6 +243,7 @@ public class Level2_3 extends ActionBarActivity {
                                 case 3:
                                     if (selected1 && selected3) {
                                         SCORE++;
+                                        txtScore.setText("SCORE:"+String.valueOf(SCORE)+"/"+String.valueOf(TOTAL_SCORE));
                                         toast.setView(green_tick);
                                         toast.show();
 
@@ -257,6 +275,7 @@ public class Level2_3 extends ActionBarActivity {
                                 case 4:
                                     if (selected1 && selected3) {
                                         SCORE++;
+                                        txtScore.setText("SCORE:"+String.valueOf(SCORE)+"/"+String.valueOf(TOTAL_SCORE));
                                         toast.setView(green_tick);
                                         toast.show();
 
@@ -307,19 +326,7 @@ public class Level2_3 extends ActionBarActivity {
                             v3.setBackgroundColor(Color.WHITE);
                             v4.setBackgroundColor(Color.WHITE);
                             if(currentQueIndex>=NUM_PAGES-1){
-                                LinearLayout l = new LinearLayout(getApplicationContext());
-                                setContentView(l);
-                                ImageView iv = new ImageView(getApplicationContext());
-                                LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-                                iv.setLayoutParams(lp);
-                                iv.setImageResource(R.drawable.nextlevel);
-                                iv.setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View v) {
-                                        finish();
-                                    }
-                                });
-                                l.addView(iv);
+                                Util.setNextLevel(Level2_3.this,SCORE,3,2);
                             }
                         }
                     });
