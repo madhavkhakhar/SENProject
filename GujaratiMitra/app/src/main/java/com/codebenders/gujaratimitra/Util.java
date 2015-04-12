@@ -52,6 +52,9 @@ public class Util {
         });
         l.addView(iv);
     }
+    public static void setScore(int score){
+
+    }
     public static void setImageFromPath(ImageView imView, String path) {
         Bitmap b = BitmapFactory.decodeFile(path);
         imView.setImageBitmap(b);
