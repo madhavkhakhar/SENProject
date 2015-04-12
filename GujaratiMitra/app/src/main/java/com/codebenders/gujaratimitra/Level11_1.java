@@ -2,7 +2,6 @@ package com.codebenders.gujaratimitra;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
@@ -23,7 +22,6 @@ public class Level11_1 extends ActionBarActivity {
     protected static int count = 0;
     protected static int correctans = 2;
     public static int score = 0;
-    public MediaPlayer mp;
     public TextView score_text;
     public int disable = 0;
     List<Integer> rand_array;
@@ -34,7 +32,6 @@ public class Level11_1 extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_level11_1);
         final ImageView[] image = new ImageView[4];
-        mp = new MediaPlayer();
 
         rand_array = new ArrayList<Integer>(13);
         for (int i = 0; i < 13; i++) {
@@ -102,9 +99,9 @@ public class Level11_1 extends ActionBarActivity {
         speaker.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 try {
-                    mp.setDataSource(Environment.getExternalStorageDirectory() + "/sample.mp3");//Write your location here
-                    mp.prepare();
-                    mp.start();
+                    Util.mediaPlayer.setDataSource(Environment.getExternalStorageDirectory() + "/sample.mp3");//Write your location here
+                    Util.mediaPlayer.prepare();
+                    Util.mediaPlayer.start();
 
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -145,7 +142,7 @@ public class Level11_1 extends ActionBarActivity {
                                         toast.cancel();
                                     }
                                 }, 500);
-                                score_text.setText("SCORE "+String.valueOf(score) + "/10");
+                                score_text.setText("SCORE " + String.valueOf(score) + "/10");
                             } else {
 
                                 image[image_no].setColorFilter(Color.argb(255, 255, 0, 0));
