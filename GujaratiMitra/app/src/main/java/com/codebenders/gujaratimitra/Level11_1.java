@@ -51,7 +51,7 @@ public class Level11_1 extends ActionBarActivity {
 
         final ImageView speaker = (ImageView) findViewById(R.id.imageView6);
         ImageView question = (ImageView) findViewById(R.id.imageView5);
-        question.setImageResource(R.drawable.level3title);
+        Util.setImageFromPath(question, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l3/1/level3title.png");
         score_text = (TextView) findViewById(R.id.score);
         Random r = new Random();
         int random1 = r.nextInt(4);
