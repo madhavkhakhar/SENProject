@@ -70,8 +70,9 @@ public class Level5_1 extends ActionBarActivity {
         speaker = new ImageView(this);
         speaker.setImageResource(R.drawable.loudspeaker);
 
+
         ques=new ImageView(this);
-        Util.setImageFromPath(ques,Environment.getExternalStorageDirectory() + "/GujaratiMitra/l5/1/que_5_1" + ".png");
+        Util.setImageFromPath(ques,Environment.getExternalStorageDirectory() + "/GujaratiMitra/l5/1/que_5_1.png");
         for (int i = 0; i < 6; i++) {
             rand_array.add(i + 1);
         }

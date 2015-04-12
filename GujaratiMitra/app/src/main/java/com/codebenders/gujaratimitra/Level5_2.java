@@ -31,6 +31,18 @@ public class Level5_2 extends ActionBarActivity {
         mAdapter = new SimplePagerAdapter();
         mPager.setAdapter(mAdapter);
         mPager.setOffscreenPageLimit(NUM_PAGES);
+        ImageView que = (ImageView) findViewById(R.id.imageView_que);
+        Util.setImageFromPath(que, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l5/2/que_5_2.png");
+        ImageView speaker = (ImageView) findViewById(R.id.speaker);
+        speaker.setTag(Environment.getExternalStorageDirectory() + "/GujaratiMitra/l5/2/aud_0.mp3");
+        speaker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Util.playMediaFromPath(v.getTag().toString());
+
+            }
+        });
+
         leftArrow = (ImageView) findViewById(R.id.imageView);
         rightArrow = (ImageView) findViewById(R.id.imageView1);
         leftArrow.setOnClickListener(new View.OnClickListener() {
