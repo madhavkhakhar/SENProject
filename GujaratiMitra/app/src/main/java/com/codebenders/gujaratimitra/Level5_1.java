@@ -28,9 +28,7 @@ public class Level5_1 extends ActionBarActivity {
 
     protected int count=0;
     private int correctans=0;
-    public  int score=0;
     public MediaPlayer mp;
-   // public TextView score_text;
     public int []numbers;
     ImageView[]image;
     final List<Integer> rand_array_sound=new ArrayList<Integer>();
@@ -38,24 +36,18 @@ public class Level5_1 extends ActionBarActivity {
     RelativeLayout al;
     private Intent i;
     private int levelNo;
-    ImageView speaker,ques;
     public int disable=0;
-    TextView score_text;
     final ArrayList<Integer> disabled=new ArrayList<Integer>();
+    private ImageView lSpeaker,speaker;
+    private TextView txtscore;
+    private ImageView queImage;
+    int SCORE=0,TOTAL_SCORE=27;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_level5_1);
-
-
-        al = new RelativeLayout(this);
-        setContentView(al);
-
-//        al = (RelativeLayout) findViewById(R.id.rlayout);
-
-//        Util.setImageFromPath((ImageView)findViewById(R.id.que_image), Environment.getExternalStorageDirectory()+"/GujaratiMitra/l5/1/que_5_1.png");
-
+        al = (RelativeLayout)findViewById(R.id.rlayout);
         i=getIntent();
         levelNo=i.getExtras().getInt("LevelNo");
         if(levelNo==5){
@@ -64,29 +56,37 @@ public class Level5_1 extends ActionBarActivity {
         else if(levelNo==6){
             numbers=new int[]{5,4,4,5,5,5};
         }
+        else if(levelNo==7){
+            numbers=new int[]{5,5,5,5,5,5};
+        }
 
         image = new ImageView[5];
-
         speaker = new ImageView(this);
         speaker.setImageResource(R.drawable.loudspeaker);
 
 
-        ques=new ImageView(this);
-        Util.setImageFromPath(ques,Environment.getExternalStorageDirectory() + "/GujaratiMitra/l5/1/que_5_1.png");
+
+        txtscore = (TextView)findViewById(R.id.txtScore);
+        txtscore.setText("SCORE:"+String.valueOf(SCORE)+"/"+String.valueOf(TOTAL_SCORE));
+        lSpeaker = (ImageView)findViewById(R.id.lspeaker);
+        lSpeaker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Util.playMediaFromPath(Environment.getExternalStorageDirectory()+"/GujaratiMitra/l4/1/aud_0.mp3");
+            }
+        });
+
+        queImage = (ImageView)findViewById(R.id.que_statement);
+        Util.setImageFromPath(queImage,Environment.getExternalStorageDirectory() + "/GujaratiMitra/l5/1/que_5_1.png");
         for (int i = 0; i < 6; i++) {
             rand_array.add(i + 1);
         }
-        Collections.shuffle(rand_array);
-       // final int[] resources = new int[5];
 
-        score_text=new TextView(this);
-        score_text.setTextColor(Color.RED);
+        Collections.shuffle(rand_array);
 
         for (int i = 0; i < numbers[rand_array.get(count)-1]; i++) {
-            //resources[i] = getResources().getIdentifier("q" + String.valueOf(rand_array.get(count)) + "_" + String.valueOf(i + 1), "drawable", getPackageName());
             image[i]=new ImageView(this);
             Util.setImageFromPath(image[i],Environment.getExternalStorageDirectory() + "/GujaratiMitra/l"+String.valueOf(levelNo)+"/1/img_e"+String.valueOf(rand_array.get(count)) + "_" + String.valueOf(i + 1) + ".png");
-            //System.out.println("HERE" + resources[i]);
         }
 
 
@@ -94,11 +94,18 @@ public class Level5_1 extends ActionBarActivity {
             image[4]=new ImageView(this);
         }
 
-        //final List<Integer> rand_array_sound=new ArrayList<Integer>();
         for (int i = 0; i < numbers[rand_array.get(count)-1]; i++) {
             rand_array_sound.add(i);
         }
         Collections.shuffle(rand_array_sound);
+
+        speaker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Util.playMediaFromPath(Environment.getExternalStorageDirectory()+"/GujaratiMitra/l4/1/aud_0.mp3");
+                //Set the random sound from the array here.
+            }
+        });
 
         for (int i = 0; i < 5; i++) {
             final int finalI = i;
@@ -112,21 +119,6 @@ public class Level5_1 extends ActionBarActivity {
                 }
             });
         }
-
-
-        speaker.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-
-                try {
-                    mp.setDataSource(Environment.getExternalStorageDirectory() + "/sample.mp3");//Write your location here
-                    mp.prepare();
-                    mp.start();
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
         // Change the radius to change size of cirlce
         display();
     }
@@ -147,8 +139,6 @@ public class Level5_1 extends ActionBarActivity {
             double x = ((Math.cos(radAngle)) * cx) + cx;
             double y = (( Math.sin(radAngle)) * cy) + cy;
 
-
-            //the 150 is the width of the actual text view and the 50 is the height
             RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(300,100);
 
             //the margins control where each of textview is placed
@@ -164,8 +154,6 @@ public class Level5_1 extends ActionBarActivity {
                 }
             }
             else{
-               /* image[index].setLayoutParams(lp);
-                index++;*/
                 al.updateViewLayout(image[index],lp);
                 if(index<numbers[rand_array.get(count)-1]-1)
                     index++;
@@ -176,26 +164,23 @@ public class Level5_1 extends ActionBarActivity {
         //the margins control where each of textview is placed
         lp1.leftMargin = (int)cx;
         lp1.topMargin = (int) cy;
-        score_text.setText("SCORE " + String.valueOf(score) + "/27");
-          score_text.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
+        txtscore.setText("SCORE:" + String.valueOf(SCORE) + "/" + String.valueOf(TOTAL_SCORE));
         RelativeLayout.LayoutParams lp2 = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
         RelativeLayout.LayoutParams lp3 = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
 
-          //lp2.leftMargin=(int)
           lp2.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
           lp3.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
           lp3.addRule(RelativeLayout.CENTER_HORIZONTAL);
           if(count==0) {
             al.addView(speaker, lp1);
-            al.addView(score_text,lp2);
-            al.addView(ques,lp3);
+          //  al.addView(score_text,lp2);
+           // al.addView(ques,lp3);
         }
-        else{
-            speaker.setLayoutParams(lp1);
-            score_text.setLayoutParams(lp2);
-            ques.setLayoutParams(lp3);
-           }
-
+        else {
+              speaker.setLayoutParams(lp1);
+              //score_text.setLayoutParams(lp2);
+              //ques.setLayoutParams(lp3);
+          }
     }
 
 
@@ -216,9 +201,8 @@ public class Level5_1 extends ActionBarActivity {
                             Vibrator v = (Vibrator)getSystemService(Context.VIBRATOR_SERVICE);
                             if(image_no==rand_array_sound.get(correctans)) {
                                 image[rand_array_sound.get(correctans)].setColorFilter(Color.argb(255, 0, 255, 0));
-                                score++;
-                                score_text.setText("SCORE "+String.valueOf(score)+"/27");
-
+                                SCORE++;
+                                txtscore.setText("SCORE:"+String.valueOf(SCORE)+"/"+String.valueOf(TOTAL_SCORE));
                                 toast.setView(green_tick);
                                 toast.show();
 
@@ -229,15 +213,11 @@ public class Level5_1 extends ActionBarActivity {
                                         toast.cancel();
                                     }
                                 }, 500);
-
-
-                                //score_text.setText(String.valueOf(score) + "/10");
                             }
                             else{
 
                                 image[image_no].setColorFilter(Color.argb(255, 255, 0, 0));
                                 image[rand_array_sound.get(correctans)].setColorFilter(Color.argb(255, 0, 255, 0));
-
                                 toast.setView(red_cross);
                                 toast.show();
 
@@ -270,25 +250,16 @@ public class Level5_1 extends ActionBarActivity {
                                     }
                                 }
                                 correctans++;
-
-
                             }
                             else if(correctans==numbers[rand_array.get(count)-1]-1) {
                                 count++;
                                 disabled.clear();
                                 if (count == 6) {
-                                    //count=0;
-                                    //score=0;
-                                    Util.setNextLevel(Level5_1.this);
-
+                                    Util.setNextLevel(Level5_1.this,SCORE,1,5);
                                 }
-                                //final int[] resources=new int[5];
-                                //System.out.println(">>>>>>>>>>>>>" + count);
                                 else{
                                     for (int i = 0; i < numbers[rand_array.get(count) - 1]; i++) {
                                         Util.setImageFromPath(image[i], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l"+String.valueOf(levelNo)+"/1/img_e" + String.valueOf(rand_array.get(count)) + "_" + String.valueOf(i + 1) + ".png");
-                                        // resources[i]= getResources().getIdentifier("q"+String.valueOf(rand_array.get(count))+"_"+String.valueOf(i+1), "drawable", getPackageName());
-                                        // System.out.println("HERE"+resources[i]);
                                     }
 
                                     for (int i = 0; i < numbers[rand_array.get(count) - 1]; i++) {
