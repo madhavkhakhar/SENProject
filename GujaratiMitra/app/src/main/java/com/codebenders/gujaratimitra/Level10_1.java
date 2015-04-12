@@ -237,6 +237,13 @@ public class Level10_1 extends ActionBarActivity {
                         @Override
                         public void run() {
                             count++;
+                            if(count==5){
+                                count=0;
+                                score=0;
+                                Util.setNextLevel(Level10_1.this);
+
+                            }
+                            else{
                             number = sequence[rand_array.get(count) - 1].length;
                             for (int i=0;i<empty.length;i++) {
                                 empty[i]=-1;
@@ -270,7 +277,9 @@ public class Level10_1 extends ActionBarActivity {
                             for(int i=0;i<5;i++){
                                 image[i].setColorFilter(Color.argb(255,0,0,0));
                             }
+
                             }
+                        }
 
 
                     });
