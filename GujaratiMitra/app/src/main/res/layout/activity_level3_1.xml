@@ -25,7 +25,7 @@
             android:id="@+id/imageView5"
             android:layout_weight="0.25"
             android:src="@drawable/level3title"
-            android:layout_gravity="top|left" />
+            android:layout_gravity="center|left" />
 
         <LinearLayout
             android:id="@+id/linearLayout3"
@@ -34,6 +34,7 @@
             android:orientation="vertical"
             android:weightSum="1"
             android:layout_weight="0.75"
+            android:gravity="center"
             android:layout_gravity="bottom">
 
 
@@ -62,6 +63,8 @@
         </LinearLayout>
 
     </LinearLayout>
+
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -96,4 +99,5 @@
             android:id="@+id/imageView4"
             android:layout_weight="0.25"/>
     </LinearLayout>
+
 </LinearLayout>

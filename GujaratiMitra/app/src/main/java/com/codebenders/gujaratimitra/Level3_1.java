@@ -1,7 +1,9 @@
 package com.codebenders.gujaratimitra;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
 import android.media.MediaPlayer;
 import android.os.Environment;
 import android.os.Handler;

@@ -13,29 +13,28 @@
         android:layout_height="match_parent"
         android:orientation="horizontal"
         android:weightSum="1"
-        android:layout_weight="0.9"
+        android:layout_weight="0.85"
         android:layout_marginBottom="3dp">
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="SCORE 0/10"
-            android:id="@+id/score"
-            android:textSize="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:id="@+id/txtScore"
+            android:text="SCORE: 1/10"
             android:textColor="#FF9933CC"
-            android:layout_gravity="top|right"
-            android:layout_weight="0.4"/>
+            />
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/imgViewq"
+            android:layout_weight="0.25"
             android:src="@drawable/level4_2_img_q"
-            android:layout_weight="0.2"/>
+            android:id="@+id/que_statement"/>
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/imgViewLS"
-            android:src="@drawable/loudspeaker"
-            android:layout_weight="0.4"/>
+            android:layout_weight="0.75"
+            android:id="@+id/lspeaker"
+            android:src="@drawable/loudspeaker"/>
     </LinearLayout>
 
     <LinearLayout
@@ -43,13 +42,13 @@
         android:layout_height="match_parent"
         android:weightSum="1.0"
         android:orientation="vertical"
-        android:layout_weight="0.1">
+        android:layout_weight="0.15">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
-            android:layout_weight="0.4"
+            android:layout_weight="0.45"
             android:gravity="center">
 
             <ImageView
@@ -91,7 +90,7 @@
             android:layout_height="match_parent"
             android:orientation="horizontal"
             android:weightSum="1"
-            android:layout_weight="0.7">
+            android:layout_weight="0.55">
 
             <LinearLayout
                 android:layout_width="match_parent"

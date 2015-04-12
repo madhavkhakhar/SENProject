@@ -32,12 +32,13 @@ import java.util.Random;
 public class Level4_2 extends ActionBarActivity {
     ImageView[] q,a;
     private int NUM_QUE=11;
-    int mscore=0,correct=0,queIndex=1;
-    TextView score;
+    int SCORE=0,correct=0,queIndex=1,TOTAL_SCORE=11;
     Vibrator vib;
-    public MediaPlayer mp;
     int[] questions;
     int noOfQues;
+    public int disable=0;
+    private ImageView lSpeaker;
+    private TextView txtscore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +52,15 @@ public class Level4_2 extends ActionBarActivity {
         int[] aId={R.id.imgViewa1, R.id.imgViewa2, R.id.imgViewa3, R.id.imgViewa4};
 
         vib = (Vibrator)getSystemService(Context.VIBRATOR_SERVICE);
+        txtscore = (TextView)findViewById(R.id.txtScore);
+        txtscore.setText("SCORE:"+String.valueOf(SCORE)+"/"+String.valueOf(TOTAL_SCORE));
+        lSpeaker = (ImageView)findViewById(R.id.lspeaker);
+        lSpeaker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Util.playMediaFromPath(Environment.getExternalStorageDirectory()+"/GujaratiMitra/l4/1/aud_0.mp3");
+            }
+        });
 
         for(int i=0;i<4;i++){
             q[i]=(ImageView)findViewById(qId[i]);
@@ -61,7 +71,6 @@ public class Level4_2 extends ActionBarActivity {
             a[i]=(ImageView)findViewById(aId[i]);
         }
 
-        score = (TextView)findViewById(R.id.score);
 
         questions= new int[]{4, 3, 3, 4, 3, 3, 3, 3, 4, 4, 3};
 
@@ -70,8 +79,6 @@ public class Level4_2 extends ActionBarActivity {
         for(int j=0;j<noOfQues;j++){
             q[j].setVisibility(View.VISIBLE);
             Util.setImageFromPath(q[j], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/2/"+"level4_2_img_e"+String.valueOf(queIndex)+"_"+String.valueOf(j+1)+".png");
-            //q[j].setImageResource(getResources().getIdentifier("level4_2_img_e"+String.valueOf(queIndex)+"_"+String.valueOf(j+1), "drawable", getPackageName()));
-            //q[j].setBackgroundResource(dQId[j]);
         }
 
         Random r=new Random();
@@ -81,39 +88,37 @@ public class Level4_2 extends ActionBarActivity {
         for(int j=0;j<4;j++){
             if(j==correct){
                 Util.setImageFromPath(a[j], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/2/"+"level4_2_img_e" + String.valueOf(queIndex) + "_correct"+".png");
-                //a[j].setImageResource(getResources().getIdentifier("level4_2_img_e" + String.valueOf(queIndex) + "_correct", "drawable", getPackageName()));
             }
             else{
                 Util.setImageFromPath(a[j], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/2/"+"level4_2_img_e" + String.valueOf(queIndex) + "_wrong" + String.valueOf(wrongIndex++)+".png");
-                //a[j].setImageResource(getResources().getIdentifier("level4_2_img_e" + String.valueOf(queIndex) + "_wrong" + String.valueOf(wrongIndex++), "drawable", getPackageName()));
             }
         }
 
         q[0].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Util.playMediaFromPath(Environment.getExternalStorageDirectory()+"/GujaratiMitra/l4/1/aud_0.mp3");
             }
         });
 
         q[1].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Util.playMediaFromPath(Environment.getExternalStorageDirectory()+"/GujaratiMitra/l4/1/aud_0.mp3");
             }
         });
 
         q[2].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Util.playMediaFromPath(Environment.getExternalStorageDirectory()+"/GujaratiMitra/l4/1/aud_0.mp3");
             }
         });
 
         q[3].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Util.playMediaFromPath(Environment.getExternalStorageDirectory()+"/GujaratiMitra/l4/1/aud_0.mp3");
             }
         });
 
@@ -121,32 +126,40 @@ public class Level4_2 extends ActionBarActivity {
         a[0].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                queIndex++;
-                nextQues(0);
+                if(disable==0) {
+                    queIndex++;
+                    nextQues(0);
+                }
             }
         });
 
         a[1].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                queIndex++;
-                nextQues(1);
+                if (disable == 0) {
+                    queIndex++;
+                    nextQues(1);
+                }
             }
         });
 
         a[2].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                queIndex++;
-                nextQues(2);
+                if(disable==0) {
+                    queIndex++;
+                    nextQues(2);
+                }
             }
         });
 
         a[3].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                queIndex++;
-                nextQues(3);
+                if(disable==0) {
+                    queIndex++;
+                    nextQues(3);
+                }
             }
         });
     }
@@ -166,10 +179,9 @@ public class Level4_2 extends ActionBarActivity {
                     @Override
                     public void run() {
                         if(correct==ansClicked){
-                            //a[0].setColorFilter(Color.argb(255, 0, 255, 0));
-                            mscore++;
-                            //a[correct].setColorFilter(Color.argb(255, 0, 255, 0));
-                            score.setText(String.valueOf(mscore) + "/10");
+                            SCORE++;
+                            txtscore.setText("SCORE:"+String.valueOf(SCORE)+"/"+String.valueOf(TOTAL_SCORE));
+                            a[correct].setColorFilter(Color.argb(255, 0, 255, 0));
                             toast.setView(green_tick);
                             toast.show();
 
@@ -182,8 +194,8 @@ public class Level4_2 extends ActionBarActivity {
                             }, 500);
                         }
                         else{
-                            //a[ansClicked].setColorFilter(Color.argb(255, 255, 0, 0));
-                            //a[correct].setColorFilter(Color.argb(255, 0, 255, 0));
+                            a[ansClicked].setColorFilter(Color.argb(255, 255, 0, 0));
+                            a[correct].setColorFilter(Color.argb(255, 0, 255, 0));
 
                             toast.setView(red_cross);
                             toast.show();
@@ -207,14 +219,12 @@ public class Level4_2 extends ActionBarActivity {
                             q[i].setVisibility(View.INVISIBLE);
                         }
                         if(queIndex>=NUM_QUE){
-                           Util.setNextLevel(Level4_2.this);
+                           Util.setNextLevel(Level4_2.this,SCORE,2,4);
                         }else{
                             noOfQues = questions[queIndex];
                             for(int j=0;j<noOfQues;j++){
                                 q[j].setVisibility(View.VISIBLE);
                                 Util.setImageFromPath(q[j], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/2/"+"level4_2_img_e"+String.valueOf(queIndex)+"_"+String.valueOf(j+1)+".png");
-                                //q[j].setImageResource(getResources().getIdentifier("level4_2_img_e"+String.valueOf(queIndex)+"_"+String.valueOf(j+1), "drawable", getPackageName()));
-                                //q[j].setBackgroundResource(dQId[j]);
                             }
 
                             Random r=new Random();
@@ -224,13 +234,11 @@ public class Level4_2 extends ActionBarActivity {
                             for(int j=0;j<4;j++){
                                 if(j==correct){
                                     Util.setImageFromPath(a[j], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/2/"+"level4_2_img_e" + String.valueOf(queIndex) + "_correct"+".png");
-                                    //a[j].setImageResource(getResources().getIdentifier("level4_2_img_e" + String.valueOf(queIndex) + "_correct", "drawable", getPackageName()));
-                                }
+                            }
                                 else{
                                     Util.setImageFromPath(a[j], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/2/"+"level4_2_img_e" + String.valueOf(queIndex) + "_wrong" + String.valueOf(wrongIndex++)+".png");
-                                    //a[j].setImageResource(getResources().getIdentifier("level4_2_img_e" + String.valueOf(queIndex) + "_wrong" + String.valueOf(wrongIndex++), "drawable", getPackageName()));
                                 }
-                                //a[j].setColorFilter(Color.argb(255, 0, 0, 0));
+                                a[j].setColorFilter(Color.argb(255, 0, 0, 0));
                             }
                         }
                         }

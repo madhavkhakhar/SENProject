@@ -202,7 +202,6 @@ public class Level2_1 extends ActionBarActivity {
                                 txtscore.setText("SCORE:"+String.valueOf(SCORE)+"/"+String.valueOf(TOTAL_SCORE));
                                 toast.setView(green_tick);
                                 toast.show();
-
                                 Handler handler = new Handler();
                                 handler.postDelayed(new Runnable() {
                                     @Override
