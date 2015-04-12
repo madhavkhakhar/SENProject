@@ -14,6 +14,8 @@ import java.util.ArrayList;
 
 public class SubLevelsActivity extends ActionBarActivity {
     ListView lvSublevels;
+    int[] sublevelNo;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +25,9 @@ public class SubLevelsActivity extends ActionBarActivity {
         list.add(new ListItem(R.drawable.pravruti1));
         list.add(new ListItem(R.drawable.pravruti2));
         list.add(new ListItem(R.drawable.pravruti3));
+
+        sublevelNo = new int[]{3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3};
+
 
         ListAdapterSublevel adapter = new ListAdapterSublevel(SubLevelsActivity.this,list);
 
