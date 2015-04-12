@@ -18,7 +18,6 @@ public class Level2_2 extends Activity {
 
     MyView mview;
     BitmapFactory.Options options;
-
     private static final int NUM_PAGES = 20;
     private ViewPager mPager;
     private PagerAdapter mAdapter;
@@ -27,12 +26,10 @@ public class Level2_2 extends Activity {
     AppPreferences prefs;
     ImageView lSpeaker;
 
-    // Encoder enc;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_level2_2);
-        // enc=new Encoder();
         prefs = new AppPreferences(Level2_2.this);
         options = new BitmapFactory.Options();
         options.inPreferredConfig = Bitmap.Config.ARGB_8888;
