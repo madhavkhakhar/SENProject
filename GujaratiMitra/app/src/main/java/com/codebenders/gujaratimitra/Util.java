@@ -52,11 +52,11 @@ public class Util {
         });
         l.addView(iv);
     }
-    public static void setNextLevel(final Context c, int score, int sublevelNo, int levelNo){
-        if(appDB.getSubLevelScore(prefs.getStudentId(),sublevelNo) <= score)
-            appDB.addSubLevelScore(levelNo,sublevelNo,score,prefs.getStudentId());
+    public static void setNextLevel(final Context c, int score, int sublevelNo, int levelNo) {
+        if (appDB.getSubLevelScore(prefs.getStudentId(), sublevelNo) <= score)
+            appDB.addSubLevelScore(levelNo, sublevelNo, score, prefs.getStudentId());
         LinearLayout l = new LinearLayout(c);
-        ((Activity)c).setContentView(l);
+        ((Activity) c).setContentView(l);
         ImageView iv = new ImageView(c);
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         iv.setLayoutParams(lp);
@@ -64,11 +64,11 @@ public class Util {
         iv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((Activity)c).finish();
+                ((Activity) c).finish();
             }
         });
         l.addView(iv);
-    }
+   }
     public static void setImageFromPath(ImageView imView, String path) {
         Bitmap b = BitmapFactory.decodeFile(path);
         imView.setImageBitmap(b);

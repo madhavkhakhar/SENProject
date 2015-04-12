@@ -28,6 +28,7 @@ public class Level1_1 extends ActionBarActivity {
     private Intent i;
     private String imagePath;
     AppPreferences prefs;
+    private ImageView lSpeaker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +37,14 @@ public class Level1_1 extends ActionBarActivity {
         prefs = new AppPreferences(Level1_1.this);
         i = getIntent();
         levelNo = i.getExtras().getInt("level_no");
+
+        lSpeaker = (ImageView)findViewById(R.id.lspeaker);
+        lSpeaker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Util.playMediaFromPath(Environment.getExternalStorageDirectory()+"/GujaratiMitra/l4/1/aud_0.mp3");
+            }
+        });
 
         Util.setImageFromPath((ImageView)findViewById(R.id.que_image), Environment.getExternalStorageDirectory()+"/GujaratiMitra/l1/1/que_1_1.png");
 
@@ -93,7 +102,7 @@ public class Level1_1 extends ActionBarActivity {
                     mPager.getChildAt(i).invalidate();
                 }
                 if (i >= NUM_PAGES - 1) {
-                    Util.setNextLevel(Level1_1.this);
+                    Util.setNextLevel(Level1_1.this,0,1,1);
                 }
 
             }

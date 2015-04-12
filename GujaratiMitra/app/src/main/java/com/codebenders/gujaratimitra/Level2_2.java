@@ -25,6 +25,7 @@ public class Level2_2 extends Activity {
     private ImageView leftArrow;
     private ImageView rightArrow;
     AppPreferences prefs;
+    ImageView lSpeaker;
 
     // Encoder enc;
     @Override
@@ -36,7 +37,16 @@ public class Level2_2 extends Activity {
         options = new BitmapFactory.Options();
         options.inPreferredConfig = Bitmap.Config.ARGB_8888;
 
-        Util.setImageFromPath((ImageView)findViewById(R.id.que_image), Environment.getExternalStorageDirectory()+"/GujaratiMitra/l1/2/que_1_2.png");
+        lSpeaker = (ImageView)findViewById(R.id.lspeaker);
+
+        lSpeaker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Util.playMediaFromPath(Environment.getExternalStorageDirectory()+"/GujaratiMitra/l4/1/aud_0.mp3");
+            }
+        });
+
+        Util.setImageFromPath((ImageView)findViewById(R.id.que_image), Environment.getExternalStorageDirectory()+"/GujaratiMitra/l2/2/que_2_2.png");
 
         mPager = (ViewPager) findViewById(R.id.pager);
         mAdapter = new SimplePagerAdapter();
@@ -75,6 +85,9 @@ public class Level2_2 extends Activity {
                     leftArrow.setVisibility(View.VISIBLE);
                     rightArrow.setVisibility(View.VISIBLE);
                 }
+                if (i == NUM_PAGES-1){
+                    Util.setNextLevel(Level2_2.this,0,2,2);
+                }
             }
 
             @Override
@@ -100,20 +113,8 @@ public class Level2_2 extends Activity {
         @Override
         public Object instantiateItem(ViewGroup container, int position) {
             View view = getLayoutInflater().inflate(R.layout.activity_level1_2view, container, false);
-            if(position==NUM_PAGES-1){
-                ImageView iv = new ImageView(getApplicationContext());
-                iv.setImageResource(R.drawable.nextlevel);
-                iv.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        finish();
-                    }
-                });
-                container.addView(iv);
-                return iv;
-            }
             mview = (MyView) view.findViewById(R.id.mview);
-            Drawable drawable = Drawable.createFromPath(Environment.getExternalStorageDirectory() + "/GujaratiMitra/l1/2/dif" + (position + 1) + ".jpg");
+            Drawable drawable = Drawable.createFromPath(Environment.getExternalStorageDirectory() + "/GujaratiMitra/l2/2/dif" + (position + 1) + ".jpg");
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
                 view.setBackground(drawable);
             else
