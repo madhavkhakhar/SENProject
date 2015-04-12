@@ -25,7 +25,7 @@ public class Util {
 
     public static MediaPlayer mediaPlayer;
     public static AppDB appDB;
-    public static SharedPreferences mPref;
+    public static AppPreferences prefs;
 
     public static void playMediaFromPath(String path) {
         mediaPlayer.reset();
@@ -38,6 +38,23 @@ public class Util {
         }
     }
     public static void setNextLevel(final Context c){
+        LinearLayout l = new LinearLayout(c);
+        ((Activity)c).setContentView(l);
+        ImageView iv = new ImageView(c);
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        iv.setLayoutParams(lp);
+        iv.setImageResource(R.drawable.nextlevel);
+        iv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((Activity)c).finish();
+            }
+        });
+        l.addView(iv);
+    }
+    public static void setNextLevel(final Context c, int score, int sublevelNo, int levelNo){
+        if(appDB.getSubLevelScore(prefs.getStudentId(),sublevelNo) <= score)
+            appDB.addSubLevelScore(levelNo,sublevelNo,score,prefs.getStudentId());
         LinearLayout l = new LinearLayout(c);
         ((Activity)c).setContentView(l);
         ImageView iv = new ImageView(c);

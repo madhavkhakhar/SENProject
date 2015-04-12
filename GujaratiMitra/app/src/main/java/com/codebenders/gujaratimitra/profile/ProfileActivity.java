@@ -11,7 +11,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
-import static com.codebenders.gujaratimitra.Util.appDB;
+import static com.codebenders.gujaratimitra.Util.*;
 
 import com.codebenders.gujaratimitra.AppPreferences;
 import com.codebenders.gujaratimitra.LevelsActivity;
@@ -25,7 +25,6 @@ public class ProfileActivity extends ActionBarActivity {
     ListView listView;
     ArrayList<Student> students;
     ProfileListAdapter adapter;
-    AppPreferences prefs;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,7 +34,6 @@ public class ProfileActivity extends ActionBarActivity {
         listView = (ListView)findViewById(R.id.listView);
         adapter = new ProfileListAdapter(ProfileActivity.this,R.layout.profile_list_view_item,students);
         listView.setAdapter(adapter);
-        prefs = new AppPreferences(ProfileActivity.this);
         addProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

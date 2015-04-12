@@ -23,7 +23,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import com.codebenders.gujaratimitra.Util;
+import static com.codebenders.gujaratimitra.Util.*;
 
 
 public class LevelsActivity extends ActionBarActivity {
@@ -33,7 +33,6 @@ public class LevelsActivity extends ActionBarActivity {
     private int levelNo=0;
     ListView listView;
     ArrayList<String> listItems= new ArrayList<String>();
-    AppPreferences prefs;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +41,6 @@ public class LevelsActivity extends ActionBarActivity {
         CustomPagerAdapter adapter = new CustomPagerAdapter();
         viewPager.setAdapter(adapter);
         viewPager.setOffscreenPageLimit(NUM_PAGES);
-        prefs = new AppPreferences(LevelsActivity.this);
         levelNo = appDB.getLastLevelUnlocked(prefs.getStudentId());
     }
     private class CustomPagerAdapter extends PagerAdapter {
