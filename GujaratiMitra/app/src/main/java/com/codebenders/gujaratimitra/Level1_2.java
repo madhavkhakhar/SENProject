@@ -12,6 +12,8 @@ import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import static com.codebenders.gujaratimitra.Util.appDB;
+
 
 public class Level1_2 extends Activity {
 
@@ -23,6 +25,7 @@ public class Level1_2 extends Activity {
     private PagerAdapter mAdapter;
     private ImageView leftArrow;
     private ImageView rightArrow;
+    AppPreferences prefs;
 
     // Encoder enc;
     @Override
@@ -30,6 +33,7 @@ public class Level1_2 extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_level1_2);
         // enc=new Encoder();
+        prefs = new AppPreferences(Level1_2.this);
         options = new BitmapFactory.Options();
         options.inPreferredConfig = Bitmap.Config.ARGB_8888;
 
