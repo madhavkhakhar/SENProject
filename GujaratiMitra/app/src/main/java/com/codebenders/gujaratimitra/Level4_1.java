@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import static com.codebenders.gujaratimitra.Util.playMediaFromPath;
+
 
 public class Level4_1 extends ActionBarActivity {
 
@@ -27,8 +29,19 @@ public class Level4_1 extends ActionBarActivity {
         mPagerAdapter = new SimplePagerAdapter();
         mPager.setAdapter(mPagerAdapter);
         mPager.setOffscreenPageLimit(5);
+        ImageView que = (ImageView) findViewById(R.id.imageView_que);
+        Util.setImageFromPath(que, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/1/que_4_1.png");
+        ImageView speaker = (ImageView) findViewById(R.id.speaker);
+        speaker.setTag(Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/1/aud_0.mp3");
+        speaker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            Util.playMediaFromPath(v.getTag().toString());
 
-        leftArrow = (ImageView) findViewById(R.id.imageView);
+            }
+        });
+
+                leftArrow = (ImageView) findViewById(R.id.imageView);
         rightArrow = (ImageView) findViewById(R.id.imageView1);
         leftArrow.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,6 +105,7 @@ public class Level4_1 extends ActionBarActivity {
             ImageView v3 = (ImageView) view.findViewById(R.id.imageView3);
             ImageView v4 = (ImageView) view.findViewById(R.id.imageView4);
 
+
             if (position < NUM_PAGES-2) {
                 Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/1/img_" + Integer.toString(2 * position) + ".png");
                 Util.setImageFromPath(v3, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/1/img_" + Integer.toString((2 * position) + 1) + ".png");
@@ -110,13 +124,13 @@ public class Level4_1 extends ActionBarActivity {
             v1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Util.playMediaFromPath(v.getTag().toString());
+                    playMediaFromPath(v.getTag().toString());
                 }
             });
             v3.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Util.playMediaFromPath(v.getTag().toString());
+                    playMediaFromPath(v.getTag().toString());
                 }
             });
             container.addView(view);
