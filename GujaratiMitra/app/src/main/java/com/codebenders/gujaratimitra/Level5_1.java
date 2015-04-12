@@ -52,6 +52,10 @@ public class Level5_1 extends ActionBarActivity {
         al = new RelativeLayout(this);
         setContentView(al);
 
+//        al = (RelativeLayout) findViewById(R.id.rlayout);
+
+//        Util.setImageFromPath((ImageView)findViewById(R.id.que_image), Environment.getExternalStorageDirectory()+"/GujaratiMitra/l5/1/que_5_1.png");
+
         i=getIntent();
         levelNo=i.getExtras().getInt("LevelNo");
         if(levelNo==5){

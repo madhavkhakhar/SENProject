@@ -6,7 +6,7 @@ public interface ISql {
     String GET_STUDENT = "SELECT * FROM student";
     String REMOVE_STUDENT = "DELETE FROM tblStudent WHERE RollNo = %d";
     String COUNT_STUDENT = "SELECT count(RollNo) from tblStudent";
-    String ADD_SUB_LEVEL_SCORE = "INSERT INTO level (student_id,sublevel_id, level_id,sublevel_score) VALUES (%d,%d,%d,%d)";
+    String ADD_SUB_LEVEL_SCORE = "UPDATE INTO level (student_id,sublevel_id, level_id,sublevel_score) VALUES (%d,%d,%d,%d)";
     String GET_SUB_LEVEL_SCORE = "SELECT sublevel_score from level WHERE student_id = %d && sublevel_id = %d";
     String GET_LEVEL_SCORE = "SELECT count(sublevel_score) from level WHERE level_id = %d && student_id = %d";
     String GET_LAST_SUB_LEVEL_UNLOCKED = "SELECT current_level from student WHERE id = %d";

@@ -12,12 +12,12 @@
         android:layout_height="match_parent"
         android:orientation="horizontal"
         android:weightSum="1.0"
-        android:layout_weight="0.8">
+        android:layout_weight="0.9">
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/imageView5"
-            android:layout_weight="0.15"/>
+            android:layout_weight="0.15" />
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"

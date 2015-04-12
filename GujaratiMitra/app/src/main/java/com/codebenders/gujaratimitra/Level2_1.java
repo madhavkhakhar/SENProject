@@ -48,7 +48,7 @@ public class Level2_1 extends ActionBarActivity {
         mPager = (ViewPager) findViewById(R.id.pager);
         mAdapter = new SimplePagerAdapter();
         mPager.setAdapter(mAdapter);
-        mPager.setOffscreenPageLimit(0);
+        //mPager.setOffscreenPageLimit(0);
 
         queStatement = (ImageView) findViewById(R.id.que_statement);
         Util.setImageFromPath(queStatement, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l2/1/img_que.png");
