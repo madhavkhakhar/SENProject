@@ -9,6 +9,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
+import android.os.Environment;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -26,6 +27,7 @@ public class Util {
     public static MediaPlayer mediaPlayer;
     public static AppDB appDB;
     public static AppPreferences prefs;
+
 
     public static void playMediaFromPath(String path) {
         mediaPlayer.reset();
@@ -73,6 +75,4 @@ public class Util {
         Bitmap b = BitmapFactory.decodeFile(path);
         imView.setImageBitmap(b);
     }
-
-
 }
