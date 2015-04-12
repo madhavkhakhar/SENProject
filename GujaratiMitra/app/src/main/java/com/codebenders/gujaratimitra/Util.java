@@ -2,6 +2,7 @@ package com.codebenders.gujaratimitra;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -24,6 +25,7 @@ public class Util {
 
     public static MediaPlayer mediaPlayer;
     public static AppDB appDB;
+    public static SharedPreferences mPref;
 
     public static void playMediaFromPath(String path) {
         mediaPlayer.reset();
