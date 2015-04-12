@@ -15,13 +15,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Collections;
 
 
 public class Level13_2 extends ActionBarActivity {
-    private static final int NUM_PAGES = 5;
+    private static final int NUM_PAGES = 6;
     private ViewPager mPager;
     private PagerAdapter mAdapter;
     private ImageView leftArrow;
@@ -31,6 +32,8 @@ public class Level13_2 extends ActionBarActivity {
     private int queNum;
     private ImageView speaker;
     private boolean sleeping;
+    private int mscore;
+    private TextView score;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +41,18 @@ public class Level13_2 extends ActionBarActivity {
         setContentView(R.layout.activity_level13_2);
         i=getIntent();
         queNum = 1;
+        mscore = 0;
+        score = (TextView)findViewById(R.id.score);
         sleeping  = false;
+        Util.setImageFromPath((ImageView)findViewById(R.id.q_image), Environment.getExternalStorageDirectory() + "/GujaratiMitra/l13/2/que_13_2.png");
+        ImageView speaker = (ImageView) findViewById(R.id.speaker);
+        speaker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //play question audio
+            }
+        });
+
         levelNo=i.getExtras().getInt("LevelNo");
         mPager = (ViewPager) findViewById(R.id.pager);
         mAdapter = new SimplePagerAdapter();
@@ -83,16 +97,7 @@ public class Level13_2 extends ActionBarActivity {
             }
         });
 
-        speaker = (ImageView) findViewById(R.id.imageView6);
-
-        speaker.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //play media file for current question
-            }
-        });
-
-        // play media file
+        // play media file for question 1
     }
 
     class SimplePagerAdapter extends PagerAdapter {
@@ -185,6 +190,8 @@ public class Level13_2 extends ActionBarActivity {
                         public void run() {
                             Vibrator v = (Vibrator)getSystemService(Context.VIBRATOR_SERVICE);
                             if(image.getTag().toString().equals(Integer.toString(queNum))) {
+                                mscore++;
+                                score.setText(String.valueOf(mscore) + "/20");
                                 toast.setView(green_tick);
                                 toast.show();
                                 image.setBackgroundResource(R.drawable.image_border_green);
@@ -217,7 +224,10 @@ public class Level13_2 extends ActionBarActivity {
                         @Override
                         public void run() {
                             image.setBackgroundResource(R.drawable.image_border_black);
-                            queNum = (queNum%20)+1;
+                            queNum = (queNum)+1;
+                            if (queNum == 21) {
+                                Util.setNextLevel(Level13_2.this);
+                            }
                             sleeping = false;
                             //play media for audio file
                         }

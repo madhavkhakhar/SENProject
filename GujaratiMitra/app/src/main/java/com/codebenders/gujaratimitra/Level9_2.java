@@ -30,7 +30,7 @@ public class Level9_2 extends ActionBarActivity {
     private ArrayList<Integer> queImageIndex;
     private int currentQueIndex,count;
     public int current;
-    ImageView v1, next;
+    ImageView next, selectedImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,8 +49,8 @@ public class Level9_2 extends ActionBarActivity {
         mPager.setAdapter(mAdapter);
         mPager.setOffscreenPageLimit(5);
 
-        queStatement = (ImageView) findViewById(R.id.que_statement);
-        Util.setImageFromPath(queStatement, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l9/2/img_que.png");
+        queStatement = (ImageView) findViewById(R.id.q_image);
+        Util.setImageFromPath(queStatement, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l9/2/que_9_2.png");
 
         queImage = (ImageView) findViewById(R.id.que_image);
         Util.setImageFromPath(queImage, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l9/2/img_a_" + String.valueOf(queImageIndex.get(count)) + ".png");
@@ -77,7 +77,6 @@ public class Level9_2 extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 loadNextImage(current);
-
             }
         });
 
@@ -121,27 +120,18 @@ public class Level9_2 extends ActionBarActivity {
         public Object instantiateItem(ViewGroup container, final int position) {
             View view = getLayoutInflater().inflate(R.layout.unit_layout_level9_2, container, false);
 
-            v1 = (ImageView) view.findViewById(R.id.img1);
-            //final ImageView v2 = (ImageView) view.findViewById(R.id.img2);
-            //final ImageView v3 = (ImageView) view.findViewById(R.id.img3);
-            //final ImageView v4 = (ImageView) view.findViewById(R.id.img4);
+            ImageView v1 = (ImageView) view.findViewById(R.id.img1);
 
             Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l9/2/img_1_" + String.valueOf(position+1) + ".png");
-            //Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l2/1/img_"+((4*position)+2)+".png");
-            //Util.setImageFromPath(v3, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l9/1/img_"+((4*position)+3)+".png");
-            //Util.setImageFromPath(v4, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l2/1/img_"+((4*position)+4)+".png");
 
             v1.setTag(position);
-            //v2.setTag(((4*position)+2));
-            //v3.setTag(((4*position)+3));
-            //v4.setTag(((4*position)+4));
 
             v1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if (!sleeping) {
-                        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>clicked!");
                         current = (int) v.getTag();
+                        selectedImage = (ImageView)v;
                         imageClicked(v.getTag().toString(), (ImageView) v);
                     }
                 }
@@ -157,12 +147,11 @@ public class Level9_2 extends ActionBarActivity {
         }
 
         public void imageClicked(final String pos, ImageView v) {
-            v.setBackgroundResource(R.drawable.image_border_green);
+            v.setBackgroundResource(R.drawable.image_border_black);
             for (int i = 0; i < NUM_PAGES; i++) {
                 if (i != Integer.parseInt(pos))
                     ((ImageView) mPager.getChildAt(i).findViewById(R.id.img1)).setBackgroundResource(android.R.color.transparent);
             }
-
         }
 
 
@@ -182,11 +171,12 @@ public class Level9_2 extends ActionBarActivity {
                     @Override
                     public void run() {
                         Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-                        System.out.println(">>>>>>>>>>>>>>>>>"+queImage.getTag()+((current)%5)+1);
+
                         if ((((int)queImage.getTag()%5))==((pos)+1)%5) {
                             toast.setView(green_tick);
                             toast.show();
-
+                            if (selectedImage != null)
+                                selectedImage.setBackgroundResource(R.drawable.image_border_green);
                             Handler handler = new Handler();
                             handler.postDelayed(new Runnable() {
                                 @Override
@@ -197,7 +187,8 @@ public class Level9_2 extends ActionBarActivity {
                         } else {
                             toast.setView(red_cross);
                             toast.show();
-
+                            if (selectedImage != null)
+                                selectedImage.setBackgroundResource(R.drawable.image_border_red);
                             Handler handler = new Handler();
                             handler.postDelayed(new Runnable() {
                                 @Override
@@ -220,7 +211,6 @@ public class Level9_2 extends ActionBarActivity {
                     @Override
                     public void run() {
                         set();
-
                         currentQueIndex = (currentQueIndex + 1);
                         count=(count+1)%5;
                     }
@@ -236,7 +226,6 @@ public class Level9_2 extends ActionBarActivity {
             for(int i=0;i<NUM_PAGES;i++){
                 ImageView temp=(ImageView) mPager.getChildAt(i).findViewById(R.id.img1);
                 temp.setBackgroundResource(android.R.color.transparent);
-                //Util.setImageFromPath(temp, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l9/2/img_2_" + String.valueOf(i+1) + ".png");
             }
         }
         else if(currentQueIndex>=5 && currentQueIndex<10){
@@ -252,7 +241,6 @@ public class Level9_2 extends ActionBarActivity {
             for(int i=0;i<NUM_PAGES;i++){
                 ImageView temp=(ImageView) mPager.getChildAt(i).findViewById(R.id.img1);
                 temp.setBackgroundResource(android.R.color.transparent);
-                //Util.setImageFromPath(temp, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l9/2/img_2_" + String.valueOf(i+1) + ".png");
             }
             Util.setImageFromPath(queImage, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l9/2/img_b_" + queImageIndex.get(count) + ".png");
             queImage.setTag(5+queImageIndex.get(count));
@@ -269,7 +257,6 @@ public class Level9_2 extends ActionBarActivity {
             for(int i=0;i<NUM_PAGES;i++){
                 ImageView temp=(ImageView) mPager.getChildAt(i).findViewById(R.id.img1);
                 temp.setBackgroundResource(android.R.color.transparent);
-                //Util.setImageFromPath(temp, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l9/2/img_2_" + String.valueOf(i+1) + ".png");
             }
             Util.setImageFromPath(queImage, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l9/2/img_c_" + queImageIndex.get(count) + ".png");
             queImage.setTag(10+queImageIndex.get(count));

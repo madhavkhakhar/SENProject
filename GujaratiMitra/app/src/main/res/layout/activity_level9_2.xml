@@ -8,76 +8,114 @@
     android:orientation="vertical"
     android:weightSum="1" >
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.45"
+        android:text="SCORE 0/10"
+        android:id="@+id/score"
+        android:textColor="#FF9933CC"
+        android:textSize="20sp"
+        android:layout_gravity="top|right"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="0.35"
         android:weightSum="1.0"
-        android:orientation="vertical">
+        android:orientation="horizontal"
+        android:layout_weight="0.40"
+        android:layout_marginBottom="3dp">
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:id="@+id/que_statement"
-            android:orientation="horizontal"
-            android:layout_weight="0.8"/>
+            android:layout_weight="0.4"/>
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:id="@+id/que_image"
-            android:orientation="horizontal"
-            android:layout_weight="0.2"/>
+            android:layout_weight="0.2"
+            android:id="@+id/q_image"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.4"
+            android:id="@+id/speaker"
+            android:src="@drawable/loudspeaker"/>
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="0.3"
-        android:orientation="horizontal"
-        android:weightSum="1">
+        android:weightSum="1.0"
+        android:orientation="vertical"
+        android:layout_weight="0.15">
 
-        <ImageView
-            android:layout_weight="0.35"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/imageView"
-            android:layout_gravity="center_vertical"
-            android:visibility="invisible"
-            android:src="@drawable/left_arrow"/>
-
-        <android.support.v4.view.ViewPager
-            android:layout_weight="0.30"
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/pager"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-        <ImageView
+            android:layout_height="match_parent"
             android:layout_weight="0.35"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/imageView1"
-            android:layout_gravity="center_vertical"
-            android:src="@drawable/right_arrow"/>
+            android:weightSum="1.0"
+            android:orientation="vertical">
 
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="0.35"
-        android:orientation="horizontal"
-        android:gravity="right">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:id="@+id/que_image"
+                android:orientation="horizontal"
+                android:layout_weight="0.2"/>
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/next"
-            android:layout_gravity="right|center"
-            android:src="@drawable/next"/>
+        </LinearLayout>
 
-    </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.3"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <ImageView
+                android:layout_weight="0.35"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageView"
+                android:layout_gravity="center_vertical"
+                android:visibility="invisible"
+                android:src="@drawable/left_arrow"/>
+
+            <android.support.v4.view.ViewPager
+                android:layout_weight="0.30"
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/pager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <ImageView
+                android:layout_weight="0.35"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageView1"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/right_arrow"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.35"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/next"
+                android:layout_gravity="center"
+                android:src="@drawable/next"/>
+
+        </LinearLayout>
+   </LinearLayout>
 </LinearLayout>

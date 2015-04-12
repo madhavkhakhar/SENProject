@@ -28,6 +28,16 @@ public class Level14_2 extends ActionBarActivity {
         setContentView(R.layout.activity_level14_2);
         i=getIntent();
         levelNo=i.getExtras().getInt("LevelNo");
+
+        Util.setImageFromPath((ImageView)findViewById(R.id.q_image), Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/2/que_14_2.png");
+        ImageView speaker = (ImageView)findViewById(R.id.speaker);
+        speaker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //play question audio
+            }
+        });
+
         mPager = (ViewPager) findViewById(R.id.pager);
         mAdapter = new SimplePagerAdapter();
         mPager.setAdapter(mAdapter);
