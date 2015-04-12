@@ -41,7 +41,7 @@ public class Level4_1 extends ActionBarActivity {
             }
         });
 
-                leftArrow = (ImageView) findViewById(R.id.imageView);
+        leftArrow = (ImageView) findViewById(R.id.imageView);
         rightArrow = (ImageView) findViewById(R.id.imageView1);
         leftArrow.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -16,6 +16,7 @@ public class Level20_2 extends ActionBarActivity {
     private static final int NUM_PAGES = 10;
     private ViewPager mPager;
     private PagerAdapter mPagerAdapter;
+
     private ImageView leftArrow;
     private ImageView rightArrow;
 
@@ -28,6 +29,7 @@ public class Level20_2 extends ActionBarActivity {
         mPagerAdapter = new SimplePagerAdapter();
         mPager.setAdapter(mPagerAdapter);
         mPager.setOffscreenPageLimit(10);
+
         leftArrow = (ImageView) findViewById(R.id.imageView);
         rightArrow = (ImageView) findViewById(R.id.imageView1);
         leftArrow.setOnClickListener(new View.OnClickListener() {
@@ -53,13 +55,13 @@ public class Level20_2 extends ActionBarActivity {
             public void onPageSelected(int i) {
                 if (i == 0)
                     leftArrow.setVisibility(View.INVISIBLE);
-                else if (i == NUM_PAGES)
+                else if (i == NUM_PAGES-1)
                     rightArrow.setVisibility(View.INVISIBLE);
                 else {
                     leftArrow.setVisibility(View.VISIBLE);
                     rightArrow.setVisibility(View.VISIBLE);
                 }
-                if(i>=NUM_PAGES){
+                if(i>=NUM_PAGES-1){
                     Util.setNextLevel(Level20_2.this);
                 }
             }
@@ -86,8 +88,17 @@ public class Level20_2 extends ActionBarActivity {
         final View view =getLayoutInflater().inflate(R.layout.unit_layout_level_20_2, container,false);
         final ImageView v1 = (ImageView) view.findViewById(R.id.imageView_20_2_2);
         final ImageView v2 = (ImageView) view.findViewById(R.id.imageView_20_2_1);
-        Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l20/2/"+"img_20_2_"+Integer.toString(position+1)+".png");
-        Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l20/2/"+"img_20_2_0.png");
+        ImageView speaker = (ImageView) view.findViewById(R.id.speaker);
+        speaker.setTag(Environment.getExternalStorageDirectory() + "/GujaratiMitra/l20/2/aud_0.mp3");
+        speaker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Util.playMediaFromPath(v.getTag().toString());
+
+            }
+        });
+        Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l20/2/"+"img_"+Integer.toString(position+1)+".png");
+        Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l20/2/que_20_2.png");
 
         v1.setOnClickListener(new View.OnClickListener() {
             @Override
