@@ -41,7 +41,7 @@ public class Level4_1 extends ActionBarActivity {
             }
         });
 
-                leftArrow = (ImageView) findViewById(R.id.imageView);
+        leftArrow = (ImageView) findViewById(R.id.imageView);
         rightArrow = (ImageView) findViewById(R.id.imageView1);
         leftArrow.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -111,8 +111,6 @@ public class Level4_1 extends ActionBarActivity {
                 Util.setImageFromPath(v3, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/1/img_" + Integer.toString((2 * position) + 1) + ".png");
                 Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/1/img_" + Integer.toString(2 * position) + "_n.png");
                 Util.setImageFromPath(v4, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/1/img_" + Integer.toString((2 * position) + 1) + "_n.png");
-                //v1.setTag(Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/1/aud_" + Integer.toString(2 * position) + ".mp3");
-                //v3.setTag(Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/1/aud_" + Integer.toString((2 * position) + 1) + ".mp3");
                 v1.setTag(Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/1/aud_0.mp3");
                 v3.setTag(Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/1/aud_1.mp3");
             } else if(position==NUM_PAGES-2){
