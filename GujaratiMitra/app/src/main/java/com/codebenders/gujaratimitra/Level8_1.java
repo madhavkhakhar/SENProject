@@ -92,123 +92,137 @@ public class Level8_1 extends ActionBarActivity {
             final ImageView v2 = (ImageView) view.findViewById(R.id.imageView_1);
             final ImageView v1 = (ImageView) view.findViewById(R.id.imageView_2);
 
-
-            switch(position) {
-                case 0:
-                    Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l8/1/"+"img_8_1_"+Integer.toString(position+1)+"_q.png");
-                    Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l8/1/"+"img_8_1_"+Integer.toString(position+1)+".jpg");
-                    // v1.setImageResource(R.drawable.img_8_1_1_q);
-                    v2.setImageResource(R.drawable.img_8_1_1);
-                    break;
-                case 1:
-                    Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l8/1/"+"img_8_1_"+Integer.toString(position+1)+"_q.png");
-                    Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l8/1/"+"img_8_1_"+Integer.toString(position+1)+".jpg");
-                    // v1.setImageResource(R.drawable.img_8_1_2_q);
-                    //v2.setImageResource(R.drawable.img_8_1_2);
-                    break;
-                case 2:
-                    Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l8/1/"+"img_8_1_"+Integer.toString(position+1)+"_q.png");
-                    //v1.setImageResource(R.drawable.img_8_1_3_q);
-                    Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l8/1/"+"img_8_1_"+Integer.toString(position+1)+".jpg");
-                    //v2.setImageResource(R.drawable.img_8_1_3);
-                    break;
-                case 3:
-                    Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l8/1/"+"img_8_1_"+Integer.toString(position+1)+"_q.png");
-                    Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l8/1/"+"img_8_1_"+Integer.toString(position+1)+".jpg");
-                    //v1.setImageResource(R.drawable.img_8_1_4_q);
-                    //v2.setImageResource(R.drawable.img_8_1_4);
-                    break;
-                case 4:
-                    Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l8/1/"+"img_8_1_"+Integer.toString(position+1)+"_q.png");
-                    //v1.setImageResource(R.drawable.img_8_1_5_q);
-                    Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l8/1/"+"img_8_1_"+Integer.toString(position+1)+".jpg");
-                    //v2.setImageResource(R.drawable.img_8_1_5);
-                    break;
-            }
+            Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l8/1/"+"img_8_1_"+Integer.toString(position+1)+"_q.png");
+            Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l8/1/"+"img_8_1_"+Integer.toString(position+1)+".jpg");
+//            switch(position) {
+//                case 0:
+//                    Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l8/1/"+"img_8_1_"+Integer.toString(position+1)+"_q.png");
+//                    Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l8/1/"+"img_8_1_"+Integer.toString(position+1)+".jpg");
+//                    // v1.setImageResource(R.drawable.img_8_1_1_q);
+//                    v2.setImageResource(R.drawable.img_8_1_1);
+//                    break;
+//                case 1:
+//                    Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l8/1/"+"img_8_1_"+Integer.toString(position+1)+"_q.png");
+//                    Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l8/1/"+"img_8_1_"+Integer.toString(position+1)+".jpg");
+//                    // v1.setImageResource(R.drawable.img_8_1_2_q);
+//                    //v2.setImageResource(R.drawable.img_8_1_2);
+//                    break;
+//                case 2:
+//                    Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l8/1/"+"img_8_1_"+Integer.toString(position+1)+"_q.png");
+//                    //v1.setImageResource(R.drawable.img_8_1_3_q);
+//                    Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l8/1/"+"img_8_1_"+Integer.toString(position+1)+".jpg");
+//                    //v2.setImageResource(R.drawable.img_8_1_3);
+//                    break;
+//                case 3:
+//                    Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l8/1/"+"img_8_1_"+Integer.toString(position+1)+"_q.png");
+//                    Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l8/1/"+"img_8_1_"+Integer.toString(position+1)+".jpg");
+//                    //v1.setImageResource(R.drawable.img_8_1_4_q);
+//                    //v2.setImageResource(R.drawable.img_8_1_4);
+//                    break;
+//                case 4:
+//                    Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l8/1/"+"img_8_1_"+Integer.toString(position+1)+"_q.png");
+//                    //v1.setImageResource(R.drawable.img_8_1_5_q);
+//                    Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l8/1/"+"img_8_1_"+Integer.toString(position+1)+".jpg");
+//                    //v2.setImageResource(R.drawable.img_8_1_5);
+//                    break;
+//            }
 
 
 
             question.setOnClickListener(new View.OnClickListener(){
 
                 public void onClick(View v) {
-                    if (mPager.getCurrentItem() == 0) {
-
-                        View view = mPager.getChildAt(mPager.getCurrentItem());
-                        final ImageView v2 = (ImageView) view.findViewById(R.id.imageView_1);
-                        if (question.getText().equals("IMAGE")) {
-                            Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l8/1/"+"img_8_1_"+Integer.toString(mPager.getCurrentItem()+1)+".jpg");
-                            //v2.setImageResource(R.drawable.img_8_1_1);
-
-                            question.setText("Question");
-                        } else if (question.getText().equals("Question")) {
-                            Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l8/1/"+"img_8_1_"+Integer.toString(mPager.getCurrentItem()+1)+"_n.png");
-
-                            //v2.setImageResource(R.drawable.img_8_1_1_n);
-                            question.setText("IMAGE");
-                        }
-                    } else if (mPager.getCurrentItem()  == 1) {
-
-                        View view = mPager.getChildAt(mPager.getCurrentItem());
-                        final ImageView v2 = (ImageView) view.findViewById(R.id.imageView_1);
-                        if (question.getText().equals("IMAGE")) {
-                            Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l8/1/"+"img_8_1_"+Integer.toString(mPager.getCurrentItem()+1)+".jpg");
-                            //v2.setImageResource(R.drawable.img_8_1_2);
-
-                            question.setText("Question");
-                        } else if (question.getText().equals("Question")) {
-                            Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l8/1/"+"img_8_1_"+Integer.toString(mPager.getCurrentItem()+1)+"_n.png");
-                            //v2.setImageResource(R.drawable.img_8_1_2_n);
-                            question.setText("IMAGE");
-                        }
+                    View view = mPager.getChildAt(mPager.getCurrentItem());
+                    final ImageView v1 = (ImageView) view.findViewById(R.id.imageView_1);
+                    final ImageView v2 = (ImageView) view.findViewById(R.id.imageView_2);
+                    if (question.getText().equals("IMAGE")) {
+                        Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l8/1/"+"img_8_1_"+Integer.toString(mPager.getCurrentItem()+1)+".jpg");
+                        //v2.setImageResource(R.drawable.img_8_1_1);
+                        v2.setVisibility(View.VISIBLE);
+                        question.setText("Question");
+                    } else if (question.getText().equals("Question")) {
+                        Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l8/1/"+"img_8_1_"+Integer.toString(mPager.getCurrentItem()+1)+"_n.png");
+                        v2.setVisibility(View.GONE);
+                        //v2.setImageResource(R.drawable.img_8_1_1_n);
+                        question.setText("IMAGE");
                     }
-                    else if (mPager.getCurrentItem()  == 2) {
-
-                        View view = mPager.getChildAt(mPager.getCurrentItem());
-                        final ImageView v2 = (ImageView) view.findViewById(R.id.imageView_1);
-                        if (question.getText().equals("IMAGE")) {
-                            Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l8/1/"+"img_8_1_"+Integer.toString(mPager.getCurrentItem()+1)+".jpg");
-                            // v2.setImageResource(R.drawable.img_8_1_3);
-
-                            question.setText("Question");
-                        } else if (question.getText().equals("Question")) {
-                            Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l8/1/"+"img_8_1_"+Integer.toString(mPager.getCurrentItem()+1)+"_n.png");
-                            //v2.setImageResource(R.drawable.img_8_1_3_n);
-                            question.setText("IMAGE");
-                        }
-                    }
-                    else if (mPager.getCurrentItem()  == 3) {
-
-                        View view = mPager.getChildAt(mPager.getCurrentItem());
-                        final ImageView v2 = (ImageView) view.findViewById(R.id.imageView_1);
-                        if (question.getText().equals("IMAGE")) {
-                            Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l8/1/"+"img_8_1_"+Integer.toString(mPager.getCurrentItem()+1)+".jpg");
-                            //v2.setImageResource(R.drawable.img_8_1_4);
-
-                            question.setText("Question");
-                        } else if (question.getText().equals("Question")) {
-                            Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l8/1/"+"img_8_1_"+Integer.toString(mPager.getCurrentItem()+1)+"_n.png");
-                            //v2.setImageResource(R.drawable.img_8_1_4_n);
-                            question.setText("IMAGE");
-                        }
-                    }
-                    else if (mPager.getCurrentItem()  == 4) {
-
-                        View view = mPager.getChildAt(mPager.getCurrentItem());
-                        final ImageView v2 = (ImageView) view.findViewById(R.id.imageView_1);
-                        if (question.getText().equals("IMAGE")) {
-                            Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l8/1/"+"img_8_1_"+Integer.toString(mPager.getCurrentItem()+1)+".jpg");
-                            //v2.setImageResource(R.drawable.img_8_1_5);
-
-                            question.setText("Question");
-                        } else if (question.getText().equals("Question")) {
-                            Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l8/1/"+"img_8_1_"+Integer.toString(mPager.getCurrentItem()+1)+"_n. png");
-                            //v2.setImageResource(R.drawable.img_8_1_5_n);
-                            question.setText("IMAGE");
-                        }
-                    }
+//                    if (mPager.getCurrentItem() == 0) {
+//
+//                        View view = mPager.getChildAt(mPager.getCurrentItem());
+//                        final ImageView v2 = (ImageView) view.findViewById(R.id.imageView_1);
+//                        if (question.getText().equals("IMAGE")) {
+//                            Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l8/1/"+"img_8_1_"+Integer.toString(mPager.getCurrentItem()+1)+".jpg");
+//                            //v2.setImageResource(R.drawable.img_8_1_1);
+//
+//                            question.setText("Question");
+//                        } else if (question.getText().equals("Question")) {
+//                            Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l8/1/"+"img_8_1_"+Integer.toString(mPager.getCurrentItem()+1)+"_n.png");
+//
+//                            //v2.setImageResource(R.drawable.img_8_1_1_n);
+//                            question.setText("IMAGE");
+//                        }
+//                    } else if (mPager.getCurrentItem()  == 1) {
+//
+//                        View view = mPager.getChildAt(mPager.getCurrentItem());
+//                        final ImageView v2 = (ImageView) view.findViewById(R.id.imageView_1);
+//                        if (question.getText().equals("IMAGE")) {
+//                            Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l8/1/"+"img_8_1_"+Integer.toString(mPager.getCurrentItem()+1)+".jpg");
+//                            //v2.setImageResource(R.drawable.img_8_1_2);
+//
+//                            question.setText("Question");
+//                        } else if (question.getText().equals("Question")) {
+//                            Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l8/1/"+"img_8_1_"+Integer.toString(mPager.getCurrentItem()+1)+"_n.png");
+//                            //v2.setImageResource(R.drawable.img_8_1_2_n);
+//                            question.setText("IMAGE");
+//                        }
+//                    }
+//                    else if (mPager.getCurrentItem()  == 2) {
+//
+//                        View view = mPager.getChildAt(mPager.getCurrentItem());
+//                        final ImageView v2 = (ImageView) view.findViewById(R.id.imageView_1);
+//                        if (question.getText().equals("IMAGE")) {
+//                            Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l8/1/"+"img_8_1_"+Integer.toString(mPager.getCurrentItem()+1)+".jpg");
+//                            // v2.setImageResource(R.drawable.img_8_1_3);
+//
+//                            question.setText("Question");
+//                        } else if (question.getText().equals("Question")) {
+//                            Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l8/1/"+"img_8_1_"+Integer.toString(mPager.getCurrentItem()+1)+"_n.png");
+//                            //v2.setImageResource(R.drawable.img_8_1_3_n);
+//                            question.setText("IMAGE");
+//                        }
+//                    }
+//                    else if (mPager.getCurrentItem()  == 3) {
+//
+//                        View view = mPager.getChildAt(mPager.getCurrentItem());
+//                        final ImageView v2 = (ImageView) view.findViewById(R.id.imageView_1);
+//                        if (question.getText().equals("IMAGE")) {
+//                            Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l8/1/"+"img_8_1_"+Integer.toString(mPager.getCurrentItem()+1)+".jpg");
+//                            //v2.setImageResource(R.drawable.img_8_1_4);
+//
+//                            question.setText("Question");
+//                        } else if (question.getText().equals("Question")) {
+//                            Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l8/1/"+"img_8_1_"+Integer.toString(mPager.getCurrentItem()+1)+"_n.png");
+//                            //v2.setImageResource(R.drawable.img_8_1_4_n);
+//                            question.setText("IMAGE");
+//                        }
+//                    }
+//                    else if (mPager.getCurrentItem()  == 4) {
+//
+//                        View view = mPager.getChildAt(mPager.getCurrentItem());
+//                        final ImageView v2 = (ImageView) view.findViewById(R.id.imageView_1);
+//                        if (question.getText().equals("IMAGE")) {
+//                            Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l8/1/"+"img_8_1_"+Integer.toString(mPager.getCurrentItem()+1)+".jpg");
+//                            //v2.setImageResource(R.drawable.img_8_1_5);
+//
+//                            question.setText("Question");
+//                        } else if (question.getText().equals("Question")) {
+//                            Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l8/1/"+"img_8_1_"+Integer.toString(mPager.getCurrentItem()+1)+"_n. png");
+//                            //v2.setImageResource(R.drawable.img_8_1_5_n);
+//                            question.setText("IMAGE");
+//                        }
+//                    }
                 }
             });
-
 
             v1.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -216,7 +230,6 @@ public class Level8_1 extends ActionBarActivity {
 
                 }
             });
-
 
             v1.setOnClickListener(new View.OnClickListener() {
                 @Override

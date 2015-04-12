@@ -19,8 +19,6 @@ public class HomePage extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Util.mediaPlayer = new MediaPlayer();
-        Util.appDB = new AppDB(HomePage.this);
         setContentView(R.layout.activity_home_page);
         profiles = (Button)findViewById(R.id.profile_button);
         play = (Button)findViewById(R.id.play_button);
