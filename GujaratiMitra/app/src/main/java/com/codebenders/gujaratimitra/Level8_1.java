@@ -12,7 +12,7 @@ import android.widget.ImageView;
 
 public class Level8_1 extends ActionBarActivity {
 
-    private static final int NUM_PAGES = 5;
+    private static final int NUM_PAGES = 6;
     private ViewPager mPager;
     private PagerAdapter mPagerAdapter;
     private ImageView leftArrow;

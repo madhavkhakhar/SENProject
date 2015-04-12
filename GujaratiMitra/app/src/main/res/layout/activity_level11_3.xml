@@ -9,21 +9,54 @@
     android:orientation="vertical" >
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.45"
         android:text="SCORE 0/10"
         android:id="@+id/score"
-        android:textSize="30dp"
         android:textColor="#FF9933CC"
-        android:layout_gravity="top|right" />
+        android:textSize="20sp"
+        android:layout_gravity="top|right"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="1.0"
+        android:orientation="horizontal"
+        android:layout_weight="0.40"
+        android:layout_marginBottom="3dp">
 
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.4"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.2"
+            android:id="@+id/q_image"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.4"
+            android:id="@+id/speaker"
+            android:src="@drawable/loudspeaker"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="1.0"
+        android:orientation="vertical"
+        android:layout_weight="0.15">
         <ImageView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.3"
             android:layout_gravity="center_vertical"
             android:id="@+id/imgViewq1"
-
             android:src="@drawable/level4_2_img_e1_1"/>
 
         <LinearLayout
@@ -31,41 +64,44 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:weightSum="1"
-
             android:layout_weight="0.6"
             >
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.25"
                 android:layout_gravity="center"
                 android:id="@+id/imgViewa1"
+                android:padding="3dp"
+                android:layout_margin="2dp"
                 android:src="@drawable/level4_2_img_e1_1"/>
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:layout_weight="0.2"
+                android:layout_weight="0.25"
                 android:id="@+id/imgViewa2"
+                android:padding="3dp"
+                android:layout_margin="2dp"
                 android:src="@drawable/level4_2_img_e1_2" />
-
             <ImageView
                 android:src="@drawable/level4_2_img_e1_3"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_gravity="center"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:id="@+id/imgViewa3"
-                android:layout_weight="0.2"
-
-                />
-
-
+                android:padding="3dp"
+                android:layout_margin="2dp"
+                android:layout_weight="0.25"/>
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.25"
                 android:layout_gravity="center"
                 android:id="@+id/imgViewa4"
+                android:padding="3dp"
+                android:layout_margin="2dp"
                 android:src="@drawable/level4_2_img_e1_4" />
         </LinearLayout>
+    </LinearLayout>
 </LinearLayout>

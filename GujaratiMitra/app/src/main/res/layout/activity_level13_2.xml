@@ -7,31 +7,50 @@
     android:orientation="vertical"
     tools:context="com.codebenders.gujaratimitra.Level13_2">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.45"
+        android:text="SCORE 0/20"
+        android:id="@+id/score"
+        android:textColor="#FF9933CC"
+        android:textSize="20sp"
+        android:layout_gravity="top|right"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal"
         android:weightSum="1.0"
-        android:layout_weight="0.9">
+        android:orientation="horizontal"
+        android:layout_weight="0.40"
+        android:layout_marginBottom="3dp">
+
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/imageView5"
-            android:layout_weight="0.15" />
+            android:layout_weight="0.4"/>
+
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="0.85"
-            android:id="@+id/imageView6"
-            android:src="@drawable/loudspeaker" />
+            android:layout_weight="0.2"
+            android:id="@+id/q_image"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.4"
+            android:id="@+id/speaker"
+            android:src="@drawable/loudspeaker"/>
+
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="0.1"
+        android:weightSum="1.0"
         android:orientation="horizontal"
-        android:weightSum="1.0">
+        android:layout_weight="0.15">
 
         <ImageView
             android:layout_weight="0.30"
