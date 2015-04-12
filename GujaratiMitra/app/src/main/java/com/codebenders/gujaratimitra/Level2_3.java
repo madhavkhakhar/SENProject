@@ -17,6 +17,8 @@ import android.widget.Toast;
 public class Level2_3 extends ActionBarActivity {
 
     private static final int NUM_PAGES = 5;
+    private static final int TOTAL_SCORE=5;
+    private static int SCORE=0;
     private  int currentQueIndex;
     private boolean selected1, selected2, selected3, selected4;
     private ImageView v1, v2, v3, v4;
@@ -130,6 +132,7 @@ public class Level2_3 extends ActionBarActivity {
                             switch (currentQueIndex) {
                                 case 0:
                                     if (selected1 && selected2) {
+                                        SCORE++;
                                         toast.setView(green_tick);
                                         toast.show();
 
@@ -160,6 +163,7 @@ public class Level2_3 extends ActionBarActivity {
                                     break;
                                 case 1:
                                     if (selected1 && selected2) {
+                                        SCORE++;
                                         toast.setView(green_tick);
                                         toast.show();
 
@@ -190,6 +194,7 @@ public class Level2_3 extends ActionBarActivity {
                                     break;
                                 case 2:
                                     if (selected1 && selected4) {
+                                        SCORE++;
                                         toast.setView(green_tick);
                                         toast.show();
 
@@ -220,6 +225,7 @@ public class Level2_3 extends ActionBarActivity {
                                     break;
                                 case 3:
                                     if (selected1 && selected3) {
+                                        SCORE++;
                                         toast.setView(green_tick);
                                         toast.show();
 
@@ -250,6 +256,7 @@ public class Level2_3 extends ActionBarActivity {
                                     break;
                                 case 4:
                                     if (selected1 && selected3) {
+                                        SCORE++;
                                         toast.setView(green_tick);
                                         toast.show();
 
