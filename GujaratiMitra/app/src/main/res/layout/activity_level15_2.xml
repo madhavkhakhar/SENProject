@@ -7,12 +7,34 @@
     tools:context="com.codebenders.gujaratimitra.Level15_2"
     android:orientation="vertical"
     android:weightSum="1">
-
     <LinearLayout
+        android:layout_weight="0.275"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/imageView5"
+            android:src="@drawable/level3title"
+            android:layout_weight=".10" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.90"
+            android:id="@+id/imageView6"
+            android:src="@drawable/loudspeaker" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:padding="10dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        android:layout_weight="0.2"
+        android:layout_weight="0.260"
         android:weightSum="1"
         android:layout_gravity="top">
         <ImageView
@@ -46,10 +68,11 @@
     </LinearLayout>
 
     <LinearLayout
+        android:padding="15dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center|center_horizontal"
-        android:layout_weight="0.3"
+        android:layout_weight="0.260"
         android:weightSum="1"
         >
         <ImageView
@@ -81,14 +104,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        android:layout_weight="0.2"
-        android:padding="30dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
+        android:layout_weight="0.23"
         android:layout_gravity="center|center_horizontal"
         android:weightSum="1">
 
         <ImageView
+            android:padding="5dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center|center_horizontal"
@@ -96,25 +117,6 @@
             android:layout_weight="1"
             />
 
-
-
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/layout4"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="bottom"
-        android:orientation="horizontal"
-        android:layout_weight="0.3"
-        android:weightSum="1">
-
-        <ImageView
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:id="@+id/imageView6"
-            android:src="@drawable/loudspeaker"
-            android:layout_gravity="center|center_horizontal"
-            android:layout_weight="0.5"/>
         <ImageView
             android:layout_width="70dp"
             android:layout_height="70dp"
@@ -124,4 +126,5 @@
             android:layout_weight="0.5"/>
 
     </LinearLayout>
+
 </LinearLayout>

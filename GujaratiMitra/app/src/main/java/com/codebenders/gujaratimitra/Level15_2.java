@@ -49,6 +49,7 @@ public class Level15_2 extends ActionBarActivity {
             imagePath = Environment.getExternalStorageDirectory() + "/GujaratiMitra/l19/3/img_";
 
         }
+        Util.setImageFromPath((ImageView)findViewById(R.id.imageView5), Environment.getExternalStorageDirectory() + "/GujaratiMitra/All Questions/que_15_2.png");
         image = new ImageView[3];
         window = new ImageView[3];
         window[0] = (ImageView) findViewById(R.id.window1);
@@ -68,7 +69,7 @@ public class Level15_2 extends ActionBarActivity {
         final ImageView check = (ImageView) findViewById(R.id.imageView7);
         hint = (ImageView) findViewById(R.id.hint);
         if (levelNumber == 15)
-            hint.setBackgroundResource(R.drawable.image_border_green);
+            hint.setBackgroundResource(R.drawable.image_border_black);
 
         set();
 
