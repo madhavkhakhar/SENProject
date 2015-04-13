@@ -178,6 +178,7 @@ public class Level4_2 extends ActionBarActivity {
 
                     @Override
                     public void run() {
+                        disable=1;
                         if(correct==ansClicked){
                             SCORE++;
                             txtscore.setText("SCORE:"+String.valueOf(SCORE)+"/"+String.valueOf(TOTAL_SCORE));
@@ -215,6 +216,7 @@ public class Level4_2 extends ActionBarActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
+                        disable=0;
                         for(int i=0;i<4;i++){
                             q[i].setVisibility(View.INVISIBLE);
                         }

@@ -24,7 +24,7 @@ public class SubLevelsActivity extends ActionBarActivity {
         lvSublevels = (ListView) findViewById(R.id.listViewSublevels);
         ArrayList<ListItem> list = new ArrayList<ListItem>();
 
-        sublevelNo = new int[]{1,3,1,2,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3};
+        sublevelNo = new int[]{1,3,1,2,2,2,2,3,3,3,3,3,3,3,3,3,3,3,3,3};
 
         levelNo = getIntent().getExtras().getInt("Level");
 
@@ -113,7 +113,6 @@ public class SubLevelsActivity extends ActionBarActivity {
                         break;
                     case 7:
                         if(position==0){
-                            //Set your intent here
                             i = new Intent(SubLevelsActivity.this,Level5_1.class);
                             i.putExtra("LevelNo",7);
                             startActivity(i);
