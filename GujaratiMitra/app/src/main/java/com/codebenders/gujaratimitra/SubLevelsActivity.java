@@ -24,7 +24,7 @@ public class SubLevelsActivity extends ActionBarActivity {
         lvSublevels = (ListView) findViewById(R.id.listViewSublevels);
         ArrayList<ListItem> list = new ArrayList<ListItem>();
 
-        sublevelNo = new int[]{1,3,1,2,2,2,2,3,3,3,3,3,3,3,3,3,3,3,3,3};
+        sublevelNo = new int[]{1,3,1,2,2,2,2,1,2,1,3,1,1,3,3,3,1,3,2,2};
 
         levelNo = getIntent().getExtras().getInt("Level");
 
@@ -127,15 +127,9 @@ public class SubLevelsActivity extends ActionBarActivity {
                         break;
                     case 8:
                         if(position==0){
-                            //Set your intent here
                             i = new Intent(SubLevelsActivity.this,Level8_1.class);
                             i.putExtra("LevelNo",8);
                             startActivity(i);
-                        }
-                        else if(position==1){
-                            
-                        }
-                        else if(position==2){
                         }
                         break;
                     case 9:
@@ -155,8 +149,6 @@ public class SubLevelsActivity extends ActionBarActivity {
                             startActivity(i);
                         }
                         else if(position==2) {
-                            //i = new Intent(SubLevelsActivity.this, Level11_3.class);
-                            //i.putExtra("LevelNo", 10);
                         }
                         break;
                     case 11:
@@ -285,11 +277,11 @@ public class SubLevelsActivity extends ActionBarActivity {
                         }
                         break;
                     case 13:
-                        if(position==0){
+                        /*if(position==0){
 //                            i = new Intent(SubLevelsActivity.this,Level13_1.class);
 //                            startActivity(i);
-                        }
-                        else if(position==1){
+                        }*/
+                        if(position==0){
                             i = new Intent(SubLevelsActivity.this,Level13_2.class);
                             i.putExtra("Sublevel",2);
                             i.putExtra("Level",13);

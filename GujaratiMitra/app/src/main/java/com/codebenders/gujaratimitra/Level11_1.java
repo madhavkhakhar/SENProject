@@ -41,8 +41,6 @@ public class Level11_1 extends ActionBarActivity {
             rand_array.add(i + 1);
         }
         Collections.shuffle(rand_array);
-        //final int resource_s = getResources().getIdentifier("s"+String.valueOf(rand_array.get(count)), "drawable", getPackageName());
-        //final int resource_d = getResources().getIdentifier("d"+String.valueOf(rand_array.get(count)), "drawable", getPackageName());
 
         image[0] = (ImageView) findViewById(R.id.imageView);
         image[1] = (ImageView) findViewById(R.id.imageView2);
@@ -142,7 +140,7 @@ public class Level11_1 extends ActionBarActivity {
                             Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
                             if (image_no == correctans) {
 
-                                //image[image_no].setColorFilter(Color.argb(255, 0, 255, 0));
+                                image[image_no].setColorFilter(Color.argb(255, 0, 255, 0));
                                 score++;
 
                                 toast.setView(green_tick);
@@ -158,8 +156,8 @@ public class Level11_1 extends ActionBarActivity {
                                 score_text.setText(String.valueOf(score) + "/10");
                             } else {
 
-                                //image[image_no].setColorFilter(Color.argb(255, 255, 0, 0));
-                                //image[correctans].setColorFilter(Color.argb(255, 0, 255, 0));
+                                image[image_no].setColorFilter(Color.argb(255, 255, 0, 0));
+                                image[correctans].setColorFilter(Color.argb(255, 0, 255, 0));
                                 toast.setView(red_cross);
                                 toast.show();
 
@@ -180,8 +178,6 @@ public class Level11_1 extends ActionBarActivity {
                         @Override
                         public void run() {
                             disable = 0;
-                            // int resource_s = getResources().getIdentifier("s" + String.valueOf(count), "drawable", getPackageName());
-                            //int resource_d = getResources().getIdentifier("d" + String.valueOf(count), "drawable", getPackageName());
 
                             Random r = new Random();
                             int random = r.nextInt(4);
@@ -189,11 +185,9 @@ public class Level11_1 extends ActionBarActivity {
                             Collections.shuffle(rand_array);
 
                             for (int i = 0; i < 4; i++) {
-                                Util.setImageFromPath(image[i], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l11/1/" + Integer.toString(rand_array.get(i)) + ".png");
-
+                                Util.setImageFromPath(image[i], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l11/1/img_" + Integer.toString(rand_array.get(i)) + ".png");
+                                image[i].setColorFilter(Color.argb(255, 0, 0, 0));
                             }
-
-
                         }
                     });
                 } catch (Exception e) {
