@@ -16,7 +16,7 @@ public class AppDB extends DBConnect {
 
     public void insertStudent(Student student) {
         String query;
-        int id=-1;
+        int id = -1;
 
         query = String.format(ISql.INSERT_STUDENT, student.getRoll(),
                 student.getStandard(), student.getFirstName(), student.getLastName());
@@ -25,11 +25,11 @@ public class AppDB extends DBConnect {
         if (cursor != null && cursor.getCount() > 0) {
 
             if (cursor.moveToNext()) {
-                id=cursor.getInt(0);
+                id = cursor.getInt(0);
             }
         }
-        if(id!=-1)
-            this.addSubLevelScore(1,1,0,id);
+       /* if(id!=-1)
+            this.addSubLevelScore(1,1,0,id);*/
     }
 
     /**
@@ -73,13 +73,13 @@ public class AppDB extends DBConnect {
 
         ArrayList<Student> listStudent = new ArrayList<Student>();
         Student student;
-        System.out.println("columns"+cursor.getColumnCount());
+        System.out.println("columns" + cursor.getColumnCount());
         if (cursor != null && cursor.getCount() > 0) {
 
             if (cursor.moveToNext()) {
 
                 do {
-                    student = new Student(cursor.getInt(cursor.getColumnIndex("id")),cursor.getInt(cursor.getColumnIndex("roll_no")), cursor.getInt(cursor.getColumnIndex("standard")), cursor.getString(cursor.getColumnIndex("first_name")), cursor.getString(cursor.getColumnIndex("last_name")),cursor.getInt(cursor.getColumnIndex("current_level")),cursor.getInt(cursor.getColumnIndex("total_score")));
+                    student = new Student(cursor.getInt(cursor.getColumnIndex("id")), cursor.getInt(cursor.getColumnIndex("roll_no")), cursor.getInt(cursor.getColumnIndex("standard")), cursor.getString(cursor.getColumnIndex("first_name")), cursor.getString(cursor.getColumnIndex("last_name")), cursor.getInt(cursor.getColumnIndex("current_level")), cursor.getInt(cursor.getColumnIndex("total_score")));
                     listStudent.add(student);
                 } while (cursor.moveToNext());
             }
@@ -124,8 +124,9 @@ public class AppDB extends DBConnect {
         }
         return score;
     }
-    public int getLastLevelUnlocked(int studentId){
-        String query = String.format(ISql.GET_LEVEL_FROM_SUB_LEVEL, getLastSubLevelUnlocked(studentId));
+
+    public int getLastLevelUnlocked(int studentId) {
+        String query = String.format(ISql.GET_LAST_LEVEL_UNLOCKED, studentId);
         Cursor cursor = execQuery(query);
         int level = 1;
         if (cursor != null && cursor.getCount() > 0) {
@@ -136,7 +137,7 @@ public class AppDB extends DBConnect {
         }
         return level;
     }
-    public int getLastSubLevelUnlocked(int studentId){
+    /*public int getLastSubLevelUnlocked(int studentId){
         String query = String.format(ISql.GET_LAST_SUB_LEVEL_UNLOCKED, studentId);
         Cursor cursor = execQuery(query);
         int subLevel = 1;
@@ -147,11 +148,11 @@ public class AppDB extends DBConnect {
             }
         }
         return subLevel;
-    }
+    }*/
 
-    public void setCurrentLevel(int studentId, int subLevelNo){
-        String query = String.format(ISql.SET_CURRENT_LEVEL, studentId, subLevelNo);
+    public void setCurrentLevel(int studentId, int levelNo) {
+        System.out.println(">>"+levelNo);
+        String query = String.format(ISql.SET_CURRENT_LEVEL, levelNo, studentId);
         execNonQuery(query);
-
     }
 }

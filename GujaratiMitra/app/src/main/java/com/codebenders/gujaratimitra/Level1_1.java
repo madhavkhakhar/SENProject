@@ -51,7 +51,7 @@ public class Level1_1 extends ActionBarActivity {
         if(levelNo == 1){
             imagePath = Environment.getExternalStorageDirectory()+"/GujaratiMitra/l1/1/";
             NUM_PAGES = 6;
-            appDB.addSubLevelScore(levelNo, 1, 0, prefs.getStudentId());
+            //appDB.addSubLevelScore(levelNo, 1, 0, prefs.getStudentId());
         } else if (levelNo == 17) {
             imagePath = Environment.getExternalStorageDirectory() + "/GujaratiMitra/l17/1/";
             NUM_PAGES = 20;
@@ -102,7 +102,7 @@ public class Level1_1 extends ActionBarActivity {
                     mPager.getChildAt(i).invalidate();
                 }
                 if (i >= NUM_PAGES - 1) {
-                    Util.setNextLevel(Level1_1.this,0,1,1);
+                    Util.setNextLevel(Level1_1.this,0,1,1,true);
                 }
 
             }

@@ -113,9 +113,9 @@ public class Level5_1 extends ActionBarActivity {
             image[i].setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                   if(disable==0) {
-                       nextQues(finalI);
-                   }
+                    if (disable == 0) {
+                        nextQues(finalI);
+                    }
                 }
             });
         }
@@ -255,7 +255,7 @@ public class Level5_1 extends ActionBarActivity {
                                 count++;
                                 disabled.clear();
                                 if (count == 6) {
-                                    Util.setNextLevel(Level5_1.this,SCORE,1,5);
+                                    Util.setNextLevel(Level5_1.this,SCORE,1,levelNo,false);
                                 }
                                 else{
                                     for (int i = 0; i < numbers[rand_array.get(count) - 1]; i++) {

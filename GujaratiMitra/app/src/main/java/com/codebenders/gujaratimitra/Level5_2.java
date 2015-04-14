@@ -67,9 +67,6 @@ public class Level5_2 extends ActionBarActivity {
 
             @Override
             public void onPageSelected(int i) {
-                mPager.getChildAt(i).findViewById(R.id.imageView2).setVisibility(View.INVISIBLE);
-                mPager.getChildAt(i).findViewById(R.id.imageView4).setVisibility(View.INVISIBLE);
-                mPager.getChildAt(i).invalidate();
                 if (i == 0)
                     leftArrow.setVisibility(View.INVISIBLE);
                 else if (i == NUM_PAGES-1)
@@ -79,7 +76,12 @@ public class Level5_2 extends ActionBarActivity {
                     rightArrow.setVisibility(View.VISIBLE);
                 }
                 if(i>=NUM_PAGES-1){
-                    Util.setNextLevel(Level5_2.this,0,2,5);
+                    Util.setNextLevel(Level5_2.this,0,2,levelNo,true);
+                }
+                else{
+                    mPager.getChildAt(i).findViewById(R.id.imageView2).setVisibility(View.INVISIBLE);
+                    mPager.getChildAt(i).findViewById(R.id.imageView4).setVisibility(View.INVISIBLE);
+                    mPager.getChildAt(i).invalidate();
                 }
 
             }
