@@ -21,7 +21,7 @@ import java.util.List;
 
 public class Level20_1 extends ActionBarActivity {
 
-    protected static int count=0;
+    protected  int count=0;
     ImageView[]image;
     ImageView window;
     final List<Integer> rand_array=new ArrayList<Integer>();
@@ -80,8 +80,6 @@ public class Level20_1 extends ActionBarActivity {
     }
 
     private void nextQues(int image_no) {
-       // Util.setImageFromPath(window[1], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l15/2/img_" + String.valueOf(rand_array.get(count)) + "_" + String.valueOf(image_no + 4) + ".png");
-        //window[1].setColorFilter(Color.argb(255, 0, 0, 0));
 
         for(int i=0;i<4;i++){
             image[i].setColorFilter(Color.argb(255,0,0,0));
@@ -107,12 +105,12 @@ public class Level20_1 extends ActionBarActivity {
                             if(rand_array.get(count)-1>-1){
                                 temp=correctans[rand_array.get(count)-1]-2;
                             }
-                            //int temp=correctans[rand_array.get(count)-1]-2;
-                            System.out.println(">>>>>>>>>>>>>>>>"+temp+disable);
+
+
                             Vibrator v = (Vibrator)getSystemService(Context.VIBRATOR_SERVICE);
                             if(disable==temp) {
 
-                                System.out.println(">>>>>>>>>>>>>>>>-1-1-1");
+
 
                                 toast.setView(green_tick);
                                 toast.show();
@@ -126,12 +124,11 @@ public class Level20_1 extends ActionBarActivity {
                                 }, 500);
 
 
-                                //score_text.setText(String.valueOf(score) + "/10");
+
                             }
                             else if(disable!=temp){
 
-                                //for(int i=0;i<sequence[rand_array.get(count)-1].length;i++){
-                                //Util.setImageFromPath(window, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l15/2/img_" + String.valueOf(rand_array.get(count)) + "_" + String.valueOf(correctans[rand_array.get(count)-1]) + ".png");
+
                                 image[temp].setColorFilter(Color.argb(255, 32, 178, 170));
                                 if(disable!=-1) {
                                     image[disable].setColorFilter(Color.argb(255, 0, 0, 0));
@@ -160,11 +157,12 @@ public class Level20_1 extends ActionBarActivity {
                         public void run() {
                             count++;
                             if(count==15){
+                                //count=0;
                                 Util.setNextLevel(Level20_1.this);
                             }
-
-                            set();
-
+                            else {
+                                set();
+                            }
 
                         }
 
@@ -185,7 +183,7 @@ public class Level20_1 extends ActionBarActivity {
         for(int i=0;i<4;i++){
             Util.setImageFromPath(image[i], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l20/1/img_" + Integer.toString(rand_array.get(count))+"_"+ Integer.toString(i+2) + ".png");
             image[i].setColorFilter(Color.argb(255,0,0,0));
-            image[i].setBackgroundResource(R.drawable.image_border_green);
+            image[i].setBackgroundResource(R.drawable.image_border_black);
         }
         Util.setImageFromPath(window, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l20/1/img_" + Integer.toString(rand_array.get(count))+"_"+ Integer.toString(1) + ".png");
 

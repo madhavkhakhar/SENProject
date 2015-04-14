@@ -28,13 +28,14 @@ public class Level11_3 extends ActionBarActivity {
     TextView score;
     private  int mscore=0;
     private int NUM_PAGES=22;
+    private boolean sleeping;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_level11_3);
         a=new ImageView[4];
-
+        sleeping = false;
         vib = (Vibrator)getSystemService(Context.VIBRATOR_SERVICE);
 
         int[] aId={R.id.imgViewa1, R.id.imgViewa2, R.id.imgViewa3, R.id.imgViewa4};
@@ -45,6 +46,15 @@ public class Level11_3 extends ActionBarActivity {
 
         score = (TextView)findViewById(R.id.score);
 
+        Util.setImageFromPath((ImageView)findViewById(R.id.q_image), Environment.getExternalStorageDirectory() + "/GujaratiMitra/l11/3/que_11_3.png");
+        ImageView speaker = (ImageView) findViewById(R.id.speaker);
+        speaker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //play question audio file
+            }
+        });
+
         Util.setImageFromPath(q, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l11/2/img" + Integer.toString(qIndex) + "_1.png");
 
         Random r=new Random();
@@ -54,49 +64,57 @@ public class Level11_3 extends ActionBarActivity {
         for(int j=0;j<4;j++){
             if(j==correct){
                 Util.setImageFromPath(a[j], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l11/2/img"+ String.valueOf(qIndex) + "_2"+".png");
-                //a[j].setImageResource(getResources().getIdentifier("level4_2_img_e" + String.valueOf(queIndex) + "_correct", "drawable", getPackageName()));
             }
             else{
                 Util.setImageFromPath(a[j], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l11/2/img" + String.valueOf((qIndex+r.nextInt(4)+1)%22 +1) + "_2.png");
-                //a[j].setImageResource(getResources().getIdentifier("level4_2_img_e" + String.valueOf(queIndex) + "_wrong" + String.valueOf(wrongIndex++), "drawable", getPackageName()));
             }
+            a[j].setBackgroundResource(R.drawable.image_border_black);
         }
 
         a[0].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                qIndex++;
-                nextQues(0);
+                if (!sleeping) {
+                    qIndex++;
+                    nextQues(0);
+                }
             }
         });
 
         a[1].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                qIndex++;
-                nextQues(1);
+                if (!sleeping) {
+                    qIndex++;
+                    nextQues(1);
+                }
             }
         });
 
         a[2].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                qIndex++;
-                nextQues(2);
+                if (!sleeping) {
+                    qIndex++;
+                    nextQues(2);
+                }
             }
         });
 
         a[3].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                qIndex++;
-                nextQues(3);
+                if (!sleeping) {
+                    qIndex++;
+                    nextQues(3);
+                }
             }
         });
 
     }
 
     public void nextQues(final int ansClicked) {
+        sleeping = true;
         final ImageView green_tick = new ImageView(this);
         final ImageView red_cross = new ImageView(this);
         final Toast toast = new Toast(this);
@@ -111,12 +129,13 @@ public class Level11_3 extends ActionBarActivity {
                     @Override
                     public void run() {
                         if (correct == ansClicked) {
-                            //a[0].setColorFilter(Color.argb(255, 0, 255, 0));
                             mscore++;
-                            //a[correct].setColorFilter(Color.argb(255, 0, 255, 0));
                             score.setText(String.valueOf(mscore) + "/10");
                             toast.setView(green_tick);
                             toast.show();
+                            if (a[correct] != null) {
+                                a[correct].setBackgroundResource(R.drawable.image_border_green);
+                            }
 
                             Handler handler = new Handler();
                             handler.postDelayed(new Runnable() {
@@ -126,11 +145,11 @@ public class Level11_3 extends ActionBarActivity {
                                 }
                             }, 500);
                         } else {
-                            //a[ansClicked].setColorFilter(Color.argb(255, 255, 0, 0));
-                           // a[correct].setColorFilter(Color.argb(255, 0, 255, 0));
-
                             toast.setView(red_cross);
                             toast.show();
+                            if (a[ansClicked] != null) {
+                                a[ansClicked].setBackgroundResource(R.drawable.image_border_red);
+                            }
                             Handler handler = new Handler();
                             handler.postDelayed(new Runnable() {
                                 @Override
@@ -157,17 +176,17 @@ public class Level11_3 extends ActionBarActivity {
                             int random1=r.nextInt(4);
                             correct=random1;
 
+
                             for(int j=0;j<4;j++){
                                 if(j==correct){
                                     Util.setImageFromPath(a[j], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l11/2/img" + String.valueOf(qIndex) + "_2"+".png");
-                                    //a[j].setImageResource(getResources().getIdentifier("level4_2_img_e" + String.valueOf(queIndex) + "_correct", "drawable", getPackageName()));
                                 }
                                 else{
                                     Util.setImageFromPath(a[j], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l11/2/img"+ String.valueOf((qIndex+r.nextInt(4)+1)%22 +1) + "_2.png");
-                                    //a[j].setImageResource(getResources().getIdentifier("level4_2_img_e" + String.valueOf(queIndex) + "_wrong" + String.valueOf(wrongIndex++), "drawable", getPackageName()));
                                 }
-                                //a[j].setColorFilter(Color.argb(255, 0, 0, 0));
+                                a[j].setBackgroundResource(R.drawable.image_border_black);
                             }
+                            sleeping = false;
                         }
 
                     }
@@ -175,26 +194,5 @@ public class Level11_3 extends ActionBarActivity {
             }
         }.start();
 
-    }
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_level11_3, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 }

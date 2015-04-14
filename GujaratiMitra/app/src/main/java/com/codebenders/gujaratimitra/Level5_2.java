@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 
 public class Level5_2 extends ActionBarActivity {
@@ -31,6 +32,18 @@ public class Level5_2 extends ActionBarActivity {
         mAdapter = new SimplePagerAdapter();
         mPager.setAdapter(mAdapter);
         mPager.setOffscreenPageLimit(NUM_PAGES);
+        ImageView que = (ImageView) findViewById(R.id.imageView_que);
+        Util.setImageFromPath(que, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l5/2/que_5_2.png");
+        ImageView speaker = (ImageView) findViewById(R.id.speaker);
+        speaker.setTag(Environment.getExternalStorageDirectory() + "/GujaratiMitra/l5/2/aud_0.mp3");
+        speaker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Util.playMediaFromPath(v.getTag().toString());
+
+            }
+        });
+
         leftArrow = (ImageView) findViewById(R.id.imageView);
         rightArrow = (ImageView) findViewById(R.id.imageView1);
         leftArrow.setOnClickListener(new View.OnClickListener() {
@@ -66,7 +79,7 @@ public class Level5_2 extends ActionBarActivity {
                     rightArrow.setVisibility(View.VISIBLE);
                 }
                 if(i>=NUM_PAGES-1){
-                    Util.setNextLevel(Level5_2.this);
+                    Util.setNextLevel(Level5_2.this,0,2,5);
                 }
 
             }
@@ -98,7 +111,10 @@ public class Level5_2 extends ActionBarActivity {
             final ImageView v2 = (ImageView) view.findViewById(R.id.imageView2);
             final ImageView v3 = (ImageView) view.findViewById(R.id.imageView3);
             final ImageView v4 = (ImageView) view.findViewById(R.id.imageView4);
-
+            if(position>=NUM_PAGES-1){
+                LinearLayout ll = new LinearLayout(Level5_2.this);
+                return ll;
+            }
             v2.setVisibility(View.INVISIBLE);
             v4.setVisibility(View.INVISIBLE);
 
@@ -106,8 +122,6 @@ public class Level5_2 extends ActionBarActivity {
             Util.setImageFromPath(v3, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l"+String.valueOf(levelNo)+"/2/"+"img_e" + Integer.toString((2 * position) + 2) + "_1.png");
             Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l"+String.valueOf(levelNo)+"/2/"+"img_e" + Integer.toString((2 * position) + 1) + "_2.png");
             Util.setImageFromPath(v4, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l"+String.valueOf(levelNo)+"/2/"+"img_e" +Integer.toString((2 * position) + 2) + "_2.png");
-            //v1.setTag(Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/1/aud_" + Integer.toString(2 * position) + ".mp3");
-            //v3.setTag(Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/1/aud_" + Integer.toString((2 * position) + 1) + ".mp3");
             v1.setTag(Environment.getExternalStorageDirectory() + "/GujaratiMitra/l"+String.valueOf(levelNo)+"/2/aud_0.mp3");
             v3.setTag(Environment.getExternalStorageDirectory() + "/GujaratiMitra/l"+String.valueOf(levelNo)+"/2/aud_1.mp3");
 

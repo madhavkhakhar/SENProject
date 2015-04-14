@@ -47,6 +47,7 @@ public class Level11_1 extends ActionBarActivity {
         final ImageView speaker = (ImageView) findViewById(R.id.imageView6);
         ImageView question = (ImageView) findViewById(R.id.imageView5);
         Util.setImageFromPath(question, Environment.getExternalStorageDirectory() + "/GujaratiMitra/All Questions/que_11_1.png");
+
         score_text = (TextView) findViewById(R.id.score);
         Random r = new Random();
         int random1 = r.nextInt(4);
@@ -174,8 +175,8 @@ public class Level11_1 extends ActionBarActivity {
                             Collections.shuffle(rand_array);
 
                             for (int i = 0; i < 4; i++) {
-                                Util.setImageFromPath(image[i], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l11/1/" + Integer.toString(rand_array.get(i)) + ".png");
-
+                                Util.setImageFromPath(image[i], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l11/1/img_" + Integer.toString(rand_array.get(i)) + ".png");
+                                image[i].setColorFilter(Color.argb(255, 0, 0, 0));
                             }
                             image[0].setColorFilter(Color.argb(255, 0, 0, 0));
                             image[1].setColorFilter(Color.argb(255, 0, 0, 0));

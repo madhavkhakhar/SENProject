@@ -209,9 +209,10 @@ public class Level15_2 extends ActionBarActivity {
                             else if(levelNumber==19 && count==8){
                                 Util.setNextLevel(Level15_2.this);
                             }
+                            else {
 
-                            set();
-
+                                set();
+                            }
                         }
 
 

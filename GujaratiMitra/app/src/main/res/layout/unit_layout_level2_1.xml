@@ -16,6 +16,7 @@
         android:layout_height="match_parent"
         android:id="@+id/img2"
         android:orientation="vertical"
+        android:layout_marginLeft="5sp"
         android:layout_weight="0.25"/>
 
     <ImageView
@@ -23,6 +24,7 @@
         android:layout_height="match_parent"
         android:id="@+id/img3"
         android:layout_weight="0.25"
+        android:layout_marginLeft="5sp"
         android:orientation="vertical"/>
 
     <ImageView
@@ -30,6 +32,7 @@
         android:layout_height="match_parent"
         android:id="@+id/img4"
         android:layout_weight="0.25"
+        android:layout_marginLeft="5sp"
         android:orientation="vertical"/>
 
 </LinearLayout>

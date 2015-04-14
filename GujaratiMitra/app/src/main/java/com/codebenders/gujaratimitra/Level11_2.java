@@ -1,5 +1,6 @@
 package com.codebenders.gujaratimitra;
 
+import android.media.Image;
 import android.os.Environment;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -39,6 +40,15 @@ public class Level11_2 extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 mPager.setCurrentItem(mPager.getCurrentItem()+1);
+            }
+        });
+
+        Util.setImageFromPath((ImageView)findViewById(R.id.que_image), Environment.getExternalStorageDirectory() + "/GujaratiMitra/l11/2/que_11_2.png");
+        ImageView speaker = (ImageView) findViewById(R.id.speaker);
+        speaker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //play question audio
             }
         });
 
@@ -116,26 +126,4 @@ public class Level11_2 extends ActionBarActivity {
 
     }
 
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_level11_2, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 }
