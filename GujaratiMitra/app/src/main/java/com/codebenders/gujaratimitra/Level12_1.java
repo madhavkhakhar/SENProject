@@ -1,5 +1,6 @@
 package com.codebenders.gujaratimitra;
 
+import android.media.MediaPlayer;
 import android.os.Environment;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -19,6 +20,8 @@ public class Level12_1 extends ActionBarActivity {
     private PagerAdapter mPagerAdapter;
     private ImageView leftArrow;
     private ImageView rightArrow;
+    public MediaPlayer mp;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,8 +33,8 @@ public class Level12_1 extends ActionBarActivity {
         mPager.setOffscreenPageLimit(5);
         final ImageView v1 = (ImageView) findViewById(R.id.imageView_12_1);
         Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l12/1/"+"img_12_1.jpg");
-        //v1.setImageResource(R.drawable.img_12_1);
-
+        ImageView question = (ImageView) findViewById(R.id.imageView5);
+        Util.setImageFromPath(question, Environment.getExternalStorageDirectory() + "/GujaratiMitra/All Questions/que_12_1.png");
 
         leftArrow = (ImageView) findViewById(R.id.imageView);
         rightArrow = (ImageView) findViewById(R.id.imageView1);
@@ -45,6 +48,20 @@ public class Level12_1 extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 mPager.setCurrentItem(mPager.getCurrentItem()+1);
+            }
+        });
+        final ImageView speaker = (ImageView) findViewById(R.id.imageView6);
+
+        speaker.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                try {
+                    Util.mediaPlayer.setDataSource(Environment.getExternalStorageDirectory() + "/sample.mp3");//Write your location here
+                    Util.mediaPlayer.prepare();
+                    Util.mediaPlayer.start();
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         });
 
