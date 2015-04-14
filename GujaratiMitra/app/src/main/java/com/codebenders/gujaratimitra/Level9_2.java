@@ -11,6 +11,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -28,9 +29,12 @@ public class Level9_2 extends ActionBarActivity {
     private ImageView queStatement;
     private boolean sleeping;
     private ArrayList<Integer> queImageIndex;
-    private int currentQueIndex,count;
+    private int currentQueIndex,count,score;
     public int current;
     ImageView next, selectedImage;
+    TextView score_text;
+    private int MAX_SCORE=15;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +47,9 @@ public class Level9_2 extends ActionBarActivity {
             queImageIndex.add(i);
         }
         Collections.shuffle(queImageIndex);
+
+        score_text=(TextView) findViewById(R.id.score);
+        score_text.setText("SCORE "+String.valueOf(score)+"/"+String.valueOf(MAX_SCORE));
 
         mPager = (ViewPager) findViewById(R.id.pager);
         mAdapter = new SimplePagerAdapter();
@@ -173,6 +180,8 @@ public class Level9_2 extends ActionBarActivity {
                         Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 
                         if ((((int)queImage.getTag()%5))==((pos)+1)%5) {
+                            score++;
+                            score_text.setText("SCORE "+String.valueOf(score)+"/"+String.valueOf(MAX_SCORE));
                             toast.setView(green_tick);
                             toast.show();
                             if (selectedImage != null)

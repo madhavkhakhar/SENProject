@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -27,16 +28,25 @@ public class Level20_1 extends ActionBarActivity {
     final List<Integer> rand_array=new ArrayList<Integer>();
     public int disable=-1;
     private int[] correctans={2,3,3,4,3,2,3,3,3,2,3,5,2,4,2};
+    TextView score_text;
+    private int score;
+    boolean sleeping;
+    private int MAX_SCORE = 15;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_level20_1);
 
+        sleeping = false;
         image=new ImageView[4];
         for(int i=0;i<15;i++){
             rand_array.add(i+1);
         }
         Collections.shuffle(rand_array);
+
+        score_text=(TextView) findViewById(R.id.score);
+        score_text.setText("SCORE "+String.valueOf(score)+"/"+String.valueOf(MAX_SCORE));
 
         image[0] = (ImageView) findViewById(R.id.imageView);
         image[1] = (ImageView) findViewById(R.id.imageView2);
@@ -64,15 +74,14 @@ public class Level20_1 extends ActionBarActivity {
         check.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                check();
-
+                if (!sleeping)
+                    check();
             }
         });
 
         speaker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
 
             }
         });
@@ -89,6 +98,7 @@ public class Level20_1 extends ActionBarActivity {
     }
 
     private void check() {
+        sleeping = true;
         final ImageView green_tick=new ImageView(this);
         final ImageView red_cross=new ImageView(this);
 
@@ -105,16 +115,13 @@ public class Level20_1 extends ActionBarActivity {
                             if(rand_array.get(count)-1>-1){
                                 temp=correctans[rand_array.get(count)-1]-2;
                             }
-
-
+                            image[temp].setBackgroundResource(R.drawable.image_border_green);
                             Vibrator v = (Vibrator)getSystemService(Context.VIBRATOR_SERVICE);
                             if(disable==temp) {
-
-
-
+                                score++;
+                                score_text.setText("SCORE "+String.valueOf(score)+"/"+String.valueOf(MAX_SCORE));
                                 toast.setView(green_tick);
                                 toast.show();
-
                                 Handler handler = new Handler();
                                 handler.postDelayed(new Runnable() {
                                     @Override
@@ -124,11 +131,9 @@ public class Level20_1 extends ActionBarActivity {
                                 }, 500);
 
 
-
                             }
                             else if(disable!=temp){
-
-
+                                image[disable].setBackgroundResource(R.drawable.image_border_red);
                                 image[temp].setColorFilter(Color.argb(255, 32, 178, 170));
                                 if(disable!=-1) {
                                     image[disable].setColorFilter(Color.argb(255, 0, 0, 0));
@@ -186,7 +191,7 @@ public class Level20_1 extends ActionBarActivity {
             image[i].setBackgroundResource(R.drawable.image_border_black);
         }
         Util.setImageFromPath(window, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l20/1/img_" + Integer.toString(rand_array.get(count))+"_"+ Integer.toString(1) + ".png");
-
+        sleeping = false;
     }
 
 

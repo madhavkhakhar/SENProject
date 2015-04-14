@@ -29,7 +29,7 @@ public class Level10_1 extends ActionBarActivity {
     public MediaPlayer mp;
     public TextView score_text;
     public boolean[] disable={false,false,false,false,false,};
-    public int number=0,temp=0;
+    public int number=0,temp=0,disable1;
     ImageView []image;
     ImageView[] window;
     int []empty={-1,-1,-1};
@@ -125,7 +125,8 @@ public class Level10_1 extends ActionBarActivity {
         });
         check.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                check();
+                if(disable1==0)
+                    check();
             }
 
         });
@@ -185,6 +186,7 @@ public class Level10_1 extends ActionBarActivity {
     }
 
     public void check(){
+        disable1=1;
         final ImageView green_tick=new ImageView(this);
         final ImageView red_cross=new ImageView(this);
 
@@ -290,6 +292,7 @@ public class Level10_1 extends ActionBarActivity {
                             }
 
                             }
+                            disable1=0;
                         }
 
 
