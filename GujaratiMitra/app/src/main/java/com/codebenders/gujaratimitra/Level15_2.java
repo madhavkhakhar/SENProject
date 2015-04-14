@@ -14,6 +14,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -26,13 +27,14 @@ public class Level15_2 extends ActionBarActivity {
     final List<Integer> rand_array = new ArrayList<Integer>();
     ImageView[] image;
     ImageView[] window;
-    public int count = 0;
+    public int count = 0,score=0,MAX_SCORE;
     private int levelNumber;
     public int disable = -1;
     ImageView hint;
     int[] correctans;
     int[][] sizes;
     String imagePath;
+    TextView score_text;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,10 +43,12 @@ public class Level15_2 extends ActionBarActivity {
         levelNumber = getIntent().getIntExtra("level_no", 15);
         if (levelNumber == 15) {
             correctans = new int[]{2, 1, 2, 3, 2};
+            MAX_SCORE=5;
             sizes = new int[][]{{94, 113, 124}, {36, 51, 275}, {287, 53, 162}, {145, 73, 196}, {181, 80, 135}};
             imagePath = Environment.getExternalStorageDirectory() + "/GujaratiMitra/l15/2/img_";
         } else if (levelNumber == 19) {
             correctans = new int[]{2, 1, 3, 2, 3, 2, 3, 2};
+            MAX_SCORE=8;
             sizes = new int[][]{{415, 246, 303}, {386, 200, 180}, {180, 190, 561}, {256, 189, 366}, {180, 191, 539}, {588, 190, 269}, {359, 200, 369}, {320, 192, 491}};
             imagePath = Environment.getExternalStorageDirectory() + "/GujaratiMitra/l19/3/img_";
 
@@ -59,16 +63,20 @@ public class Level15_2 extends ActionBarActivity {
         }
         Collections.shuffle(rand_array);
 
+        score_text=(TextView) findViewById(R.id.score);
+        score_text.setText("SCORE "+String.valueOf(score)+"/"+String.valueOf(MAX_SCORE));
+        //final ImageView speaker=(ImageView) findViewById(R.id.speaker);
+
 
         image[0] = (ImageView) findViewById(R.id.imageView);
         image[1] = (ImageView) findViewById(R.id.imageView2);
         image[2] = (ImageView) findViewById(R.id.imageView3);
 
-        final ImageView speaker = (ImageView) findViewById(R.id.imageView6);
+        final ImageView speaker = (ImageView) findViewById(R.id.speaker);
         final ImageView check = (ImageView) findViewById(R.id.imageView7);
         hint = (ImageView) findViewById(R.id.hint);
         if (levelNumber == 15)
-            hint.setBackgroundResource(R.drawable.image_border_green);
+            hint.setBackgroundResource(R.drawable.image_border_black);
 
         set();
 
@@ -89,7 +97,13 @@ public class Level15_2 extends ActionBarActivity {
 
             }
         });
-
+        speaker.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                //int temp=rand_array.get(count)-1;
+                //String temp1=(Environment.getExternalStorageDirectory() + "/GujaratiMitra/l10/1/"+sound_file).toString();
+                //Util.playMediaFromPath(temp1);
+            }
+        });
     }
 
 
@@ -161,7 +175,8 @@ public class Level15_2 extends ActionBarActivity {
                             Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
                             if (disable == temp) {
                                 System.out.println(">>>>>>>>>>>>>>>>-1-1-1");
-
+                                score++;
+                                score_text.setText("SCORE "+String.valueOf(score)+"/"+String.valueOf(MAX_SCORE));
                                 toast.setView(green_tick);
                                 toast.show();
 

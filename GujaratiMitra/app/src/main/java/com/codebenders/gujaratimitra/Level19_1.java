@@ -14,7 +14,7 @@ import android.widget.ImageView;
 
 public class Level19_1 extends ActionBarActivity {
 
-    private static final int NUM_PAGES = 6;
+    private static final int NUM_PAGES = 7;
     private ViewPager mPager;
     private PagerAdapter mPagerAdapter;
     private ImageView leftArrow;
@@ -56,11 +56,14 @@ public class Level19_1 extends ActionBarActivity {
             public void onPageSelected(int i) {
                 if (i == 0)
                     leftArrow.setVisibility(View.INVISIBLE);
-                else if (i == 5)
+                else if (i == 6)
                     rightArrow.setVisibility(View.INVISIBLE);
                 else {
                     leftArrow.setVisibility(View.VISIBLE);
                     rightArrow.setVisibility(View.VISIBLE);
+                }
+                if (i == NUM_PAGES-1){
+                    Util.setNextLevel(Level19_1.this);
                 }
             }
 
@@ -98,13 +101,13 @@ public class Level19_1 extends ActionBarActivity {
             v1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Util.playMediaFromPath(v.getTag().toString());
+                   // Util.playMediaFromPath(v.getTag().toString());
                 }
             });
             v2.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Util.playMediaFromPath(v.getTag().toString());
+                   // Util.playMediaFromPath(v.getTag().toString());
                 }
             });
             container.addView(view);
