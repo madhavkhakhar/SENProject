@@ -59,8 +59,11 @@ public class Level15_2 extends ActionBarActivity {
         window[1] = (ImageView) findViewById(R.id.window2);
         window[2] = (ImageView) findViewById(R.id.window3);
         ImageView ques=(ImageView) findViewById(R.id.que_statement);
-        Util.setImageFromPath(ques,Environment.getExternalStorageDirectory() + "/GujaratiMitra/l15/2/que_15_2.png");
-
+        if(levelNumber==15)
+            Util.setImageFromPath(ques,Environment.getExternalStorageDirectory() + "/GujaratiMitra/l15/2/que_15_2.png");
+        else if(levelNumber==19){
+            Util.setImageFromPath(ques,Environment.getExternalStorageDirectory() + "/GujaratiMitra/l19/3/que_19_3.png");
+        }
         for (int i = 0; i < 5; i++) {
             rand_array.add(i + 1);
         }
