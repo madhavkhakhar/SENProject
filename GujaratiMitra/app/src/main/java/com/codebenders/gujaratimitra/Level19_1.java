@@ -56,7 +56,7 @@ public class Level19_1 extends ActionBarActivity {
             public void onPageSelected(int i) {
                 if (i == 0)
                     leftArrow.setVisibility(View.INVISIBLE);
-                else if (i == 6)
+                else if (i == 5)
                     rightArrow.setVisibility(View.INVISIBLE);
                 else {
                     leftArrow.setVisibility(View.VISIBLE);

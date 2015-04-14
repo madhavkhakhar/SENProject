@@ -32,6 +32,7 @@ public class Level16_1 extends ActionBarActivity {
     int modArray[];
     ArrayList<Integer> wrongImg;
     Intent i;
+    ImageView ques;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +48,8 @@ public class Level16_1 extends ActionBarActivity {
         wrongImg=new ArrayList<>();
 
         vib = (Vibrator)getSystemService(Context.VIBRATOR_SERVICE);
+        ques=(ImageView) findViewById(R.id.que_statement);
+        Util.setImageFromPath(ques,Environment.getExternalStorageDirectory() + "/GujaratiMitra/l16/1/que_16_1.png");
 
         int[] aId={R.id.imgViewa1, R.id.imgViewa2, R.id.imgViewa3, R.id.imgViewa4};
         for(int i=0;i<4;i++){
@@ -56,6 +59,8 @@ public class Level16_1 extends ActionBarActivity {
         q=(ImageView)findViewById(R.id.imgViewq1);
 
         score = (TextView)findViewById(R.id.score);
+        score.setText("SCORE "+String.valueOf(mscore) + "/"+String.valueOf(modArray[sublevel-1]));
+
 
         Util.setImageFromPath(q, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l"+String.valueOf(level)+"/"+String.valueOf(sublevel)+"/"+"img_e1_" + Integer.toString(qIndex) + ".png");
 
@@ -112,11 +117,16 @@ public class Level16_1 extends ActionBarActivity {
 
                     @Override
                     public void run() {
+
                         if (correct == ansClicked) {
                             //a[0].setColorFilter(Color.argb(255, 0, 255, 0));
+                            if(qIndex>modArray[sublevel-1]){
+                                Util.setNextLevel(Level16_1.this);
+                            }
                             mscore++;
-                            //a[correct].setColorFilter(Color.argb(255, 0, 255, 0));
-                            score.setText(String.valueOf(mscore) + "/10");
+                            a[correct].setColorFilter(Color.argb(255, 0, 255, 0));
+
+                            score.setText("SCORE "+String.valueOf(mscore) + "/"+String.valueOf(modArray[sublevel-1]));
                             toast.setView(green_tick);
                             toast.show();
 
@@ -128,8 +138,8 @@ public class Level16_1 extends ActionBarActivity {
                                 }
                             }, 500);
                         } else {
-                            //a[ansClicked].setColorFilter(Color.argb(255, 255, 0, 0));
-                            // a[correct].setColorFilter(Color.argb(255, 0, 255, 0));
+                            a[ansClicked].setColorFilter(Color.argb(255, 255, 0, 0));
+                            a[correct].setColorFilter(Color.argb(255, 0, 255, 0));
 
                             toast.setView(red_cross);
                             toast.show();
@@ -151,10 +161,17 @@ public class Level16_1 extends ActionBarActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Util.setImageFromPath(q, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l"+String.valueOf(level)+"/"+String.valueOf(sublevel)+"/"+"img_e1_" + Integer.toString(qIndex) + ".png");
-                        q.setVisibility(View.VISIBLE);
-                        for(int i=0;i<4;i++){
-                            a[i].setVisibility(View.INVISIBLE);
+                        if(qIndex>modArray[sublevel-1]){
+                            SystemClock.sleep(500);
+                            Util.setNextLevel(Level16_1.this);
+                        }
+                        else {
+                            Util.setImageFromPath(q, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l" + String.valueOf(level) + "/" + String.valueOf(sublevel) + "/" + "img_e1_" + Integer.toString(qIndex) + ".png");
+                            q.setVisibility(View.VISIBLE);
+                            for (int i = 0; i < 4; i++) {
+                                a[i].setVisibility(View.INVISIBLE);
+                                a[i].setColorFilter(Color.argb(255, 0, 0, 0));
+                            }
                         }
                     }
                 });
@@ -191,9 +208,7 @@ public class Level16_1 extends ActionBarActivity {
                             a[j].setVisibility(View.VISIBLE);
                             //a[j].setColorFilter(Color.argb(255, 0, 0, 0));
                         }
-                        if(qIndex>=modArray[sublevel-1]){
-                            Util.setNextLevel(Level16_1.this);
-                        }
+
                     }
                 });
             }
