@@ -77,14 +77,19 @@ public class Level15_2 extends ActionBarActivity {
 
         score_text=(TextView) findViewById(R.id.score);
         score_text.setText("SCORE "+String.valueOf(score)+"/"+String.valueOf(MAX_SCORE));
-        //final ImageView speaker=(ImageView) findViewById(R.id.speaker);
+        final ImageView speaker = (ImageView) findViewById(R.id.speaker);
+        speaker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Util.playMediaFromPath(Environment.getExternalStorageDirectory()+"/GujaratiMitra/l15/2/aud_que_15_2.wav");
+            }
+        });
 
 
         image[0] = (ImageView) findViewById(R.id.imageView);
         image[1] = (ImageView) findViewById(R.id.imageView2);
         image[2] = (ImageView) findViewById(R.id.imageView3);
 
-        final ImageView speaker = (ImageView) findViewById(R.id.speaker);
         final ImageView check = (ImageView) findViewById(R.id.imageView7);
         hint = (ImageView) findViewById(R.id.hint);
         if (levelNumber == 15)
