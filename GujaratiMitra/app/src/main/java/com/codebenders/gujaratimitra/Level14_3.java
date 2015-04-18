@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TableRow;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import static android.R.color.transparent;
@@ -23,7 +24,7 @@ public class Level14_3 extends ActionBarActivity {
     private ImageView queImg;
     private int NUM_QUE=10;
     private LinearLayout l1;
-    private Button submitButton;
+    private ImageView check;
     private int currentQueIndex;
     private int correctAns[][];
     private int pos[];
@@ -33,13 +34,16 @@ public class Level14_3 extends ActionBarActivity {
     private CustomImageView cv2;
     private CustomImageView cv3;
     private CustomImageView cv4;
+    private TextView score_text;
+    private int score=0;
+    private boolean wait=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_level14_3);
 
-        queImg = (ImageView) findViewById(R.id.img_que);
+        queImg = (ImageView) findViewById(R.id.que_statement);
 //        v1 = (ImageView) findViewById(R.id.img1);
 //        v2 = (ImageView) findViewById(R.id.img2);
 //        v3 = (ImageView) findViewById(R.id.img3);
@@ -48,9 +52,11 @@ public class Level14_3 extends ActionBarActivity {
 //        l2 = (LinearLayout) findViewById(R.id.linearLayout2);
 //        l3 = (LinearLayout) findViewById(R.id.linearLayout3);
 //        l4 = (LinearLayout) findViewById(R.id.linearLayout4);
-        submitButton = (Button) findViewById(R.id.button_submit);
+        check = (ImageView) findViewById(R.id.check);
+        score_text=(TextView) findViewById(R.id.score);
+        score_text.setText("SCORE "+String.valueOf(score)+"/"+String.valueOf(NUM_QUE));
 
-        //Util.setImageFromPath(queImg, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/2/img_que.png");
+        Util.setImageFromPath(queImg, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/3/que_14_3.png");
         currentQueIndex = 0;
         pos = new int[4];
         for (int i = 0; i < 4; i++) {
@@ -142,10 +148,11 @@ public class Level14_3 extends ActionBarActivity {
         loadInitialImagesOfQuestion();
         setClickListenersForImageViews();
 
-        submitButton.setOnClickListener(new View.OnClickListener() {
+        check.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                loadNextQuestion();
+                if(wait==false)
+                    loadNextQuestion();
             }
         });
 
@@ -165,6 +172,7 @@ public class Level14_3 extends ActionBarActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
+                            wait=true;
                             Vibrator v = (Vibrator)getSystemService(Context.VIBRATOR_SERVICE);
                             int i;
                             for (i = 0; i < 4; i++) {
@@ -172,9 +180,10 @@ public class Level14_3 extends ActionBarActivity {
                                     break;
                             }
                             if (i == 4) {
+                                score++;
                                 toast.setView(green_tick);
                                 toast.show();
-
+                                score_text.setText("SCORE "+String.valueOf(score)+"/"+String.valueOf(NUM_QUE));
                                 Handler handler = new Handler();
                                 handler.postDelayed(new Runnable() {
                                     @Override
@@ -199,25 +208,27 @@ public class Level14_3 extends ActionBarActivity {
                         }
                     });
                     Thread.sleep(1500);
+                    wait=false;
                     runOnUiThread(new Runnable() {
+
                         @Override
                         public void run() {
                             currentQueIndex = (currentQueIndex+1);
                             if(currentQueIndex>=NUM_QUE){
-                                Util.setNextLevel(Level14_3.this);
+                                Util.setNextLevel(Level14_3.this,score,3,14,true);
                             }
 
 //                            v1.setBackgroundColor(transparent);
 //                            v2.setBackgroundColor(transparent);
 //                            v3.setBackgroundColor(transparent);
 //                            v4.setBackgroundColor(transparent);
-
+                            else{
                             pos = new int[4];
                             for (int i = 0; i < 4; i++) {
                                 pos[i] = 0;
                             }
                             loadInitialImagesOfQuestion();
-                        }
+                        }}
                     });
                 }
                 catch (Exception e){
@@ -275,6 +286,10 @@ public class Level14_3 extends ActionBarActivity {
                 cv2.setLayoutParams(params);
                 cv3.setLayoutParams(params);
                 cv4.setLayoutParams(params);
+                l1.addView(cv1.getInflatedView());
+                l1.addView(cv2.getInflatedView());
+                l1.addView(cv3.getInflatedView());
+                l1.addView(cv4.getInflatedView());
                 break;
             default:
                 break;
