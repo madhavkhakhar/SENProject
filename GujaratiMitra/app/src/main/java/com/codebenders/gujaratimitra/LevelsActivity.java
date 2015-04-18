@@ -1,10 +1,14 @@
 package com.codebenders.gujaratimitra;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.media.AudioManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.provider.Settings;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
@@ -30,7 +34,9 @@ public class LevelsActivity extends ActionBarActivity {
     ArrayList<String> listItems = new ArrayList<String>();
     String imagePath = Environment.getExternalStorageDirectory() + "/GujaratiMitra/Start/";
     CustomPagerAdapter adapter;
-
+    AudioManager audioManager;
+    private int mediaVolume;
+    AlertDialog.Builder builder;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +46,28 @@ public class LevelsActivity extends ActionBarActivity {
         viewPager.setAdapter(adapter);
         viewPager.setOffscreenPageLimit(NUM_PAGES);
         lastLevelUnlocked = appDB.getLastLevelUnlocked(prefs.getStudentId());
+        audioManager=(AudioManager)getSystemService(AUDIO_SERVICE);
+        mediaVolume=audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
+        builder= new AlertDialog.Builder(this);
+        if(mediaVolume==0){
+            builder.setTitle("Media Volume");
+            builder.setCancelable(true);
+            builder.setMessage("Media volume is too low, do you want to increase?");
+            builder.setPositiveButton("Continue",new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    //audioManager.setStreamVolume(AudioManager.STREAM_MUSIC,10,0);
+                    startActivityForResult(new Intent(Settings.ACTION_SOUND_SETTINGS),0);
+                }
+                });
+            builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+            });
+            builder.show();
+        }
 
     }
 
@@ -81,6 +109,7 @@ public class LevelsActivity extends ActionBarActivity {
             images.add(level7);
             int page = (lastLevelUnlocked - 1) / 7;
             int tempLevel = (lastLevelUnlocked - 1) % 7 + 1;
+
             for (int i = 1; i <= images.size(); i++) {
                 System.out.println("level " + tempLevel + " page " + page + " last level" + tempLevel);
                 if ((i <= tempLevel && page == position) || (i >= tempLevel && page > position))
@@ -93,6 +122,9 @@ public class LevelsActivity extends ActionBarActivity {
                 layout.setBackground(drawable);
             else
                 layout.setBackgroundDrawable(drawable);
+
+
+
 
             level1.setOnClickListener(new View.OnClickListener() {
                 @Override
