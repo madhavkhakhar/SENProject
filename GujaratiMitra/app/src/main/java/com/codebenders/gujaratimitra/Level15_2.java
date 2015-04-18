@@ -53,6 +53,7 @@ public class Level15_2 extends ActionBarActivity {
             imagePath = Environment.getExternalStorageDirectory() + "/GujaratiMitra/l19/3/img_";
 
         }
+        Util.setImageFromPath((ImageView)findViewById(R.id.imageView5), Environment.getExternalStorageDirectory() + "/GujaratiMitra/All Questions/que_15_2.png");
         image = new ImageView[3];
         window = new ImageView[3];
         window[0] = (ImageView) findViewById(R.id.window1);

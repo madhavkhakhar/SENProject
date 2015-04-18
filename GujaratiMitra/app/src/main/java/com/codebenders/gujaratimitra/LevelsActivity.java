@@ -1,49 +1,53 @@
 package com.codebenders.gujaratimitra;
 
+import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
+import android.os.Bundle;
+import android.os.Environment;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-
-import static com.codebenders.gujaratimitra.Util.appDB;
-
-import android.content.Intent;
-import android.media.MediaPlayer;
-import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import static com.codebenders.gujaratimitra.Util.*;
+import static com.codebenders.gujaratimitra.Util.appDB;
+import static com.codebenders.gujaratimitra.Util.prefs;
 
 
 public class LevelsActivity extends ActionBarActivity {
 
     private static int NUM_PAGES = 3;
     ViewPager viewPager;
-    private int levelNo=0;
+    private int levelNo = 0;
+    private int lastLevelUnlocked = 1;
     ListView listView;
-    ArrayList<String> listItems= new ArrayList<String>();
+    ArrayList<String> listItems = new ArrayList<String>();
+    String imagePath = Environment.getExternalStorageDirectory() + "/GujaratiMitra/Start/";
+    CustomPagerAdapter adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_levels);
-        viewPager= (ViewPager)findViewById(R.id.pager);
-        CustomPagerAdapter adapter = new CustomPagerAdapter();
+        viewPager = (ViewPager) findViewById(R.id.pager);
+        adapter = new CustomPagerAdapter();
         viewPager.setAdapter(adapter);
         viewPager.setOffscreenPageLimit(NUM_PAGES);
-        levelNo = appDB.getLastLevelUnlocked(prefs.getStudentId());
+        lastLevelUnlocked = appDB.getLastLevelUnlocked(prefs.getStudentId());
+
     }
+
     private class CustomPagerAdapter extends PagerAdapter {
+        @Override
+        public int getItemPosition(Object object) {
+            return POSITION_NONE;
+        }
 
         @Override
         public int getCount() {
@@ -67,114 +71,126 @@ public class LevelsActivity extends ActionBarActivity {
             level5 = (ImageView) view.findViewById(R.id.level5);
             level6 = (ImageView) view.findViewById(R.id.level6);
             level7 = (ImageView) view.findViewById(R.id.level7);
+            ArrayList<ImageView> images = new ArrayList<>(7);
+            images.add(level1);
+            images.add(level2);
+            images.add(level3);
+            images.add(level4);
+            images.add(level5);
+            images.add(level6);
+            images.add(level7);
+            int page = (lastLevelUnlocked - 1) / 7;
+            int tempLevel = (lastLevelUnlocked - 1) % 7 + 1;
+            for (int i = 1; i <= images.size(); i++) {
+                System.out.println("level " + tempLevel + " page " + page + " last level" + tempLevel);
+                if ((i <= tempLevel && page == position) || (i >= tempLevel && page > position))
+                    Util.setImageFromPath(images.get(i - 1), imagePath + "/Stage" + (position + 1) + "/level" + i + ".png");
+                else
+                    Util.setImageFromPath(images.get(i - 1), imagePath + "/Stage" + (position + 1) + "/Locked/level" + i + ".png");
+            }
+            Drawable drawable = Drawable.createFromPath(imagePath + "/Stage" + (position + 1) + "/home_bg_s" + (position + 1) + ".png");
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+                layout.setBackground(drawable);
+            else
+                layout.setBackgroundDrawable(drawable);
 
-
-                if (position == 0) {
-                    level1.setImageResource(R.drawable.home_s1_l1);
-                    level2.setImageResource(R.drawable.home_s1_l2);
-                    level3.setImageResource(R.drawable.home_s1_l3);
-                    level4.setImageResource(R.drawable.home_s1_l4);
-                    level5.setImageResource(R.drawable.home_s1_l5);
-                    level6.setImageResource(R.drawable.home_s1_l6);
-                    level7.setImageResource(R.drawable.home_s1_l7);
-                    layout.setBackgroundResource(R.drawable.home_bg_s1);
-                } else if (position == 1) {
-                    level1.setImageResource(R.drawable.home_s2_l1);
-                    level2.setImageResource(R.drawable.home_s2_l2);
-                    level3.setImageResource(R.drawable.home_s2_l3);
-                    level4.setImageResource(R.drawable.home_s2_l4);
-                    level5.setImageResource(R.drawable.home_s2_l5);
-                    level6.setImageResource(R.drawable.home_s2_l6);
-                    level7.setImageResource(R.drawable.home_s2_l7);
-                    layout.setBackgroundResource(R.drawable.home_bg_s2);
-                } else if (position == 2) {
-                    level1.setImageResource(R.drawable.home_s3_l1);
-                    level2.setImageResource(R.drawable.home_s3_l2);
-                    level3.setImageResource(R.drawable.home_s3_l3);
-                    level4.setImageResource(R.drawable.home_s3_l4);
-                    level5.setImageResource(R.drawable.home_s3_l5);
-                    level6.setImageResource(R.drawable.home_s3_l6);
-                    level7.setImageResource(R.drawable.home_s3_l7);
-                    layout.setBackgroundResource(R.drawable.home_bg_s3);
+            level1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    levelNo = (viewPager.getCurrentItem() * 7) + 1;
+                    if (lastLevelUnlocked >= levelNo) {
+                        Intent i = new Intent(LevelsActivity.this, SubLevelsActivity.class);
+                        i.putExtra("Level", levelNo);
+                        startActivity(i);
+                    }
                 }
 
-                level1.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        levelNo = (viewPager.getCurrentItem() * 7) + 1;
+            });
+
+            level2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    levelNo = (viewPager.getCurrentItem() * 7) + 2;
+                    if (lastLevelUnlocked >= levelNo) {
+
                         Intent i = new Intent(LevelsActivity.this, SubLevelsActivity.class);
                         i.putExtra("Level", levelNo);
                         startActivity(i);
                     }
+                }
+            });
 
-                });
+            level3.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //Intent intent = new Intent(LevelsActivity.this,Lev)
+                    levelNo = (viewPager.getCurrentItem() * 7) + 3;
+                    if (lastLevelUnlocked >= levelNo) {
 
-                level2.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-
-                        levelNo = (viewPager.getCurrentItem() * 7) + 2;
                         Intent i = new Intent(LevelsActivity.this, SubLevelsActivity.class);
                         i.putExtra("Level", levelNo);
                         startActivity(i);
                     }
-                });
+                }
+            });
 
-                level3.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        //Intent intent = new Intent(LevelsActivity.this,Lev)
-                        levelNo = (viewPager.getCurrentItem() * 7) + 3;
-                        Intent i = new Intent(LevelsActivity.this, SubLevelsActivity.class);
-                        i.putExtra("Level", levelNo);
-                        startActivity(i);
-                    }
-                });
+            level4.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //Intent intent = new Intent(LevelsActivity.this,Lev)
+                    levelNo = (viewPager.getCurrentItem() * 7) + 4;
+                    if (lastLevelUnlocked >= levelNo) {
 
-                level4.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        //Intent intent = new Intent(LevelsActivity.this,Lev)
-                        levelNo = (viewPager.getCurrentItem() * 7) + 4;
                         Intent i = new Intent(LevelsActivity.this, SubLevelsActivity.class);
                         i.putExtra("Level", levelNo);
                         startActivity(i);
                     }
-                });
+                }
+            });
 
-                level5.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        //Intent intent = new Intent(LevelsActivity.this,Lev)
-                        levelNo = (viewPager.getCurrentItem() * 7) + 5;
-                        Intent i = new Intent(LevelsActivity.this, SubLevelsActivity.class);
-                        i.putExtra("Level", levelNo);
-                        startActivity(i);
-                    }
-                });
-                level6.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        //Intent intent = new Intent(LevelsActivity.this,Lev)
-                        levelNo = (viewPager.getCurrentItem() * 7) + 6;
-                        Intent i = new Intent(LevelsActivity.this, SubLevelsActivity.class);
-                        i.putExtra("Level", levelNo);
-                        startActivity(i);
-                    }
-                });
+            level5.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //Intent intent = new Intent(LevelsActivity.this,Lev)
+                    levelNo = (viewPager.getCurrentItem() * 7) + 5;
+                    if (lastLevelUnlocked >= levelNo) {
 
-                level7.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        //Intent intent = new Intent(LevelsActivity.this,Lev)
-                        levelNo = (viewPager.getCurrentItem() * 7) + 7;
                         Intent i = new Intent(LevelsActivity.this, SubLevelsActivity.class);
                         i.putExtra("Level", levelNo);
                         startActivity(i);
                     }
-                });
-                container.addView(view);
-                return view;
+                }
+            });
+            level6.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //Intent intent = new Intent(LevelsActivity.this,Lev)
+                    levelNo = (viewPager.getCurrentItem() * 7) + 6;
+                    if (lastLevelUnlocked >= levelNo) {
+
+                        Intent i = new Intent(LevelsActivity.this, SubLevelsActivity.class);
+                        i.putExtra("Level", levelNo);
+                        startActivity(i);
+                    }
+                }
+            });
+
+            level7.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //Intent intent = new Intent(LevelsActivity.this,Lev)
+                    levelNo = (viewPager.getCurrentItem() * 7) + 7;
+                    if (lastLevelUnlocked >= levelNo) {
+
+                        Intent i = new Intent(LevelsActivity.this, SubLevelsActivity.class);
+                        i.putExtra("Level", levelNo);
+                        startActivity(i);
+                    }
+                }
+            });
+            container.addView(view);
+            return view;
         }
 
         @Override
@@ -183,4 +199,10 @@ public class LevelsActivity extends ActionBarActivity {
         }
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        lastLevelUnlocked = appDB.getLastLevelUnlocked(prefs.getStudentId());
+        adapter.notifyDataSetChanged();
+    }
 }

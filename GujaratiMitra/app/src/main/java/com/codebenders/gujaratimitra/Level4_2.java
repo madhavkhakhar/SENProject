@@ -221,7 +221,7 @@ public class Level4_2 extends ActionBarActivity {
                             q[i].setVisibility(View.INVISIBLE);
                         }
                         if(queIndex>=NUM_QUE){
-                           Util.setNextLevel(Level4_2.this,SCORE,2,4);
+                           Util.setNextLevel(Level4_2.this,SCORE,2,4,true);
                         }else{
                             noOfQues = questions[queIndex];
                             for(int j=0;j<noOfQues;j++){

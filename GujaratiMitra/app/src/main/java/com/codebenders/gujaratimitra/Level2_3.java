@@ -326,7 +326,7 @@ public class Level2_3 extends ActionBarActivity {
                             v3.setBackgroundColor(Color.WHITE);
                             v4.setBackgroundColor(Color.WHITE);
                             if(currentQueIndex>=NUM_PAGES-1){
-                                Util.setNextLevel(Level2_3.this,SCORE,3,2);
+                                Util.setNextLevel(Level2_3.this,SCORE,3,2,true);
                             }
                         }
                     });

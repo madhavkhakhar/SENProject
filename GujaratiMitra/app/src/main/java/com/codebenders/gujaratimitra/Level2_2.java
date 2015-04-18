@@ -83,7 +83,7 @@ public class Level2_2 extends Activity {
                     rightArrow.setVisibility(View.VISIBLE);
                 }
                 if (i == NUM_PAGES-1){
-                    Util.setNextLevel(Level2_2.this,0,2,2);
+                    Util.setNextLevel(Level2_2.this,0,2,2,false);
                 }
             }
 
