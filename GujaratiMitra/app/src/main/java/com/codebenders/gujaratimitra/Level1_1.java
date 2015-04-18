@@ -102,7 +102,7 @@ public class Level1_1 extends ActionBarActivity {
                     mPager.getChildAt(i).invalidate();
                 }
                 if (i >= NUM_PAGES - 1) {
-                    Util.setNextLevel(Level1_1.this,0,1,1,true);
+                    Util.setNextLevel(Level1_1.this,0,1,levelNo,true);
                 }
 
             }

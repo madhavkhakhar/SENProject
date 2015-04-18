@@ -35,7 +35,7 @@ public class Util {
         }
     }
 
-    public static void setNextLevel(final Context c) {
+    /*public static void setNextLevel(final Context c) {
         LinearLayout l = new LinearLayout(c);
         ((Activity) c).setContentView(l);
         ImageView iv = new ImageView(c);
@@ -49,7 +49,7 @@ public class Util {
             }
         });
         l.addView(iv);
-    }
+    }*/
 
     public static void setNextLevel(final Context c, int score, int sublevelNo, int levelNo, boolean isLast) {
         System.out.println("util "+levelNo);

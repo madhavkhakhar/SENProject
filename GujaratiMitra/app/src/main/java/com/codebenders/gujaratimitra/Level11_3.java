@@ -23,12 +23,12 @@ public class Level11_3 extends ActionBarActivity {
     ImageView q;
     ImageView[] a;
     Vibrator vib;
-    public MediaPlayer mp;
     private int qIndex=1,correct=0;
     TextView score;
     private  int mscore=0;
     private int NUM_PAGES=22;
     private boolean sleeping;
+    private  ImageView speaker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +45,13 @@ public class Level11_3 extends ActionBarActivity {
         q=(ImageView)findViewById(R.id.imgViewq1);
 
         score = (TextView)findViewById(R.id.score);
+        speaker = (ImageView) findViewById(R.id.speaker);
+        speaker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Util.playMediaFromPath(Environment.getExternalStorageDirectory()+"/GujaratiMitra/l11/3/aud_que_11_3.wav");
+            }
+        });
 
         Util.setImageFromPath((ImageView)findViewById(R.id.q_image), Environment.getExternalStorageDirectory() + "/GujaratiMitra/l11/3/que_11_3.png");
         ImageView speaker = (ImageView) findViewById(R.id.speaker);
@@ -167,7 +174,7 @@ public class Level11_3 extends ActionBarActivity {
                     @Override
                     public void run() {
                         if(qIndex>=NUM_PAGES){
-                            Util.setNextLevel(Level11_3.this);
+                            Util.setNextLevel(Level11_3.this,mscore,3,11,true);
                         }
                         else{
                             Util.setImageFromPath(q, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l11/2/img" + Integer.toString(qIndex) + "_1.png");

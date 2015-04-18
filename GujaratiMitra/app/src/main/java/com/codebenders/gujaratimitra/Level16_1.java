@@ -164,7 +164,10 @@ public class Level16_1 extends ActionBarActivity {
                     public void run() {
                         if(qIndex>modArray[sublevel-1]){
                             SystemClock.sleep(500);
-                            Util.setNextLevel(Level16_1.this);
+                            if((level==16 || level==18) && sublevel!=3)
+                                Util.setNextLevel(Level16_1.this,mscore,sublevel,level,false);
+                            if(level==16 && sublevel==3)
+                                Util.setNextLevel(Level16_1.this,mscore,sublevel,level,true);
                         }
                         else {
                             Util.setImageFromPath(q, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l" + String.valueOf(level) + "/" + String.valueOf(sublevel) + "/" + "img_e1_" + Integer.toString(qIndex) + ".png");

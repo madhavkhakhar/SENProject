@@ -54,14 +54,7 @@ public class Level12_1 extends ActionBarActivity {
 
         speaker.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                try {
-                    Util.mediaPlayer.setDataSource(Environment.getExternalStorageDirectory() + "/sample.mp3");//Write your location here
-                    Util.mediaPlayer.prepare();
-                    Util.mediaPlayer.start();
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+                Util.playMediaFromPath(Environment.getExternalStorageDirectory()+"/GujaratiMitra/l12/1/aud_que_12_1.wav");
             }
         });
 
@@ -82,7 +75,7 @@ public class Level12_1 extends ActionBarActivity {
                     rightArrow.setVisibility(View.VISIBLE);
                 }
                 if(i>=NUM_PAGES-1){
-                    Util.setNextLevel(Level12_1.this);
+                    Util.setNextLevel(Level12_1.this,0,1,12,false);
                 }
             }
             @Override

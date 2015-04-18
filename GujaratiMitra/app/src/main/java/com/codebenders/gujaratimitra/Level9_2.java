@@ -35,7 +35,6 @@ public class Level9_2 extends ActionBarActivity {
     TextView score_text;
     private int MAX_SCORE=15;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,7 +82,9 @@ public class Level9_2 extends ActionBarActivity {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                loadNextImage(current);
+                if (!sleeping) {
+                    loadNextImage(current);
+                }
             }
         });
 
@@ -136,11 +137,9 @@ public class Level9_2 extends ActionBarActivity {
             v1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (!sleeping) {
-                        current = (int) v.getTag();
-                        selectedImage = (ImageView)v;
-                        imageClicked(v.getTag().toString(), (ImageView) v);
-                    }
+                current = (int) v.getTag();
+                selectedImage = (ImageView)v;
+                imageClicked(v.getTag().toString(), (ImageView) v);
                 }
             });
 
@@ -271,7 +270,7 @@ public class Level9_2 extends ActionBarActivity {
             queImage.setTag(10+queImageIndex.get(count));
         }
         else{
-            Util.setNextLevel(Level9_2.this);
+            Util.setNextLevel(Level9_2.this,score,2,9,true);
         }
     }
 

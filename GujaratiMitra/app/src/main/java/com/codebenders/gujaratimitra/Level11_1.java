@@ -19,10 +19,11 @@ import java.util.Random;
 
 
 public class Level11_1 extends ActionBarActivity {
-    protected static int count = 0;
+    protected int count = 0;
     protected static int correctans = 2;
     public static int score = 0;
     public TextView score_text;
+    int NUM_QUES=13;
     public int disable = 0;
     List<Integer> rand_array;
 
@@ -53,7 +54,7 @@ public class Level11_1 extends ActionBarActivity {
         int random1 = r.nextInt(4);
         correctans = random1;
         for (int i = 0; i < 4; i++) {
-            Util.setImageFromPath(image[i], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l11/1/" + Integer.toString(rand_array.get(i)) + ".png");
+            Util.setImageFromPath(image[i], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l11/1/img_" + Integer.toString(rand_array.get(i)) + ".png");
         }
 
         image[0].setOnClickListener(new View.OnClickListener() {
@@ -99,14 +100,7 @@ public class Level11_1 extends ActionBarActivity {
 
         speaker.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                try {
-                    Util.mediaPlayer.setDataSource(Environment.getExternalStorageDirectory() + "/sample.mp3");//Write your location here
-                    Util.mediaPlayer.prepare();
-                    Util.mediaPlayer.start();
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+                Util.playMediaFromPath(Environment.getExternalStorageDirectory()+"/GujaratiMitra/l11/1/aud_que_11_1.wav");
             }
         });
 
@@ -168,7 +162,9 @@ public class Level11_1 extends ActionBarActivity {
                         @Override
                         public void run() {
                             disable = 0;
-
+                            if(count>=NUM_QUES){
+                                Util.setNextLevel(Level11_1.this,score,1,11,false);
+                            }
                             Random r = new Random();
                             int random = r.nextInt(4);
                             correctans = random;

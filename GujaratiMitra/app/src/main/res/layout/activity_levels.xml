@@ -33,7 +33,9 @@
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
                 android:layout_weight=".87"
-                android:weightSum="1">
+                android:weightSum="1"
+                android:paddingRight="10dp"
+                android:gravity="right">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -47,15 +49,15 @@
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="0.33"
-                    android:text="Profiles"
-                    android:id="@+id/profiles" />
+                    android:layout_weight="0.46"
+                    android:id="@+id/profiles"
+                    android:background="@drawable/settings_selector"/>
 
-                <Button
+                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="0.33"
-                    android:text="About Us"
+                    android:layout_weight="0.46"
+                    android:background="@drawable/about_selector"
                     android:id="@+id/about_us" />
             </LinearLayout>
 

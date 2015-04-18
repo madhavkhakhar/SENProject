@@ -80,7 +80,7 @@ public class Level8_1 extends ActionBarActivity {
                     mPager.getChildAt(i).invalidate();
                 }
                 if(i>=NUM_PAGES-1)
-                    Util.setNextLevel(Level8_1.this,0,1,8, true);
+                    Util.setNextLevel(Level8_1.this,0,1,8,true);
             }
             @Override
             public void onPageScrollStateChanged(int i) {
@@ -124,20 +124,6 @@ public class Level8_1 extends ActionBarActivity {
                         v2.setVisibility(View.GONE);
                         question.setText("IMAGE");
                     }
-                }
-            });
-
-            v1.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                }
-            });
-
-            v1.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
                 }
             });
 

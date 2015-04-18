@@ -35,6 +35,7 @@ public class Level15_2 extends ActionBarActivity {
     int[][] sizes;
     String imagePath;
     TextView score_text;
+    boolean wait=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,20 +54,24 @@ public class Level15_2 extends ActionBarActivity {
             imagePath = Environment.getExternalStorageDirectory() + "/GujaratiMitra/l19/3/img_";
 
         }
-        Util.setImageFromPath((ImageView)findViewById(R.id.imageView5), Environment.getExternalStorageDirectory() + "/GujaratiMitra/All Questions/que_15_2.png");
+        //Util.setImageFromPath((ImageView)findViewById(R.id.que_statement), Environment.getExternalStorageDirectory() + "/GujaratiMitra/All Questions/que_15_2.png");
         image = new ImageView[3];
         window = new ImageView[3];
         window[0] = (ImageView) findViewById(R.id.window1);
         window[1] = (ImageView) findViewById(R.id.window2);
         window[2] = (ImageView) findViewById(R.id.window3);
         ImageView ques=(ImageView) findViewById(R.id.que_statement);
-        if(levelNumber==15)
-            Util.setImageFromPath(ques,Environment.getExternalStorageDirectory() + "/GujaratiMitra/l15/2/que_15_2.png");
+        if(levelNumber==15) {
+            Util.setImageFromPath(ques, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l15/2/que_15_2.png");
+            for (int i = 0; i < 5; i++) {
+                rand_array.add(i + 1);
+            }
+        }
         else if(levelNumber==19){
             Util.setImageFromPath(ques,Environment.getExternalStorageDirectory() + "/GujaratiMitra/l19/3/que_19_3.png");
-        }
-        for (int i = 0; i < 5; i++) {
-            rand_array.add(i + 1);
+            for (int i = 0; i < 8; i++) {
+                rand_array.add(i + 1);
+            }
         }
         Collections.shuffle(rand_array);
 
@@ -89,6 +94,7 @@ public class Level15_2 extends ActionBarActivity {
 
         for (int i = 0; i < 3; i++) {
             final int finalI = i;
+
             image[i].setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -100,7 +106,8 @@ public class Level15_2 extends ActionBarActivity {
         check.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                check();
+                if(wait==false)
+                    check();
 
             }
         });
@@ -177,11 +184,12 @@ public class Level15_2 extends ActionBarActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
+                            wait=true;
                             int temp = correctans[rand_array.get(count) - 1] - 1;
-                            System.out.println(">>>>>>>>>>>>>>>>" + temp + disable);
+                            //System.out.println(">>>>>>>>>>>>>>>>" + temp + disable);
                             Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
                             if (disable == temp) {
-                                System.out.println(">>>>>>>>>>>>>>>>-1-1-1");
+                               // System.out.println(">>>>>>>>>>>>>>>>-1-1-1");
                                 score++;
                                 score_text.setText("SCORE "+String.valueOf(score)+"/"+String.valueOf(MAX_SCORE));
                                 toast.setView(green_tick);
@@ -223,12 +231,13 @@ public class Level15_2 extends ActionBarActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
+                            wait=false;
                             count++;
                             if(levelNumber==15 && count==5){
-                                Util.setNextLevel(Level15_2.this);
+                                Util.setNextLevel(Level15_2.this,score,2,15,false);
                             }
                             else if(levelNumber==19 && count==8){
-                                Util.setNextLevel(Level15_2.this);
+                                Util.setNextLevel(Level15_2.this,score,3,19,true);
                             }
                             else {
 
