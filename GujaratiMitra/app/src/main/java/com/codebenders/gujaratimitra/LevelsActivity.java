@@ -40,7 +40,6 @@ public class LevelsActivity extends ActionBarActivity {
         viewPager.setAdapter(adapter);
         viewPager.setOffscreenPageLimit(NUM_PAGES);
         lastLevelUnlocked = appDB.getLastLevelUnlocked(prefs.getStudentId());
-
     }
 
     private class CustomPagerAdapter extends PagerAdapter {

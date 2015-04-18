@@ -13,7 +13,7 @@ import android.widget.ImageView;
 
 
 public class Level20_2 extends ActionBarActivity {
-    private static final int NUM_PAGES = 10;
+    private static final int NUM_PAGES = 11;
     private ViewPager mPager;
     private PagerAdapter mPagerAdapter;
 
@@ -24,6 +24,11 @@ public class Level20_2 extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_level20_2);
+
+        final ImageView v2 = (ImageView) findViewById(R.id.imageView_20_2_1);
+        Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l20/2/que_20_2.png");
+
+
 
         mPager = (ViewPager) findViewById(R.id.pager_20_2);
         mPagerAdapter = new SimplePagerAdapter();
@@ -42,6 +47,15 @@ public class Level20_2 extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 mPager.setCurrentItem(mPager.getCurrentItem()+1);
+            }
+        });
+        ImageView speaker = (ImageView) findViewById(R.id.speaker);
+        speaker.setTag(Environment.getExternalStorageDirectory() + "/GujaratiMitra/l20/2/aud_0.mp3");
+        speaker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Util.playMediaFromPath(v.getTag().toString());
+
             }
         });
 
@@ -87,18 +101,8 @@ public class Level20_2 extends ActionBarActivity {
 
         final View view =getLayoutInflater().inflate(R.layout.unit_layout_level_20_2, container,false);
         final ImageView v1 = (ImageView) view.findViewById(R.id.imageView_20_2_2);
-        final ImageView v2 = (ImageView) view.findViewById(R.id.imageView_20_2_1);
-        ImageView speaker = (ImageView) view.findViewById(R.id.speaker);
-        speaker.setTag(Environment.getExternalStorageDirectory() + "/GujaratiMitra/l20/2/aud_0.mp3");
-        speaker.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Util.playMediaFromPath(v.getTag().toString());
 
-            }
-        });
         Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l20/2/"+"img_"+Integer.toString(position+1)+".png");
-        Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l20/2/que_20_2.png");
 
         v1.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -4,10 +4,40 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     tools:context="com.codebenders.gujaratimitra.Level20_2">
 
-    <ImageView
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.75"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_weight="0.2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:id="@+id/imageView_20_2_1" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.8"
+            android:id="@+id/speaker"
+            android:src="@drawable/loudspeaker"/>
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.25"
+        android:orientation="horizontal">
+
+        <ImageView
         android:layout_weight="0.30"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -33,5 +63,5 @@
         android:id="@+id/imageView1"
         android:layout_gravity="center_vertical"
         android:src="@drawable/right_arrow"/>
-
+    </LinearLayout>
 </LinearLayout>
