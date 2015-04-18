@@ -29,7 +29,7 @@ public class SubLevelsActivity extends ActionBarActivity {
         txtLevel = (TextView)findViewById(R.id.txtlevelNo);
         ArrayList<ListItem> list = new ArrayList<ListItem>();
 
-        sublevelNo = new int[]{1,3,1,2,2,2,2,1,2,1,3,1,1,3,3,3,1,3,2,2};
+        sublevelNo = new int[]{1,3,1,2,2,2,2,1,2,1,3,1,1,3,3,3,1,3,3,2};
 
         levelNo = getIntent().getExtras().getInt("Level");
 
@@ -262,6 +262,12 @@ public class SubLevelsActivity extends ActionBarActivity {
                     case 19:
                         if(position==0) {
                             i = new Intent(SubLevelsActivity.this, Level19_1.class);
+                            i.putExtra("Sublevel",1);
+                            startActivity(i);
+                        }
+                        if(position==1) {
+                            i = new Intent(SubLevelsActivity.this, Level19_1.class);
+                            i.putExtra("Sublevel",2);
                             startActivity(i);
                         }
                         if(position==2) {

@@ -1,5 +1,6 @@
 package com.codebenders.gujaratimitra;
 
+import android.content.Intent;
 import android.os.Environment;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -14,17 +15,34 @@ import android.widget.ImageView;
 
 public class Level19_1 extends ActionBarActivity {
 
-    private static final int NUM_PAGES = 7;
+    private int NUM_PAGES ;
     private ViewPager mPager;
     private PagerAdapter mPagerAdapter;
     private ImageView leftArrow;
     private ImageView rightArrow;
-
+    Intent i;
+    private int sublevel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_level19_1);
+
+        i=getIntent();
+        sublevel=i.getExtras().getInt("Sublevel");
+
+
+
+        if(sublevel==1){
+            NUM_PAGES=7;
+            //mPager.setOffscreenPageLimit(6);
+
+        }
+        else if(sublevel==2){
+            NUM_PAGES=8;
+            //mPager.setOffscreenPageLimit(7);
+
+        }
 
         mPager = (ViewPager) findViewById(R.id.pager);
         mPagerAdapter = new SimplePagerAdapter();
@@ -56,7 +74,7 @@ public class Level19_1 extends ActionBarActivity {
             public void onPageSelected(int i) {
                 if (i == 0)
                     leftArrow.setVisibility(View.INVISIBLE);
-                else if (i == 5)
+                else if (i == NUM_PAGES-2)
                     rightArrow.setVisibility(View.INVISIBLE);
                 else {
                     leftArrow.setVisibility(View.VISIBLE);
@@ -94,9 +112,14 @@ public class Level19_1 extends ActionBarActivity {
             //ImageView v3 = (ImageView) view.findViewById(R.id.imageView3);
             //ImageView v4 = (ImageView) view.findViewById(R.id.imageView4);
 
-            Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l19/1/img1_" + String.valueOf((2*position)+1) + ".png");
-            Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l19/1/img1_" + String.valueOf((2*position)+2) + ".png");
-
+            if(sublevel==1) {
+                Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l19/1/img1_" + String.valueOf((2 * position) + 1) + ".png");
+                Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l19/1/img1_" + String.valueOf((2 * position) + 2) + ".png");
+            }
+            else if(sublevel==2){
+                Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l19/2/img_" + String.valueOf(position + 1) + "_1.png");
+                Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l19/2/img_" + String.valueOf(position+ 1) + "_2.png");
+            }
 
             v1.setOnClickListener(new View.OnClickListener() {
                 @Override

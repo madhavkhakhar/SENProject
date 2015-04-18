@@ -3,7 +3,9 @@ package com.codebenders.gujaratimitra.database;
 public interface ISql {
 
     String INSERT_STUDENT = "INSERT INTO student (roll_no, standard, first_name, last_name) VALUES (%d,%d,'%s','%s')";
+    String INSERT_STUDENT_BY_ID = "INSERT INTO student (id,roll_no, standard, first_name, last_name) VALUES (%d,%d,%d,'%s','%s')";
     String GET_STUDENT = "SELECT * FROM student";
+    String GET_STUDENT_BY_ID = "SELECT * FROM student WHERE id = %d";
     String REMOVE_STUDENT = "DELETE FROM tblStudent WHERE RollNo = %d";
     String COUNT_STUDENT = "SELECT count(RollNo) from tblStudent";
     String ADD_SUB_LEVEL_SCORE = "UPDATE level SET sublevel_id = %d, level_id = %d,sublevel_score = %d WHERE student_id = %d";

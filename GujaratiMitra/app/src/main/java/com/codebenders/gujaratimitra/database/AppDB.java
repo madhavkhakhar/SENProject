@@ -16,20 +16,29 @@ public class AppDB extends DBConnect {
 
     public void insertStudent(Student student) {
         String query;
-        int id = -1;
+        //int id = -1;
 
         query = String.format(ISql.INSERT_STUDENT, student.getRoll(),
                 student.getStandard(), student.getFirstName(), student.getLastName());
         execNonQuery(query);
-        Cursor cursor = execQuery(ISql.GET_LAST_INSERTED_STUDENT_ID);
+        /*Cursor cursor = execQuery(ISql.GET_LAST_INSERTED_STUDENT_ID);
         if (cursor != null && cursor.getCount() > 0) {
 
             if (cursor.moveToNext()) {
                 id = cursor.getInt(0);
             }
-        }
+        }*/
        /* if(id!=-1)
             this.addSubLevelScore(1,1,0,id);*/
+    }
+
+    public void insertStudent(Student student, int id) {
+        String query;
+        //int id = -1;
+
+        query = String.format(ISql.INSERT_STUDENT_BY_ID, id, student.getRoll(),
+                student.getStandard(), student.getFirstName(), student.getLastName());
+        execNonQuery(query);
     }
 
     /**
@@ -40,6 +49,19 @@ public class AppDB extends DBConnect {
             String sqlRemoveRegCard = String.format(ISql.REMOVE_STUDENT, rollNo);
             execNonQuery(sqlRemoveRegCard);
         }
+    }
+
+    public Student getStudentById(int id) {
+        String query = String.format(ISql.GET_STUDENT_BY_ID, id);
+        Cursor cursor = execQuery(query);
+        Student student = null;
+        if (cursor != null && cursor.getCount() > 0) {
+
+            if (cursor.moveToNext()) {
+                student = new Student(cursor.getInt(cursor.getColumnIndex("id")), cursor.getInt(cursor.getColumnIndex("roll_no")), cursor.getInt(cursor.getColumnIndex("standard")), cursor.getString(cursor.getColumnIndex("first_name")), cursor.getString(cursor.getColumnIndex("last_name")), cursor.getInt(cursor.getColumnIndex("current_level")), cursor.getInt(cursor.getColumnIndex("total_score")));
+            }
+        }
+        return student;
     }
 
     /**
@@ -151,7 +173,7 @@ public class AppDB extends DBConnect {
     }*/
 
     public void setCurrentLevel(int studentId, int levelNo) {
-        System.out.println(">>"+levelNo);
+        System.out.println(">>" + levelNo);
         String query = String.format(ISql.SET_CURRENT_LEVEL, levelNo, studentId);
         execNonQuery(query);
     }

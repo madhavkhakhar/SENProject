@@ -10,9 +10,13 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+
+import com.codebenders.gujaratimitra.profile.ProfileActivity;
+import com.codebenders.gujaratimitra.profile.Student;
 
 import java.util.ArrayList;
 
@@ -30,6 +34,7 @@ public class LevelsActivity extends ActionBarActivity {
     ArrayList<String> listItems = new ArrayList<String>();
     String imagePath = Environment.getExternalStorageDirectory() + "/GujaratiMitra/Start/";
     CustomPagerAdapter adapter;
+    private Button profiles, aboutUs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,8 +44,26 @@ public class LevelsActivity extends ActionBarActivity {
         adapter = new CustomPagerAdapter();
         viewPager.setAdapter(adapter);
         viewPager.setOffscreenPageLimit(NUM_PAGES);
-        //lastLevelUnlocked = appDB.getLastLevelUnlocked(prefs.getStudentId());
+        lastLevelUnlocked = appDB.getLastLevelUnlocked(prefs.getStudentId());
+        //System.out.println("prefs student id" +prefs.getStudentId());
+        profiles = (Button)findViewById(R.id.profiles);
+        aboutUs = (Button)findViewById(R.id.about_us);
+        if(Util.appDB.getStudentById(0)==null){
+            Util.appDB.insertStudent(new Student(0,0,"","Guest",1,0),0);
+        }
+        profiles.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LevelsActivity.this,ProfileActivity.class);
+                startActivity(intent);
+            }
+        });
+        aboutUs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+            }
+        });
     }
 
     private class CustomPagerAdapter extends PagerAdapter {
@@ -82,13 +105,14 @@ public class LevelsActivity extends ActionBarActivity {
             int page = (lastLevelUnlocked - 1) / 7;
             int tempLevel = (lastLevelUnlocked - 1) % 7 + 1;
             for (int i = 1; i <= images.size(); i++) {
-                System.out.println("level " + tempLevel + " page " + page + " last level" + tempLevel);
+               // System.out.println("level " + tempLevel + " page " + page + " last level" + lastLevelUnlocked);
                 if ((i <= tempLevel && page == position) || (i >= tempLevel && page > position))
                     Util.setImageFromPath(images.get(i - 1), imagePath + "/Stage" + (position + 1) + "/level" + i + ".png");
                 else
                     Util.setImageFromPath(images.get(i - 1), imagePath + "/Stage" + (position + 1) + "/Locked/level" + i + ".png");
             }
             Drawable drawable = Drawable.createFromPath(imagePath + "/Stage" + (position + 1) + "/home_bg_s" + (position + 1) + ".png");
+            drawable.setAlpha(90);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
                 layout.setBackground(drawable);
             else
