@@ -10,38 +10,36 @@
     android:weightSum="1">
 
     <LinearLayout
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:weightSum="1.0"
+        android:orientation="horizontal"
+        android:weightSum="1"
         android:layout_weight="0.41"
-        android:orientation="horizontal">
-
+        android:layout_gravity="center"
+        >
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="SCORE 0/10"
-            android:id="@+id/score"
-            android:textSize="20dp"
+            android:textSize="20sp"
+            android:id="@+id/txtScore"
+            android:text="SCORE: 1/10"
             android:textColor="#FF9933CC"
-            android:layout_gravity="center|center_horizontal"/>
+            />
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_gravity="center|center_horizontal"
-            android:padding="15dp"
-            android:id="@+id/que_statement"
-            android:layout_weight="0.2"/>
+            android:layout_weight="0.25"
+            android:layout_marginLeft="3dp"
+            android:src="@drawable/level4_2_img_q"
+            android:id="@+id/que_statement"/>
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:id="@+id/imageView6"
-            android:src="@drawable/loudspeaker"
-            android:layout_weight="0.8"/>
-
-
-
+            android:layout_weight="0.75"
+            android:id="@+id/lspeaker"
+            android:src="@drawable/loudspeaker"/>
     </LinearLayout>
+
 
 
     <LinearLayout
@@ -49,14 +47,13 @@
         android:layout_height="match_parent"
         android:weightSum="1.0"
         android:layout_weight="0.3"
+        android:gravity="center"
         android:orientation="horizontal">
 
     <ImageView
-        android:padding="50dp"
-        android:layout_width="fill_parent"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_weight="0.3"
-        android:layout_gravity="center_vertical"
         android:id="@+id/imgViewq1"
         android:src="@drawable/level16_1_img_e1_1"/>
     </LinearLayout>

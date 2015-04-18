@@ -18,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 
 
@@ -39,6 +40,8 @@ public class Level16_1 extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_level16_1);
 
+
+
         a=new ImageView[4];
         i=getIntent();
         sublevel=i.getExtras().getInt("Sublevel");
@@ -58,7 +61,7 @@ public class Level16_1 extends ActionBarActivity {
 
         q=(ImageView)findViewById(R.id.imgViewq1);
 
-        score = (TextView)findViewById(R.id.score);
+        score = (TextView)findViewById(R.id.txtScore);
         score.setText("SCORE "+String.valueOf(mscore) + "/"+String.valueOf(modArray[sublevel-1]));
 
 
@@ -120,9 +123,7 @@ public class Level16_1 extends ActionBarActivity {
 
                         if (correct == ansClicked) {
                             //a[0].setColorFilter(Color.argb(255, 0, 255, 0));
-                            if(qIndex>modArray[sublevel-1]){
-                                Util.setNextLevel(Level16_1.this);
-                            }
+
                             mscore++;
                             a[correct].setColorFilter(Color.argb(255, 0, 255, 0));
 
@@ -184,29 +185,28 @@ public class Level16_1 extends ActionBarActivity {
                         q.setVisibility(View.INVISIBLE);
                         Random r=new Random();
                         int random1=r.nextInt(4);
-                        correct=random1;
-
                         wrongImg=new ArrayList<>();
-                        int temp = (qIndex+r.nextInt(modArray[sublevel-1])+1)%modArray[sublevel-1] +1;
-                        while(true){
-                            if(!wrongImg.contains(temp) && temp!=qIndex )
+                        correct=random1;
+                        int temp;
+                        while(wrongImg.size()<3){
+                            temp=r.nextInt(modArray[sublevel-1])+1;
+                            if(temp!=qIndex && !wrongImg.contains(temp))
                                 wrongImg.add(temp);
-                            temp=(qIndex+r.nextInt(modArray[sublevel-1])+1)%modArray[sublevel-1] +1;
-                            if(wrongImg.size()==3)
-                                break;
+
                         }
+                        System.out.println(wrongImg.toString());
+                        Collections.shuffle(wrongImg);
+
                         int wrongIndex=0;
                         for(int j=0;j<4;j++){
                             if(j==correct){
                                 Util.setImageFromPath(a[j], Environment.getExternalStorageDirectory() +"/GujaratiMitra/l"+String.valueOf(level)+"/"+String.valueOf(sublevel)+"/"+"img_e1_" + Integer.toString(qIndex) + ".png");
-                                //a[j].setImageResource(getResources().getIdentifier("level4_2_img_e" + String.valueOf(queIndex) + "_correct", "drawable", getPackageName()));
                             }
                             else{
                                 Util.setImageFromPath(a[j], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l"+String.valueOf(level)+"/"+String.valueOf(sublevel)+"/"+"img_e1_" + String.valueOf(wrongImg.get(wrongIndex++)) + ".png");
-                                //a[j].setImageResource(getResources().getIdentifier("level4_2_img_e" + String.valueOf(queIndex) + "_wrong" + String.valueOf(wrongIndex++), "drawable", getPackageName()));
+
                             }
                             a[j].setVisibility(View.VISIBLE);
-                            //a[j].setColorFilter(Color.argb(255, 0, 0, 0));
                         }
 
                     }
@@ -236,14 +236,14 @@ public class Level16_1 extends ActionBarActivity {
                         int random1=r.nextInt(4);
                         correct=random1;
                         wrongImg=new ArrayList<>();
-                        int temp=(qIndex+r.nextInt(modArray[sublevel-1])+1)%modArray[sublevel-1] +1;
-                        while(true){
-                            if(!wrongImg.contains(temp) && temp!=qIndex)
+                        int temp;
+                        while(wrongImg.size()<3){
+                            temp=r.nextInt(modArray[sublevel-1])+1;
+                            if(temp!=qIndex && !wrongImg.contains(temp))
                                 wrongImg.add(temp);
-                            temp=(qIndex+r.nextInt(modArray[sublevel-1])+1)%modArray[sublevel-1] +1;
-                            if(wrongImg.size()==3)
-                                break;
+
                         }
+                        Collections.shuffle(wrongImg);
                         int wrongIndex=0;
                         for(int j=0;j<4;j++){
                             if(j==correct){
