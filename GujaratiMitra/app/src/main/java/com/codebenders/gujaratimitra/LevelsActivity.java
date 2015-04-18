@@ -25,7 +25,7 @@ public class LevelsActivity extends ActionBarActivity {
     private static int NUM_PAGES = 3;
     ViewPager viewPager;
     private int levelNo = 0;
-    private int lastLevelUnlocked = 1;
+    private int lastLevelUnlocked = 20;
     ListView listView;
     ArrayList<String> listItems = new ArrayList<String>();
     String imagePath = Environment.getExternalStorageDirectory() + "/GujaratiMitra/Start/";
@@ -39,7 +39,7 @@ public class LevelsActivity extends ActionBarActivity {
         adapter = new CustomPagerAdapter();
         viewPager.setAdapter(adapter);
         viewPager.setOffscreenPageLimit(NUM_PAGES);
-        lastLevelUnlocked = appDB.getLastLevelUnlocked(prefs.getStudentId());
+        //lastLevelUnlocked = appDB.getLastLevelUnlocked(prefs.getStudentId());
 
     }
 
@@ -202,7 +202,7 @@ public class LevelsActivity extends ActionBarActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        lastLevelUnlocked = appDB.getLastLevelUnlocked(prefs.getStudentId());
+        //lastLevelUnlocked = appDB.getLastLevelUnlocked(prefs.getStudentId());
         adapter.notifyDataSetChanged();
     }
 }

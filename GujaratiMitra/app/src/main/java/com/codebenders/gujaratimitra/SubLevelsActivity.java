@@ -8,6 +8,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -16,17 +19,21 @@ public class SubLevelsActivity extends ActionBarActivity {
     ListView lvSublevels;
     int[] sublevelNo;
     int levelNo;
+    TextView txtLevel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sub_levels);
         lvSublevels = (ListView) findViewById(R.id.listViewSublevels);
+        txtLevel = (TextView)findViewById(R.id.txtlevelNo);
         ArrayList<ListItem> list = new ArrayList<ListItem>();
 
         sublevelNo = new int[]{1,3,1,2,2,2,2,1,2,1,3,1,1,3,3,3,1,3,2,2};
 
         levelNo = getIntent().getExtras().getInt("Level");
+
+        txtLevel.setText("Level: "+levelNo);
 
         if(sublevelNo[levelNo-1]>=1)  list.add(new ListItem(R.drawable.pravruti1));
         if (sublevelNo[levelNo-1]>=2)    list.add(new ListItem(R.drawable.pravruti2));
