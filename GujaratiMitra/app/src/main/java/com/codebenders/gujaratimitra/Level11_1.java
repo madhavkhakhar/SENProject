@@ -19,7 +19,7 @@ import java.util.Random;
 
 
 public class Level11_1 extends ActionBarActivity {
-    protected static int count = 0;
+    protected int count = 0;
     protected static int correctans = 2;
     public static int score = 0;
     public TextView score_text;

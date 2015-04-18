@@ -87,7 +87,7 @@ public class Level18_1 extends ActionBarActivity {
                         wait=true;
                         if(qIndex>NUM_QUES){
                             SystemClock.sleep(500);
-                            Util.setNextLevel(Level18_1.this);
+                            Util.setNextLevel(Level18_1.this,0,1,18,false);
                         }
                         else {
                             Util.setImageFromPath(q, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l16/1/img_e1_" +  Integer.toString(qIndex) + ".png");
