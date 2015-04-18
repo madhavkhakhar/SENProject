@@ -26,6 +26,7 @@ public class Level2_3 extends ActionBarActivity {
     private int totalSelected;
     private TextView txtScore;
     private ImageView lSpeaker;
+    private boolean sleeping;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +34,7 @@ public class Level2_3 extends ActionBarActivity {
         setContentView(R.layout.activity_level2_3);
 
         currentQueIndex = 0;
+        sleeping = false;
         selected1 = selected2 = selected3 = selected4 = false;
         totalSelected = 0;
         txtScore = (TextView)findViewById(R.id.txtScore);
@@ -41,7 +43,7 @@ public class Level2_3 extends ActionBarActivity {
         lSpeaker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Util.playMediaFromPath(Environment.getExternalStorageDirectory()+"/GujaratiMitra/l4/1/aud_0.mp3");
+                Util.playMediaFromPath(Environment.getExternalStorageDirectory()+"/GujaratiMitra/l2/3/aud_que_2_3.wav");
             }
         });
         txtScore.setText("SCORE:"+String.valueOf(SCORE)+"/"+String.valueOf(TOTAL_SCORE));
@@ -60,68 +62,76 @@ public class Level2_3 extends ActionBarActivity {
         v1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!selected1) {
-                    selected1 = true;
-                    totalSelected++;
-                    v1.setBackgroundResource(R.drawable.image_border_black);
-                    if (totalSelected == 2) {
-                        loadNextQuestion();
+                if (!sleeping) {
+                    if (!selected1) {
+                        selected1 = true;
+                        totalSelected++;
+                        v1.setBackgroundResource(R.drawable.image_border_black);
+                        if (totalSelected == 2) {
+                            loadNextQuestion();
+                        }
+                    } else {
+                        selected1 = false;
+                        v1.setBackgroundColor(Color.WHITE);
+                        totalSelected--;
                     }
-                } else {
-                    selected1 = false;
-                    v1.setBackgroundColor(Color.WHITE);
-                    totalSelected--;
                 }
             }
         });
         v2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!selected2) {
-                    selected2 = true;
-                    totalSelected++;
-                    v2.setBackgroundResource(R.drawable.image_border_black);
-                    if (totalSelected == 2) {
-                        loadNextQuestion();
+                if (!sleeping) {
+                    if (!selected2) {
+                        selected2 = true;
+                        totalSelected++;
+                        v2.setBackgroundResource(R.drawable.image_border_black);
+                        if (totalSelected == 2) {
+                            loadNextQuestion();
+                        }
+                    } else {
+                        selected2 = false;
+                        v2.setBackgroundColor(Color.WHITE);
+                        totalSelected--;
                     }
-                } else {
-                    selected2 = false;
-                    v2.setBackgroundColor(Color.WHITE);
-                    totalSelected--;
                 }
             }
         });
         v3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!selected3) {
-                    selected3 = true;
-                    totalSelected++;
-                    v3.setBackgroundResource(R.drawable.image_border_black);
-                    if (totalSelected == 2) {
-                        loadNextQuestion();
+                if (!sleeping) {
+                    if (!selected3) {
+                        selected3 = true;
+                        totalSelected++;
+                        v3.setBackgroundResource(R.drawable.image_border_black);
+                        if (totalSelected == 2) {
+                            loadNextQuestion();
+                        }
+                    } else {
+                        selected3 = false;
+                        v3.setBackgroundColor(Color.WHITE);
+                        totalSelected--;
                     }
-                } else {
-                    selected3 = false;
-                    v3.setBackgroundColor(Color.WHITE);
-                    totalSelected--;
                 }
             }
         });
         v4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!selected4) {
-                    selected4 = true;
-                    totalSelected++;
-                    v4.setBackgroundResource(R.drawable.image_border_black);
-                    if (totalSelected == 2) {
-                        loadNextQuestion();
+                if (!sleeping) {
+                    if (!selected4) {
+                        selected4 = true;
+                        totalSelected++;
+                        v4.setBackgroundResource(R.drawable.image_border_black);
+                        if (totalSelected == 2) {
+                            loadNextQuestion();
+                        }
+                    } else {
+                        selected4 = false;
+                        v4.setBackgroundColor(Color.WHITE);
+                        totalSelected--;
                     }
-                } else {
-                    selected4 = false;
-                    v4.setBackgroundColor(Color.WHITE);
-                    totalSelected--;
                 }
             }
         });
@@ -134,7 +144,7 @@ public class Level2_3 extends ActionBarActivity {
 
         green_tick.setImageResource(R.drawable.greentick);
         red_cross.setImageResource(R.drawable.redcross);
-
+        sleeping = true;
         new Thread(){
             public void run(){
                 try{
@@ -325,6 +335,7 @@ public class Level2_3 extends ActionBarActivity {
                             v2.setBackgroundColor(Color.WHITE);
                             v3.setBackgroundColor(Color.WHITE);
                             v4.setBackgroundColor(Color.WHITE);
+                            sleeping = false;
                             if(currentQueIndex>=NUM_PAGES-1){
                                 Util.setNextLevel(Level2_3.this,SCORE,3,2,true);
                             }

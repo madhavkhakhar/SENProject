@@ -39,7 +39,7 @@ public class Level2_2 extends Activity {
         lSpeaker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Util.playMediaFromPath(Environment.getExternalStorageDirectory()+"/GujaratiMitra/l4/1/aud_0.mp3");
+                Util.playMediaFromPath(Environment.getExternalStorageDirectory()+"/GujaratiMitra/l2/2/aud_que_2_2.wav");
             }
         });
 

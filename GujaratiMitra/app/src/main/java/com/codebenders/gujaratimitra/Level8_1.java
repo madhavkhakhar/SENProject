@@ -35,7 +35,7 @@ public class Level8_1 extends ActionBarActivity {
         speaker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Play question audio
+                Util.playMediaFromPath(Environment.getExternalStorageDirectory()+"/GujaratiMitra/l8/1/aud_que_8_1.wav");
             }
         });
 
@@ -80,7 +80,7 @@ public class Level8_1 extends ActionBarActivity {
                     mPager.getChildAt(i).invalidate();
                 }
                 if(i>=NUM_PAGES-1)
-                    Util.setNextLevel(Level8_1.this);
+                    Util.setNextLevel(Level8_1.this,0,1,8, true);
             }
             @Override
             public void onPageScrollStateChanged(int i) {

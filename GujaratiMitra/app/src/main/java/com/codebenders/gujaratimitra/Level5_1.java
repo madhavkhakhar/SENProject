@@ -63,7 +63,12 @@ public class Level5_1 extends ActionBarActivity {
         image = new ImageView[5];
         speaker = new ImageView(this);
         speaker.setImageResource(R.drawable.loudspeaker);
-
+        speaker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Util.playMediaFromPath(Environment.getExternalStorageDirectory()+"/GujaratiMitra/l5/1/aud_que_5_1.wav");
+            }
+        });
 
 
         txtscore = (TextView)findViewById(R.id.txtScore);
@@ -72,7 +77,7 @@ public class Level5_1 extends ActionBarActivity {
         lSpeaker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Util.playMediaFromPath(Environment.getExternalStorageDirectory()+"/GujaratiMitra/l4/1/aud_0.mp3");
+                Util.playMediaFromPath(Environment.getExternalStorageDirectory()+"/GujaratiMitra/l5/1/aud_0.mp3");
             }
         });
 
