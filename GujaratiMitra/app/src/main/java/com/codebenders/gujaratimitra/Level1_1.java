@@ -46,7 +46,6 @@ public class Level1_1 extends ActionBarActivity {
             }
         });
 
-
         if(levelNo == 1){
             Util.setImageFromPath((ImageView)findViewById(R.id.que_image), Environment.getExternalStorageDirectory()+"/GujaratiMitra/l1/1/que_1_1.png");
             imagePath = Environment.getExternalStorageDirectory()+"/GujaratiMitra/l1/1/";
