@@ -271,7 +271,7 @@ public class Level9_2 extends ActionBarActivity {
             queImage.setTag(10+queImageIndex.get(count));
         }
         else{
-            Util.setNextLevel(Level9_2.this);
+            Util.setNextLevel(Level9_2.this,score,2,9,true);
         }
     }
 

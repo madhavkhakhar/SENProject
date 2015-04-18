@@ -74,7 +74,7 @@ public class Level4_1 extends ActionBarActivity {
                 }
 
                 if(i==NUM_PAGES-1){
-                    Util.setNextLevel(Level4_1.this);
+                    Util.setNextLevel(Level4_1.this,0,1,4,false);
                 }
             }
 

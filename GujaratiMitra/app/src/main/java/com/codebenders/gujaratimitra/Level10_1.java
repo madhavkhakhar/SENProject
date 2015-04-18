@@ -247,7 +247,7 @@ public class Level10_1 extends ActionBarActivity {
                             if(count==5){
                                 //count=0;
                                 //score=0;
-                                Util.setNextLevel(Level10_1.this);
+                                Util.setNextLevel(Level10_1.this,score,1,10,true);
 
                             }
                             else{

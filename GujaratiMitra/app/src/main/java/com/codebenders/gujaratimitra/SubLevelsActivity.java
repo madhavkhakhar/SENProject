@@ -35,9 +35,9 @@ public class SubLevelsActivity extends ActionBarActivity {
 
         txtLevel.setText("Level: "+levelNo);
 
-        if(sublevelNo[levelNo-1]>=1)  list.add(new ListItem(R.drawable.pravruti1));
-        if (sublevelNo[levelNo-1]>=2)    list.add(new ListItem(R.drawable.pravruti2));
-        if(sublevelNo[levelNo-1]==3) list.add(new ListItem(R.drawable.pravruti3));
+        if(sublevelNo[levelNo-1]>=1)  list.add(new ListItem(R.drawable.sublevel1));
+        if (sublevelNo[levelNo-1]>=2)    list.add(new ListItem(R.drawable.sublevel2));
+        if(sublevelNo[levelNo-1]==3) list.add(new ListItem(R.drawable.sublevel3));
 
         ListAdapterSublevel adapter = new ListAdapterSublevel(SubLevelsActivity.this,list);
 
