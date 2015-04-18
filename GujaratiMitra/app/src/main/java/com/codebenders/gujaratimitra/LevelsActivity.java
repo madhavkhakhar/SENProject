@@ -40,6 +40,7 @@ public class LevelsActivity extends ActionBarActivity {
         viewPager.setAdapter(adapter);
         viewPager.setOffscreenPageLimit(NUM_PAGES);
         lastLevelUnlocked = appDB.getLastLevelUnlocked(prefs.getStudentId());
+        //System.out.println("prefs student id" +prefs.getStudentId());
 
     }
 
@@ -82,13 +83,14 @@ public class LevelsActivity extends ActionBarActivity {
             int page = (lastLevelUnlocked - 1) / 7;
             int tempLevel = (lastLevelUnlocked - 1) % 7 + 1;
             for (int i = 1; i <= images.size(); i++) {
-                System.out.println("level " + tempLevel + " page " + page + " last level" + tempLevel);
+               // System.out.println("level " + tempLevel + " page " + page + " last level" + lastLevelUnlocked);
                 if ((i <= tempLevel && page == position) || (i >= tempLevel && page > position))
                     Util.setImageFromPath(images.get(i - 1), imagePath + "/Stage" + (position + 1) + "/level" + i + ".png");
                 else
                     Util.setImageFromPath(images.get(i - 1), imagePath + "/Stage" + (position + 1) + "/Locked/level" + i + ".png");
             }
             Drawable drawable = Drawable.createFromPath(imagePath + "/Stage" + (position + 1) + "/home_bg_s" + (position + 1) + ".png");
+            drawable.setAlpha(90);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
                 layout.setBackground(drawable);
             else

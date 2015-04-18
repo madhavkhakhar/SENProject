@@ -11,6 +11,7 @@ import android.widget.Button;
 
 import com.codebenders.gujaratimitra.database.AppDB;
 import com.codebenders.gujaratimitra.profile.ProfileActivity;
+import com.codebenders.gujaratimitra.profile.Student;
 
 
 public class HomePage extends ActionBarActivity {
@@ -22,10 +23,14 @@ public class HomePage extends ActionBarActivity {
         setContentView(R.layout.activity_home_page);
         profiles = (Button)findViewById(R.id.profile_button);
         play = (Button)findViewById(R.id.play_button);
+        if(Util.appDB.getStudentById(0)==null){
+            Util.appDB.insertStudent(new Student(0,0,"","Guest",1,0),0);
+        }
 
         play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Util.prefs.saveStudentId(0);
                 Intent intent = new Intent(HomePage.this,LevelsActivity.class);
                 startActivity(intent);
             }

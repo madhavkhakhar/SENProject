@@ -19,13 +19,12 @@ public class AppPreferences {
     }
 
     public static void saveStudentId (int studentId) {
-        System.out.println(studentId);
         prefsEditor.putInt(STUDENT_ID, studentId);
         prefsEditor.commit();
     }
 
     public int getStudentId() {
-        return sharedPrefs.getInt(STUDENT_ID, -1);
+        return sharedPrefs.getInt(STUDENT_ID, 0);
     }
 
 }
