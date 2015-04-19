@@ -13,8 +13,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 
-import static com.codebenders.gujaratimitra.Util.appDB;
-
 
 public class Level1_1 extends ActionBarActivity {
 
@@ -38,26 +36,32 @@ public class Level1_1 extends ActionBarActivity {
         i = getIntent();
         levelNo = i.getExtras().getInt("level_no");
 
-        lSpeaker = (ImageView)findViewById(R.id.lspeaker);
+        lSpeaker = (ImageView) findViewById(R.id.lspeaker);
         lSpeaker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (levelNo == 17)
-                    Util.playMediaFromPath(Environment.getExternalStorageDirectory()+"/GujaratiMitra/l17/1/aud_que_17_1.wav");
+                if (levelNo == 13)
+                    Util.playMediaFromPath(Environment.getExternalStorageDirectory() + "/GujaratiMitra/l17/1/question_13_1.wav");
+                else if (levelNo == 17)
+                    Util.playMediaFromPath(Environment.getExternalStorageDirectory() + "/GujaratiMitra/l17/1/aud_que_17_1.wav");
                 else
-                    Util.playMediaFromPath(Environment.getExternalStorageDirectory()+"/GujaratiMitra/l1/1/aud_que_1_1.wav");
+                    Util.playMediaFromPath(Environment.getExternalStorageDirectory() + "/GujaratiMitra/l1/1/aud_que_1_1.wav");
             }
         });
 
-        if(levelNo == 1){
-            Util.setImageFromPath((ImageView)findViewById(R.id.que_image), Environment.getExternalStorageDirectory()+"/GujaratiMitra/l1/1/que_1_1.png");
-            imagePath = Environment.getExternalStorageDirectory()+"/GujaratiMitra/l1/1/";
+        if (levelNo == 1) {
+            Util.setImageFromPath((ImageView) findViewById(R.id.que_image), Environment.getExternalStorageDirectory() + "/GujaratiMitra/l1/1/que_1_1.png");
+            imagePath = Environment.getExternalStorageDirectory() + "/GujaratiMitra/l1/1/";
             NUM_PAGES = 6;
             //appDB.addSubLevelScore(levelNo, 1, 0, prefs.getStudentId());
         } else if (levelNo == 17) {
-            Util.setImageFromPath((ImageView)findViewById(R.id.que_image), Environment.getExternalStorageDirectory()+"/GujaratiMitra/l17/1/que_17_1.png");
+            Util.setImageFromPath((ImageView) findViewById(R.id.que_image), Environment.getExternalStorageDirectory() + "/GujaratiMitra/l17/1/que_17_1.png");
             imagePath = Environment.getExternalStorageDirectory() + "/GujaratiMitra/l17/1/";
             NUM_PAGES = 20;
+        } else if (levelNo == 13) {
+            Util.setImageFromPath((ImageView) findViewById(R.id.que_image), Environment.getExternalStorageDirectory() + "/GujaratiMitra/l17/1/que_17_1.png");
+            imagePath = Environment.getExternalStorageDirectory() + "/GujaratiMitra/l13/1/";
+            NUM_PAGES = 3;
         }
         mPager = (ViewPager) findViewById(R.id.pager_1);
         mPagerAdapter = new SimplePagerAdapter();
@@ -105,7 +109,7 @@ public class Level1_1 extends ActionBarActivity {
                     mPager.getChildAt(i).invalidate();
                 }
                 if (i >= NUM_PAGES - 1) {
-                    Util.setNextLevel(Level1_1.this,0,1,levelNo,true);
+                    Util.setNextLevel(Level1_1.this, 0, 1, levelNo, true);
                 }
 
             }
