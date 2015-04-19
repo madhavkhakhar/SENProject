@@ -57,6 +57,7 @@ public class LevelsActivity extends ActionBarActivity {
         viewPager.setAdapter(adapter);
         currentProfile = (TextView) findViewById(R.id.current_profile);
         viewPager.setOffscreenPageLimit(NUM_PAGES);
+
         lastLevelUnlocked = appDB.getLastLevelUnlocked(prefs.getStudentId());
         lastLevelUnlocked = 20;
         //System.out.println("prefs student id" +prefs.getStudentId());
@@ -64,6 +65,7 @@ public class LevelsActivity extends ActionBarActivity {
         aboutUs = (Button) findViewById(R.id.about_us);
         if (Util.appDB.getStudentById(0) == null) {
             Util.appDB.insertStudent(new Student(0, 0, "Guest", "", 1, 0), 0);
+
         }
         profiles.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -16,6 +16,10 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Random;
 
 
@@ -23,12 +27,13 @@ public class Level11_3 extends ActionBarActivity {
     ImageView q;
     ImageView[] a;
     Vibrator vib;
-    public MediaPlayer mp;
     private int qIndex=1,correct=0;
     TextView score;
     private  int mscore=0;
     private int NUM_PAGES=22;
     private boolean sleeping;
+    private List<Integer> indexes;
+    private  ImageView speaker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +50,13 @@ public class Level11_3 extends ActionBarActivity {
         q=(ImageView)findViewById(R.id.imgViewq1);
 
         score = (TextView)findViewById(R.id.score);
+        speaker = (ImageView) findViewById(R.id.speaker);
+        speaker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Util.playMediaFromPath(Environment.getExternalStorageDirectory()+"/GujaratiMitra/l11/3/aud_que_11_3.wav");
+            }
+        });
 
         Util.setImageFromPath((ImageView)findViewById(R.id.q_image), Environment.getExternalStorageDirectory() + "/GujaratiMitra/l11/3/que_11_3.png");
         ImageView speaker = (ImageView) findViewById(R.id.speaker);
@@ -57,8 +69,13 @@ public class Level11_3 extends ActionBarActivity {
 
         Util.setImageFromPath(q, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l11/2/img" + Integer.toString(qIndex) + "_1.png");
 
-        Random r=new Random();
-        int random1=r.nextInt(4);
+        indexes = new ArrayList<Integer>();
+        indexes.add(0, 0);
+        indexes.add(1, 1);
+        indexes.add(2, 2);
+        indexes.add(3, 3);
+        Collections.shuffle(indexes);
+        int random1=indexes.get(0);
         correct=random1;
 
         for(int j=0;j<4;j++){
@@ -66,7 +83,10 @@ public class Level11_3 extends ActionBarActivity {
                 Util.setImageFromPath(a[j], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l11/2/img"+ String.valueOf(qIndex) + "_2"+".png");
             }
             else{
-                Util.setImageFromPath(a[j], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l11/2/img" + String.valueOf((qIndex+r.nextInt(4)+1)%22 +1) + "_2.png");
+                int ind = (qIndex+indexes.get(j)+1)%22;
+                if (ind == qIndex)
+                    ind = (qIndex+1)%22;
+                Util.setImageFromPath(a[j], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l11/2/img" + String.valueOf(ind) + "_2.png");
             }
             a[j].setBackgroundResource(R.drawable.image_border_black);
         }
@@ -130,7 +150,7 @@ public class Level11_3 extends ActionBarActivity {
                     public void run() {
                         if (correct == ansClicked) {
                             mscore++;
-                            score.setText(String.valueOf(mscore) + "/10");
+                            score.setText("SCORE " + String.valueOf(mscore) + "/10");
                             toast.setView(green_tick);
                             toast.show();
                             if (a[correct] != null) {
@@ -172,8 +192,8 @@ public class Level11_3 extends ActionBarActivity {
                         else{
                             Util.setImageFromPath(q, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l11/2/img" + Integer.toString(qIndex) + "_1.png");
 
-                            Random r=new Random();
-                            int random1=r.nextInt(4);
+                            Collections.shuffle(indexes);
+                            int random1=indexes.get(0);
                             correct=random1;
 
 
@@ -182,7 +202,10 @@ public class Level11_3 extends ActionBarActivity {
                                     Util.setImageFromPath(a[j], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l11/2/img" + String.valueOf(qIndex) + "_2"+".png");
                                 }
                                 else{
-                                    Util.setImageFromPath(a[j], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l11/2/img"+ String.valueOf((qIndex+r.nextInt(4)+1)%22 +1) + "_2.png");
+                                    int ind = (qIndex+indexes.get(j)+1)%22;
+                                    if (ind == qIndex)
+                                        ind = (qIndex+1)%22;
+                                    Util.setImageFromPath(a[j], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l11/2/img"+ String.valueOf(ind) + "_2.png");
                                 }
                                 a[j].setBackgroundResource(R.drawable.image_border_black);
                             }

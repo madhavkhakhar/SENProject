@@ -63,7 +63,13 @@ public class Level16_1 extends ActionBarActivity {
 
         score = (TextView)findViewById(R.id.txtScore);
         score.setText("SCORE "+String.valueOf(mscore) + "/"+String.valueOf(modArray[sublevel-1]));
-
+        final ImageView speaker = (ImageView)findViewById(R.id.lspeaker);
+        speaker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Util.playMediaFromPath(Environment.getExternalStorageDirectory()+"/GujaratiMitra/l16/1/aud_que_16_1_16_2_16_3_18_1_18_2.wav");
+            }
+        });
 
         Util.setImageFromPath(q, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l"+String.valueOf(level)+"/"+String.valueOf(sublevel)+"/"+"img_e1_" + Integer.toString(qIndex) + ".png");
 

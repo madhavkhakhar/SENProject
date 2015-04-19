@@ -48,7 +48,7 @@ public class Level11_2 extends ActionBarActivity {
         speaker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //play question audio
+                Util.playMediaFromPath(Environment.getExternalStorageDirectory()+"/GujaratiMitra/l11/2/aud_que_11_2.wav");
             }
         });
 

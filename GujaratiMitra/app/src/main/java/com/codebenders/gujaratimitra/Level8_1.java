@@ -35,7 +35,7 @@ public class Level8_1 extends ActionBarActivity {
         speaker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Play question audio
+                Util.playMediaFromPath(Environment.getExternalStorageDirectory()+"/GujaratiMitra/l8/1/aud_que_8_1.wav");
             }
         });
 
@@ -124,20 +124,6 @@ public class Level8_1 extends ActionBarActivity {
                         v2.setVisibility(View.GONE);
                         question.setText("IMAGE");
                     }
-                }
-            });
-
-            v1.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                }
-            });
-
-            v1.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
                 }
             });
 

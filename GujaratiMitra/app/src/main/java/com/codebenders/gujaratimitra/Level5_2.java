@@ -14,7 +14,7 @@ import android.widget.LinearLayout;
 
 public class Level5_2 extends ActionBarActivity {
 
-    private static final int NUM_PAGES = 6;
+    private static int NUM_PAGES = 6;
     private ViewPager mPager;
     private PagerAdapter mAdapter;
     private ImageView leftArrow;
@@ -28,6 +28,11 @@ public class Level5_2 extends ActionBarActivity {
         setContentView(R.layout.activity_level5_2);
         i=getIntent();
         levelNo=i.getExtras().getInt("LevelNo");
+        if (levelNo == 6) {
+            NUM_PAGES = 10;
+        } else if (levelNo == 7) {
+            NUM_PAGES = 11;
+        }
         mPager = (ViewPager) findViewById(R.id.pager);
         mAdapter = new SimplePagerAdapter();
         mPager.setAdapter(mAdapter);
@@ -35,12 +40,10 @@ public class Level5_2 extends ActionBarActivity {
         ImageView que = (ImageView) findViewById(R.id.imageView_que);
         Util.setImageFromPath(que, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l5/2/que_5_2.png");
         ImageView speaker = (ImageView) findViewById(R.id.speaker);
-        speaker.setTag(Environment.getExternalStorageDirectory() + "/GujaratiMitra/l5/2/aud_0.mp3");
         speaker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Util.playMediaFromPath(v.getTag().toString());
-
+                Util.playMediaFromPath(Environment.getExternalStorageDirectory()+"/GujaratiMitra/l5/2/aud_que_5_2.wav");
             }
         });
 
@@ -127,8 +130,8 @@ public class Level5_2 extends ActionBarActivity {
             Util.setImageFromPath(v3, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l"+String.valueOf(levelNo)+"/2/"+"img_e" + Integer.toString((2 * position) + 2) + "_1.png");
             Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l"+String.valueOf(levelNo)+"/2/"+"img_e" + Integer.toString((2 * position) + 1) + "_2.png");
             Util.setImageFromPath(v4, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l"+String.valueOf(levelNo)+"/2/"+"img_e" +Integer.toString((2 * position) + 2) + "_2.png");
-            v1.setTag(Environment.getExternalStorageDirectory() + "/GujaratiMitra/l"+String.valueOf(levelNo)+"/2/aud_0.mp3");
-            v3.setTag(Environment.getExternalStorageDirectory() + "/GujaratiMitra/l"+String.valueOf(levelNo)+"/2/aud_1.mp3");
+            v1.setTag(Environment.getExternalStorageDirectory() + "/GujaratiMitra/l"+String.valueOf(levelNo)+"/2/aud_"+Integer.toString((position*2)+1)+".wav");
+            v3.setTag(Environment.getExternalStorageDirectory() + "/GujaratiMitra/l"+String.valueOf(levelNo)+"/2/aud_"+Integer.toString((position*2)+2)+".wav");
 
             v1.setOnClickListener(new View.OnClickListener() {
                 @Override

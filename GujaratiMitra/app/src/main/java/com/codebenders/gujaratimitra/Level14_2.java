@@ -34,7 +34,7 @@ public class Level14_2 extends ActionBarActivity {
         speaker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //play question audio
+                Util.playMediaFromPath(Environment.getExternalStorageDirectory()+"/GujaratiMitra/l14/2/aud_que_14_2.wav");
             }
         });
 
@@ -104,7 +104,7 @@ public class Level14_2 extends ActionBarActivity {
             final ImageView v1 = (ImageView) view.findViewById(R.id.img1);
 
             Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/2/img_"+position+".png");
-            v1.setTag(Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/2/aud_0.mp3");
+            v1.setTag(Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/2/aud_"+position+".mp3");
 
             v1.setOnClickListener(new View.OnClickListener() {
                 @Override

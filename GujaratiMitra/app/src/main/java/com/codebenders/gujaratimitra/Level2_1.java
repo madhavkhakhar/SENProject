@@ -53,7 +53,7 @@ public class Level2_1 extends ActionBarActivity {
         lSpeaker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Util.playMediaFromPath(Environment.getExternalStorageDirectory()+"/GujaratiMitra/l4/1/aud_0.mp3");
+                Util.playMediaFromPath(Environment.getExternalStorageDirectory()+"/GujaratiMitra/l2/1/aud_que_2_1.wav");
             }
         });
 

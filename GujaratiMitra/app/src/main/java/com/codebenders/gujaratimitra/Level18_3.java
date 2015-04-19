@@ -42,6 +42,16 @@ public class Level18_3 extends ActionBarActivity {
             }
         });
 
+        final ImageView queImage = (ImageView)findViewById(R.id.que_image);
+        Util.setImageFromPath(queImage, Environment.getExternalStorageDirectory()+"/GujaratiMitra/l18/3/que_18_3.png");
+        final ImageView speaker = (ImageView)findViewById(R.id.lspeaker);
+        speaker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Util.playMediaFromPath(Environment.getExternalStorageDirectory()+"/GujaratiMitra/l18/3/aud_que_18_3.wav");
+            }
+        });
+
         mPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int i, float v, int i2) {

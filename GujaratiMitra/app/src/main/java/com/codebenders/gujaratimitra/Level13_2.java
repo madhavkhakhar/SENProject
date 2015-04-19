@@ -18,7 +18,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 
 public class Level13_2 extends ActionBarActivity {
@@ -34,6 +36,7 @@ public class Level13_2 extends ActionBarActivity {
     private boolean sleeping;
     private int mscore;
     private TextView score;
+    List<Integer> rand_array;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,9 +52,15 @@ public class Level13_2 extends ActionBarActivity {
         speaker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //play question audio
+                Util.playMediaFromPath(Environment.getExternalStorageDirectory()+"/GujaratiMitra/l13/2/aud_que_13_2.wav");
             }
         });
+
+        rand_array = new ArrayList<Integer>(20);
+        for (int i = 0; i < 20; i++) {
+            rand_array.add(i + 1);
+        }
+        Collections.shuffle(rand_array);
 
         levelNo=i.getExtras().getInt("LevelNo");
         mPager = (ViewPager) findViewById(R.id.pager);
@@ -97,7 +106,7 @@ public class Level13_2 extends ActionBarActivity {
             }
         });
 
-        // play media file for question 1
+        Util.playMediaFromPath(Environment.getExternalStorageDirectory() + "/GujaratiMitra/l13/2/aud_" + Integer.toString(rand_array.get(queNum-1)) + ".wav");
     }
 
     class SimplePagerAdapter extends PagerAdapter {
@@ -189,7 +198,7 @@ public class Level13_2 extends ActionBarActivity {
                         @Override
                         public void run() {
                             Vibrator v = (Vibrator)getSystemService(Context.VIBRATOR_SERVICE);
-                            if(image.getTag().toString().equals(Integer.toString(queNum))) {
+                            if(image.getTag().toString().equals(Integer.toString(rand_array.get(queNum-1)))) {
                                 mscore++;
                                 score.setText(String.valueOf(mscore) + "/20");
                                 toast.setView(green_tick);
@@ -229,7 +238,7 @@ public class Level13_2 extends ActionBarActivity {
                                 Util.setNextLevel(Level13_2.this,mscore,2,13,true);
                             }
                             sleeping = false;
-                            //play media for audio file
+                            Util.playMediaFromPath(Environment.getExternalStorageDirectory() + "/GujaratiMitra/l13/2/aud_" + Integer.toString(rand_array.get(queNum-1)) + ".wav");
                         }
                     });
                 }

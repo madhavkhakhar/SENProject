@@ -54,7 +54,7 @@ public class Level11_1 extends ActionBarActivity {
         int random1 = r.nextInt(4);
         correctans = random1;
         for (int i = 0; i < 4; i++) {
-            Util.setImageFromPath(image[i], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l11/1/" + Integer.toString(rand_array.get(i)) + ".png");
+            Util.setImageFromPath(image[i], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l11/1/img_" + Integer.toString(rand_array.get(i)) + ".png");
         }
 
         image[0].setOnClickListener(new View.OnClickListener() {
@@ -100,14 +100,7 @@ public class Level11_1 extends ActionBarActivity {
 
         speaker.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                try {
-                    Util.mediaPlayer.setDataSource(Environment.getExternalStorageDirectory() + "/sample.mp3");//Write your location here
-                    Util.mediaPlayer.prepare();
-                    Util.mediaPlayer.start();
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+                Util.playMediaFromPath(Environment.getExternalStorageDirectory()+"/GujaratiMitra/l11/1/aud_que_11_1.wav");
             }
         });
 

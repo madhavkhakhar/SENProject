@@ -42,7 +42,10 @@ public class Level1_1 extends ActionBarActivity {
         lSpeaker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Util.playMediaFromPath(Environment.getExternalStorageDirectory()+"/GujaratiMitra/Audio/que1_1.wav");
+                if (levelNo == 17)
+                    Util.playMediaFromPath(Environment.getExternalStorageDirectory()+"/GujaratiMitra/l17/1/aud_que_17_1.wav");
+                else
+                    Util.playMediaFromPath(Environment.getExternalStorageDirectory()+"/GujaratiMitra/l1/1/aud_que_1_1.wav");
             }
         });
 

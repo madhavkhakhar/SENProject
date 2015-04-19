@@ -24,7 +24,7 @@ public class Level14_3 extends ActionBarActivity {
     private ImageView queImg;
     private int NUM_QUE=10;
     private LinearLayout l1;
-    private ImageView check;
+    private ImageView check, speaker;
     private int currentQueIndex;
     private int correctAns[][];
     private int pos[];
@@ -55,8 +55,15 @@ public class Level14_3 extends ActionBarActivity {
         check = (ImageView) findViewById(R.id.check);
         score_text=(TextView) findViewById(R.id.score);
         score_text.setText("SCORE "+String.valueOf(score)+"/"+String.valueOf(NUM_QUE));
-
+        speaker = (ImageView)findViewById(R.id.lspeaker);
+        speaker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Util.playMediaFromPath(Environment.getExternalStorageDirectory()+"/GujaratiMitra/l14/3/aud_que_14_3.wav");
+            }
+        });
         Util.setImageFromPath(queImg, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/3/que_14_3.png");
+
         currentQueIndex = 0;
         pos = new int[4];
         for (int i = 0; i < 4; i++) {

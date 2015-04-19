@@ -34,6 +34,16 @@ public class Level15_3 extends ActionBarActivity {
         levelNo=i.getExtras().getInt("levelno");
         sublevel=i.getExtras().getInt("Sublevel");
 
+        final ImageView queImage = (ImageView)findViewById(R.id.que_image);
+        Util.setImageFromPath(queImage, Environment.getExternalStorageDirectory()+"/GujaratiMitra/l15/3/que_15_3.png");
+        final ImageView speaker = (ImageView)findViewById(R.id.lspeaker);
+        speaker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Util.playMediaFromPath(Environment.getExternalStorageDirectory()+"/GujaratiMitra/l15/3/aud_que_15_3.wav");
+            }
+        });
+
         leftArrow = (ImageView) findViewById(R.id.imageView);
         rightArrow = (ImageView) findViewById(R.id.imageView1);
         leftArrow.setOnClickListener(new View.OnClickListener() {

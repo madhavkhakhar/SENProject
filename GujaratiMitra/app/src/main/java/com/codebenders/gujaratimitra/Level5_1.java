@@ -66,14 +66,13 @@ public class Level5_1 extends ActionBarActivity {
         speaker.setImageResource(R.drawable.loudspeaker);
 
 
-
         txtscore = (TextView)findViewById(R.id.txtScore);
         txtscore.setText("SCORE:"+String.valueOf(SCORE)+"/"+String.valueOf(TOTAL_SCORE));
         lSpeaker = (ImageView)findViewById(R.id.lspeaker);
         lSpeaker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Util.playMediaFromPath(Environment.getExternalStorageDirectory()+"/GujaratiMitra/l5/1/que5_1.mp3");
+                Util.playMediaFromPath(Environment.getExternalStorageDirectory()+"/GujaratiMitra/l5/1/aud_que_5_1.wav");
             }
         });
 
@@ -107,8 +106,9 @@ public class Level5_1 extends ActionBarActivity {
         speaker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Util.playMediaFromPath(Environment.getExternalStorageDirectory()+"/GujaratiMitra/l"+String.valueOf(levelNo)+"/1/aud_"+sound+".wav");
-                //Set the random sound from the array here.
+                if (disable == 0) {
+                    Util.playMediaFromPath(Environment.getExternalStorageDirectory() + "/GujaratiMitra/l" + String.valueOf(levelNo) + "/1/aud_" + sound + ".wav");
+                }//Set the random sound from the array here.
             }
         });
 
