@@ -20,8 +20,17 @@ public class CreateProfileDialog extends Dialog {
     Button ok, cancel;
     int rollNo, standard;
     String firstName, lastName;
-    public CreateProfileDialog(Context context){
+    boolean edit = false;
+    Student student;
+
+    public CreateProfileDialog(Context context) {
         super(context);
+    }
+
+    public CreateProfileDialog(Context context, Student student, boolean edit) {
+        super(context);
+        this.edit = edit;
+        this.student = student;
     }
 
 
@@ -29,12 +38,12 @@ public class CreateProfileDialog extends Dialog {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create_profile);
-        firstNameEditText = (EditText)findViewById(R.id.firstname);
-        lastNameEditText = (EditText)findViewById(R.id.lastname);
-        rollNoEditText = (EditText)findViewById(R.id.roll_no);
-        standardEditText = (EditText)findViewById(R.id.standard);
-        ok = (Button)findViewById(R.id.button_ok);
-        cancel = (Button)findViewById(R.id.button_cancel);
+        firstNameEditText = (EditText) findViewById(R.id.firstname);
+        lastNameEditText = (EditText) findViewById(R.id.lastname);
+        rollNoEditText = (EditText) findViewById(R.id.roll_no);
+        standardEditText = (EditText) findViewById(R.id.standard);
+        ok = (Button) findViewById(R.id.button_ok);
+        cancel = (Button) findViewById(R.id.button_cancel);
         ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -42,14 +51,17 @@ public class CreateProfileDialog extends Dialog {
                 standard = Integer.parseInt(standardEditText.getText().toString());
                 firstName = firstNameEditText.getText().toString();
                 lastName = lastNameEditText.getText().toString();
-                appDB.insertStudent(new Student(rollNo, standard, firstName, lastName,0,0));
+                if (!edit)
+                    appDB.insertStudent(new Student(rollNo, standard, firstName, lastName, 0, 0));
+                else
+                    appDB.updateStudent(student);
                 dismiss();
             }
         });
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               dismiss();
+                dismiss();
             }
         });
     }

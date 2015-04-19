@@ -65,7 +65,6 @@ public class ProfileActivity extends ActionBarActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 prefs.saveStudentId(students.get(position).getId());
                 startActivity(new Intent(ProfileActivity.this, LevelsActivity.class).addFlags(FLAG_ACTIVITY_CLEAR_TASK | FLAG_ACTIVITY_NEW_TASK));
-
                 finish();
             }
         });

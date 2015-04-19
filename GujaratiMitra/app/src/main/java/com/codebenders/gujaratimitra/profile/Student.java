@@ -7,8 +7,8 @@ public class Student {
     int id, roll, standard, currentLevel, score;
     String firstName, lastName;
 
-    public Student(int id,int roll, int standard, String lastName, String firstName, int currentLevel, int score) {
-        this.id=id;
+    public Student(int id, int roll, int standard, String firstName, String lastName, int currentLevel, int score) {
+        this.id = id;
         this.roll = roll;
         this.standard = standard;
         this.lastName = lastName;
@@ -16,7 +16,8 @@ public class Student {
         this.currentLevel = currentLevel;
         this.score = score;
     }
-    public Student(int roll, int standard, String lastName, String firstName, int currentLevel, int score) {
+
+    public Student(int roll, int standard, String firstName, String lastName, int currentLevel, int score) {
         this.roll = roll;
         this.standard = standard;
         this.lastName = lastName;
@@ -44,4 +45,13 @@ public class Student {
     public String getLastName() {
         return lastName;
     }
+
+    public int getCurrentLevel() {
+        return currentLevel;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
 }

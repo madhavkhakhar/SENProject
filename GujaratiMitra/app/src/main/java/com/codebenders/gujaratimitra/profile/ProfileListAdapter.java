@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.codebenders.gujaratimitra.R;
@@ -37,21 +38,20 @@ public class ProfileListAdapter extends ArrayAdapter {
             itemHolder = new ItemHolder();
             view = inflater.inflate(layoutId, null);
             itemHolder.firstname = (TextView) view.findViewById(R.id.name);
-            itemHolder.rollNo = (TextView) view.findViewById(R.id.roll_no);
-            itemHolder.standard= (TextView) view.findViewById(R.id.standard);
+            itemHolder.score = (TextView) view.findViewById(R.id.score);
             view.setTag(itemHolder);
         } else {
             itemHolder = (ItemHolder) view.getTag();
         }
         Student student = students.get(position);
         itemHolder.firstname.setText(student.getFirstName()+" "+student.getLastName());
-        itemHolder.rollNo.setText(student.getRoll()+"");
-        itemHolder.standard.setText(student.getStandard()+"");
+        itemHolder.score.setText(student.getScore() + "");
         return view;
     }
 
     class ItemHolder{
-        TextView firstname, standard,rollNo;
+        TextView firstname, score;
+        Button viewProfile;
     }
 }
 

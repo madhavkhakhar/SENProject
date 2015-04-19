@@ -18,6 +18,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.codebenders.gujaratimitra.profile.ProfileActivity;
 import com.codebenders.gujaratimitra.profile.Student;
@@ -39,6 +40,7 @@ public class LevelsActivity extends ActionBarActivity {
     String imagePath = Environment.getExternalStorageDirectory() + "/GujaratiMitra/Start/";
     CustomPagerAdapter adapter;
     private Button profiles, aboutUs;
+    private TextView currentProfile;
 
     AudioManager audioManager;
     private int mediaVolume;
@@ -52,49 +54,51 @@ public class LevelsActivity extends ActionBarActivity {
         viewPager = (ViewPager) findViewById(R.id.pager);
         adapter = new CustomPagerAdapter();
         viewPager.setAdapter(adapter);
+        currentProfile = (TextView) findViewById(R.id.current_profile);
         viewPager.setOffscreenPageLimit(NUM_PAGES);
         lastLevelUnlocked = appDB.getLastLevelUnlocked(prefs.getStudentId());
         //System.out.println("prefs student id" +prefs.getStudentId());
-        profiles = (Button)findViewById(R.id.profiles);
-        aboutUs = (Button)findViewById(R.id.about_us);
-        if(Util.appDB.getStudentById(0)==null){
-            Util.appDB.insertStudent(new Student(0,0,"","Guest",1,0),0);
+        profiles = (Button) findViewById(R.id.profiles);
+        aboutUs = (Button) findViewById(R.id.about_us);
+        if (Util.appDB.getStudentById(0) == null) {
+            Util.appDB.insertStudent(new Student(0, 0, "Guest","", 1, 0), 0);
         }
         profiles.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LevelsActivity.this,ProfileActivity.class);
+                Intent intent = new Intent(LevelsActivity.this, ProfileActivity.class);
                 startActivity(intent);
             }
         });
         aboutUs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-        audioManager=(AudioManager)getSystemService(AUDIO_SERVICE);
-        mediaVolume=audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
-        builder= new AlertDialog.Builder(LevelsActivity.this);
-        if(mediaVolume==0){
-            builder.setTitle("Media Volume");
-            builder.setCancelable(true);
-            builder.setMessage("Media volume is too low, do you want to increase?");
-            builder.setPositiveButton("Continue",new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    //audioManager.setStreamVolume(AudioManager.STREAM_MUSIC,10,0);
-                    startActivityForResult(new Intent(Settings.ACTION_SOUND_SETTINGS),0);
+                audioManager = (AudioManager) getSystemService(AUDIO_SERVICE);
+                mediaVolume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
+                builder = new AlertDialog.Builder(LevelsActivity.this);
+                if (mediaVolume == 0) {
+                    builder.setTitle("Media Volume");
+                    builder.setCancelable(true);
+                    builder.setMessage("Media volume is too low, do you want to increase?");
+                    builder.setPositiveButton("Continue", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            //audioManager.setStreamVolume(AudioManager.STREAM_MUSIC,10,0);
+                            startActivityForResult(new Intent(Settings.ACTION_SOUND_SETTINGS), 0);
+                        }
+                    });
+                    builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    });
+                    builder.show();
                 }
-                });
-            builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
-            }
-            });
-            builder.show();
-        }
 
             }
         });
+        currentProfile.setText(appDB.getStudentById(prefs.getStudentId()).getFirstName());
     }
 
     private class CustomPagerAdapter extends PagerAdapter {
@@ -137,7 +141,7 @@ public class LevelsActivity extends ActionBarActivity {
             int tempLevel = (lastLevelUnlocked - 1) % 7 + 1;
 
             for (int i = 1; i <= images.size(); i++) {
-               // System.out.println("level " + tempLevel + " page " + page + " last level" + lastLevelUnlocked);
+                // System.out.println("level " + tempLevel + " page " + page + " last level" + lastLevelUnlocked);
                 if ((i <= tempLevel && page == position) || (i >= tempLevel && page > position))
                     Util.setImageFromPath(images.get(i - 1), imagePath + "/Stage" + (position + 1) + "/level" + i + ".png");
                 else
@@ -149,8 +153,6 @@ public class LevelsActivity extends ActionBarActivity {
                 layout.setBackground(drawable);
             else
                 layout.setBackgroundDrawable(drawable);
-
-
 
 
             level1.setOnClickListener(new View.OnClickListener() {

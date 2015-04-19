@@ -41,12 +41,19 @@ public class AppDB extends DBConnect {
         execNonQuery(query);
     }
 
+    public void updateStudent(Student student) {
+        String query;
+        query = String.format(ISql.UPDATE_STUDENT_BY_ID, student.getRoll(),
+                student.getStandard(), student.getFirstName(), student.getLastName(), student.getId());
+        execNonQuery(query);
+    }
+
     /**
      * To remove Student
      */
-    public void removeStudent(int rollNo) {
-        if (rollNo > 0) {
-            String sqlRemoveRegCard = String.format(ISql.REMOVE_STUDENT, rollNo);
+    public void removeStudent(int id) {
+        if (id > 0) {
+            String sqlRemoveRegCard = String.format(ISql.DELETE_STUDENT, id);
             execNonQuery(sqlRemoveRegCard);
         }
     }
