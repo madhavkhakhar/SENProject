@@ -7,17 +7,36 @@
     android:orientation="vertical"
     android:weightSum="1.0"
     tools:context="com.codebenders.gujaratimitra.Level14_3"
-    android:gravity="center_horizontal">
+    android:gravity="center_horizontal"
+    android:background="@drawable/levelbg">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:id="@+id/score"
+        android:text="SCORE: 1/10"
+        android:textColor="#FF9933CC"
+        android:layout_gravity="top"
+        />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="0.40"
         android:orientation="horizontal">
+
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/img_que"/>
+            android:layout_weight="0.25"
+            android:id="@+id/que_statement"/>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.75"
+            android:id="@+id/lspeaker"
+            android:src="@drawable/loudspeaker"/>
+
     </LinearLayout>
 
     <LinearLayout
@@ -135,11 +154,11 @@
         android:layout_weight="0.40"
         android:orientation="horizontal"
         android:gravity="center">
-        <Button
+        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/button_submit"
-            android:text="Submit"
+            android:id="@+id/check"
+            android:src="@drawable/next"
             android:layout_gravity="center"
             android:gravity="center"/>
     </LinearLayout>

@@ -19,10 +19,11 @@ import java.util.Random;
 
 
 public class Level11_1 extends ActionBarActivity {
-    protected static int count = 0;
+    protected int count = 0;
     protected static int correctans = 2;
     public static int score = 0;
     public TextView score_text;
+    int NUM_QUES=13;
     public int disable = 0;
     List<Integer> rand_array;
 
@@ -168,7 +169,9 @@ public class Level11_1 extends ActionBarActivity {
                         @Override
                         public void run() {
                             disable = 0;
-
+                            if(count>=NUM_QUES){
+                                Util.setNextLevel(Level11_1.this,score,1,11,false);
+                            }
                             Random r = new Random();
                             int random = r.nextInt(4);
                             correctans = random;

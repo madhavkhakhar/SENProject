@@ -167,7 +167,7 @@ public class Level11_3 extends ActionBarActivity {
                     @Override
                     public void run() {
                         if(qIndex>=NUM_PAGES){
-                            Util.setNextLevel(Level11_3.this);
+                            Util.setNextLevel(Level11_3.this,mscore,3,11,true);
                         }
                         else{
                             Util.setImageFromPath(q, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l11/2/img" + Integer.toString(qIndex) + "_1.png");

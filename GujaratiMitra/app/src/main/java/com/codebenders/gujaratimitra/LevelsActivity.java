@@ -12,6 +12,7 @@ import android.provider.Settings;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -43,7 +44,7 @@ public class LevelsActivity extends ActionBarActivity {
     private TextView currentProfile;
 
     AudioManager audioManager;
-    private int mediaVolume;
+    int mediaVolume;
     AlertDialog.Builder builder;
 
 
@@ -57,11 +58,12 @@ public class LevelsActivity extends ActionBarActivity {
         currentProfile = (TextView) findViewById(R.id.current_profile);
         viewPager.setOffscreenPageLimit(NUM_PAGES);
         lastLevelUnlocked = appDB.getLastLevelUnlocked(prefs.getStudentId());
+        lastLevelUnlocked = 20;
         //System.out.println("prefs student id" +prefs.getStudentId());
         profiles = (Button) findViewById(R.id.profiles);
         aboutUs = (Button) findViewById(R.id.about_us);
         if (Util.appDB.getStudentById(0) == null) {
-            Util.appDB.insertStudent(new Student(0, 0, "Guest","", 1, 0), 0);
+            Util.appDB.insertStudent(new Student(0, 0, "Guest", "", 1, 0), 0);
         }
         profiles.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,32 +75,38 @@ public class LevelsActivity extends ActionBarActivity {
         aboutUs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                audioManager = (AudioManager) getSystemService(AUDIO_SERVICE);
-                mediaVolume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
-                builder = new AlertDialog.Builder(LevelsActivity.this);
-                if (mediaVolume == 0) {
-                    builder.setTitle("Media Volume");
-                    builder.setCancelable(true);
-                    builder.setMessage("Media volume is too low, do you want to increase?");
-                    builder.setPositiveButton("Continue", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            //audioManager.setStreamVolume(AudioManager.STREAM_MUSIC,10,0);
-                            startActivityForResult(new Intent(Settings.ACTION_SOUND_SETTINGS), 0);
-                        }
-                    });
-                    builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.cancel();
-                        }
-                    });
-                    builder.show();
-                }
 
             }
         });
         currentProfile.setText(appDB.getStudentById(prefs.getStudentId()).getFirstName());
+
+
+        audioManager = (AudioManager) getSystemService(AUDIO_SERVICE);
+        mediaVolume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
+        builder = new AlertDialog.Builder(LevelsActivity.this);
+        if (mediaVolume <= 1) {
+            builder.setIcon(R.drawable.alert);
+            builder.setTitle("Media Volume");
+            builder.setCancelable(false);
+            builder.setMessage("Media volume is too low, do you want to increase?");
+            builder.setPositiveButton("Continue", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    //audioManager.setStreamVolume(AudioManager.STREAM_MUSIC,10,0);
+                    startActivityForResult(new Intent(Settings.ACTION_SOUND_SETTINGS), 0);
+                }
+            });
+            builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.cancel();
+                }
+            });
+
+            builder.show();
+        }
+
+
     }
 
     private class CustomPagerAdapter extends PagerAdapter {
@@ -256,14 +264,39 @@ public class LevelsActivity extends ActionBarActivity {
 
         @Override
         public void destroyItem(ViewGroup container, int position, Object object) {
+
             container.removeView((View) object);
         }
     }
 
-    @Override
     protected void onResume() {
         super.onResume();
         //lastLevelUnlocked = appDB.getLastLevelUnlocked(prefs.getStudentId());
         adapter.notifyDataSetChanged();
     }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            builder
+                    .setIcon(R.drawable.ic_dialog_alert_1)
+                    .setTitle("Confirm Exit")
+                    .setMessage("Do you want to quit the game?")
+                    .setPositiveButton("Okay", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            LevelsActivity.this.finish();
+                        }
+                    })
+                    .setNegativeButton("Cancel", null)
+                    .show();
+            return true;
+        } else {
+            return super.onKeyDown(keyCode, event);
+        }
+
+    }
+
+
 }

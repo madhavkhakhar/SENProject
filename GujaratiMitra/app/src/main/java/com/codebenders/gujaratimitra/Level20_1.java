@@ -2,6 +2,7 @@ package com.codebenders.gujaratimitra;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.media.Image;
 import android.media.MediaPlayer;
 import android.os.Environment;
 import android.os.Handler;
@@ -57,6 +58,8 @@ public class Level20_1 extends ActionBarActivity {
 
         final ImageView speaker=(ImageView) findViewById(R.id.imageView6);
         final ImageView check= (ImageView) findViewById(R.id.imageView7);
+
+        Util.setImageFromPath((ImageView) findViewById(R.id.que_statement),Environment.getExternalStorageDirectory() + "/GujaratiMitra/l20/1/que_20_1.png");
 
         set();
 
@@ -163,7 +166,7 @@ public class Level20_1 extends ActionBarActivity {
                             count++;
                             if(count==15){
                                 //count=0;
-                                Util.setNextLevel(Level20_1.this);
+                                Util.setNextLevel(Level20_1.this,score,1,20,false);
                             }
                             else {
                                 set();

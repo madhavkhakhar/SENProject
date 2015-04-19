@@ -35,13 +35,12 @@ public class Level19_1 extends ActionBarActivity {
 
         if(sublevel==1){
             NUM_PAGES=7;
-            //mPager.setOffscreenPageLimit(6);
+            Util.setImageFromPath((ImageView) findViewById(R.id.que_statement),Environment.getExternalStorageDirectory() + "/GujaratiMitra/l19/1/que_19_1.png");
 
         }
         else if(sublevel==2){
             NUM_PAGES=8;
-            //mPager.setOffscreenPageLimit(7);
-
+            Util.setImageFromPath((ImageView) findViewById(R.id.que_statement),Environment.getExternalStorageDirectory() + "/GujaratiMitra/l19/2/que_19_2.png");
         }
 
         mPager = (ViewPager) findViewById(R.id.pager);
@@ -81,7 +80,7 @@ public class Level19_1 extends ActionBarActivity {
                     rightArrow.setVisibility(View.VISIBLE);
                 }
                 if (i == NUM_PAGES-1){
-                    Util.setNextLevel(Level19_1.this);
+                    Util.setNextLevel(Level19_1.this,0,sublevel,19,false);
                 }
             }
 
