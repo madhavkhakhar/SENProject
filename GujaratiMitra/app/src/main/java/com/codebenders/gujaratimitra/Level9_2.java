@@ -56,7 +56,7 @@ public class Level9_2 extends ActionBarActivity {
         mPager.setOffscreenPageLimit(5);
 
         queStatement = (ImageView) findViewById(R.id.q_image);
-        Util.setImageFromPath(queStatement, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l9/2/que_9_2.png");
+        Util.setImageFromPath(queStatement, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/3/que_14_3.png");
 
         queImage = (ImageView) findViewById(R.id.que_image);
         Util.setImageFromPath(queImage, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l9/2/img_a_" + String.valueOf(queImageIndex.get(count)) + ".png");

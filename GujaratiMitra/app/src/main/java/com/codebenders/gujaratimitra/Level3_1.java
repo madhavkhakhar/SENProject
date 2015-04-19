@@ -59,7 +59,7 @@ public class Level3_1 extends ActionBarActivity {
         txtscore.setText("SCORE:"+String.valueOf(SCORE)+"/"+String.valueOf(TOTAL_SCORE));
 
         ImageView question = (ImageView)findViewById(R.id.imageView5);
-        Util.setImageFromPath(question, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l3/1/level3title.png");
+        Util.setImageFromPath(question, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l3/1/que_3_1.png");
 
         lSpeaker = (ImageView)findViewById(R.id.lspeaker);
         lSpeaker.setOnClickListener(new View.OnClickListener() {
