@@ -55,7 +55,7 @@ public class LevelsActivity extends ActionBarActivity {
         viewPager.setAdapter(adapter);
         viewPager.setOffscreenPageLimit(NUM_PAGES);
         lastLevelUnlocked = appDB.getLastLevelUnlocked(prefs.getStudentId());
-        lastLevelUnlocked=20;
+        //lastLevelUnlocked=20;
         //System.out.println("prefs student id" +prefs.getStudentId());
         profiles = (Button)findViewById(R.id.profiles);
         aboutUs = (Button)findViewById(R.id.about_us);
@@ -274,7 +274,8 @@ public class LevelsActivity extends ActionBarActivity {
     public boolean onKeyDown(int keyCode, KeyEvent event) {
 
         if(keyCode == KeyEvent.KEYCODE_BACK) {
-            builder.setIcon(R.drawable.ic_dialog_alert_1)
+            builder
+                    .setIcon(R.drawable.ic_dialog_alert_1)
                     .setTitle("Confirm Exit")
                     .setMessage("Do you want to quit the game?")
                     .setPositiveButton("Okay", new DialogInterface.OnClickListener() {
