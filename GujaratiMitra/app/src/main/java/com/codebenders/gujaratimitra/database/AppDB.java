@@ -122,9 +122,9 @@ public class AppDB extends DBConnect {
     }
 
     public void addSubLevelScore(int levelNo, int subLevelNo, int score, int studentId) {
-        String query = String.format(ISql.ADD_SUB_LEVEL_SCORE, studentId,
-                subLevelNo, levelNo, score);
-        execNonQuery(query);
+        execNonQuery(String.format(ISql.ADD_SUB_LEVEL_SCORE,
+                subLevelNo, levelNo, score, studentId));
+        execNonQuery(String.format(ISql.UPDATE_STUDENT_SCORE, score, studentId));
     }
 
     public int getSubLevelScore(int studentId, int subLevelNo) {

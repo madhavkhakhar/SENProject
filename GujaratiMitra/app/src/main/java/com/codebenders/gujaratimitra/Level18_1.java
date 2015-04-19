@@ -71,6 +71,13 @@ public class Level18_1 extends ActionBarActivity {
                 }
             }
         });
+        final ImageView speaker = (ImageView)findViewById(R.id.speaker);
+        speaker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Util.playMediaFromPath(Environment.getExternalStorageDirectory()+"/GujaratiMitra/l16/1/aud_que_16_1_16_2_16_3_18_1_18_2.wav");
+            }
+        });
 
         firstQues();
 
