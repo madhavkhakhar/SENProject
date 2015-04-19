@@ -102,8 +102,9 @@ public class Level5_1 extends ActionBarActivity {
         speaker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Util.playMediaFromPath(Environment.getExternalStorageDirectory()+"/GujaratiMitra/l"+String.valueOf(levelNo)+"/1/aud_"+sound+".wav");
-                //Set the random sound from the array here.
+                if (disable == 0) {
+                    Util.playMediaFromPath(Environment.getExternalStorageDirectory() + "/GujaratiMitra/l" + String.valueOf(levelNo) + "/1/aud_" + sound + ".wav");
+                }//Set the random sound from the array here.
             }
         });
 
