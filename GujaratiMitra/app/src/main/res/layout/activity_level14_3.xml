@@ -7,7 +7,8 @@
     android:orientation="vertical"
     android:weightSum="1.0"
     tools:context="com.codebenders.gujaratimitra.Level14_3"
-    android:gravity="center_horizontal">
+    android:gravity="center_horizontal"
+    android:background="@drawable/levelbg">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

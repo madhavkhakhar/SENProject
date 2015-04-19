@@ -56,7 +56,7 @@ public class Level10_1 extends ActionBarActivity {
 
         //final int resource_s = getResources().getIdentifier("s"+String.valueOf(rand_array.get(count)), "drawable", getPackageName());
         //final int resource_d = getResources().getIdentifier("d"+String.valueOf(rand_array.get(count)), "drawable", getPackageName());
-
+        Util.setImageFromPath((ImageView)findViewById(R.id.que_statement),Environment.getExternalStorageDirectory() + "/GujaratiMitra/l10/1/que_10_1.png");
         image[0] = (ImageView) findViewById(R.id.imageView);
         image[1] = (ImageView) findViewById(R.id.imageView2);
         image[2] = (ImageView) findViewById(R.id.imageView3);
@@ -68,16 +68,17 @@ public class Level10_1 extends ActionBarActivity {
         window[2]= (ImageView) findViewById(R.id.window3);
 
 
-        sound_files[0]="aud1_1_2_3_.mp3";
-        sound_files[1]="aud2_1_3_.mp3";
-        sound_files[2]="aud3_2_3_.mp3";
-        sound_files[3]="aud4_2_3_.mp3";
-        sound_files[4]="aud5_2_3_.mp3";
+        sound_files[0]="aud1_3_1_4_.wav";
+        sound_files[1]="aud2_3_2_.wav";
+        sound_files[2]="aud3_3_2_4_.wav";
+        sound_files[3]="aud4_1_2_.wav";
+        sound_files[4]="aud5_3_2_.wav";
 
         score_text=(TextView) findViewById(R.id.score);
         score_text.setText("SCORE "+String.valueOf(score)+"/5");
         final ImageView speaker=(ImageView) findViewById(R.id.imageView6);
         final ImageView check= (ImageView) findViewById(R.id.imageView7);
+        final ImageView qspeaker=(ImageView) findViewById(R.id.speaker);
         for(int i=0;i<5;i++) {
             String[] tokens = sound_files[i].split("_");
             sequence[i] = new int[tokens.length - 2];
@@ -115,6 +116,13 @@ public class Level10_1 extends ActionBarActivity {
                 }
             });
         }
+        qspeaker.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                //int temp=rand_array.get(count)-1;
+                //String temp1=(Environment.getExternalStorageDirectory() + "/GujaratiMitra/l10/1/"+sound_files[temp]).toString();
+                //Util.playMediaFromPath(temp1);
+            }
+        });
 
         speaker.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){

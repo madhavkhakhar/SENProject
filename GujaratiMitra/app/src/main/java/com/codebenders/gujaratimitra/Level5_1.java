@@ -93,6 +93,10 @@ public class Level5_1 extends ActionBarActivity {
         if(numbers[rand_array.get(count)-1]==4){
             image[4]=new ImageView(this);
         }
+        if(numbers[rand_array.get(count)-1]==3){
+            image[3]=new ImageView(this);
+            image[4]=new ImageView(this);
+        }
 
         for (int i = 0; i < numbers[rand_array.get(count)-1]; i++) {
             rand_array_sound.add(i);
@@ -149,6 +153,12 @@ public class Level5_1 extends ActionBarActivity {
             if(count==0) {
                 al.addView(image[index], lp);
                 index++;
+                if(numbers[rand_array.get(count)-1]==3 && index==2){
+                    al.addView(image[3],lp);
+                    image[3].setVisibility(View.GONE);
+                    al.addView(image[4],lp);
+                    image[4].setVisibility(View.GONE);
+                }
                 if(numbers[rand_array.get(count)-1]==4 && index==3){
                     al.addView(image[4],lp);
                     image[4].setVisibility(View.GONE);
@@ -240,22 +250,22 @@ public class Level5_1 extends ActionBarActivity {
                         public void run() {
                             disable=0;
                             if(correctans<(numbers[rand_array.get(count)-1]-1)){
-                                image[rand_array_sound.get(correctans)].setColorFilter(Color.argb(255,32, 178,170));
-                                disabled.add(rand_array_sound.get(correctans));
+                                //image[rand_array_sound.get(correctans)].setColorFilter(Color.argb(255,32, 178,170));
+                                //disabled.add(rand_array_sound.get(correctans));
 
-                                image[rand_array_sound.get(correctans)].setEnabled(false);
+                                //image[rand_array_sound.get(correctans)].setEnabled(false);
 
                                 for(int i=0;i<numbers[rand_array.get(count)-1];i++){
-                                    if(disabled.contains(rand_array_sound.get(i))==false){
+                                   // if(disabled.contains(rand_array_sound.get(i))==false){
                                         image[rand_array_sound.get(i)].setColorFilter(Color.argb(255, 0, 0, 0));
-                                    }
+                                    //}
                                 }
                                 correctans++;
                                 sound=String.valueOf(rand_array.get(count))+"_"+String.valueOf(rand_array_sound.get(correctans)+1);
                             }
                             else if(correctans==numbers[rand_array.get(count)-1]-1) {
                                 count++;
-                                disabled.clear();
+                                //disabled.clear();
                                 if (count == 6) {
                                     Util.setNextLevel(Level5_1.this,SCORE,1,levelNo,false);
                                 }
@@ -269,8 +279,16 @@ public class Level5_1 extends ActionBarActivity {
                                         image[i].setEnabled(true);
                                     }
                                     if (numbers[rand_array.get(count) - 1] == 4) {
+                                        image[3].setVisibility(View.VISIBLE);
                                         image[4].setVisibility(View.GONE);
-                                    } else {
+                                    }
+                                    else if(numbers[rand_array.get(count) - 1] == 3){
+                                        image[3].setVisibility(View.GONE);
+                                        image[4].setVisibility(View.GONE);
+
+                                    }
+                                    else {
+                                        image[3].setVisibility(View.VISIBLE);
                                         image[4].setVisibility(View.VISIBLE);
                                     }
                                     rand_array_sound.clear();
@@ -282,8 +300,9 @@ public class Level5_1 extends ActionBarActivity {
                                     correctans = 0;
 
                                     display();
+                                    sound=String.valueOf(rand_array.get(count))+"_"+String.valueOf(rand_array_sound.get(correctans)+1);
+
                                 }
-                                sound=String.valueOf(rand_array.get(count))+"_"+String.valueOf(rand_array_sound.get(correctans)+1);
                                 disable = 0;
                             }
                         }

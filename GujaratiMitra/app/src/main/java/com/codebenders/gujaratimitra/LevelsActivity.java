@@ -275,7 +275,8 @@ public class LevelsActivity extends ActionBarActivity {
     public boolean onKeyDown(int keyCode, KeyEvent event) {
 
         if(keyCode == KeyEvent.KEYCODE_BACK) {
-            builder.setIcon(R.drawable.ic_dialog_alert_1)
+            builder
+                    .setIcon(R.drawable.ic_dialog_alert_1)
                     .setTitle("Confirm Exit")
                     .setMessage("Do you want to quit the game?")
                     .setPositiveButton("Okay", new DialogInterface.OnClickListener() {
