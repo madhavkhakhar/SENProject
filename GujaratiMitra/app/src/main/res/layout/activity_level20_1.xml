@@ -6,47 +6,42 @@
     android:paddingBottom="16dp"
     tools:context="com.codebenders.gujaratimitra.Level20_1"
     android:weightSum="1"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/levelbg" >
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="0.45"
-        android:text="SCORE 0/10"
-        android:id="@+id/score"
-        android:textColor="#FF9933CC"
-        android:textSize="20sp"
-        android:layout_gravity="top|right"/>
 
      <LinearLayout
          android:layout_width="match_parent"
          android:layout_height="match_parent"
          android:orientation="horizontal"
-         android:layout_weight="0.4"
-         android:weightSum="1">
+         android:layout_weight="0.43"
+         android:weightSum="1"
+         android:gravity="center_vertical">
 
-          <ImageView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_gravity="center|center_horizontal"
-             android:src="@drawable/level_10_q"
-             android:layout_weight="0.20"/>
+         <TextView
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:layout_weight="0.42"
+             android:text="SCORE 0/10"
+             android:id="@+id/score"
+             android:textColor="#FF9933CC"
+             android:textSize="20sp"
+             android:layout_gravity="center|center_horizontal"/>
 
-         <ImageView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:id="@+id/imageView6"
-             android:src="@drawable/loudspeaker"
-             android:layout_gravity="center|center_horizontal"
-             android:layout_weight="0.10"/>
          <ImageView
              android:layout_width="match_parent"
              android:layout_height="match_parent"
-             android:id="@+id/imageView7"
-             android:src="@drawable/next"
+             android:id="@+id/que_statement"
              android:layout_gravity="center|center_horizontal"
-             android:layout_weight="0.70"/>
+             android:layout_weight="0.17"/>\
 
+         <ImageView
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:id="@+id/imageView6"
+             android:src="@drawable/loudspeaker"
+             android:layout_gravity="center|center_horizontal"
+             android:layout_weight="0.4"/>
 
       </LinearLayout>
 
@@ -111,6 +106,23 @@
                 android:padding="5dp"/>
         </LinearLayout>
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:layout_weight="0.4"
+        android:weightSum="1">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/imageView7"
+            android:src="@drawable/next"
+            android:layout_gravity="center|center_horizontal"
+            android:layout_weight="0.7"/>
     </LinearLayout>
 
 </LinearLayout>

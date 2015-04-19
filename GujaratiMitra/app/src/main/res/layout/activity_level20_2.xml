@@ -44,7 +44,8 @@
         android:id="@+id/imageView"
         android:layout_gravity="center_vertical"
         android:visibility="invisible"
-        android:src="@drawable/left_arrow"/>
+        android:src="@drawable/left_arrow"
+        android:background="@drawable/levelbg"/>
 
 
     <android.support.v4.view.ViewPager xmlns:android="http://schemas.android.com/apk/res/android"

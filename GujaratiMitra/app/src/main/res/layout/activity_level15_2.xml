@@ -6,7 +6,8 @@
     android:paddingBottom="16dp"
     tools:context="com.codebenders.gujaratimitra.Level15_2"
     android:orientation="vertical"
-    android:weightSum="1">
+    android:weightSum="1"
+    android:background="@drawable/levelbg">>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

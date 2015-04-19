@@ -55,7 +55,7 @@ public class LevelsActivity extends ActionBarActivity {
         viewPager.setAdapter(adapter);
         viewPager.setOffscreenPageLimit(NUM_PAGES);
         lastLevelUnlocked = appDB.getLastLevelUnlocked(prefs.getStudentId());
-        //lastLevelUnlocked=20;
+        lastLevelUnlocked=20;
         //System.out.println("prefs student id" +prefs.getStudentId());
         profiles = (Button)findViewById(R.id.profiles);
         aboutUs = (Button)findViewById(R.id.about_us);
