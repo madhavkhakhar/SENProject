@@ -44,6 +44,12 @@ public class CreateProfileDialog extends Dialog {
         standardEditText = (EditText) findViewById(R.id.standard);
         ok = (Button) findViewById(R.id.button_ok);
         cancel = (Button) findViewById(R.id.button_cancel);
+        if(edit){
+            firstNameEditText.setText(student.getFirstName());
+            lastNameEditText.setText(student.getLastName());
+            rollNoEditText.setText(student.getRoll()+"");
+            standardEditText.setText(student.getStandard()+"");
+        }
         ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -53,8 +59,13 @@ public class CreateProfileDialog extends Dialog {
                 lastName = lastNameEditText.getText().toString();
                 if (!edit)
                     appDB.insertStudent(new Student(rollNo, standard, firstName, lastName, 0, 0));
-                else
+                else {
+                    student.setFirstName(firstNameEditText.getText().toString());
+                    student.setLastName(lastNameEditText.getText().toString());
+                    student.setRoll(Integer.parseInt(rollNoEditText.getText().toString()));
+                    student.setStandard(Integer.parseInt(standardEditText.getText().toString()));
                     appDB.updateStudent(student);
+                }
                 dismiss();
             }
         });

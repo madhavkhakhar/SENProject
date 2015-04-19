@@ -5,12 +5,15 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import com.codebenders.gujaratimitra.R;
 import com.codebenders.gujaratimitra.Util;
+
+import static com.codebenders.gujaratimitra.Util.appDB;
 
 /**
  * Created by nihartrivedi810 on 18/4/15.
@@ -49,6 +52,12 @@ public class ViewProfileDialog extends Dialog {
         standard.setText("Standard: " + student.getStandard());
         rollNo.setText("Roll no: " + student.getRoll());
         score.setText("Score: " + student.getScore());
+        if(student.getId()==0){
+            delete.setVisibility(View.INVISIBLE);
+            edit.setVisibility(View.INVISIBLE);
+            standard.setVisibility(View.INVISIBLE);
+            rollNo.setVisibility(View.INVISIBLE);
+        }
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -59,6 +68,8 @@ public class ViewProfileDialog extends Dialog {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         Util.appDB.removeStudent(student.getId());
+                        dismiss();
+                        ((ProfileActivity)context).refreshListView();
                     }
                 });
                 builder.setNegativeButton("No", new OnClickListener() {
@@ -67,14 +78,31 @@ public class ViewProfileDialog extends Dialog {
                         dismiss();
                     }
                 });
+                builder.show();
             }
         });
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CreateProfileDialog dialog = new CreateProfileDialog(context,student,true);
                 dismiss();
+                DisplayMetrics metrics = context.getResources()
+                        .getDisplayMetrics();
+                int width = metrics.widthPixels;
+                int height = metrics.heightPixels;
+                CreateProfileDialog createProfileDialog = new CreateProfileDialog(
+                        context,student,true);
+                createProfileDialog.setCanceledOnTouchOutside(true);
+                createProfileDialog.show();
+                createProfileDialog.getWindow().setLayout((4 * width) / 7,
+                        (6 * height) / 7);
+                createProfileDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                    @Override
+                    public void onDismiss(DialogInterface dialog) {
+                        ((ProfileActivity)context).refreshListView();
+                    }
+                });
             }
         });
+
     }
 }

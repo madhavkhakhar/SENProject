@@ -10,8 +10,6 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 
 
@@ -29,7 +27,7 @@ public class SubLevelsActivity extends ActionBarActivity {
         txtLevel = (TextView)findViewById(R.id.txtlevelNo);
         ArrayList<ListItem> list = new ArrayList<ListItem>();
 
-        sublevelNo = new int[]{1,3,1,2,2,2,2,1,2,1,3,1,1,3,3,3,1,3,3,2};
+        sublevelNo = new int[]{1,3,1,2,2,2,2,1,2,1,3,1,1,3,2,3,1,3,3,2};
 
         levelNo = getIntent().getExtras().getInt("Level");
 
@@ -203,13 +201,13 @@ public class SubLevelsActivity extends ActionBarActivity {
 //                            i = new Intent(SubLevelsActivity.this,Level14_1.class);
 //                            startActivity(i);
                         }
-                        else if(position==1){
-                            i = new Intent(SubLevelsActivity.this,Level15_2.class);
+                        else if(position==0){
+                            i = new Intent(SubLevelsActivity.this,Level15_1.class);
                             i.putExtra("level_no",15);
                             startActivity(i);
                         }
-                        else if(position==2){
-                            i = new Intent(SubLevelsActivity.this,Level15_3.class);
+                        else if(position==1){
+                            i = new Intent(SubLevelsActivity.this,Level15_2.class);
                             i.putExtra("Sublevel",15);
                             startActivity(i);
                         }
@@ -271,7 +269,7 @@ public class SubLevelsActivity extends ActionBarActivity {
                             startActivity(i);
                         }
                         if(position==2) {
-                            i = new Intent(SubLevelsActivity.this, Level15_2.class);
+                            i = new Intent(SubLevelsActivity.this, Level15_1.class);
                             i.putExtra("level_no",19);
                             startActivity(i);
                         }

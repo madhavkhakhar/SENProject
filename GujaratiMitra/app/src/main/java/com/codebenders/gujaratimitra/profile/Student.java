@@ -7,6 +7,34 @@ public class Student {
     int id, roll, standard, currentLevel, score;
     String firstName, lastName;
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setRoll(int roll) {
+        this.roll = roll;
+    }
+
+    public void setStandard(int standard) {
+        this.standard = standard;
+    }
+
+    public void setCurrentLevel(int currentLevel) {
+        this.currentLevel = currentLevel;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
     public Student(int id, int roll, int standard, String firstName, String lastName, int currentLevel, int score) {
         this.id = id;
         this.roll = roll;

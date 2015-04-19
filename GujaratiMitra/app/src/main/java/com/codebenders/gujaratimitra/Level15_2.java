@@ -1,263 +1,185 @@
 package com.codebenders.gujaratimitra;
 
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Color;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.os.Bundle;
+import android.content.Intent;
 import android.os.Environment;
-import android.os.Handler;
-import android.os.Vibrator;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 
 public class Level15_2 extends ActionBarActivity {
-
-    final List<Integer> rand_array = new ArrayList<Integer>();
-    ImageView[] image;
-    ImageView[] window;
-    public int count = 0,score=0,MAX_SCORE;
-    private int levelNumber;
-    public int disable = -1;
-    ImageView hint;
-    int[] correctans;
-    int[][] sizes;
-    String imagePath;
-    TextView score_text;
-    boolean wait=false;
-
+    private static final int NUM_PAGES = 10;
+    private ViewPager mPager;
+    private PagerAdapter mPagerAdapter;
+    private ImageView leftArrow;
+    private ImageView rightArrow;
+    private int levelNo,sublevel;
+    private Intent i;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_level15_2);
-        levelNumber = getIntent().getIntExtra("level_no", 15);
-        if (levelNumber == 15) {
-            correctans = new int[]{2, 1, 2, 3, 2};
-            MAX_SCORE=5;
-            sizes = new int[][]{{94, 113, 124}, {36, 51, 275}, {287, 53, 162}, {145, 73, 196}, {181, 80, 135}};
-            imagePath = Environment.getExternalStorageDirectory() + "/GujaratiMitra/l15/2/img_";
-        } else if (levelNumber == 19) {
-            correctans = new int[]{2, 1, 3, 2, 3, 2, 3, 2};
-            MAX_SCORE=8;
-            sizes = new int[][]{{415, 246, 303}, {386, 200, 180}, {180, 190, 561}, {256, 189, 366}, {180, 191, 539}, {588, 190, 269}, {359, 200, 369}, {320, 192, 491}};
-            imagePath = Environment.getExternalStorageDirectory() + "/GujaratiMitra/l19/3/img_";
+        setContentView(R.layout.activity_level15_3);
 
-        }
-        //Util.setImageFromPath((ImageView)findViewById(R.id.que_statement), Environment.getExternalStorageDirectory() + "/GujaratiMitra/All Questions/que_15_2.png");
-        image = new ImageView[3];
-        window = new ImageView[3];
-        window[0] = (ImageView) findViewById(R.id.window1);
-        window[1] = (ImageView) findViewById(R.id.window2);
-        window[2] = (ImageView) findViewById(R.id.window3);
-        ImageView ques=(ImageView) findViewById(R.id.que_statement);
-        if(levelNumber==15) {
-            Util.setImageFromPath(ques, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l15/2/que_15_2.png");
-            for (int i = 0; i < 5; i++) {
-                rand_array.add(i + 1);
-            }
-        }
-        else if(levelNumber==19){
-            Util.setImageFromPath(ques,Environment.getExternalStorageDirectory() + "/GujaratiMitra/l19/3/que_19_3.png");
-            for (int i = 0; i < 8; i++) {
-                rand_array.add(i + 1);
-            }
-        }
-        Collections.shuffle(rand_array);
+        mPager = (ViewPager) findViewById(R.id.pager_15_3);
+        mPagerAdapter = new SimplePagerAdapter();
+        mPager.setAdapter(mPagerAdapter);
+        mPager.setOffscreenPageLimit(10);
+        i=getIntent();
+        levelNo=i.getExtras().getInt("levelno");
+        sublevel=i.getExtras().getInt("Sublevel");
 
-        score_text=(TextView) findViewById(R.id.score);
-        score_text.setText("SCORE "+String.valueOf(score)+"/"+String.valueOf(MAX_SCORE));
-        final ImageView speaker = (ImageView) findViewById(R.id.speaker);
+        final ImageView queImage = (ImageView)findViewById(R.id.que_image);
+        Util.setImageFromPath(queImage, Environment.getExternalStorageDirectory()+"/GujaratiMitra/l15/3/que_15_3.png");
+        final ImageView speaker = (ImageView)findViewById(R.id.lspeaker);
         speaker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Util.playMediaFromPath(Environment.getExternalStorageDirectory()+"/GujaratiMitra/l15/2/aud_que_15_2.wav");
+                Util.playMediaFromPath(Environment.getExternalStorageDirectory()+"/GujaratiMitra/l15/3/aud_que_15_3.wav");
             }
         });
 
-
-        image[0] = (ImageView) findViewById(R.id.imageView);
-        image[1] = (ImageView) findViewById(R.id.imageView2);
-        image[2] = (ImageView) findViewById(R.id.imageView3);
-
-        final ImageView check = (ImageView) findViewById(R.id.imageView7);
-        hint = (ImageView) findViewById(R.id.hint);
-        if (levelNumber == 15)
-            hint.setBackgroundResource(R.drawable.image_border_black);
-
-        set();
-
-        for (int i = 0; i < 3; i++) {
-            final int finalI = i;
-
-            image[i].setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    nextQues(finalI);
-
-                }
-            });
-        }
-        check.setOnClickListener(new View.OnClickListener() {
+        leftArrow = (ImageView) findViewById(R.id.imageView);
+        rightArrow = (ImageView) findViewById(R.id.imageView1);
+        leftArrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(wait==false)
-                    check();
-
+                mPager.setCurrentItem(mPager.getCurrentItem()-1);
             }
         });
-        speaker.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
-                //int temp=rand_array.get(count)-1;
-                //String temp1=(Environment.getExternalStorageDirectory() + "/GujaratiMitra/l10/1/"+sound_file).toString();
-                //Util.playMediaFromPath(temp1);
+        rightArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mPager.setCurrentItem(mPager.getCurrentItem()+1);
             }
         });
-    }
 
+        mPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int i, float v, int i2) {
 
-    private void nextQues(int image_no) {
-        Util.setImageFromPath(window[1], imagePath + String.valueOf(rand_array.get(count)) + "_" + String.valueOf(image_no + 4) + ".png");
-        window[1].setColorFilter(Color.argb(255, 0, 0, 0));
-
-        for (int i = 0; i < 3; i++) {
-            image[i].setColorFilter(Color.argb(255, 0, 0, 0));
-        }
-        image[image_no].setColorFilter(Color.argb(255, 32, 178, 170));
-        disable = image_no;
-
-
-    }
-
-
-    private void set() {
-
-
-        for (int i = 0; i < 3; i++) {
-
-            Util.setImageFromPath(image[i], imagePath + Integer.toString(rand_array.get(count)) + "_" + Integer.toString(i + 4) + ".png");
-            image[i].setColorFilter(Color.argb(255, 0, 0, 0));
-            window[1].setImageResource(android.R.color.transparent);
-
-            if (i == 1) {
-                Bitmap b = BitmapFactory.decodeFile(imagePath + Integer.toString(rand_array.get(count)) + "_" + Integer.toString(i + 1) + ".png");
-                Drawable ob;
-                ob = new BitmapDrawable(getResources(), b);
-                //View view = findViewById(R.id.container);
-                window[i].setBackgroundDrawable(ob);
-            } else {
-                Util.setImageFromPath(window[i], imagePath + Integer.toString(rand_array.get(count)) + "_" + Integer.toString(i + 1) + ".png");
             }
-        }
-        int sum = sizes[rand_array.get(count) - 1][0] + sizes[rand_array.get(count) - 1][1] + sizes[rand_array.get(count) - 1][2];
-        for (int i = 0; i < 3; i++) {
-            LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) window[i].getLayoutParams();
-            params.weight = (float) sizes[rand_array.get(count) - 1][i] / sum;
-            window[i].setLayoutParams(params);
-        }
 
-        //for(int i=0;i<.length;i++){
-        //Util.setImageFromPath(window[1], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l10/1/level10_1_img1_1.png");
-        //window[1].setColorFilter(Color.argb(255, 255, 255, 255));
-        //}
-        if (levelNumber == 15)
-            Util.setImageFromPath(hint, imagePath + Integer.toString(rand_array.get(count)) + "_" + Integer.toString(7) + ".png");
-
-    }
-
-    public void check() {
-
-        final ImageView green_tick = new ImageView(this);
-        final ImageView red_cross = new ImageView(this);
-
-        final Toast toast = new Toast(this);
-        green_tick.setImageResource(R.drawable.greentick);
-        red_cross.setImageResource(R.drawable.redcross);
-        new Thread() {
-            public void run() {
-                try {
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            wait=true;
-                            int temp = correctans[rand_array.get(count) - 1] - 1;
-                            //System.out.println(">>>>>>>>>>>>>>>>" + temp + disable);
-                            Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-                            if (disable == temp) {
-                               // System.out.println(">>>>>>>>>>>>>>>>-1-1-1");
-                                score++;
-                                score_text.setText("SCORE "+String.valueOf(score)+"/"+String.valueOf(MAX_SCORE));
-                                toast.setView(green_tick);
-                                toast.show();
-
-                                Handler handler = new Handler();
-                                handler.postDelayed(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        toast.cancel();
-                                    }
-                                }, 500);
-
-
-                                //score_text.setText(String.valueOf(score) + "/10");
-                            } else if (disable != temp) {
-
-                                //for(int i=0;i<sequence[rand_array.get(count)-1].length;i++){
-                                Util.setImageFromPath(window[1], imagePath + String.valueOf(rand_array.get(count)) + "_" + String.valueOf(correctans[rand_array.get(count) - 1] + 3) + ".png");
-                                //window[1].setColorFilter(Color.argb(255,255,255,255));
-                                toast.setView(red_cross);
-                                toast.show();
-
-                                Handler handler = new Handler();
-                                handler.postDelayed(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        toast.cancel();
-                                    }
-                                }, 500);
-                                v.vibrate(500);
-
-                            }
-                        }
-
-
-                    });
-                    Thread.sleep(1000);
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            wait=false;
-                            count++;
-                            if(levelNumber==15 && count==5){
-                                Util.setNextLevel(Level15_2.this,score,2,15,false);
-                            }
-                            else if(levelNumber==19 && count==8){
-                                Util.setNextLevel(Level15_2.this,score,3,19,true);
-                            }
-                            else {
-
-                                set();
-                            }
-                        }
-
-
-                    });
-
-                } catch (Exception e) {
-                    e.printStackTrace();
+            @Override
+            public void onPageSelected(int i) {
+                if (i == 0)
+                    leftArrow.setVisibility(View.INVISIBLE);
+                else if (i == NUM_PAGES-1)
+                    rightArrow.setVisibility(View.INVISIBLE);
+                else {
+                    leftArrow.setVisibility(View.VISIBLE);
+                    rightArrow.setVisibility(View.VISIBLE);
+                }
+                if(i>=NUM_PAGES-1){
+                    Util.setNextLevel(Level15_2.this,0,3,15,true);
                 }
             }
-        }.start();
+            @Override
+            public void onPageScrollStateChanged(int i) {
 
+            }
+        });
+
+    }
+
+    class SimplePagerAdapter extends PagerAdapter{
+        @Override
+        public int getCount() {
+            return NUM_PAGES;
+        }
+
+        @Override
+        public boolean isViewFromObject(View view, Object o) {
+            return o == view;
+        }
+
+        @Override
+        public Object instantiateItem(ViewGroup container, final int position) {
+            final View view = getLayoutInflater().inflate(R.layout.unit_layout_level_15_3, container, false);
+            final ImageView v1 = (ImageView) view.findViewById(R.id.imageView_15_3_1);
+          //  final ImageView v2 = (ImageView) view.findViewById(R.id.imageView_15_3_2);
+
+
+
+            Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l15/3/"+"img_15_3_"+Integer.toString(position+1)+".png");
+
+
+
+         /* switch(position) {
+
+                case 0:
+                    v1.setImageResource(R.drawable.img_15_3_1);
+                    break;
+                case 1:
+                    v1.setImageResource(R.drawable.img_15_3_2);
+                    break;
+                case 2:
+                    v1.setImageResource(R.drawable.img_15_3_3);
+                    break;
+                case 3:
+                    v1.setImageResource(R.drawable.img_15_3_4);
+                    break;
+                case 4:
+                    v1.setImageResource(R.drawable.img_15_3_5);
+                    break;
+                case 5:
+                    v1.setImageResource(R.drawable.img_15_3_6);
+                    break;
+                case 6:
+                    v1.setImageResource(R.drawable.img_15_3_7);
+                    break;
+                case 7:
+                    v1.setImageResource(R.drawable.img_15_3_8);
+                    break;
+                case 8:
+                    v1.setImageResource(R.drawable.img_15_3_9);
+                    break;
+                case 9:
+                    v1.setImageResource(R.drawable.img_15_3_10);
+                    break;
+            }*/
+
+
+
+
+
+            container.addView(view);
+            return view;
+        }
+
+        @Override
+        public void destroyItem(ViewGroup container, int position, Object object) {
+            container.removeView((View) object);
+        }
+
+
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_level15_3, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

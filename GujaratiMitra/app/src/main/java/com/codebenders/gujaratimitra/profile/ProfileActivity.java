@@ -63,12 +63,18 @@ public class ProfileActivity extends ActionBarActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                System.out.println("click");
                 prefs.saveStudentId(students.get(position).getId());
                 startActivity(new Intent(ProfileActivity.this, LevelsActivity.class).addFlags(FLAG_ACTIVITY_CLEAR_TASK | FLAG_ACTIVITY_NEW_TASK));
                 finish();
             }
         });
 
+    }
+    protected void refreshListView(){
+        students = appDB.getStudents();
+        adapter = new ProfileListAdapter(ProfileActivity.this, R.layout.profile_list_view_item, students);
+        listView.setAdapter(adapter);
     }
 
 }

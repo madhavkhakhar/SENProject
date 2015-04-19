@@ -4,7 +4,7 @@
     android:paddingRight="16dp"
     android:paddingTop="16dp"
     android:paddingBottom="16dp"
-    tools:context="com.codebenders.gujaratimitra.Level15_2"
+    tools:context="com.codebenders.gujaratimitra.Level15_1"
     android:orientation="vertical"
     android:weightSum="1"
     android:background="@drawable/levelbg">>
