@@ -53,9 +53,9 @@ public class Util {
 
     public static void setNextLevel(final Context c, int score, int sublevelNo, int levelNo, boolean isLast) {
         System.out.println("score  " + score);
-        System.out.println("sublevelscore " + appDB.getSubLevelScore(prefs.getStudentId(), sublevelNo));
+        System.out.println("sublevelscore " + appDB.getSubLevelScore(prefs.getStudentId(), sublevelNo, levelNo));
         System.out.println("lastlevel "+appDB.getLastLevelUnlocked(prefs.getStudentId()));
-        if (appDB.getSubLevelScore(prefs.getStudentId(), sublevelNo) <= score)
+        if (appDB.getSubLevelScore(prefs.getStudentId(), sublevelNo, levelNo) <= score)
             appDB.addSubLevelScore(levelNo, sublevelNo, score, prefs.getStudentId());
         if (appDB.getLastLevelUnlocked(prefs.getStudentId()) >= levelNo && isLast)
             appDB.setCurrentLevel(prefs.getStudentId(), levelNo + 1);

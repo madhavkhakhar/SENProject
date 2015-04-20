@@ -44,14 +44,7 @@ public class Level14_3 extends ActionBarActivity {
         setContentView(R.layout.activity_level14_3);
 
         queImg = (ImageView) findViewById(R.id.que_statement);
-//        v1 = (ImageView) findViewById(R.id.img1);
-//        v2 = (ImageView) findViewById(R.id.img2);
-//        v3 = (ImageView) findViewById(R.id.img3);
-//        v4 = (ImageView) findViewById(R.id.img4);
         l1 = (LinearLayout) findViewById(R.id.linearLayout1);
-//        l2 = (LinearLayout) findViewById(R.id.linearLayout2);
-//        l3 = (LinearLayout) findViewById(R.id.linearLayout3);
-//        l4 = (LinearLayout) findViewById(R.id.linearLayout4);
         check = (ImageView) findViewById(R.id.check);
         score_text=(TextView) findViewById(R.id.score);
         score_text.setText("SCORE "+String.valueOf(score)+"/"+String.valueOf(NUM_QUE));
@@ -162,7 +155,7 @@ public class Level14_3 extends ActionBarActivity {
                     loadNextQuestion();
             }
         });
-
+        Util.playMediaFromPath(Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/3/aud_1.wav");
     }
 
     public void loadNextQuestion() {
@@ -235,6 +228,7 @@ public class Level14_3 extends ActionBarActivity {
                                 pos[i] = 0;
                             }
                             loadInitialImagesOfQuestion();
+                            Util.playMediaFromPath(Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/3/aud_"+(currentQueIndex+1)+".wav");
                         }}
                     });
                 }
