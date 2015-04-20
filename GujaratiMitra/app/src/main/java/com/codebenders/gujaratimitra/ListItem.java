@@ -4,25 +4,18 @@ package com.codebenders.gujaratimitra;
  * Created by madhav on 13/2/15.
  */
 public class ListItem {
-    private int icon;
+    private int icon, score;
 
-    public ListItem(){}
-
-    public ListItem(int  icon){
+    public ListItem(int icon, int score) {
         this.icon = icon;
+        this.score = score;
     }
 
-    public ListItem(int icon, boolean isCounterVisible, String count){
-        this.icon = icon;
-    }
-
-
-    public int getIcon(){
+    public int getIcon() {
         return this.icon;
     }
 
-    public void setIcon(int icon){
-        this.icon = icon;
+    public int getScore() {
+        return this.score;
     }
-
 }

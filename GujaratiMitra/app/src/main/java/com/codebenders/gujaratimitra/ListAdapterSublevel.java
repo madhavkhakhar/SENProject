@@ -48,9 +48,9 @@ public class ListAdapterSublevel extends BaseAdapter {
         }
 
         ImageView imgIcon = (ImageView) convertView.findViewById(R.id.icon);
-
+        TextView score = (TextView) convertView.findViewById(R.id.score);
         imgIcon.setImageResource(listItems.get(position).getIcon());
-
+        score.setText(listItems.get(position).getScore()+"");
         return convertView;
     }
 
