@@ -18,6 +18,7 @@ public class SubLevelsActivity extends ActionBarActivity {
     int[] sublevelNo;
     int levelNo;
     TextView txtLevel;
+    ArrayList<ListItem> list = new ArrayList<ListItem>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,20 +26,24 @@ public class SubLevelsActivity extends ActionBarActivity {
         setContentView(R.layout.activity_sub_levels);
         lvSublevels = (ListView) findViewById(R.id.listViewSublevels);
         txtLevel = (TextView) findViewById(R.id.txtlevelNo);
-        ArrayList<ListItem> list = new ArrayList<ListItem>();
 
-        sublevelNo = new int[]{1, 3, 1, 2, 2, 2, 2, 1, 2, 1, 3, 1, 2, 3, 2, 3, 1, 3, 3, 2};
+        sublevelNo = new int[]{1, 3, 1, 2, 2, 2, 2, 1, 2, 1, 3, 1, 2, 2, 2, 3, 1, 3, 3, 2};
 
         levelNo = getIntent().getExtras().getInt("Level");
 
         txtLevel.setText("Level: " + levelNo);
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        list.clear();
         if (sublevelNo[levelNo - 1] >= 1)
-            list.add(new ListItem(R.drawable.sublevel1, Util.appDB.getSubLevelScore(Util.prefs.getStudentId(), 1)));
+            list.add(new ListItem(R.drawable.sublevel1, Util.appDB.getSubLevelScore(Util.prefs.getStudentId(), 1, levelNo)));
         if (sublevelNo[levelNo - 1] >= 2)
-            list.add(new ListItem(R.drawable.sublevel2, Util.appDB.getSubLevelScore(Util.prefs.getStudentId(), 2)));
+            list.add(new ListItem(R.drawable.sublevel2, Util.appDB.getSubLevelScore(Util.prefs.getStudentId(), 2, levelNo)));
         if (sublevelNo[levelNo - 1] == 3)
-            list.add(new ListItem(R.drawable.sublevel3, Util.appDB.getSubLevelScore(Util.prefs.getStudentId(), 3)));
+            list.add(new ListItem(R.drawable.sublevel3, Util.appDB.getSubLevelScore(Util.prefs.getStudentId(), 3, levelNo)));
 
         ListAdapterSublevel adapter = new ListAdapterSublevel(SubLevelsActivity.this, list);
 
@@ -173,16 +178,20 @@ public class SubLevelsActivity extends ActionBarActivity {
                         break;
                     case 14:
                         if (position == 0) {
-//                            i = new Intent(SubLevelsActivity.this,Level14_1.class);
-//                            startActivity(i);
-                        } else if (position == 1) {
                             i = new Intent(SubLevelsActivity.this, Level14_2.class);
                             i.putExtra("LevelNo", 14);
                             startActivity(i);
-                        } else if (position == 2) {
+                        } else if (position == 1) {
+//                            i = new Intent(SubLevelsActivity.this, Level14_2.class);
+//                            i.putExtra("LevelNo", 14);
+//                            startActivity(i);
                             i = new Intent(SubLevelsActivity.this, Level14_3.class);
                             i.putExtra("LevelNo", 14);
                             startActivity(i);
+                        } else if (position == 2) {
+//                            i = new Intent(SubLevelsActivity.this, Level14_3.class);
+//                            i.putExtra("LevelNo", 14);
+//                            startActivity(i);
                         }
                         break;
                     case 15:
@@ -286,7 +295,6 @@ public class SubLevelsActivity extends ActionBarActivity {
             }
         });
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

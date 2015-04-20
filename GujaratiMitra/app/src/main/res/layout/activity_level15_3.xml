@@ -13,20 +13,17 @@
         android:weightSum="1.0"
         android:orientation="horizontal"
         android:layout_weight="0.9">
-
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="0.25"
             android:id="@+id/que_image"/>
-
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="0.75"
             android:id="@+id/lspeaker"
             android:src="@drawable/loudspeaker"/>
-
     </LinearLayout>
 
     <LinearLayout

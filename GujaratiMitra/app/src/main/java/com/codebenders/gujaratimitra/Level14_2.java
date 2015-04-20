@@ -104,7 +104,7 @@ public class Level14_2 extends ActionBarActivity {
             final ImageView v1 = (ImageView) view.findViewById(R.id.img1);
 
             Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/2/img_"+position+".png");
-            v1.setTag(Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/2/aud_"+position+".mp3");
+            v1.setTag(Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/2/aud_"+position+".wav");
 
             v1.setOnClickListener(new View.OnClickListener() {
                 @Override
