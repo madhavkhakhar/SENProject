@@ -100,6 +100,7 @@ public class Level9_1 extends ActionBarActivity {
         score_text.setText("SCORE "+String.valueOf(score)+"/6");
         final ImageView speaker=(ImageView) findViewById(R.id.imageView6);
         final ImageView check= (ImageView) findViewById(R.id.imageView7);
+        Util.setImageFromPath((ImageView) findViewById(R.id.que_statement), Environment.getExternalStorageDirectory() + "/GujaratiMitra/l10/1/que_10_1.png");
 
 
         for(int i=0;i<window.length;i++){

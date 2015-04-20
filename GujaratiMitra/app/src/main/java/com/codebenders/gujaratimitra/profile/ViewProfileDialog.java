@@ -53,10 +53,11 @@ public class ViewProfileDialog extends Dialog {
         rollNo.setText("Roll no: " + student.getRoll());
         score.setText("Score: " + student.getScore());
         if(student.getId()==0){
-            delete.setVisibility(View.INVISIBLE);
-            edit.setVisibility(View.INVISIBLE);
-            standard.setVisibility(View.INVISIBLE);
-            rollNo.setVisibility(View.INVISIBLE);
+            delete.setVisibility(View.GONE);
+            edit.setVisibility(View.GONE);
+            standard.setVisibility(View.GONE);
+            rollNo.setVisibility(View.GONE);
+            lastName.setVisibility(View.GONE);
         }
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
