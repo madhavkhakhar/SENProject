@@ -15,10 +15,10 @@ public class AboutUs extends Dialog {
         super(context);
     }
 
-    protected void onCreate(Context context) {
-        super.onCreate(onSaveInstanceState());
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_aboutus);
-
     }
 }
 

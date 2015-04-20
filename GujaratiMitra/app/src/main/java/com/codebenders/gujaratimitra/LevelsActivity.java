@@ -12,6 +12,7 @@ import android.provider.Settings;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
+import android.util.DisplayMetrics;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.codebenders.gujaratimitra.profile.CreateProfileDialog;
 import com.codebenders.gujaratimitra.profile.ProfileActivity;
 import com.codebenders.gujaratimitra.profile.Student;
 
@@ -77,10 +79,17 @@ public class LevelsActivity extends ActionBarActivity {
         aboutUs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LevelsActivity.this, AboutUs.class);
-
-                startActivity(intent);
-
+                DisplayMetrics metrics = LevelsActivity.this.getResources()
+                        .getDisplayMetrics();
+                int width = metrics.widthPixels;
+                int height = metrics.heightPixels;
+                AboutUs aboutUs = new AboutUs(
+                        LevelsActivity.this);
+                aboutUs.setTitle("About us");
+                aboutUs.setCanceledOnTouchOutside(true);
+                aboutUs.show();
+                aboutUs.getWindow().setLayout((4 * width) / 7,
+                        (6 * height) / 7);
             }
         });
         currentProfile.setText(appDB.getStudentById(prefs.getStudentId()).getFirstName());
