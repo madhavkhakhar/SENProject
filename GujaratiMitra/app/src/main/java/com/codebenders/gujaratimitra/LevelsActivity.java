@@ -59,7 +59,7 @@ public class LevelsActivity extends ActionBarActivity {
         viewPager.setOffscreenPageLimit(NUM_PAGES);
 
         lastLevelUnlocked = appDB.getLastLevelUnlocked(prefs.getStudentId());
-        lastLevelUnlocked = 20;
+        //lastLevelUnlocked = 20;
         //System.out.println("prefs student id" +prefs.getStudentId());
         profiles = (Button) findViewById(R.id.profiles);
         aboutUs = (Button) findViewById(R.id.about_us);
@@ -147,12 +147,8 @@ public class LevelsActivity extends ActionBarActivity {
             images.add(level5);
             images.add(level6);
             images.add(level7);
-            int page = (lastLevelUnlocked - 1) / 7;
-            int tempLevel = (lastLevelUnlocked - 1) % 7 + 1;
-
             for (int i = 1; i <= images.size(); i++) {
-                // System.out.println("level " + tempLevel + " page " + page + " last level" + lastLevelUnlocked);
-                if ((i <= tempLevel && page == position) || (i >= tempLevel && page > position))
+                if ((position * 7) + i <= lastLevelUnlocked)
                     Util.setImageFromPath(images.get(i - 1), imagePath + "/Stage" + (position + 1) + "/level" + i + ".png");
                 else
                     Util.setImageFromPath(images.get(i - 1), imagePath + "/Stage" + (position + 1) + "/Locked/level" + i + ".png");
@@ -273,7 +269,7 @@ public class LevelsActivity extends ActionBarActivity {
 
     protected void onResume() {
         super.onResume();
-        //lastLevelUnlocked = appDB.getLastLevelUnlocked(prefs.getStudentId());
+        lastLevelUnlocked = appDB.getLastLevelUnlocked(prefs.getStudentId());
         adapter.notifyDataSetChanged();
     }
 
