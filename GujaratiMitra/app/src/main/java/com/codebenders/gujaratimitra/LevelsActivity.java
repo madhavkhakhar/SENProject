@@ -67,7 +67,12 @@ public class LevelsActivity extends ActionBarActivity {
         aboutUs = (Button) findViewById(R.id.about_us);
         if (Util.appDB.getStudentById(0) == null) {
             Util.appDB.insertStudent(new Student(0, 0, "Guest", "", 1, 0), 0);
-
+        }
+        if (Util.appDB.getStudentById(1) == null) {
+            Util.appDB.insertStudent(new Student(1, 0, "Test", "", 20, 0), 1);
+        }
+        if (prefs.getStudentId() == 1) {
+            lastLevelUnlocked = 20;
         }
         profiles.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -255,19 +260,21 @@ public class LevelsActivity extends ActionBarActivity {
                 }
             });
 
-            level7.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    //Intent intent = new Intent(LevelsActivity.this,Lev)
-                    levelNo = (viewPager.getCurrentItem() * 7) + 7;
-                    if (lastLevelUnlocked >= levelNo) {
+            if (position != 2) {
+                level7.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        //Intent intent = new Intent(LevelsActivity.this,Lev)
+                        levelNo = (viewPager.getCurrentItem() * 7) + 7;
+                        if (lastLevelUnlocked >= levelNo) {
 
-                        Intent i = new Intent(LevelsActivity.this, SubLevelsActivity.class);
-                        i.putExtra("Level", levelNo);
-                        startActivity(i);
+                            Intent i = new Intent(LevelsActivity.this, SubLevelsActivity.class);
+                            i.putExtra("Level", levelNo);
+                            startActivity(i);
+                        }
                     }
-                }
-            });
+                });
+            }
             container.addView(view);
             return view;
         }
@@ -282,6 +289,9 @@ public class LevelsActivity extends ActionBarActivity {
     protected void onResume() {
         super.onResume();
         lastLevelUnlocked = appDB.getLastLevelUnlocked(prefs.getStudentId());
+        if (prefs.getStudentId() == 1) {
+            lastLevelUnlocked = 20;
+        }
         adapter.notifyDataSetChanged();
     }
 
