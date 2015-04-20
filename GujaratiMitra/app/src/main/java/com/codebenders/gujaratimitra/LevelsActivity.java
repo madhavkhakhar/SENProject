@@ -77,6 +77,9 @@ public class LevelsActivity extends ActionBarActivity {
         aboutUs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(LevelsActivity.this, AboutUs.class);
+
+                startActivity(intent);
 
             }
         });
