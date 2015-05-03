@@ -35,7 +35,7 @@ public class Level15_2 extends ActionBarActivity {
         sublevel=i.getExtras().getInt("Sublevel");
 
         final ImageView queImage = (ImageView)findViewById(R.id.que_image);
-        Util.setImageFromPath(queImage, Environment.getExternalStorageDirectory()+"/GujaratiMitra/l15/3/que_15_3.png");
+        Util.setImageFromPath(queImage, Environment.getExternalStorageDirectory()+"/GujaratiMitra/l15/3/img_que_15_3.png");
         final ImageView speaker = (ImageView)findViewById(R.id.lspeaker);
         speaker.setOnClickListener(new View.OnClickListener() {
             @Override
