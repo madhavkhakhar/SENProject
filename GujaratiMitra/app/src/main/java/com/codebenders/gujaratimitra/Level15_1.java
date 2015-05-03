@@ -116,13 +116,6 @@ public class Level15_1 extends ActionBarActivity {
 
             }
         });
-        speaker.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
-                //int temp=rand_array.get(count)-1;
-                //String temp1=(Environment.getExternalStorageDirectory() + "/GujaratiMitra/l10/1/"+sound_file).toString();
-                //Util.playMediaFromPath(temp1);
-            }
-        });
     }
 
 
