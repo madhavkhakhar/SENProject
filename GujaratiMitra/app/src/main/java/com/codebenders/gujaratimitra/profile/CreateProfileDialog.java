@@ -53,10 +53,39 @@ public class CreateProfileDialog extends Dialog {
         ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                rollNo = Integer.parseInt(rollNoEditText.getText().toString());
-                standard = Integer.parseInt(standardEditText.getText().toString());
+                firstNameEditText.setError(null);
+                rollNoEditText.setError(null);
+                standardEditText.setError(null);
                 firstName = firstNameEditText.getText().toString();
                 lastName = lastNameEditText.getText().toString();
+                if(firstName.isEmpty()){
+                    firstNameEditText.setError("Enter first name");
+                    firstNameEditText.requestFocus();
+                    return;
+                }
+                try {
+                    rollNo = Integer.parseInt(rollNoEditText.getText().toString());
+                }
+                catch (Exception e){
+                    e.printStackTrace();
+                    rollNoEditText.setError("Invalid Roll number");
+                    rollNoEditText.requestFocus();
+                    return;
+                }
+                try {
+                    standard = Integer.parseInt(standardEditText.getText().toString());
+                    if(standard>12 || standard<1){
+                        standardEditText.setError("Standard - 1 to 12");
+                        standardEditText.requestFocus();
+                        return;
+                    }
+                }
+                catch (Exception e){
+                    e.printStackTrace();
+                    standardEditText.setError("Invalid standard");
+                    standardEditText.requestFocus();
+                    return;
+                }
                 if (!edit)
                     appDB.insertStudent(new Student(rollNo, standard, firstName, lastName, 0, 0));
                 else {
@@ -67,6 +96,7 @@ public class CreateProfileDialog extends Dialog {
                     appDB.updateStudent(student);
                 }
                 dismiss();
+
             }
         });
         cancel.setOnClickListener(new View.OnClickListener() {

@@ -292,6 +292,7 @@ public class LevelsActivity extends ActionBarActivity {
         if (prefs.getStudentId() == 1) {
             lastLevelUnlocked = 20;
         }
+        currentProfile.setText(appDB.getStudentById(prefs.getStudentId()).getFirstName());
         adapter.notifyDataSetChanged();
     }
 

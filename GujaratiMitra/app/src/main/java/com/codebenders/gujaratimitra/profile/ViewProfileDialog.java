@@ -14,6 +14,7 @@ import com.codebenders.gujaratimitra.R;
 import com.codebenders.gujaratimitra.Util;
 
 import static com.codebenders.gujaratimitra.Util.appDB;
+import static com.codebenders.gujaratimitra.Util.prefs;
 
 /**
  * Created by nihartrivedi810 on 18/4/15.
@@ -70,7 +71,9 @@ public class ViewProfileDialog extends Dialog {
                     public void onClick(DialogInterface dialog, int which) {
                         Util.appDB.removeStudent(student.getId());
                         dismiss();
-                        ((ProfileActivity)context).refreshListView();
+                        if(Util.prefs.getStudentId()==student.getId())
+                            Util.prefs.saveStudentId(0);
+                        ((ProfileActivity) context).refreshListView();
                     }
                 });
                 builder.setNegativeButton("No", new OnClickListener() {
