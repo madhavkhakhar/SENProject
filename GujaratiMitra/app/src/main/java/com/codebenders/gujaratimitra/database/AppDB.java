@@ -2,6 +2,7 @@ package com.codebenders.gujaratimitra.database;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.widget.Toast;
 
 import com.codebenders.gujaratimitra.profile.Student;
 
@@ -9,33 +10,36 @@ import java.util.ArrayList;
 
 public class AppDB extends DBConnect {
 
+    Context context;
     public AppDB(Context context) {
         super(context);
+        this.context = context;
     }
 
 
     public void insertStudent(Student student) {
-        String query;
-        //int id = -1;
-
-        query = String.format(ISql.INSERT_STUDENT, student.getRoll(),
-                student.getStandard(), student.getFirstName(), student.getLastName());
-        execNonQuery(query);
-        /*Cursor cursor = execQuery(ISql.GET_LAST_INSERTED_STUDENT_ID);
+        int count = 0;
+        String query, countQuery;
+        countQuery = String.format(ISql.COUNT_STUDENT, student.getRoll(),
+                student.getStandard());
+        Cursor cursor = execQuery(countQuery);
         if (cursor != null && cursor.getCount() > 0) {
 
-            if (cursor.moveToNext()) {
-                id = cursor.getInt(0);
+            if (cursor.moveToFirst()) {
+                count = cursor.getInt(0);
             }
-        }*/
-       /* if(id!=-1)
-            this.addSubLevelScore(1,1,0,id);*/
+        }
+        if (count == 0) {
+            query = String.format(ISql.INSERT_STUDENT, student.getRoll(),
+                    student.getStandard(), student.getFirstName(), student.getLastName());
+            execNonQuery(query);
+        } else {
+            Toast.makeText(context, "Student with same roll number and standard already exists", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void insertStudent(Student student, int id) {
         String query;
-        //int id = -1;
-
         query = String.format(ISql.INSERT_STUDENT_BY_ID, id, student.getRoll(),
                 student.getStandard(), student.getFirstName(), student.getLastName());
         execNonQuery(query);

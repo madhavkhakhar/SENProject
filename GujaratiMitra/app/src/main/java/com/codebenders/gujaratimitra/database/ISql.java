@@ -8,7 +8,7 @@ public interface ISql {
     String GET_STUDENT = "SELECT * FROM student";
     String GET_STUDENT_BY_ID = "SELECT * FROM student WHERE id = %d";
     String DELETE_STUDENT = "DELETE FROM student WHERE id = %d";
-    String COUNT_STUDENT = "SELECT count(RollNo) from tblStudent";
+    String COUNT_STUDENT = "SELECT count(roll_no) from student WHERE roll_no = %d AND standard = %d";
     String ADD_SUB_LEVEL_SCORE = "INSERT OR REPLACE INTO  level (sublevel_id, level_id, sublevel_score, student_id)  VALUES(%d,%d,%d,%d)";
     String GET_SUB_LEVEL_SCORE = "SELECT sublevel_score from level WHERE student_id = %d AND sublevel_id = %d AND level_id = %d";
     String GET_LEVEL_SCORE = "SELECT COUNT(sublevel_score) from level WHERE level_id = %d AND student_id = %d";
