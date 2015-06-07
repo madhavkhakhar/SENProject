@@ -71,7 +71,7 @@ public class Level11_2 extends ActionBarActivity {
                     rightArrow.setVisibility(View.VISIBLE);
                 }
                 if(i>=NUM_PAGES-1){
-                    Util.setNextLevel(Level11_2.this,0,2,11,false);
+                    Util.setNextLevel(Level11_2.this,0,2,11,false,true);
                 }
             }
 

@@ -163,7 +163,7 @@ public class Level11_1 extends ActionBarActivity {
                         public void run() {
                             disable = 0;
                             if(count>=NUM_QUES){
-                                Util.setNextLevel(Level11_1.this,score,1,11,false);
+                                Util.setNextLevel(Level11_1.this,score,1,11,false,false);
                             }
                             Random r = new Random();
                             int random = r.nextInt(4);

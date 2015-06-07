@@ -232,10 +232,10 @@ public class Level15_1 extends ActionBarActivity {
                             wait=false;
                             count++;
                             if(levelNumber==15 && count==5){
-                                Util.setNextLevel(Level15_1.this,score,2,15,false);
+                                Util.setNextLevel(Level15_1.this,score,2,15,false,false);
                             }
                             else if(levelNumber==19 && count==8){
-                                Util.setNextLevel(Level15_1.this,score,3,19,true);
+                                Util.setNextLevel(Level15_1.this,score,3,19,true,false);
                             }
                             else {
 

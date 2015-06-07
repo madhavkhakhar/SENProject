@@ -182,7 +182,7 @@ public class Level3_1 extends ActionBarActivity {
                         public void run() {
                             disable=0;
                             if(count==TOTAL_SCORE){
-                                Util.setNextLevel(Level3_1.this,SCORE,1,3,true);
+                                Util.setNextLevel(Level3_1.this,SCORE,1,3,true,false);
                             }
                             else{
                                 Random r=new Random();

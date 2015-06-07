@@ -81,7 +81,7 @@ public class Level5_2 extends ActionBarActivity {
                 }
 
                 if(i>=NUM_PAGES-1){
-                    Util.setNextLevel(Level5_2.this,0,2,levelNo,true);
+                    Util.setNextLevel(Level5_2.this,0,2,levelNo,true,true);
                 }
                 else{
                     mPager.getChildAt(i).findViewById(R.id.imageView2).setVisibility(View.INVISIBLE);

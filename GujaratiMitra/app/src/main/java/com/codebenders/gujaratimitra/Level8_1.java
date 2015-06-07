@@ -80,7 +80,7 @@ public class Level8_1 extends ActionBarActivity {
                     mPager.getChildAt(i).invalidate();
                 }
                 if(i>=NUM_PAGES-1)
-                    Util.setNextLevel(Level8_1.this,0,1,8,true);
+                    Util.setNextLevel(Level8_1.this,0,1,8,true,true);
             }
             @Override
             public void onPageScrollStateChanged(int i) {

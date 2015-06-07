@@ -332,7 +332,7 @@ public class Level9_1 extends ActionBarActivity {
                             count++;
                             if (count == 6) {
 
-                                Util.setNextLevel(Level9_1.this,score,1,9,false);
+                                Util.setNextLevel(Level9_1.this,score,1,9,false,false);
 
                             } else {
                                 number = 2;

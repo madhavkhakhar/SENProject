@@ -231,7 +231,7 @@ public class Level13_2 extends ActionBarActivity {
                             image.setBackgroundResource(R.drawable.image_border_black);
                             queNum = (queNum) + 1;
                             if (queNum == 21) {
-                                Util.setNextLevel(Level13_2.this, mscore, 2, 13, true);
+                                Util.setNextLevel(Level13_2.this, mscore, 2, 13, true,false);
                             }
                             sleeping = false;
                             if (queNum != 21)

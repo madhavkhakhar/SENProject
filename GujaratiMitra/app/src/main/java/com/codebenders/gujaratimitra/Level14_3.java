@@ -215,7 +215,7 @@ public class Level14_3 extends ActionBarActivity {
                         public void run() {
                             currentQueIndex = (currentQueIndex+1);
                             if(currentQueIndex>=NUM_QUE){
-                                Util.setNextLevel(Level14_3.this,score,3,14,true);
+                                Util.setNextLevel(Level14_3.this,score,3,14,true,false);
                             }
 
 //                            v1.setBackgroundColor(transparent);

@@ -238,7 +238,7 @@ public class Level2_1 extends ActionBarActivity {
                             queImage.setTag(queImageIndex.get(currentQueIndex));
                             currentQueIndex = (currentQueIndex+1);
                             if(currentQueIndex >= NUM_QUE-1){
-                                Util.setNextLevel(Level2_1.this,SCORE,1,2,false);
+                                Util.setNextLevel(Level2_1.this,SCORE,1,2,false,false);
                             }
                         }
                     });
