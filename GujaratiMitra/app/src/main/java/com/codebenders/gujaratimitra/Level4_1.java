@@ -30,9 +30,9 @@ public class Level4_1 extends ActionBarActivity {
         mPager.setAdapter(mPagerAdapter);
         mPager.setOffscreenPageLimit(5);
         ImageView que = (ImageView) findViewById(R.id.imageView_que);
-        Util.setImageFromPath(que, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/1/que_4_1.png");
+        Util.setImageFromPath(que,  "/l4/1/que_4_1.png");
         ImageView speaker = (ImageView) findViewById(R.id.speaker);
-        speaker.setTag(Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/1/aud_0.mp3");
+        speaker.setTag( "/l4/1/aud_0.mp3");
         speaker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -107,16 +107,16 @@ public class Level4_1 extends ActionBarActivity {
 
 
             if (position < NUM_PAGES-2) {
-                Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/1/img_" + Integer.toString(2 * position) + ".png");
-                Util.setImageFromPath(v3, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/1/img_" + Integer.toString((2 * position) + 1) + ".png");
-                Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/1/img_" + Integer.toString(2 * position) + "_n.png");
-                Util.setImageFromPath(v4, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/1/img_" + Integer.toString((2 * position) + 1) + "_n.png");
-                v1.setTag(Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/1/aud_0.mp3");
-                v3.setTag(Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/1/aud_1.mp3");
+                Util.setImageFromPath(v1, "/l4/1/img_" + Integer.toString(2 * position) + ".png");
+                Util.setImageFromPath(v3, "/l4/1/img_" + Integer.toString((2 * position) + 1) + ".png");
+                Util.setImageFromPath(v2,  "/l4/1/img_" + Integer.toString(2 * position) + "_n.png");
+                Util.setImageFromPath(v4,  "/l4/1/img_" + Integer.toString((2 * position) + 1) + "_n.png");
+                v1.setTag( "/l4/1/aud_0.mp3");
+                v3.setTag( "/l4/1/aud_1.mp3");
             } else if(position==NUM_PAGES-2){
-                Util.setImageFromPath(v1, Environment.getExternalStorageDirectory()+"/GujaratiMitra/l4/1/img_8.png");
-                Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/1/img_8_n.png");
-                v1.setTag(Environment.getExternalStorageDirectory()+"/GujaratiMitra/l4/1/aud_0.mp3");
+                Util.setImageFromPath(v1, "/l4/1/img_8.png");
+                Util.setImageFromPath(v2,  "/l4/1/img_8_n.png");
+                v1.setTag("/l4/1/aud_0.mp3");
             }
 
             v1.setOnClickListener(new View.OnClickListener() {

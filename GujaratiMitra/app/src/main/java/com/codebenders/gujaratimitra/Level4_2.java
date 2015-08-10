@@ -58,7 +58,7 @@ public class Level4_2 extends ActionBarActivity {
         lSpeaker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Util.playMediaFromPath(Environment.getExternalStorageDirectory()+"/GujaratiMitra/l4/1/aud_0.mp3");
+                Util.playMediaFromPath("/l4/1/aud_0.mp3");
             }
         });
 
@@ -78,7 +78,7 @@ public class Level4_2 extends ActionBarActivity {
         noOfQues = questions[queIndex];
         for(int j=0;j<noOfQues;j++){
             q[j].setVisibility(View.VISIBLE);
-            Util.setImageFromPath(q[j], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/2/"+"level4_2_img_e"+String.valueOf(queIndex)+"_"+String.valueOf(j+1)+".png");
+            Util.setImageFromPath(q[j], "/l4/2/"+"level4_2_img_e"+String.valueOf(queIndex)+"_"+String.valueOf(j+1)+".png");
         }
 
         Random r=new Random();
@@ -87,38 +87,38 @@ public class Level4_2 extends ActionBarActivity {
         int wrongIndex=1;
         for(int j=0;j<4;j++){
             if(j==correct){
-                Util.setImageFromPath(a[j], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/2/"+"level4_2_img_e" + String.valueOf(queIndex) + "_correct"+".png");
+                Util.setImageFromPath(a[j], "/l4/2/"+"level4_2_img_e" + String.valueOf(queIndex) + "_correct"+".png");
             }
             else{
-                Util.setImageFromPath(a[j], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/2/"+"level4_2_img_e" + String.valueOf(queIndex) + "_wrong" + String.valueOf(wrongIndex++)+".png");
+                Util.setImageFromPath(a[j], "/l4/2/"+"level4_2_img_e" + String.valueOf(queIndex) + "_wrong" + String.valueOf(wrongIndex++)+".png");
             }
         }
 
         q[0].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Util.playMediaFromPath(Environment.getExternalStorageDirectory()+"/GujaratiMitra/l4/1/aud_0.mp3");
+                Util.playMediaFromPath("/l4/1/aud_0.mp3");
             }
         });
 
         q[1].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Util.playMediaFromPath(Environment.getExternalStorageDirectory()+"/GujaratiMitra/l4/1/aud_0.mp3");
+                Util.playMediaFromPath("/l4/1/aud_0.mp3");
             }
         });
 
         q[2].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Util.playMediaFromPath(Environment.getExternalStorageDirectory()+"/GujaratiMitra/l4/1/aud_0.mp3");
+                Util.playMediaFromPath("/l4/1/aud_0.mp3");
             }
         });
 
         q[3].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Util.playMediaFromPath(Environment.getExternalStorageDirectory()+"/GujaratiMitra/l4/1/aud_0.mp3");
+                Util.playMediaFromPath("/l4/1/aud_0.mp3");
             }
         });
 
@@ -226,7 +226,7 @@ public class Level4_2 extends ActionBarActivity {
                             noOfQues = questions[queIndex];
                             for(int j=0;j<noOfQues;j++){
                                 q[j].setVisibility(View.VISIBLE);
-                                Util.setImageFromPath(q[j], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/2/"+"level4_2_img_e"+String.valueOf(queIndex)+"_"+String.valueOf(j+1)+".png");
+                                Util.setImageFromPath(q[j], "/l4/2/"+"level4_2_img_e"+String.valueOf(queIndex)+"_"+String.valueOf(j+1)+".png");
                             }
 
                             Random r=new Random();
@@ -235,10 +235,10 @@ public class Level4_2 extends ActionBarActivity {
                             int wrongIndex=1;
                             for(int j=0;j<4;j++){
                                 if(j==correct){
-                                    Util.setImageFromPath(a[j], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/2/"+"level4_2_img_e" + String.valueOf(queIndex) + "_correct"+".png");
+                                    Util.setImageFromPath(a[j], "/l4/2/"+"level4_2_img_e" + String.valueOf(queIndex) + "_correct"+".png");
                             }
                                 else{
-                                    Util.setImageFromPath(a[j], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l4/2/"+"level4_2_img_e" + String.valueOf(queIndex) + "_wrong" + String.valueOf(wrongIndex++)+".png");
+                                    Util.setImageFromPath(a[j], "/l4/2/"+"level4_2_img_e" + String.valueOf(queIndex) + "_wrong" + String.valueOf(wrongIndex++)+".png");
                                 }
                                 a[j].setColorFilter(Color.argb(255, 0, 0, 0));
                             }

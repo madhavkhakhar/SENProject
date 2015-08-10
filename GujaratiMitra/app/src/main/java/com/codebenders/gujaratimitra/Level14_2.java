@@ -29,12 +29,12 @@ public class Level14_2 extends ActionBarActivity {
         i=getIntent();
         levelNo=i.getExtras().getInt("LevelNo");
 
-        Util.setImageFromPath((ImageView)findViewById(R.id.q_image), Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/2/que_14_2.png");
+        Util.setImageFromPath((ImageView)findViewById(R.id.q_image),  "/l14/2/que_14_2.png");
         ImageView speaker = (ImageView)findViewById(R.id.speaker);
         speaker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Util.playMediaFromPath(Environment.getExternalStorageDirectory()+"/GujaratiMitra/l14/2/aud_que_14_2.wav");
+                Util.playMediaFromPath("/l14/2/aud_que_14_2.wav");
             }
         });
 
@@ -103,8 +103,8 @@ public class Level14_2 extends ActionBarActivity {
 
             final ImageView v1 = (ImageView) view.findViewById(R.id.img1);
 
-            Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/2/img_"+position+".png");
-            v1.setTag(Environment.getExternalStorageDirectory() + "/GujaratiMitra/l14/2/aud_"+position+".wav");
+            Util.setImageFromPath(v1,  "/l14/2/img_"+position+".png");
+            v1.setTag( "/l14/2/aud_"+position+".wav");
 
             v1.setOnClickListener(new View.OnClickListener() {
                 @Override

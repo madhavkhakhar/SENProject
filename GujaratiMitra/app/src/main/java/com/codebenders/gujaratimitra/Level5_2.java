@@ -38,12 +38,12 @@ public class Level5_2 extends ActionBarActivity {
         mPager.setAdapter(mAdapter);
         mPager.setOffscreenPageLimit(NUM_PAGES);
         ImageView que = (ImageView) findViewById(R.id.imageView_que);
-        Util.setImageFromPath(que, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l5/2/que_5_2.png");
+        Util.setImageFromPath(que, "/l5/2/que_5_2.png");
         ImageView speaker = (ImageView) findViewById(R.id.speaker);
         speaker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Util.playMediaFromPath(Environment.getExternalStorageDirectory()+"/GujaratiMitra/l5/2/aud_que_5_2.wav");
+                Util.playMediaFromPath("/l5/2/aud_que_5_2.wav");
             }
         });
 
@@ -126,12 +126,12 @@ public class Level5_2 extends ActionBarActivity {
             v2.setVisibility(View.INVISIBLE);
             v4.setVisibility(View.INVISIBLE);
 
-            Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l"+String.valueOf(levelNo)+"/2/"+"img_e" + Integer.toString((2 * position) + 1) +"_1.png");
-            Util.setImageFromPath(v3, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l"+String.valueOf(levelNo)+"/2/"+"img_e" + Integer.toString((2 * position) + 2) + "_1.png");
-            Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l"+String.valueOf(levelNo)+"/2/"+"img_e" + Integer.toString((2 * position) + 1) + "_2.png");
-            Util.setImageFromPath(v4, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l"+String.valueOf(levelNo)+"/2/"+"img_e" +Integer.toString((2 * position) + 2) + "_2.png");
-            v1.setTag(Environment.getExternalStorageDirectory() + "/GujaratiMitra/l"+String.valueOf(levelNo)+"/2/aud_"+Integer.toString((position*2)+1)+".wav");
-            v3.setTag(Environment.getExternalStorageDirectory() + "/GujaratiMitra/l"+String.valueOf(levelNo)+"/2/aud_"+Integer.toString((position*2)+2)+".wav");
+            Util.setImageFromPath(v1, "/l"+String.valueOf(levelNo)+"/2/"+"img_e" + Integer.toString((2 * position) + 1) +"_1.png");
+            Util.setImageFromPath(v3, "/l"+String.valueOf(levelNo)+"/2/"+"img_e" + Integer.toString((2 * position) + 2) + "_1.png");
+            Util.setImageFromPath(v2,  "/l"+String.valueOf(levelNo)+"/2/"+"img_e" + Integer.toString((2 * position) + 1) + "_2.png");
+            Util.setImageFromPath(v4, "/l"+String.valueOf(levelNo)+"/2/"+"img_e" +Integer.toString((2 * position) + 2) + "_2.png");
+            v1.setTag("/l"+String.valueOf(levelNo)+"/2/aud_"+Integer.toString((position*2)+1)+".wav");
+            v3.setTag("/l"+String.valueOf(levelNo)+"/2/aud_"+Integer.toString((position*2)+2)+".wav");
 
             v1.setOnClickListener(new View.OnClickListener() {
                 @Override

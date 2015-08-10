@@ -43,21 +43,21 @@ public class Level2_3 extends ActionBarActivity {
         lSpeaker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Util.playMediaFromPath(Environment.getExternalStorageDirectory()+"/GujaratiMitra/l2/3/aud_que_2_3.wav");
+                Util.playMediaFromPath("/l2/3/aud_que_2_3.wav");
             }
         });
         txtScore.setText("SCORE:"+String.valueOf(SCORE)+"/"+String.valueOf(TOTAL_SCORE));
 
-        Util.setImageFromPath((ImageView)findViewById(R.id.que_image), Environment.getExternalStorageDirectory()+"/GujaratiMitra/l2/3/que_2_3.png");
+        Util.setImageFromPath((ImageView)findViewById(R.id.que_image), "/l2/3/que_2_3.png");
         v1 = (ImageView) findViewById(R.id.imageView1);
         v2 = (ImageView) findViewById(R.id.imageView2);
         v3 = (ImageView) findViewById(R.id.imageView3);
         v4 = (ImageView) findViewById(R.id.imageView4);
 
-        Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l2/3/img_" + Integer.toString(currentQueIndex+1) + "_1.png");
-        Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l2/3/img_" + Integer.toString(currentQueIndex+1) + "_2.png");
-        Util.setImageFromPath(v3, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l2/3/img_" + Integer.toString(currentQueIndex+1) + "_3.png");
-        Util.setImageFromPath(v4, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l2/3/img_" + Integer.toString(currentQueIndex+1) + "_4.png");
+        Util.setImageFromPath(v1, "/l2/3/img_" + Integer.toString(currentQueIndex+1) + "_1.png");
+        Util.setImageFromPath(v2, "/l2/3/img_" + Integer.toString(currentQueIndex+1) + "_2.png");
+        Util.setImageFromPath(v3, "/l2/3/img_" + Integer.toString(currentQueIndex+1) + "_3.png");
+        Util.setImageFromPath(v4, "/l2/3/img_" + Integer.toString(currentQueIndex+1) + "_4.png");
 
         v1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -327,10 +327,10 @@ public class Level2_3 extends ActionBarActivity {
                             selected1 = selected2 = selected3 = selected4 = false;
                             totalSelected = 0;
 
-                            Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l2/3/img_" + Integer.toString(currentQueIndex+1) + "_1.png");
-                            Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l2/3/img_" + Integer.toString(currentQueIndex+1) + "_2.png");
-                            Util.setImageFromPath(v3, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l2/3/img_" + Integer.toString(currentQueIndex+1) + "_3.png");
-                            Util.setImageFromPath(v4, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l2/3/img_" + Integer.toString(currentQueIndex+1) + "_4.png");
+                            Util.setImageFromPath(v1, "/l2/3/img_" + Integer.toString(currentQueIndex+1) + "_1.png");
+                            Util.setImageFromPath(v2, "/l2/3/img_" + Integer.toString(currentQueIndex+1) + "_2.png");
+                            Util.setImageFromPath(v3, "/l2/3/img_" + Integer.toString(currentQueIndex+1) + "_3.png");
+                            Util.setImageFromPath(v4, "/l2/3/img_" + Integer.toString(currentQueIndex+1) + "_4.png");
                             v1.setBackgroundColor(Color.WHITE);
                             v2.setBackgroundColor(Color.WHITE);
                             v3.setBackgroundColor(Color.WHITE);

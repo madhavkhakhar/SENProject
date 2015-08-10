@@ -26,7 +26,7 @@ public class Level20_2 extends ActionBarActivity {
         setContentView(R.layout.activity_level20_2);
 
         final ImageView v2 = (ImageView) findViewById(R.id.imageView_20_2_1);
-        Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l20/2/que_20_2.png");
+        Util.setImageFromPath(v2,  "/l20/2/que_20_2.png");
 
 
 
@@ -50,7 +50,7 @@ public class Level20_2 extends ActionBarActivity {
             }
         });
         ImageView speaker = (ImageView) findViewById(R.id.speaker);
-        speaker.setTag(Environment.getExternalStorageDirectory() + "/GujaratiMitra/l20/2/aud_0.mp3");
+        speaker.setTag( "/l20/2/aud_0.mp3");
         speaker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -102,7 +102,7 @@ public class Level20_2 extends ActionBarActivity {
         final View view =getLayoutInflater().inflate(R.layout.unit_layout_level_20_2, container,false);
         final ImageView v1 = (ImageView) view.findViewById(R.id.imageView_20_2_2);
 
-        Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l20/2/"+"img_"+Integer.toString(position+1)+".png");
+        Util.setImageFromPath(v1,  "/l20/2/"+"img_"+Integer.toString(position+1)+".png");
 
         v1.setOnClickListener(new View.OnClickListener() {
             @Override

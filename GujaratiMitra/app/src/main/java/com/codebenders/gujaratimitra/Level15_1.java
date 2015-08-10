@@ -46,15 +46,15 @@ public class Level15_1 extends ActionBarActivity {
             correctans = new int[]{2, 1, 2, 3, 2};
             MAX_SCORE=5;
             sizes = new int[][]{{94, 113, 124}, {36, 51, 275}, {287, 53, 162}, {145, 73, 196}, {181, 80, 135}};
-            imagePath = Environment.getExternalStorageDirectory() + "/GujaratiMitra/l15/2/img_";
+            imagePath =  "/l15/2/img_";
         } else if (levelNumber == 19) {
             correctans = new int[]{2, 1, 3, 2, 3, 2, 3, 2};
             MAX_SCORE=8;
             sizes = new int[][]{{415, 246, 303}, {386, 200, 180}, {180, 190, 561}, {256, 189, 366}, {180, 191, 539}, {588, 190, 269}, {359, 200, 369}, {320, 192, 491}};
-            imagePath = Environment.getExternalStorageDirectory() + "/GujaratiMitra/l19/3/img_";
+            imagePath =  "/l19/3/img_";
 
         }
-        //Util.setImageFromPath((ImageView)findViewById(R.id.que_statement), Environment.getExternalStorageDirectory() + "/GujaratiMitra/All Questions/que_15_2.png");
+        //Util.setImageFromPath((ImageView)findViewById(R.id.que_statement),  "/All Questions/que_15_2.png");
         image = new ImageView[3];
         window = new ImageView[3];
         window[0] = (ImageView) findViewById(R.id.window1);
@@ -62,13 +62,13 @@ public class Level15_1 extends ActionBarActivity {
         window[2] = (ImageView) findViewById(R.id.window3);
         ImageView ques=(ImageView) findViewById(R.id.que_statement);
         if(levelNumber==15) {
-            Util.setImageFromPath(ques, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l15/2/que_15_2.png");
+            Util.setImageFromPath(ques,  "/l15/2/que_15_2.png");
             for (int i = 0; i < 5; i++) {
                 rand_array.add(i + 1);
             }
         }
         else if(levelNumber==19){
-            Util.setImageFromPath(ques,Environment.getExternalStorageDirectory() + "/GujaratiMitra/l19/3/que_19_3.png");
+            Util.setImageFromPath(ques, "/l19/3/que_19_3.png");
             for (int i = 0; i < 8; i++) {
                 rand_array.add(i + 1);
             }
@@ -81,7 +81,7 @@ public class Level15_1 extends ActionBarActivity {
         speaker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Util.playMediaFromPath(Environment.getExternalStorageDirectory()+"/GujaratiMitra/l15/2/aud_que_15_2.wav");
+                Util.playMediaFromPath("/l15/2/aud_que_15_2.wav");
             }
         });
 
@@ -160,7 +160,7 @@ public class Level15_1 extends ActionBarActivity {
         }
 
         //for(int i=0;i<.length;i++){
-        //Util.setImageFromPath(window[1], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l10/1/level10_1_img1_1.png");
+        //Util.setImageFromPath(window[1],  "/l10/1/level10_1_img1_1.png");
         //window[1].setColorFilter(Color.argb(255, 255, 255, 255));
         //}
         if (levelNumber == 15)

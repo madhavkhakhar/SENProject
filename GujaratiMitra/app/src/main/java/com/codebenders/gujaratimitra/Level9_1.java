@@ -100,11 +100,11 @@ public class Level9_1 extends ActionBarActivity {
         score_text.setText("SCORE "+String.valueOf(score)+"/6");
         final ImageView speaker=(ImageView) findViewById(R.id.imageView6);
         final ImageView check= (ImageView) findViewById(R.id.imageView7);
-        Util.setImageFromPath((ImageView) findViewById(R.id.que_statement), Environment.getExternalStorageDirectory() + "/GujaratiMitra/l10/1/que_10_1.png");
+        Util.setImageFromPath((ImageView) findViewById(R.id.que_statement),  "/l10/1/que_10_1.png");
 
 
         for(int i=0;i<window.length;i++){
-            Util.setImageFromPath(window[i], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l10/1/level10_1_img1_1.png");
+            Util.setImageFromPath(window[i],  "/l10/1/level10_1_img1_1.png");
             window[i].setColorFilter(Color.argb(255, 255, 255, 0));
         }
 
@@ -140,7 +140,7 @@ public class Level9_1 extends ActionBarActivity {
         speaker.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 //int temp=rand_array.get(count)-1;
-                //String temp1=(Environment.getExternalStorageDirectory() + "/GujaratiMitra/l10/1/"+sound_file).toString();
+                //String temp1=( "/l10/1/"+sound_file).toString();
                 //Util.playMediaFromPath(temp1);
             }
         });
@@ -173,11 +173,11 @@ public class Level9_1 extends ActionBarActivity {
             image[2] = (ImageView) view.findViewById(R.id.img3);
             image[3] = (ImageView) view.findViewById(R.id.img4);
             //image[4] = (ImageView) view.findViewById(R.id.img5);
-            Util.setImageFromPath(image[0], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l9/1/img_" + rand_array.get((4 * position)) + ".png");
-            Util.setImageFromPath(image[1], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l9/1/img_" + rand_array.get((4 * position)+1) + ".png");
-            Util.setImageFromPath(image[2], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l9/1/img_" + rand_array.get((4 * position)+2) + ".png");
-            Util.setImageFromPath(image[3], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l9/1/img_" + rand_array.get((4 * position)+3) + ".png");
-            //Util.setImageFromPath(image[4], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l2/1/img_" + ((4 * position) + 4) + ".png");
+            Util.setImageFromPath(image[0],  "/l9/1/img_" + rand_array.get((4 * position)) + ".png");
+            Util.setImageFromPath(image[1],  "/l9/1/img_" + rand_array.get((4 * position)+1) + ".png");
+            Util.setImageFromPath(image[2],  "/l9/1/img_" + rand_array.get((4 * position)+2) + ".png");
+            Util.setImageFromPath(image[3],  "/l9/1/img_" + rand_array.get((4 * position)+3) + ".png");
+            //Util.setImageFromPath(image[4],  "/l2/1/img_" + ((4 * position) + 4) + ".png");
 
             /*image[0].setTag(((4 * position)));
             image[1].setTag(((4 * position) + 1));
@@ -226,7 +226,7 @@ public class Level9_1 extends ActionBarActivity {
                                     }
                                 }
                                 if(temp < 2) {
-                                    Util.setImageFromPath(window[temp], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l9/1/img_" + String.valueOf(rand_array.get(imageno)) + ".png");
+                                    Util.setImageFromPath(window[temp],  "/l9/1/img_" + String.valueOf(rand_array.get(imageno)) + ".png");
                                     window[temp].setColorFilter(Color.argb(255, 0, 0, 0));
                                     empty[temp] = imageno;
                                     //temp_images.add(temp,image);
@@ -302,7 +302,7 @@ public class Level9_1 extends ActionBarActivity {
                             else{
 
                                 /*for(int i=0;i<2;i++){
-                                    Util.setImageFromPath(window[i], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l10/1/level10_1_img" + String.valueOf(rand_array.get(count)) + "_"  + ".png");
+                                    Util.setImageFromPath(window[i],  "/l10/1/level10_1_img" + String.valueOf(rand_array.get(count)) + "_"  + ".png");
                                     window[i].setColorFilter(Color.argb(255,0,0,0));
                                 }
                                     */
@@ -349,7 +349,7 @@ public class Level9_1 extends ActionBarActivity {
                                 }
                                 for (int i = 0; i < number; i++) {
                                     //for(int i=0;i<sequence[rand_array.get(count)-1].length;i++){
-                                    Util.setImageFromPath(window[i], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l10/1/level10_1_img1_1.png");
+                                    Util.setImageFromPath(window[i],  "/l10/1/level10_1_img1_1.png");
                                     window[i].setColorFilter(Color.argb(255, 255, 255, 0));
                                     //}
                                 }

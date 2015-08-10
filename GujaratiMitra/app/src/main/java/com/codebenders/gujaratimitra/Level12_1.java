@@ -32,9 +32,9 @@ public class Level12_1 extends ActionBarActivity {
         mPager.setAdapter(mPagerAdapter);
         mPager.setOffscreenPageLimit(5);
         final ImageView v1 = (ImageView) findViewById(R.id.imageView_12_1);
-        Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l12/1/"+"img_12_1.jpg");
+        Util.setImageFromPath(v1,  "/l12/1/"+"img_12_1.jpg");
         ImageView question = (ImageView) findViewById(R.id.imageView5);
-        Util.setImageFromPath(question, Environment.getExternalStorageDirectory() + "/GujaratiMitra/All Questions/que_12_1.png");
+        Util.setImageFromPath(question,  "/All Questions/que_12_1.png");
 
         leftArrow = (ImageView) findViewById(R.id.imageView);
         rightArrow = (ImageView) findViewById(R.id.imageView1);
@@ -54,7 +54,7 @@ public class Level12_1 extends ActionBarActivity {
 
         speaker.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Util.playMediaFromPath(Environment.getExternalStorageDirectory()+"/GujaratiMitra/l12/1/aud_que_12_1.wav");
+                Util.playMediaFromPath("/l12/1/aud_que_12_1.wav");
             }
         });
 
@@ -111,23 +111,23 @@ public class Level12_1 extends ActionBarActivity {
 
             switch(position) {
                 case 0:
-                    Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l12/1/"+"img_12_"+Integer.toString(position+2)+".png");
+                    Util.setImageFromPath(v2,  "/l12/1/"+"img_12_"+Integer.toString(position+2)+".png");
                     //v2.setImageResource(R.drawable.img_12_2);
                     break;
                 case 1:
-                    Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l12/1/"+"img_12_"+Integer.toString(position+2)+".png");
+                    Util.setImageFromPath(v2,  "/l12/1/"+"img_12_"+Integer.toString(position+2)+".png");
                     //v2.setImageResource(R.drawable.img_12_3);
                     break;
                 case 2:
-                    Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l12/1/"+"img_12_"+Integer.toString(position+2)+".png");
+                    Util.setImageFromPath(v2,  "/l12/1/"+"img_12_"+Integer.toString(position+2)+".png");
                     //v2.setImageResource(R.drawable.img_12_4);
                     break;
                 case 3:
-                    Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l12/1/"+"img_12_"+Integer.toString(position+2)+".png");
+                    Util.setImageFromPath(v2,  "/l12/1/"+"img_12_"+Integer.toString(position+2)+".png");
                     //v2.setImageResource(R.drawable.img_12_5);
                     break;
                 case 4:
-                    Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l12/1/"+"img_12_"+Integer.toString(position+2)+".png");
+                    Util.setImageFromPath(v2,  "/l12/1/"+"img_12_"+Integer.toString(position+2)+".png");
                     //v2.setImageResource(R.drawable.img_12_6);
                     break;
 

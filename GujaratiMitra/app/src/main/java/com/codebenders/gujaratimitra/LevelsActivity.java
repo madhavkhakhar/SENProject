@@ -40,7 +40,7 @@ public class LevelsActivity extends ActionBarActivity {
     private int lastLevelUnlocked = 20;
     ListView listView;
     ArrayList<String> listItems = new ArrayList<String>();
-    String imagePath = Environment.getExternalStorageDirectory() + "/GujaratiMitra/Start/";
+    String imagePath = "/Start/";
     CustomPagerAdapter adapter;
     private Button profiles, aboutUs;
     private TextView currentProfile;
@@ -48,7 +48,7 @@ public class LevelsActivity extends ActionBarActivity {
     AudioManager audioManager;
     int mediaVolume;
     AlertDialog.Builder builder;
-
+    ObbExpansionsManager instance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,9 +56,27 @@ public class LevelsActivity extends ActionBarActivity {
         setContentView(R.layout.activity_levels);
         viewPager = (ViewPager) findViewById(R.id.pager);
         adapter = new CustomPagerAdapter();
-        viewPager.setAdapter(adapter);
         currentProfile = (TextView) findViewById(R.id.current_profile);
         viewPager.setOffscreenPageLimit(NUM_PAGES);
+
+        ObbExpansionsManager.ObbListener listener = new ObbExpansionsManager.ObbListener() {
+            @Override
+            public void onFilesNotFound() {
+                System.out.println("No obb files found");
+            }
+
+            @Override
+            public void onMountSuccess() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        viewPager.setAdapter(adapter);
+                    }
+                });
+            }
+        };
+
+        instance = ObbExpansionsManager.createNewInstance(LevelsActivity.this,listener);
 
         lastLevelUnlocked = appDB.getLastLevelUnlocked(prefs.getStudentId());
         //lastLevelUnlocked = 20;
@@ -170,7 +188,13 @@ public class LevelsActivity extends ActionBarActivity {
                 else
                     Util.setImageFromPath(images.get(i - 1), imagePath + "/Stage" + (position + 1) + "/Locked/level" + i + ".png");
             }
-            Drawable drawable = Drawable.createFromPath(imagePath + "/Stage" + (position + 1) + "/home_bg_s" + (position + 1) + ".png");
+
+            ArrayList<Integer> pathsToHomeBg = new ArrayList<Integer>();
+            pathsToHomeBg.add(R.drawable.home_bg_s1);
+            pathsToHomeBg.add(R.drawable.home_bg_s2);
+            pathsToHomeBg.add(R.drawable.home_bg_s3);
+
+            Drawable drawable = getResources().getDrawable(pathsToHomeBg.get(position));
             drawable.setAlpha(90);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
                 layout.setBackground(drawable);

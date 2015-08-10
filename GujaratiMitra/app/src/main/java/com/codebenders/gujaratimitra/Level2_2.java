@@ -39,11 +39,11 @@ public class Level2_2 extends Activity {
         lSpeaker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Util.playMediaFromPath(Environment.getExternalStorageDirectory()+"/GujaratiMitra/l2/2/aud_que_2_2.wav");
+                Util.playMediaFromPath("/l2/2/aud_que_2_2.wav");
             }
         });
 
-        Util.setImageFromPath((ImageView)findViewById(R.id.que_image), Environment.getExternalStorageDirectory()+"/GujaratiMitra/l2/2/que_2_2.png");
+        Util.setImageFromPath((ImageView)findViewById(R.id.que_image), "/l2/2/que_2_2.png");
 
         mPager = (ViewPager) findViewById(R.id.pager);
         mAdapter = new SimplePagerAdapter();
@@ -111,7 +111,7 @@ public class Level2_2 extends Activity {
         public Object instantiateItem(ViewGroup container, int position) {
             View view = getLayoutInflater().inflate(R.layout.activity_level1_2view, container, false);
             mview = (MyView) view.findViewById(R.id.mview);
-            Drawable drawable = Drawable.createFromPath(Environment.getExternalStorageDirectory() + "/GujaratiMitra/l2/2/dif" + (position + 1) + ".jpg");
+            Drawable drawable = Drawable.createFromPath(ObbExpansionsManager.getInstance().getMainRoot() + "/l2/2/dif" + (position + 1) + ".jpg");
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
                 view.setBackground(drawable);
             else

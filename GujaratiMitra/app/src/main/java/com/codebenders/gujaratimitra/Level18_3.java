@@ -43,12 +43,12 @@ public class Level18_3 extends ActionBarActivity {
         });
 
         final ImageView queImage = (ImageView)findViewById(R.id.que_image);
-        Util.setImageFromPath(queImage, Environment.getExternalStorageDirectory()+"/GujaratiMitra/l18/3/que_18_3.png");
+        Util.setImageFromPath(queImage, "/l18/3/que_18_3.png");
         final ImageView speaker = (ImageView)findViewById(R.id.lspeaker);
         speaker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Util.playMediaFromPath(Environment.getExternalStorageDirectory()+"/GujaratiMitra/l18/3/aud_que_18_3.wav");
+                Util.playMediaFromPath("/l18/3/aud_que_18_3.wav");
             }
         });
 
@@ -94,7 +94,7 @@ public class Level18_3 extends ActionBarActivity {
         public Object instantiateItem(ViewGroup container, final int position){
             final View view =getLayoutInflater().inflate(R.layout.unit_layout_level1_1, container,false);
             final ImageView v1 = (ImageView) view.findViewById(R.id.imageView7);
-            Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l18/3/"+"img_e1_"+Integer.toString(position+1)+".png");
+            Util.setImageFromPath(v1,  "/l18/3/"+"img_e1_"+Integer.toString(position+1)+".png");
 
             v1.setOnClickListener(new View.OnClickListener() {
                 @Override

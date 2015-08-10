@@ -59,7 +59,7 @@ public class Level20_1 extends ActionBarActivity {
         final ImageView speaker=(ImageView) findViewById(R.id.imageView6);
         final ImageView check= (ImageView) findViewById(R.id.imageView7);
 
-        Util.setImageFromPath((ImageView) findViewById(R.id.que_statement),Environment.getExternalStorageDirectory() + "/GujaratiMitra/l20/1/que_20_1.png");
+        Util.setImageFromPath((ImageView) findViewById(R.id.que_statement), "/l20/1/que_20_1.png");
 
         set();
 
@@ -189,11 +189,11 @@ public class Level20_1 extends ActionBarActivity {
     private void set() {
 
         for(int i=0;i<4;i++){
-            Util.setImageFromPath(image[i], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l20/1/img_" + Integer.toString(rand_array.get(count))+"_"+ Integer.toString(i+2) + ".png");
+            Util.setImageFromPath(image[i],  "/l20/1/img_" + Integer.toString(rand_array.get(count))+"_"+ Integer.toString(i+2) + ".png");
             image[i].setColorFilter(Color.argb(255,0,0,0));
             image[i].setBackgroundResource(R.drawable.image_border_black);
         }
-        Util.setImageFromPath(window, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l20/1/img_" + Integer.toString(rand_array.get(count))+"_"+ Integer.toString(1) + ".png");
+        Util.setImageFromPath(window,  "/l20/1/img_" + Integer.toString(rand_array.get(count))+"_"+ Integer.toString(1) + ".png");
         sleeping = false;
     }
 

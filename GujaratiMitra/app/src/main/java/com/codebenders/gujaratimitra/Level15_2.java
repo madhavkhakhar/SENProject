@@ -35,12 +35,12 @@ public class Level15_2 extends ActionBarActivity {
         sublevel=i.getExtras().getInt("Sublevel");
 
         final ImageView queImage = (ImageView)findViewById(R.id.que_image);
-        Util.setImageFromPath(queImage, Environment.getExternalStorageDirectory()+"/GujaratiMitra/l15/3/img_que_15_3.png");
+        Util.setImageFromPath(queImage, "/l15/3/img_que_15_3.png");
         final ImageView speaker = (ImageView)findViewById(R.id.lspeaker);
         speaker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Util.playMediaFromPath(Environment.getExternalStorageDirectory()+"/GujaratiMitra/l15/3/aud_que_15_3.wav");
+                Util.playMediaFromPath("/l15/3/aud_que_15_3.wav");
             }
         });
 
@@ -106,7 +106,7 @@ public class Level15_2 extends ActionBarActivity {
 
 
 
-            Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l15/3/"+"img_15_3_"+Integer.toString(position+1)+".png");
+            Util.setImageFromPath(v1,  "/l15/3/"+"img_15_3_"+Integer.toString(position+1)+".png");
 
 
 

@@ -44,12 +44,12 @@ public class Level13_2 extends ActionBarActivity {
         mscore = 0;
         score = (TextView) findViewById(R.id.score);
         sleeping = false;
-        Util.setImageFromPath((ImageView) findViewById(R.id.q_image), Environment.getExternalStorageDirectory() + "/GujaratiMitra/l13/2/que_13_2.png");
+        Util.setImageFromPath((ImageView) findViewById(R.id.q_image),  "/l13/2/que_13_2.png");
         ImageView speaker = (ImageView) findViewById(R.id.speaker);
         speaker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Util.playMediaFromPath(Environment.getExternalStorageDirectory() + "/GujaratiMitra/l13/2/aud_" + Integer.toString(rand_array.get(queNum - 1)) + ".wav");
+                Util.playMediaFromPath( "/l13/2/aud_" + Integer.toString(rand_array.get(queNum - 1)) + ".wav");
             }
         });
 
@@ -102,7 +102,7 @@ public class Level13_2 extends ActionBarActivity {
 
             }
         });
-        Util.playMediaFromPath(Environment.getExternalStorageDirectory() + "/GujaratiMitra/l13/2/aud_que_13_2.wav");
+        Util.playMediaFromPath( "/l13/2/aud_que_13_2.wav");
 
     }
 
@@ -127,10 +127,10 @@ public class Level13_2 extends ActionBarActivity {
             final ImageView v3 = (ImageView) view.findViewById(R.id.imageView3);
             final ImageView v4 = (ImageView) view.findViewById(R.id.imageView4);
 
-            Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l13/2/" + "img_" + Integer.toString((4 * position) + 1) + ".png");
-            Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l13/2/" + "img_" + Integer.toString((4 * position) + 2) + ".png");
-            Util.setImageFromPath(v3, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l13/2/" + "img_" + Integer.toString((4 * position) + 3) + ".png");
-            Util.setImageFromPath(v4, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l13/2/" + "img_" + Integer.toString((4 * position) + 4) + ".png");
+            Util.setImageFromPath(v1,  "/l13/2/" + "img_" + Integer.toString((4 * position) + 1) + ".png");
+            Util.setImageFromPath(v2,  "/l13/2/" + "img_" + Integer.toString((4 * position) + 2) + ".png");
+            Util.setImageFromPath(v3,  "/l13/2/" + "img_" + Integer.toString((4 * position) + 3) + ".png");
+            Util.setImageFromPath(v4,  "/l13/2/" + "img_" + Integer.toString((4 * position) + 4) + ".png");
 
             v1.setTag((4 * position) + 1);
             v2.setTag((4 * position) + 2);
@@ -235,7 +235,7 @@ public class Level13_2 extends ActionBarActivity {
                             }
                             sleeping = false;
                             if (queNum != 21)
-                                Util.playMediaFromPath(Environment.getExternalStorageDirectory() + "/GujaratiMitra/l13/2/aud_" + Integer.toString(rand_array.get(queNum - 1)) + ".wav");
+                                Util.playMediaFromPath( "/l13/2/aud_" + Integer.toString(rand_array.get(queNum - 1)) + ".wav");
                         }
                     });
                 } catch (Exception e) {

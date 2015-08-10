@@ -59,13 +59,13 @@ public class Level3_1 extends ActionBarActivity {
         txtscore.setText("SCORE:"+String.valueOf(SCORE)+"/"+String.valueOf(TOTAL_SCORE));
 
         ImageView question = (ImageView)findViewById(R.id.imageView5);
-        Util.setImageFromPath(question, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l3/1/que_3_1.png");
+        Util.setImageFromPath(question, "/l3/1/que_3_1.png");
 
         lSpeaker = (ImageView)findViewById(R.id.lspeaker);
         lSpeaker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Util.playMediaFromPath(Environment.getExternalStorageDirectory()+"/GujaratiMitra/l3/1/que_aud_3_1.mp3");
+                Util.playMediaFromPath("/l3/1/que_aud_3_1.mp3");
             }
         });
 
@@ -74,10 +74,10 @@ public class Level3_1 extends ActionBarActivity {
         correctans=random1;
         for(int i=0;i<4;i++){
             if(i==correctans){
-                Util.setImageFromPath(image[i], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l3/1/d" + Integer.toString(rand_array.get(count)) + ".png");
+                Util.setImageFromPath(image[i], "/l3/1/d" + Integer.toString(rand_array.get(count)) + ".png");
             }
             else{
-                Util.setImageFromPath(image[i], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l3/1/s" + Integer.toString(rand_array.get(count)) + ".png");
+                Util.setImageFromPath(image[i], "/l3/1/s" + Integer.toString(rand_array.get(count)) + ".png");
 
             }
         }
@@ -190,10 +190,10 @@ public class Level3_1 extends ActionBarActivity {
                                 correctans=random;
                                 for(int i=0;i<4;i++){
                                     if(i==correctans){
-                                        Util.setImageFromPath(image[i], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l3/1/d" + String.valueOf(rand_array.get(count)) + ".png");
+                                        Util.setImageFromPath(image[i], "/l3/1/d" + String.valueOf(rand_array.get(count)) + ".png");
                                     }
                                     else{
-                                        Util.setImageFromPath(image[i], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l3/1/s" + String.valueOf(rand_array.get(count)) + ".png");
+                                        Util.setImageFromPath(image[i], "/l3/1/s" + String.valueOf(rand_array.get(count)) + ".png");
                                     }
                                 }
 

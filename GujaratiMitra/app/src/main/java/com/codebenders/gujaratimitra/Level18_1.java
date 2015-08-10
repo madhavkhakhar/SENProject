@@ -45,9 +45,9 @@ public class Level18_1 extends ActionBarActivity {
         vib = (Vibrator)getSystemService(Context.VIBRATOR_SERVICE);
         ques=(ImageView) findViewById(R.id.que_statement);
         q=(ImageView) findViewById(R.id.imgViewq1);
-        Util.setImageFromPath(ques,Environment.getExternalStorageDirectory() + "/GujaratiMitra/l16/1/que_16_1.png");
+        Util.setImageFromPath(ques, "/l16/1/que_16_1.png");
 
-        Util.setImageFromPath(q,Environment.getExternalStorageDirectory() + "/GujaratiMitra/l16/1/img_e1_"+String.valueOf(qIndex)+".png");
+        Util.setImageFromPath(q, "/l16/1/img_e1_"+String.valueOf(qIndex)+".png");
 
         check=(ImageView) findViewById(R.id.check);
         replay=(ImageView) findViewById(R.id.replay);
@@ -75,7 +75,7 @@ public class Level18_1 extends ActionBarActivity {
         speaker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Util.playMediaFromPath(Environment.getExternalStorageDirectory()+"/GujaratiMitra/l16/1/aud_que_16_1_16_2_16_3_18_1_18_2.wav");
+                Util.playMediaFromPath("/l16/1/aud_que_16_1_16_2_16_3_18_1_18_2.wav");
             }
         });
 
@@ -97,7 +97,7 @@ public class Level18_1 extends ActionBarActivity {
                             Util.setNextLevel(Level18_1.this,0,1,18,false,true);
                         }
                         else {
-                            Util.setImageFromPath(q, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l16/1/img_e1_" +  Integer.toString(qIndex) + ".png");
+                            Util.setImageFromPath(q,  "/l16/1/img_e1_" +  Integer.toString(qIndex) + ".png");
                             q.setVisibility(View.VISIBLE);
                             check.setVisibility(View.INVISIBLE);
                             replay.setVisibility(View.INVISIBLE);

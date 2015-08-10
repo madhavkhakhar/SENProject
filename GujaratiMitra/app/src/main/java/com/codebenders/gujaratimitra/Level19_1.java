@@ -35,12 +35,12 @@ public class Level19_1 extends ActionBarActivity {
 
         if(sublevel==1){
             NUM_PAGES=7;
-            Util.setImageFromPath((ImageView) findViewById(R.id.que_statement),Environment.getExternalStorageDirectory() + "/GujaratiMitra/l19/1/que_19_1.png");
+            Util.setImageFromPath((ImageView) findViewById(R.id.que_statement), "/l19/1/que_19_1.png");
 
         }
         else if(sublevel==2){
             NUM_PAGES=8;
-            Util.setImageFromPath((ImageView) findViewById(R.id.que_statement),Environment.getExternalStorageDirectory() + "/GujaratiMitra/l19/2/que_19_2.png");
+            Util.setImageFromPath((ImageView) findViewById(R.id.que_statement), "/l19/2/que_19_2.png");
         }
 
         mPager = (ViewPager) findViewById(R.id.pager);
@@ -112,12 +112,12 @@ public class Level19_1 extends ActionBarActivity {
             //ImageView v4 = (ImageView) view.findViewById(R.id.imageView4);
 
             if(sublevel==1) {
-                Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l19/1/img1_" + String.valueOf((2 * position) + 1) + ".png");
-                Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l19/1/img1_" + String.valueOf((2 * position) + 2) + ".png");
+                Util.setImageFromPath(v1,  "/l19/1/img1_" + String.valueOf((2 * position) + 1) + ".png");
+                Util.setImageFromPath(v2,  "/l19/1/img1_" + String.valueOf((2 * position) + 2) + ".png");
             }
             else if(sublevel==2){
-                Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l19/2/img_" + String.valueOf(position + 1) + "_1.png");
-                Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l19/2/img_" + String.valueOf(position+ 1) + "_2.png");
+                Util.setImageFromPath(v1,  "/l19/2/img_" + String.valueOf(position + 1) + "_1.png");
+                Util.setImageFromPath(v2,  "/l19/2/img_" + String.valueOf(position+ 1) + "_2.png");
             }
 
             v1.setOnClickListener(new View.OnClickListener() {

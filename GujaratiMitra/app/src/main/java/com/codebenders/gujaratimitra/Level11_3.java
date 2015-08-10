@@ -54,11 +54,11 @@ public class Level11_3 extends ActionBarActivity {
         speaker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Util.playMediaFromPath(Environment.getExternalStorageDirectory()+"/GujaratiMitra/l11/3/aud_que_11_3.wav");
+                Util.playMediaFromPath("/l11/3/aud_que_11_3.wav");
             }
         });
 
-        Util.setImageFromPath((ImageView)findViewById(R.id.q_image), Environment.getExternalStorageDirectory() + "/GujaratiMitra/l11/3/que_11_3.png");
+        Util.setImageFromPath((ImageView)findViewById(R.id.q_image),  "/l11/3/que_11_3.png");
         ImageView speaker = (ImageView) findViewById(R.id.speaker);
         speaker.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,7 +67,7 @@ public class Level11_3 extends ActionBarActivity {
             }
         });
 
-        Util.setImageFromPath(q, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l11/2/img" + Integer.toString(qIndex) + "_1.png");
+        Util.setImageFromPath(q,  "/l11/2/img" + Integer.toString(qIndex) + "_1.png");
 
         indexes = new ArrayList<Integer>();
         indexes.add(0, 0);
@@ -80,13 +80,13 @@ public class Level11_3 extends ActionBarActivity {
 
         for(int j=0;j<4;j++){
             if(j==correct){
-                Util.setImageFromPath(a[j], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l11/2/img"+ String.valueOf(qIndex) + "_2"+".png");
+                Util.setImageFromPath(a[j],  "/l11/2/img"+ String.valueOf(qIndex) + "_2"+".png");
             }
             else{
                 int ind = (qIndex+indexes.get(j)+1)%22;
                 if (ind == qIndex)
                     ind = (qIndex+1)%22;
-                Util.setImageFromPath(a[j], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l11/2/img" + String.valueOf(ind) + "_2.png");
+                Util.setImageFromPath(a[j],  "/l11/2/img" + String.valueOf(ind) + "_2.png");
             }
             a[j].setBackgroundResource(R.drawable.image_border_black);
         }
@@ -190,7 +190,7 @@ public class Level11_3 extends ActionBarActivity {
                             Util.setNextLevel(Level11_3.this,mscore,3,11,true,false);
                         }
                         else{
-                            Util.setImageFromPath(q, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l11/2/img" + Integer.toString(qIndex) + "_1.png");
+                            Util.setImageFromPath(q,  "/l11/2/img" + Integer.toString(qIndex) + "_1.png");
 
                             Collections.shuffle(indexes);
                             int random1=indexes.get(0);
@@ -199,13 +199,13 @@ public class Level11_3 extends ActionBarActivity {
 
                             for(int j=0;j<4;j++){
                                 if(j==correct){
-                                    Util.setImageFromPath(a[j], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l11/2/img" + String.valueOf(qIndex) + "_2"+".png");
+                                    Util.setImageFromPath(a[j],  "/l11/2/img" + String.valueOf(qIndex) + "_2"+".png");
                                 }
                                 else{
                                     int ind = (qIndex+indexes.get(j)+1)%22;
                                     if (ind == qIndex)
                                         ind = (qIndex+1)%22;
-                                    Util.setImageFromPath(a[j], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l11/2/img"+ String.valueOf(ind) + "_2.png");
+                                    Util.setImageFromPath(a[j],  "/l11/2/img"+ String.valueOf(ind) + "_2.png");
                                 }
                                 a[j].setBackgroundResource(R.drawable.image_border_black);
                             }

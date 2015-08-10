@@ -2,7 +2,6 @@ package com.codebenders.gujaratimitra;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.Vibrator;
 import android.support.v4.view.PagerAdapter;
@@ -53,7 +52,7 @@ public class Level2_1 extends ActionBarActivity {
         lSpeaker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Util.playMediaFromPath(Environment.getExternalStorageDirectory()+"/GujaratiMitra/l2/1/aud_que_2_1.wav");
+                Util.playMediaFromPath("/l2/1/aud_que_2_1.wav");
             }
         });
 
@@ -63,10 +62,10 @@ public class Level2_1 extends ActionBarActivity {
         mPager.setAdapter(mAdapter);
 
         queStatement = (ImageView) findViewById(R.id.que_statement);
-        Util.setImageFromPath(queStatement, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l2/1/img_que.png");
+        Util.setImageFromPath(queStatement, "/l2/1/img_que.png");
 
         queImage = (ImageView) findViewById(R.id.que_image);
-        Util.setImageFromPath(queImage, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l2/1/img_" + queImageIndex.get(currentQueIndex) + ".png");
+        Util.setImageFromPath(queImage, "/l2/1/img_" + queImageIndex.get(currentQueIndex) + ".png");
         queImage.setTag(queImageIndex.get(currentQueIndex));
         currentQueIndex = (currentQueIndex+1);
 
@@ -132,10 +131,10 @@ public class Level2_1 extends ActionBarActivity {
             final ImageView v3 = (ImageView) view.findViewById(R.id.img3);
             final ImageView v4 = (ImageView) view.findViewById(R.id.img4);
 
-            Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l2/1/img_"+((4*position)+1)+".png");
-            Util.setImageFromPath(v2, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l2/1/img_"+((4*position)+2)+".png");
-            Util.setImageFromPath(v3, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l2/1/img_"+((4*position)+3)+".png");
-            Util.setImageFromPath(v4, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l2/1/img_"+((4*position)+4)+".png");
+            Util.setImageFromPath(v1, "/l2/1/img_"+((4*position)+1)+".png");
+            Util.setImageFromPath(v2, "/l2/1/img_"+((4*position)+2)+".png");
+            Util.setImageFromPath(v3, "/l2/1/img_"+((4*position)+3)+".png");
+            Util.setImageFromPath(v4, "/l2/1/img_"+((4*position)+4)+".png");
 
             v1.setTag(((4*position)+1));
             v2.setTag(((4*position)+2));
@@ -234,7 +233,7 @@ public class Level2_1 extends ActionBarActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            Util.setImageFromPath(queImage, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l2/1/img_" + queImageIndex.get(currentQueIndex) + ".png");
+                            Util.setImageFromPath(queImage, "/l2/1/img_" + queImageIndex.get(currentQueIndex) + ".png");
                             queImage.setTag(queImageIndex.get(currentQueIndex));
                             currentQueIndex = (currentQueIndex+1);
                             if(currentQueIndex >= NUM_QUE-1){

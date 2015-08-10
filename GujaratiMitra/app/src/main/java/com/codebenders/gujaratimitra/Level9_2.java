@@ -56,10 +56,10 @@ public class Level9_2 extends ActionBarActivity {
         mPager.setOffscreenPageLimit(5);
 
         queStatement = (ImageView) findViewById(R.id.q_image);
-        Util.setImageFromPath(queStatement, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l9/2/que_9_2.png");
+        Util.setImageFromPath(queStatement,  "/l9/2/que_9_2.png");
 
         queImage = (ImageView) findViewById(R.id.que_image);
-        Util.setImageFromPath(queImage, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l9/2/img_a_" + String.valueOf(queImageIndex.get(count)) + ".png");
+        Util.setImageFromPath(queImage,  "/l9/2/img_a_" + String.valueOf(queImageIndex.get(count)) + ".png");
         queImage.setTag(queImageIndex.get(count));
         currentQueIndex = currentQueIndex + 1;
         count=(count+1)%5;
@@ -130,7 +130,7 @@ public class Level9_2 extends ActionBarActivity {
 
             ImageView v1 = (ImageView) view.findViewById(R.id.img1);
 
-            Util.setImageFromPath(v1, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l9/2/img_1_" + String.valueOf(position+1) + ".png");
+            Util.setImageFromPath(v1,  "/l9/2/img_1_" + String.valueOf(position+1) + ".png");
 
             v1.setTag(position);
 
@@ -229,7 +229,7 @@ public class Level9_2 extends ActionBarActivity {
 
     private void set() {
         if(currentQueIndex<5){
-            Util.setImageFromPath(queImage, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l9/2/img_a_" + queImageIndex.get(count) + ".png");
+            Util.setImageFromPath(queImage,  "/l9/2/img_a_" + queImageIndex.get(count) + ".png");
             queImage.setTag(queImageIndex.get(count));
             for(int i=0;i<NUM_PAGES;i++){
                 ImageView temp=(ImageView) mPager.getChildAt(i).findViewById(R.id.img1);
@@ -242,7 +242,7 @@ public class Level9_2 extends ActionBarActivity {
                 for(int i=0;i<NUM_PAGES;i++){
                     ImageView temp=(ImageView) mPager.getChildAt(i).findViewById(R.id.img1);
                     temp.setBackgroundResource(android.R.color.transparent);
-                    Util.setImageFromPath(temp, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l9/2/img_2_" + String.valueOf(i+1) + ".png");
+                    Util.setImageFromPath(temp,  "/l9/2/img_2_" + String.valueOf(i+1) + ".png");
                 }
 
             }
@@ -250,7 +250,7 @@ public class Level9_2 extends ActionBarActivity {
                 ImageView temp=(ImageView) mPager.getChildAt(i).findViewById(R.id.img1);
                 temp.setBackgroundResource(android.R.color.transparent);
             }
-            Util.setImageFromPath(queImage, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l9/2/img_b_" + queImageIndex.get(count) + ".png");
+            Util.setImageFromPath(queImage,  "/l9/2/img_b_" + queImageIndex.get(count) + ".png");
             queImage.setTag(5+queImageIndex.get(count));
         }
         else if(currentQueIndex>=10 && currentQueIndex<15){
@@ -259,14 +259,14 @@ public class Level9_2 extends ActionBarActivity {
                 for(int i=0;i<NUM_PAGES;i++){
                     ImageView temp=(ImageView) mPager.getChildAt(i).findViewById(R.id.img1);
                     temp.setBackgroundResource(android.R.color.transparent);
-                    Util.setImageFromPath(temp, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l9/2/img_3_" + String.valueOf(i+1) + ".png");
+                    Util.setImageFromPath(temp,  "/l9/2/img_3_" + String.valueOf(i+1) + ".png");
                 }
             }
             for(int i=0;i<NUM_PAGES;i++){
                 ImageView temp=(ImageView) mPager.getChildAt(i).findViewById(R.id.img1);
                 temp.setBackgroundResource(android.R.color.transparent);
             }
-            Util.setImageFromPath(queImage, Environment.getExternalStorageDirectory() + "/GujaratiMitra/l9/2/img_c_" + queImageIndex.get(count) + ".png");
+            Util.setImageFromPath(queImage,  "/l9/2/img_c_" + queImageIndex.get(count) + ".png");
             queImage.setTag(10+queImageIndex.get(count));
         }
         else{

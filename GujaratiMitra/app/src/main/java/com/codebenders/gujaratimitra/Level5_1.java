@@ -72,12 +72,12 @@ public class Level5_1 extends ActionBarActivity {
         lSpeaker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Util.playMediaFromPath(Environment.getExternalStorageDirectory()+"/GujaratiMitra/l5/1/aud_que_5_1.wav");
+                Util.playMediaFromPath("/l5/1/aud_que_5_1.wav");
             }
         });
 
         queImage = (ImageView)findViewById(R.id.que_statement);
-        Util.setImageFromPath(queImage,Environment.getExternalStorageDirectory() + "/GujaratiMitra/l5/1/que_5_1.png");
+        Util.setImageFromPath(queImage,"/l5/1/que_5_1.png");
         for (int i = 0; i < 6; i++) {
             rand_array.add(i + 1);
         }
@@ -86,7 +86,7 @@ public class Level5_1 extends ActionBarActivity {
 
         for (int i = 0; i < numbers[rand_array.get(count)-1]; i++) {
             image[i]=new ImageView(this);
-            Util.setImageFromPath(image[i],Environment.getExternalStorageDirectory() + "/GujaratiMitra/l"+String.valueOf(levelNo)+"/1/img_e"+String.valueOf(rand_array.get(count)) + "_" + String.valueOf(i + 1) + ".png");
+            Util.setImageFromPath(image[i],"/l"+String.valueOf(levelNo)+"/1/img_e"+String.valueOf(rand_array.get(count)) + "_" + String.valueOf(i + 1) + ".png");
         }
 
 
@@ -107,7 +107,7 @@ public class Level5_1 extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 if (disable == 0) {
-                    Util.playMediaFromPath(Environment.getExternalStorageDirectory() + "/GujaratiMitra/l" + String.valueOf(levelNo) + "/1/aud_" + sound + ".wav");
+                    Util.playMediaFromPath("/l" + String.valueOf(levelNo) + "/1/aud_" + sound + ".wav");
                 }//Set the random sound from the array here.
             }
         });
@@ -271,7 +271,7 @@ public class Level5_1 extends ActionBarActivity {
                                 }
                                 else{
                                     for (int i = 0; i < numbers[rand_array.get(count) - 1]; i++) {
-                                        Util.setImageFromPath(image[i], Environment.getExternalStorageDirectory() + "/GujaratiMitra/l"+String.valueOf(levelNo)+"/1/img_e" + String.valueOf(rand_array.get(count)) + "_" + String.valueOf(i + 1) + ".png");
+                                        Util.setImageFromPath(image[i], "/l"+String.valueOf(levelNo)+"/1/img_e" + String.valueOf(rand_array.get(count)) + "_" + String.valueOf(i + 1) + ".png");
                                     }
 
                                     for (int i = 0; i < numbers[rand_array.get(count) - 1]; i++) {

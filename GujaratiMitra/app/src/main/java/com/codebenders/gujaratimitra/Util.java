@@ -30,8 +30,10 @@ public class Util {
     public static AppPreferences prefs;
     private static int mScore;
 
+
     public static void playMediaFromPath(String path) {
         mediaPlayer.reset();
+        path = ObbExpansionsManager.getInstance().getMainRoot() + path;
         try {
             mediaPlayer.setDataSource(path);
             mediaPlayer.prepare();
@@ -115,6 +117,7 @@ public class Util {
 
 
     public static void setImageFromPath(ImageView imView, String path) {
+        path = ObbExpansionsManager.getInstance().getMainRoot() + path;
         Bitmap b = BitmapFactory.decodeFile(path);
         imView.setImageBitmap(b);
     }

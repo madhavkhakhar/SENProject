@@ -33,4 +33,5 @@
     <string name="title_activity_level9_2">Level9_2</string>
     <string name="title_activity_level9_1">Level9_1</string>
     <string name="title_activity_level18_1">Level18_1</string>
+    <string name="title_activity_obb_setup">ObbSetupActivity</string>
 </resources>
